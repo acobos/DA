@@ -1,5 +1,13 @@
 fig:1-install-package
 tab:vector-types
+fig:3-excel
+fig:3-text
+fig:3-text-tabs
+fig:3-text-semicolons
+fig:3-SPSS
+tab:5-dplyr-funs
+tab:5-dplyr-pipe
+tab:5-dplyr-pipe2
 introduction-to-r-and-rstudio
 installing-r-and-rstudio
 first-r-session
@@ -14,3 +22,13 @@ dataframes
 factors
 dates
 other-data-structures
+data-acquisition
+reading-ms-excel-data
+reading-text-data
+reading-spss-sas-or-stata-data
+reading-databases
+reading-other-formats
+getting-data-from-r-packages
+problems-when-importing-data-from-external-files
+package-dplyr
+reading-the-sara-data

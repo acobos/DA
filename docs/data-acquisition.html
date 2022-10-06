@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Data Acquisition | Data Analysis for Clinical Researchers</title>
+  <meta name="description" content="3 Data Acquisition | Data Analysis for Clinical Researchers" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Data Acquisition | Data Analysis for Clinical Researchers" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Data Acquisition | Data Analysis for Clinical Researchers" />
+  
+  
+  
+
+<meta name="author" content="Albert Cobos" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r-data-structures.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="structure-of-this-book.html"><a href="structure-of-this-book.html"><i class="fa fa-check"></i>Structure of this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#first-r-session"><i class="fa fa-check"></i><b>1.2</b> First R session</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-objects"><i class="fa fa-check"></i><b>1.3</b> R objects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-functions"><i class="fa fa-check"></i><b>1.4</b> R functions</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>1.5</b> Installing R packages</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#loading-packages"><i class="fa fa-check"></i><b>1.6</b> Loading packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-data-structures.html"><a href="r-data-structures.html"><i class="fa fa-check"></i><b>2</b> R data structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-data-structures.html"><a href="r-data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="r-data-structures.html"><a href="r-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3" data-path="r-data-structures.html"><a href="r-data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="r-data-structures.html"><a href="r-data-structures.html#factors"><i class="fa fa-check"></i><b>2.4</b> Factors</a></li>
+<li class="chapter" data-level="2.5" data-path="r-data-structures.html"><a href="r-data-structures.html#dates"><i class="fa fa-check"></i><b>2.5</b> Dates</a></li>
+<li class="chapter" data-level="2.6" data-path="r-data-structures.html"><a href="r-data-structures.html#other-data-structures"><i class="fa fa-check"></i><b>2.6</b> Other data structures</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-acquisition.html"><a href="data-acquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-ms-excel-data"><i class="fa fa-check"></i><b>3.1</b> Reading MS Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-text-data"><i class="fa fa-check"></i><b>3.2</b> Reading text data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-spss-sas-or-stata-data"><i class="fa fa-check"></i><b>3.3</b> Reading SPSS, SAS or Stata data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-databases"><i class="fa fa-check"></i><b>3.4</b> Reading databases</a></li>
+<li class="chapter" data-level="3.5" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-other-formats"><i class="fa fa-check"></i><b>3.5</b> Reading other formats</a></li>
+<li class="chapter" data-level="3.6" data-path="data-acquisition.html"><a href="data-acquisition.html#getting-data-from-r-packages"><i class="fa fa-check"></i><b>3.6</b> Getting data from R packages</a></li>
+<li class="chapter" data-level="3.7" data-path="data-acquisition.html"><a href="data-acquisition.html#problems-when-importing-data-from-external-files"><i class="fa fa-check"></i><b>3.7</b> Problems when importing data from external files</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="data-acquisition.html"><a href="data-acquisition.html#package-dplyr"><i class="fa fa-check"></i><b>3.7.1</b> Package <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.7.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-the-sara-data"><i class="fa fa-check"></i><b>3.7.2</b> Reading the SARA data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis for Clinical Researchers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-acquisition" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Data Acquisition<a href="data-acquisition.html#data-acquisition" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Data acquisition is the process used to import data into your R session so that it can be viewed and analyzed. There are several ways in which you can get data, but this is usually done by reading a data file. Common data file formats are Excel, plain text, SPSS, SAS or Stata data files.</p>
+<p>It is very easy to read files in these file formats by clicking the <code>Import Dataset</code> button of the <code>Evironment</code> pane in RStudio; this will unfold a list of file formats, and you just need to select the appropriate one. Upon selection, a new window will show-up from which we can pick the data file and provide information on how to read it. This information is partially different depending on the format, and in the following sections we show how to proceed in each case.</p>
+<div id="reading-ms-excel-data" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Reading MS Excel data<a href="data-acquisition.html#reading-ms-excel-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the <code>Import Dataset</code> button of the <code>Evironment</code> pane of RStudio, select <code>From Excel...</code>, and you will be presented with a dialog like the one in figure <a href="data-acquisition.html#fig:3-excel">3.1</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:3-excel"></span>
+<img src="images/Excel-dialog.PNG" alt="Dialog to read Excel files" width="863" />
+<p class="caption">
+Figure 3.1: Dialog to read Excel files
+</p>
+</div>
+<p><br />
+</p>
+<p>The <code>File/URL</code> box at the top of this dialog is where we should write the Excel file address. If the data file is located in you computer, you can pick it using the (top-right) <code>Browse</code> button. If the Excel file is somewhere in the internet, you can write (or paste) the URL in the box.</p>
+<p>As soon as you pick the file (or write its URL), you will see the result of a <em>default</em> reading in the <code>Data Preview</code> box. You should always look at the result of the reading in the <code>Data Preview</code> to ensure that you get what you want. In some cases, the default reading will be enough, but in some others you will realize that there is some problem. Then, you can use the <code>Import options</code> as appropriate:</p>
+<ul>
+<li><p><strong>Name</strong> provide a name for the resulting dataframe; this is automatically filled but you may change it to any valid name.</p></li>
+<li><p><strong>Sheet</strong> indicate the sheet you want to read (if there is more than one).</p></li>
+<li><p><strong>Range</strong> indicate the cells to read, in standard Excel syntax (e.g., <code>B3:F51</code>).</p></li>
+<li><p><strong>Max rows</strong> indicate the maximum number of rows you want to read (may be handy for test-reading of very large files).</p></li>
+<li><p><strong>Skip</strong> to start reading data after skipping the indicated number of rows.</p></li>
+<li><p><strong>NA</strong> define the character(s) used in the Excel file to represent <em>missings</em>.</p></li>
+<li><p><strong>First row as names</strong> check if the first row that will be read contains column names.</p></li>
+<li><p><strong>Open data viewer</strong> check to open the resulting dataframe in a new tab at the top-left RStudio pane.</p></li>
+</ul>
+<p>Last, the <code>Code preview</code> box shows the R code that will be executed when you click the <code>Import</code> button.</p>
+</div>
+<div id="reading-text-data" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Reading text data<a href="data-acquisition.html#reading-text-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are two entries in the list under the <code>Import Dataset</code>: <code>From Text (base)</code> and <code>From Text (readr)</code>. We recommend the later, which opens the dialog of figure <a href="data-acquisition.html#fig:3-text">3.2</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:3-text"></span>
+<img src="images/Text-dialog.PNG" alt="Dialog to read text files" width="863" />
+<p class="caption">
+Figure 3.2: Dialog to read text files
+</p>
+</div>
+<p><br />
+</p>
+<p>Some of the <code>Import options</code> are similar to those commented in the previous section for Excel files (<strong>Name</strong>, <strong>Skip</strong> and <strong>First Row as Names</strong>, <strong>NA</strong>, <strong>Open Data Viewer</strong>), but the following are specific of text data files:</p>
+<ul>
+<li><p><strong>Trim spaces</strong> to trim leading and trailing white spaces for each data point</p></li>
+<li><p><strong>Delimiter</strong> what is used to separate data points?</p></li>
+<li><p><strong>Quotes</strong> type of quotes used for texts (if any)</p></li>
+<li><p><strong>Locale</strong> configuration of locale settings, such as the decimal mark, the thousands separator, or the time zone.</p></li>
+<li><p><strong>Escape</strong> does the file use backslash to escape special characters? or does the file escape quotes by doubling them?</p></li>
+<li><p><strong>Comment</strong> symbol used in the file to indicate comments (that should be ignored)</p></li>
+</ul>
+<p>Before reading a text data file, it is very important to inspect how the data are arranged. This can be done by opening the file with any text editor, like the Notepad in Windows, or with RStudio (using the menu <code>File &gt; Open file...</code>).</p>
+<p>For instance, figure <a href="data-acquisition.html#fig:3-text-tabs">3.3</a> shows a text data file containing variable names in the first row, with data delimited by tabs, unquoted texts, dots as decimal separator.</p>
+<div class="figure"><span style="display:block;" id="fig:3-text-tabs"></span>
+<img src="images/tabs.PNG" alt="Text data file (delim: tab)" width="389" />
+<p class="caption">
+Figure 3.3: Text data file (delim: tab)
+</p>
+</div>
+<p>As a second example, the text data file shown in figure <a href="data-acquisition.html#fig:3-text-semicolons">3.4</a> also contains variable names in the first row, but data are delimited by semicolons, texts are quoted (with double quotes), and uses dots for decimals.</p>
+<div class="figure"><span style="display:block;" id="fig:3-text-semicolons"></span>
+<img src="images/semicolons.PNG" alt="Text data file (delim: semicolon)" width="390" />
+<p class="caption">
+Figure 3.4: Text data file (delim: semicolon)
+</p>
+</div>
+</div>
+<div id="reading-spss-sas-or-stata-data" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Reading SPSS, SAS or Stata data<a href="data-acquisition.html#reading-spss-sas-or-stata-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The dialog opened by options <code>From SPSS</code>, <code>From SAS</code> and <code>From Stata</code> are very similar. In figure <a href="data-acquisition.html#fig:3-SPSS">3.5</a> we show the former, where there is only one active <code>Input Option</code> for data files:</p>
+<ul>
+<li><strong>Format</strong> to specify the type of SPSS file (default: .SAV)</li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:3-SPSS"></span>
+<img src="images/SPSS-dialog.PNG" alt="Text data file (delim: semicolon)" width="862" />
+<p class="caption">
+Figure 3.5: Text data file (delim: semicolon)
+</p>
+</div>
+</div>
+<div id="reading-databases" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Reading databases<a href="data-acquisition.html#reading-databases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are many different database management systems (DBMS) widely used, like MySQL, PostgreSQL, Microsoft Access and SQL Server, Oracle, or Sqlite. To read a database (DB) with R we need to establish a <em>connection</em> to the the DB, either using specific drivers provided by the BD vendor, or using open DB connectivity (ODBC), a way to access any SQL-based DBMS implemented in the R package <code>RODBC</code>.</p>
+<p>In the following tutorial we show how to connect to a Microsoft Access DB, using the <code>RODBC</code> package. It is important to note that this will only work when your are using 32-bits R to read 32-bits DB drivers. After installing and loading the <code>RODBC</code> package, a connection is established to the Access DB with function <code>odbcConnectAccess()</code>. Then, the <code>sqlTables()</code> function is used to get a list of all tables in the DB. To get a specific table from the DB we use function <code>sqlFetch()</code>. It is important to <em>close the connection</em> when the job is done.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data-acquisition.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RODBC)</span>
+<span id="cb35-2"><a href="data-acquisition.html#cb35-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">odbcConnectAccess</span>(<span class="st">&quot;./data/demo.mdb&quot;</span>)      <span class="co"># establish connection to the DB</span></span>
+<span id="cb35-3"><a href="data-acquisition.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sqlTables</span>(con)                                   <span class="co"># print table-like objects in the DB</span></span>
+<span id="cb35-4"><a href="data-acquisition.html#cb35-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">sqlFetch</span>(con, <span class="st">&quot;demo&quot;</span>)                       <span class="co"># gets the table demo</span></span>
+<span id="cb35-5"><a href="data-acquisition.html#cb35-5" aria-hidden="true" tabindex="-1"></a>d</span>
+<span id="cb35-6"><a href="data-acquisition.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d)                                         <span class="co"># the result is a dataframe</span></span>
+<span id="cb35-7"><a href="data-acquisition.html#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="data-acquisition.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">close</span>(con)                                       <span class="co"># don`t forget to close the connection!</span></span>
+<span id="cb35-9"><a href="data-acquisition.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(con)                                          <span class="co"># before removing it!!</span></span></code></pre></div>
+</div>
+<div id="reading-other-formats" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Reading other formats<a href="data-acquisition.html#reading-other-formats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Besides the facilities described in previous sections to read common data file formats from RStudio, many other file formats can be read with R. These are some of them:</p>
+<ul>
+<li><p>PDF files can be read with package <code>pdftools</code> (see <a href="https://www.r-bloggers.com/2018/12/pdftools-2-0-powerful-pdf-text-extraction-tools/">this example</a>).</p></li>
+<li><p>HTML, XML: there are several packages to work with HTML and XML files, but package <code>xml2</code> can be use to read both (see <a href="https://blog.rstudio.com/2015/04/21/xml2/">here</a>).</p></li>
+<li><p>JSON files can be read with package <code>rjson</code> (see <a href="https://www.tutorialspoint.com/r/r_json_files.htm">this tutorial</a>).</p></li>
+<li><p>Web pages: the <code>rvest</code> package, is useful for <em>webscraping</em> (getting data from web pages) (see <a href="https://www.dataquest.io/blog/web-scraping-in-r-rvest/">this tutorial</a>).</p></li>
+<li><p>There are several packages that can be used to read/write and visualize geospatial data (maps) (see <a href="https://cran.r-project.org/web/views/Spatial.html">this CRAN Task View</a>).</p></li>
+<li><p>There are several packages to read/write and visualize medical images in formats DICOM, NALYZE or NIfTI-1 (see <a href="https://cran.r-project.org/web/views/MedicalImaging.html">this CRAN Task View</a> for more info).</p></li>
+<li><p>Genetic data can be imported from a wide range of formats, including those of popular population genetics software (GENETIX, STRUCTURE, Fstat, Genepop) with package <code>adegenet</code> (see <a href="https://adegenet.r-forge.r-project.org/files/PRstats/practical-MVAintro.1.0.pdf">here</a> for more info).</p></li>
+</ul>
+<p>This list is by no means comprehensive. If you are interested in reading a particular file format not covered here, it is very likely you will find useful info if <em>Google</em> “R <em>(format_name)</em>”.</p>
+</div>
+<div id="getting-data-from-r-packages" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Getting data from R packages<a href="data-acquisition.html#getting-data-from-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the previous sections we have seen how to read data from external files. However, it is noticeable that many R packages contain <em>example data sets</em>. In the base installation of R you will find the<code>datasets</code> package (look for it in the <code>Packages</code> tab of RStudio, and click on the name of the package) that contains many example datasets. However, only a few are related to clinical research (e.g., the <code>Indometh</code> dataset).</p>
+<p>A (non-comprehensive) list of clinical datasets contained in R packages can be found <a href="https://nostalgic-goldberg-85c461.netlify.app/2019/05/21/clinical-datasets/">here</a>. To work with any of these datasets you need to install the corresponding package, and then look at the help of the dataset. For instance, the <code>MASS</code> package includes the <code>birthwt</code> dataset. The following script prints its first rows with <code>head()</code> (six rows are printed by default, but you can indicate a different number in a second argument):</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-acquisition.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(MASS<span class="sc">::</span>birthwt)            <span class="co"># this will print the first 6 rows</span></span></code></pre></div>
+<pre><code>   low age lwt race smoke ptl ht ui ftv  bwt
+85   0  19 182    2     0   0  0  1   0 2523
+86   0  33 155    3     0   0  0  0   3 2551
+87   0  20 105    1     1   0  0  0   1 2557
+88   0  21 108    1     1   0  0  1   2 2594
+89   0  18 107    1     1   0  0  1   0 2600
+91   0  21 124    3     0   0  0  0   0 2622</code></pre>
+<p><br />
+</p>
+<p>For a brief description of the data, look at the help after loading the package by running <code>?birthwt</code>.</p>
+<p>Since the beginning of the COVID-19 pandemics, several resources have been developed with R, including R packages (see a list <a href="https://towardsdatascience.com/top-5-r-resources-on-covid-19-coronavirus-1d4c8df6d85f">here</a>). Among them, the <code>COVID19</code> package provides a unified dataset by collecting worldwide fine-grained case data that can be easily extended with World Bank Open Data, Google Mobility Reports, and Apple Mobility Reports (see <a href="https://covid19datahub.io/articles/api/r.html#quickstart-1">this tutorial</a>).</p>
+<p>In addition, some R packages provide more or less easy access to many different databases of interest for clinical researchers, such as the following:</p>
+<ul>
+<li><p><a href="https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html">rentrez</a> is a package for retrieving data from the National Center for Biotechnology Information (NCBI), including PubMed and GenBank.</p></li>
+<li><p><a href="https://github.com/sachsmc/rclinicaltrials">rclinicaltrials</a> provides an interface to <a href="https://github.com/sachsmc/rclinicaltrials#r-interface-to-clinicaltrialsgov">ClinicalTrials.gov</a>, a registry and results database of clinical studies conducted around the world.</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/nhanesA/vignettes/Introducing_nhanesA.html">nhanesA</a> allows retrieval of data from the <a href="https://www.cdc.gov/nchs/nhanes/index.htm?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Fnchs%2Fnhanes.htm">National Health and Nutrition Examination Survey (NHANES)</a> conducted by the National Center for Health Statistics (NCHS).</p></li>
+<li><p><a href="https://github.com/expersso/WHO#who">WHO</a> allows to download public health data from the <a href="https://www.who.int/data/gho">World Health Organization’s Global Health Observatory</a>.</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html">wbstats</a> provides access to the World bank data, a comprehensive source of global socio-economic data.</p></li>
+</ul>
+<p>Some additional R packages to access open public health data are commented in <a href="http://rstudio-pubs-static.s3.amazonaws.com/371621_1690f6fffbb94c9b87637ede3e5ede00.html">this post</a>.</p>
+</div>
+<div id="problems-when-importing-data-from-external-files" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Problems when importing data from external files<a href="data-acquisition.html#problems-when-importing-data-from-external-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is very common to have problems when reading real-life data, especially when data have been entered manually in a tool that does not avoid incorrect entries. This is often the case when Excel is used to enter data and data validation facilities are not used. Some of the most frequent problems are:</p>
+<ul>
+<li><p>Inadequate variable names</p></li>
+<li><p>Incorrect reading of numeric data</p></li>
+<li><p>Incorrect reading of dates</p></li>
+</ul>
+<p>In this section we show how to deal with these problems using the <code>dplyr</code>package, which is very convenient to work with dataframes.</p>
+<div id="package-dplyr" class="section level3 hasAnchor" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> Package <code>dplyr</code><a href="data-acquisition.html#package-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before proceeding, you should install and load the <code>dplyr</code>package:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-acquisition.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p><br />
+</p>
+<p>The <code>dplyr</code> package provides several functions to perform common tasks, and these function names are verbs describing the task they perform. Some of these functions are:</p>
+<ul>
+<li><p><code>select()</code>: selects variables in a dataframe (and optionally renames them)</p></li>
+<li><p><code>filter()</code>: filters rows in a dataframe, according to some logical condition</p></li>
+<li><p><code>mutate()</code>: creates new variables in a dataframe</p></li>
+<li><p><code>rename()</code>: renames variables in a dataframe</p></li>
+<li><p><code>arrange()</code>: changes the ordering of the rows of a dataframe</p></li>
+</ul>
+<p><br />
+</p>
+<p>The first argument to all these (and other <code>dplyr</code>) functions is a dataframe, and all of them provide a dataframe as a result. Each function takes other function-specific arguments. Table <a href="data-acquisition.html#tab:5-dplyr-funs">3.1</a> shows some examples of use of these functions with a description of the result they produce. In these examples, we assume that <code>d</code> is a dataframe containing variables <code>sex</code>, <code>age</code>, <code>race</code>, <code>weight</code> and <code>height</code> (in centimeters).</p>
+<p><br />
+</p>
+<table>
+<caption><span id="tab:5-dplyr-funs">Table 3.1: </span> Example of <code>dplyr</code> function calls</caption>
+<colgroup>
+<col width="38%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function call</th>
+<th align="left">Result: a dataframe with…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>select(d, sex, age, race)</code></td>
+<td align="left">all rows in d, and variables sex, age, race.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>select(d, gender=sex, age, race)</code></td>
+<td align="left">all rows in d, and variables gender, age, race.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>filter(d, sex == "male")</code></td>
+<td align="left">males in d, and all variables.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>rename(d, gender = sex)</code></td>
+<td align="left">all rows in d, and variables gender, age, race, weight, height.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mutate(d, height_meters = height/100)</code></td>
+<td align="left">all rows and variables in d, plus new variable height_meters</td>
+</tr>
+<tr class="even">
+<td align="left"><code>arrange(d, age)</code></td>
+<td align="left">all rows and variables in d, with rows sorted by (ascending) age</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>To note in the examples of table <a href="data-acquisition.html#tab:5-dplyr-funs">3.1</a>:</p>
+<ul>
+<li><p>variable names are neither prefixed with the dataframe name, nor quoted</p></li>
+<li><p>the <em>double equal sign</em> used to specify the condition in the case of <code>filter()</code></p></li>
+<li><p>the use of <em>a single equal sign</em> (instead of the assignment operator <code>&lt;-</code>), in the case of <code>mutate()</code></p></li>
+</ul>
+<p><br />
+</p>
+<p>When you load the <code>dplyr</code> package, you can use the so called <em>pipe operator</em> (<code>%&gt;%</code>). As you will see soon, this allows to <em>chain</em> operations in a very practical way. The basic usage of the pipe is shown in table <a href="data-acquisition.html#tab:5-dplyr-pipe">3.2</a>:</p>
+<table>
+<caption><span id="tab:5-dplyr-pipe">Table 3.2: </span> Usage of the pipe with <code>dplyr</code> functions</caption>
+<colgroup>
+<col width="48%" />
+<col width="51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">This is equivalent…</th>
+<th align="left">to this</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>select(d, sex, age, race)</code></td>
+<td align="left"><code>d %&gt;% select(sex, age, race)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>filter(d, sex == "male")</code></td>
+<td align="left"><code>d %&gt;% filter(sex=="male")</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mutate(d, height_meters = height/100)</code></td>
+<td align="left"><code>d %&gt;% mutate(height_meters = height/100)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>arrange(d, age)</code></td>
+<td align="left"><code>d %&gt;% arrange(age)</code></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>This works because <code>d</code> is <em>the first argument</em> of <code>select()</code>, <code>filter()</code>, <code>mutate()</code> and <code>arrange()</code>. You can use this operator with <em>any</em> function (not just with functions from <code>dplyr</code>), provided that the object before <code>%&gt;%</code> is the <em>first argument</em> of the function after <code>%&gt;%</code>. Table <a href="data-acquisition.html#tab:5-dplyr-pipe2">3.3</a> shows a basic usage of the pipe with base R functions (in the first example we assume <code>d</code> is some existing dataframe):</p>
+<p><br />
+</p>
+<table style="width:68%;">
+<caption><span id="tab:5-dplyr-pipe2">Table 3.3: </span> Usage of the pipe with base R functions</caption>
+<colgroup>
+<col width="33%" />
+<col width="34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">This is equivalent…</th>
+<th align="left">to this</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>names(d)</code></td>
+<td align="left"><code>d %&gt;% names()</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>round(2.38, 1)</code></td>
+<td align="left"><code>2.38 %&gt;% round(1)</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>log(100)</code></td>
+<td align="left"><code>100 %&gt;% log()</code></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>What is really powerful about the pipe operator is that you can <em>chain</em> as many operations as you wish, provided you stick to the rule: <em>what goes before <code>%&gt;%</code> is the first argument of the function after <code>%&gt;%</code></em>. For instance, the following two expressions are equivalent:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-acquisition.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">log</span>(<span class="dv">100</span>), <span class="dv">4</span>)                  <span class="co"># nested functions</span></span></code></pre></div>
+<pre><code>[1] 4.6052</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-acquisition.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">%&gt;%</span> <span class="fu">log</span>() <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">4</span>)          <span class="co"># chained functions</span></span></code></pre></div>
+<pre><code>[1] 4.6052</code></pre>
+<p>Notice that it is much more difficult to write the first of these expression: while you think “compute the log of 100 and round the result to four decimals”, nesting functions requires you to work from the inside out. However, when chaining operations with the pipe you follow the natural order of operations: “take 100, <em>then</em> compute the log, <em>then</em> round to four decimals”. As you see, each pipe can be read as <em>then</em>, or more precisely, <em>then do whatever the next function indicates, taking the previous result as its first argument</em>.</p>
+<p>Chaining can be applied to dataframe operations as well, as in the following example: take d, <em>then</em> filter males, <em>then</em> compute the height in meters, and <em>then</em> select the two height variables.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="data-acquisition.html#cb43-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sex =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>), <span class="dv">3</span>), </span>
+<span id="cb43-2"><a href="data-acquisition.html#cb43-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">38</span>, <span class="dv">57</span>, <span class="dv">61</span>),</span>
+<span id="cb43-3"><a href="data-acquisition.html#cb43-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">height =</span> <span class="fu">c</span>(<span class="dv">180</span>, <span class="dv">165</span>, <span class="dv">174</span>, <span class="dv">175</span>, <span class="dv">168</span>, <span class="dv">177</span>))</span>
+<span id="cb43-4"><a href="data-acquisition.html#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="data-acquisition.html#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="data-acquisition.html#cb43-6" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb43-7"><a href="data-acquisition.html#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-8"><a href="data-acquisition.html#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">height_meters =</span> height<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-9"><a href="data-acquisition.html#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(height, height_meters)</span></code></pre></div>
+<pre><code>  height height_meters
+1    180          1.80
+2    174          1.74
+3    168          1.68</code></pre>
+<p>We have only scraped the surface of the <code>dplyr</code> package, and there is much more power in it for dataframe operations. But what we covered should be enough to start using it as we do in the following section.</p>
+</div>
+<div id="reading-the-sara-data" class="section level3 hasAnchor" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> Reading the SARA data<a href="data-acquisition.html#reading-the-sara-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To illustrate problems that appear quite often when reading a real dataset, we will use a simplified version of the data collected in the <a href="https://pubmed.ncbi.nlm.nih.gov/24135832/">SARA trial</a>. This was a randomized clinical trial that compared catheter ablation vs. antiarrhythmic drug treatment in patients with persistent atrial fibrillation. The data has been modified in several ways for didactic purposes, and therefore the results shown here may differ from those described in the paper. You can download this file from <a href="https://github.com/acobos/Datasets/raw/master/SARA_simplified.xlsx">here</a>. We first read the dataset, and inspect variable names:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="data-acquisition.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb45-2"><a href="data-acquisition.html#cb45-2" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/SARA_simplified.xlsx&quot;</span>) </span></code></pre></div>
+<pre><code>Error: `path` does not exist: &#39;data/SARA_simplified.xlsx&#39;</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-acquisition.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(raw_data)</span></code></pre></div>
+<pre><code>Error in eval(expr, envir, enclos): object &#39;raw_data&#39; not found</code></pre>
+<p>The variable names contain blank spaces and some special characters like brackets, and are too long. We better clean them using function <code>clean_names()</code> from the <code>janitor</code> package, and revise the result:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-acquisition.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb49-2"><a href="data-acquisition.html#cb49-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(raw_data)               <span class="co"># clean variable names</span></span></code></pre></div>
+<pre><code>Error in clean_names(raw_data): object &#39;raw_data&#39; not found</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-acquisition.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)                                 <span class="co"># review</span></span></code></pre></div>
+<pre><code>[1] &quot;sex&quot;    &quot;age&quot;    &quot;height&quot;</code></pre>
+<p>Note that spaces have been replaced with underscores, and the special character like brackets have been eliminated. This function made a good job, and in many instances the result will be good enough to proceed. In this case however, variable names are too long, so we rename them using the <code>rename()</code> function of <code>dplyr</code>:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-acquisition.html#cb53-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">rename</span>(d,                                                     <span class="co"># rename vars</span></span>
+<span id="cb53-2"><a href="data-acquisition.html#cb53-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">patient  =</span> patient_no,</span>
+<span id="cb53-3"><a href="data-acquisition.html#cb53-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">birth_dt =</span> birth_date_yyyymm_dd,</span>
+<span id="cb53-4"><a href="data-acquisition.html#cb53-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">rand_dt  =</span> date_of_randomization,</span>
+<span id="cb53-5"><a href="data-acquisition.html#cb53-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">group =</span> random_allocation_of_treatment,</span>
+<span id="cb53-6"><a href="data-acquisition.html#cb53-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">weight =</span> body_weight_at_baseline_kg,</span>
+<span id="cb53-7"><a href="data-acquisition.html#cb53-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">height =</span> body_height_at_baseline_cm,</span>
+<span id="cb53-8"><a href="data-acquisition.html#cb53-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">nyha =</span> nyha_classification_at_baseline,</span>
+<span id="cb53-9"><a href="data-acquisition.html#cb53-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">sbp =</span> sbp_at_baseline_mm_hg,</span>
+<span id="cb53-10"><a href="data-acquisition.html#cb53-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">dbp =</span> dbp_at_baseline_mm_hg,</span>
+<span id="cb53-11"><a href="data-acquisition.html#cb53-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">hr =</span> heart_rate_at_baseline_bpm)</span></code></pre></div>
+<pre><code>Error in `chr_as_locations()`:
+! Can&#39;t rename columns that don&#39;t exist.
+✖ Column `patient_no` doesn&#39;t exist.</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-acquisition.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)                                                           <span class="co"># review</span></span></code></pre></div>
+<pre><code>[1] &quot;sex&quot;    &quot;age&quot;    &quot;height&quot;</code></pre>
+<p>Much better. Now, let’s have a first look at the data by printing the first rows of the dataframe:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-acquisition.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)               <span class="co"># prints first six rows </span></span></code></pre></div>
+<pre><code>     sex age height
+1   male  19    180
+2 female  23    165
+3   male  45    174
+4 female  38    175
+5   male  57    168
+6 female  61    177</code></pre>
+<p>In the previous output, the header of each data frame column includes the variable name and the type of data is indicated with abbreviations: <code>&lt;chr&gt;</code> for character, <code>&lt;dttm&gt;</code>for datetime, and <code>&lt;dbl&gt;</code> for <em>double</em> (which is a type of numeric). The following is to note:</p>
+<ul>
+<li><p><code>birth_dt</code> is a datetime object, but time values are 00:00:00, and we want it to be a <code>Date</code> object anyway.</p></li>
+<li><p><code>rand_dt</code> is character, but we want it to be <code>Date</code> as well.</p></li>
+<li><p><code>weight</code> is character, but we expected a numeric.</p></li>
+</ul>
+<p>But let’s verify the object classes of these three variables:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-acquisition.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>birth_dt)     </span></code></pre></div>
+<pre><code>[1] &quot;NULL&quot;</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-acquisition.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>birth_dt)     </span></code></pre></div>
+<pre><code>[1] &quot;NULL&quot;</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-acquisition.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>weight)</span></code></pre></div>
+<pre><code>[1] &quot;NULL&quot;</code></pre>
+<p>Yes, these objects classes are as indicated by the abbreviations in the output above.</p>
+<p>The problem with <code>weight</code>deserves some investigation. When a variable containing digits is not recognized as <code>numeric</code>, it is likely due to some value(s) containing forbidden characters for numeric data. To verify this, we use <code>mutate()</code> to create a numeric version of <code>weight</code> with <code>as.numeric()</code>, and then filter the rows where the numeric version is missing but the original <code>weight</code> is not. Last, we <code>select()</code> the patient number and the two versions of weight, and we store the resulting dataframe as <code>commas</code> for future reference:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-acquisition.html#cb65-1" aria-hidden="true" tabindex="-1"></a>commas <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb65-2"><a href="data-acquisition.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">weight_numeric =</span> <span class="fu">as.numeric</span>(weight)) <span class="sc">%&gt;%</span>       </span>
+<span id="cb65-3"><a href="data-acquisition.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(weight_numeric) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(weight)) <span class="sc">%&gt;%</span> </span>
+<span id="cb65-4"><a href="data-acquisition.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, weight, weight_numeric)</span></code></pre></div>
+<pre><code>Error in `mutate()`:
+! Problem while computing `weight_numeric = as.numeric(weight)`.
+Caused by error in `mask$eval_all_mutate()`:
+! object &#39;weight&#39; not found</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-acquisition.html#cb67-1" aria-hidden="true" tabindex="-1"></a>commas</span></code></pre></div>
+<pre><code>Error in eval(expr, envir, enclos): object &#39;commas&#39; not found</code></pre>
+<p>There are nine patients with decimals in <code>weight</code> that could not be interpreted as numbers because the comma (instead of a dot) was used as decimal separator. Now we need to replace this commas with dots, and this can be done with function <code>sub()</code>. Once the decimal separator problem has been fixed, we can safely convert to numeric. Last, we filter patients in <code>commas</code> to verify the result.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-acquisition.html#cb69-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="data-acquisition.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight_fixed =</span> <span class="fu">sub</span>(<span class="at">pattern =</span> <span class="st">&quot;,&quot;</span>, </span>
+<span id="cb69-3"><a href="data-acquisition.html#cb69-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">replacement =</span> <span class="st">&quot;.&quot;</span>, </span>
+<span id="cb69-4"><a href="data-acquisition.html#cb69-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x =</span> weight, </span>
+<span id="cb69-5"><a href="data-acquisition.html#cb69-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fixed=</span><span class="cn">TRUE</span>),</span>
+<span id="cb69-6"><a href="data-acquisition.html#cb69-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">weight_numeric =</span> <span class="fu">as.numeric</span>(weight_fixed)) <span class="sc">%&gt;%</span> </span>
+<span id="cb69-7"><a href="data-acquisition.html#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, weight, weight_fixed, weight_numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb69-8"><a href="data-acquisition.html#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter patients </span></span>
+<span id="cb69-9"><a href="data-acquisition.html#cb69-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient <span class="sc">%in%</span> commas<span class="sc">$</span>patient) </span></code></pre></div>
+<pre><code>Error in `mutate()`:
+! Problem while computing `weight_fixed = sub(pattern = &quot;,&quot;, replacement
+  = &quot;.&quot;, x = weight, fixed = TRUE)`.
+Caused by error in `is.factor()`:
+! object &#39;weight&#39; not found</code></pre>
+<p>Note in the script above we have defined two new variables in the <code>mutate()</code> function call (<code>weight_fixed</code> and <code>weight_numeric</code>), separated by comma. Moreover, note that the second variable is defined from the first. This means that, in a single call of <code>mutate()</code>:</p>
+<ul>
+<li><p>we can define as many new variables as needed (comma separated), and</p></li>
+<li><p>new variables are immediately available once defined</p></li>
+</ul>
+<p>We are left with the problem of dates. This can be fixed with function <code>as.Date()</code>:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="data-acquisition.html#cb71-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb71-2"><a href="data-acquisition.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">birth_dt =</span> <span class="fu">as.Date</span>(birth_dt),</span>
+<span id="cb71-3"><a href="data-acquisition.html#cb71-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">rand_dt =</span> <span class="fu">as.Date</span>(rand_dt, <span class="st">&quot;%d/%m/%Y&quot;</span>))</span></code></pre></div>
+<pre><code>Error in `mutate()`:
+! Problem while computing `birth_dt = as.Date(birth_dt)`.
+Caused by error in `as.Date()`:
+! object &#39;birth_dt&#39; not found</code></pre>
+<p>Finally, we can perform all the operations we have done by chaining them with pipes, so that we do everything in a single code chunk. This is done in the following script. Note that in this case the problem with commas in <code>weight</code> has been fixed in a single step, and the result overwrites the <code>weight</code> variable, to avoid additional variables in the dataframe.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-acquisition.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb73-2"><a href="data-acquisition.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb73-3"><a href="data-acquisition.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb73-4"><a href="data-acquisition.html#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="data-acquisition.html#cb73-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/SARA_simplified.xlsx&quot;</span>) <span class="sc">%&gt;%</span>               <span class="co"># reads data</span></span>
+<span id="cb73-6"><a href="data-acquisition.html#cb73-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span>                                            <span class="co"># standard names</span></span>
+<span id="cb73-7"><a href="data-acquisition.html#cb73-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">patient  =</span> patient_no,                                <span class="co"># for shorter names</span></span>
+<span id="cb73-8"><a href="data-acquisition.html#cb73-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">birth_dt =</span> birth_date_yyyymm_dd,</span>
+<span id="cb73-9"><a href="data-acquisition.html#cb73-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rand_dt  =</span> date_of_randomization,</span>
+<span id="cb73-10"><a href="data-acquisition.html#cb73-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> random_allocation_of_treatment,</span>
+<span id="cb73-11"><a href="data-acquisition.html#cb73-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">weight =</span> body_weight_at_baseline_kg,</span>
+<span id="cb73-12"><a href="data-acquisition.html#cb73-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">height =</span> body_height_at_baseline_cm,</span>
+<span id="cb73-13"><a href="data-acquisition.html#cb73-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">nyha =</span> nyha_classification_at_baseline,</span>
+<span id="cb73-14"><a href="data-acquisition.html#cb73-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">sbp =</span> sbp_at_baseline_mm_hg,</span>
+<span id="cb73-15"><a href="data-acquisition.html#cb73-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">dbp =</span> dbp_at_baseline_mm_hg,</span>
+<span id="cb73-16"><a href="data-acquisition.html#cb73-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">hr =</span> heart_rate_at_baseline_bpm) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-17"><a href="data-acquisition.html#cb73-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight =</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="at">pattern =</span> <span class="st">&quot;,&quot;</span>,                <span class="co"># commas to dots,</span></span>
+<span id="cb73-18"><a href="data-acquisition.html#cb73-18" aria-hidden="true" tabindex="-1"></a>                            <span class="at">replacement =</span> <span class="st">&quot;.&quot;</span>,                 <span class="co"># and convert to </span></span>
+<span id="cb73-19"><a href="data-acquisition.html#cb73-19" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x =</span> weight,                        <span class="co"># numeric</span></span>
+<span id="cb73-20"><a href="data-acquisition.html#cb73-20" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fixed=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb73-21"><a href="data-acquisition.html#cb73-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">birth_dt =</span> <span class="fu">as.Date</span>(birth_dt),                         <span class="co"># dates</span></span>
+<span id="cb73-22"><a href="data-acquisition.html#cb73-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">rand_dt =</span> <span class="fu">as.Date</span>(rand_dt, <span class="st">&quot;%d/%m/%Y&quot;</span>))</span></code></pre></div>
+<pre><code>Error: `path` does not exist: &#39;data/SARA_simplified.xlsx&#39;</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="data-acquisition.html#cb75-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<pre><code>     sex age height
+1   male  19    180
+2 female  23    165
+3   male  45    174
+4 female  38    175
+5   male  57    168
+6 female  61    177</code></pre>
+<p>And that’s it, at least by now!</p>
+</div>
+</div>
+<div id="resources-2" class="section level2 unnumbered hasAnchor">
+<h2>Resources<a href="data-acquisition.html#resources-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>A comprehensive tutorial on R data import (including some formats we have not mentioned) can be found <a href="https://www.datacamp.com/community/tutorials/r-data-import-tutorial">here</a>.</p></li>
+<li><p><a href="https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf">Data Import Cheat Sheet</a></p></li>
+<li><p>For more information on the use of package <code>janitor</code>, see <a href="https://garthtarr.github.io/meatR/janitor.html">this tutorial</a>.</p></li>
+<li><p>For more information on the use of package <code>dplyr</code>, see <a href="https://dplyr.tidyverse.org/">this tutorial</a>.</p></li>
+</ul>
+</div>
+<div id="exercises-2" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="data-acquisition.html#exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Download <a href="https://github.com/acobos/Datasets/raw/master/Life_expectancy.xls">this Excel file</a> and read it using the <code>Import Dataset</code> button in the <code>Environment</code> pane of RStudio. How many variables are in the resulting dataframe, and what are their names?</p></li>
+<li><p>Download <a href="https://github.com/acobos/Datasets/raw/master/data_four.xls">this Excel file</a> and read it using the <code>Import Dataset</code> button in the <code>Environment</code> pane of RStudio. How many variables are in the resulting dataframe, and what are their names? Give appropriate names to the dataframe variables.</p></li>
+<li><p>Read <a href="https://raw.githubusercontent.com/acobos/Datasets/master/data_one.txt">this text data file</a>. Why do you think the <code>Weight</code> variable is read as character vector? Look at the character used for missings. Can you imagine a way to read this correctly, so that <code>Weight</code> is a numeric vector? (Hint:explore changing the NA <code>Import Option</code>to NA, and look at the Code Preview; maybe if you copy this code to the editor you can adapt it to indicate that the NA symbol is…).</p></li>
+<li><p>Read <a href="https://raw.githubusercontent.com/acobos/Datasets/master/Life_Expectancy_with_continent.csv">this text file</a>. Are the names of the countries properly written? Try to use the <strong>Locale</strong> Import Option to set the Encoding to “ISO-8859-1”.</p></li>
+<li><p>Download <a href="https://github.com/acobos/Datasets/raw/master/demo.sav">this SPSS file</a> and read it using the <code>Import Dataset</code> button in the <code>Environment</code> pane of RStudio. What is the class of the <code>Sex</code> variable in the resulting <code>demo</code> dataframe?. Now run this code <code>d &lt;- as_factor(demo)</code>. What is the class of <code>Sex</code> in <code>d</code>?</p></li>
+<li><p>Read the <a href="http://api.nobelprize.org/v1/laureate.csv">Nobel Price Laureates dataset</a> with RStudio and list the variable names of the resulting <code>laureate</code> dataframe. Then, use <code>janitor::clean_names()</code> to get a dataframe with better names, and save it as <code>d</code>. With <code>d</code>, do the following:</p></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Look at the class of variables <code>born</code> and <code>died</code>. If not <code>Date</code>, convert this variables to standard dates.</li>
+<li>Nobel Laureates are awarded the Nobel prize in a ceremony held the 10 December every year, on the anniversary of Alfred Nobel’s death. Use <code>paste()</code> to build a character vector containing the dates the laureates were awarded the prize.</li>
+<li>Convert the previous result to a <code>Date</code> object and use it to compute the age each laureate was awarded the Nobel Prize.</li>
+<li>Filter laureates for the “medicine” category and save the resulting dataframe as <code>medicine</code>.</li>
+<li>Use <code>count(medicine, born_country)</code> to get the number of medicine laureates per country of birth; look at the help of <code>count()</code> to see how to get the result sorted by frequency.</li>
+<li>Use the same function to get the number of medicine laureates per <code>name</code>, and then filter institutions with more than one laureate.</li>
+<li>Filter <code>medicine</code> to see the laureates that, when awarded the prize, where working in a <code>country</code> different from their <code>born_country</code>.</li>
+</ol>
+
+</div>
+</div>
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r-data-structures.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
