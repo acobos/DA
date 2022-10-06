@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Introduction to R and RStudio | Data Analysis for Clinical Researchers</title>
+  <meta name="description" content="1 Introduction to R and RStudio | Data Analysis for Clinical Researchers" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Introduction to R and RStudio | Data Analysis for Clinical Researchers" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Introduction to R and RStudio | Data Analysis for Clinical Researchers" />
+  
+  
+  
+
+<meta name="author" content="Albert Cobos" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="structure-of-this-book.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="structure-of-this-book.html"><a href="structure-of-this-book.html"><i class="fa fa-check"></i>Structure of this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#first-r-session"><i class="fa fa-check"></i><b>1.2</b> First R session</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-objects"><i class="fa fa-check"></i><b>1.3</b> R objects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-functions"><i class="fa fa-check"></i><b>1.4</b> R functions</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>1.5</b> Installing R packages</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#loading-packages"><i class="fa fa-check"></i><b>1.6</b> Loading packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis for Clinical Researchers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-r-and-rstudio" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Introduction to R and RStudio<a href="introduction-to-r-and-rstudio.html#introduction-to-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter you are going to be introduced to R and RStudio. R is a programming language particularly suited for data analysis and data visualization (via graphics), and its free. Rstudio is an <em>integrated development environment</em> (IDE) that greatly facilitates to work with R, and there is also a free desktop version.</p>
+<!-- Pending:
+- video install RStudio
+- video first R session
+-->
+<div id="installing-r-and-rstudio" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Installing R and RStudio<a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First of all, you need to have R ad RStudio installed in you computer. I you don’t have them, you should proceed as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p>Install the last version of R from the <a href="https://cran.r-project.org/">CRAN website</a>; see how in <a href="https://youtu.be/UC25J04_ky8">this video</a>.</p></li>
+<li><p>Install the free Desktop version of RStudio from <a href="https://rstudio.com/products/rstudio/download/">here</a>.</p></li>
+</ol>
+<p>Now you have both R and RStudio and, for starters, I recommend you to look at the short video <em>Take a tour of RStudio’s IDE</em>, <a href="https://rstudio.com/products/rstudio/">here</a>.</p>
+<p>As you have seen in the video, the RStudio screen is divided in different areas or <em>panes</em>, some of which have several <em>tabs</em>. This is a very short description of the main purpose of some of these panes and tabs:</p>
+<ul>
+<li><p>The <em>top-left</em> pane is and editor where you can write R code. It is likely that you won’t see this pane when you launch RStudio for the first time after installation.</p></li>
+<li><p>The <em>bottom-left</em> pane is the R <em>Console</em>, and here is where text results will be printed. You can also write R code in the console, after the <em>prompt</em> symbol (<code>&gt;</code>), and submit it by pressing <code>Enter</code>.</p></li>
+<li><p>The <em>top-right</em> pane has several tabs:</p>
+<ul>
+<li>The <code>Environment</code> tab shows the R <em>objects</em> created in an R session, and its empty if you have not created any. Example of objects are a collection of data, a graphic, or the results obtained by a statistical analysis procedure, to name a few.</li>
+<li>The <code>History</code> tab shows a log of all the commands you have submitted in a session.</li>
+<li>The <code>Tutorial</code> tab contains interactive tutorials.</li>
+</ul></li>
+<li><p>The <em>bottom-right</em> pane has several tabs:</p>
+<ul>
+<li>The <code>Files</code> tab shows the contents of the folder R is pointing to, and is similar to the file explorer in Windows.</li>
+<li>The <code>Plots</code> tab is where graphics are displayed.</li>
+<li>The <code>Packages</code> tab is to see and manage R packages. In a fresh installation of R, you will see many packages, but many more can be easily installed from this tab.</li>
+<li>The <code>Help</code> tab is where you can look for information of specific R commands or <em>functions</em>, and contains several resources to learn R and RStudio, R manuals, and more.</li>
+<li>The <code>Viewer</code> tab is used to show results that are formatted in specific ways, such as html.</li>
+</ul></li>
+</ul>
+<p>This is a lot of information, and is presented just for reference. But don’t worry, you will get familiar with all these as you use RStudio.</p>
+</div>
+<div id="first-r-session" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> First R session<a href="introduction-to-r-and-rstudio.html#first-r-session" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It’s time to open RStudio and have your first R session, proceeding as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Open RStudio</li>
+<li>Open a new scripting tab using the menu option <code>File &gt; New file &gt; R script</code>: a new tab will appear in the top-left pane, with name <code>Untitled1</code>.</li>
+<li>Copy the R script in the gray area below and paste it in this new tab (you can easily copy the script using the <code>Copy to clipboard</code> icon that will appear on hovering the cursor over the top-right corner of the gray area).</li>
+<li>Place the cursor in the very first line you pasted, and press <code>Ctrl</code>+<code>Enter</code> (or click the <code>Run</code> icon in the top-right corner of the <code>Untitled1</code> tab). The code will be submitted to the console and the result will be printed below. In addition, the cursor will move to the next line, so that you can directly press <code>Ctrl</code>+<code>Enter</code> again to run the line. Note that texts preceded by a hash (<code>#</code>) are a <em>comments</em>, and are ignored by the R interpreter.</li>
+</ol>
+<p>In this first tutorial we show how to use R as a calculator, and we introduce some common mathematical functions, such as <code>sqrt()</code>, <code>exp()</code>, <code>log()</code>, and <code>round()</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction-to-r-and-rstudio.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arithmetic operators </span></span>
+<span id="cb2-2"><a href="introduction-to-r-and-rstudio.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">2</span>                 <span class="co"># addition     </span></span>
+<span id="cb2-3"><a href="introduction-to-r-and-rstudio.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">-</span> <span class="dv">2</span>                 <span class="co"># subtraction</span></span>
+<span id="cb2-4"><a href="introduction-to-r-and-rstudio.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">*</span> <span class="dv">2</span>                 <span class="co"># multiplication</span></span>
+<span id="cb2-5"><a href="introduction-to-r-and-rstudio.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span>                 <span class="co"># division</span></span>
+<span id="cb2-6"><a href="introduction-to-r-and-rstudio.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">^</span> <span class="dv">2</span>                 <span class="co"># power</span></span>
+<span id="cb2-7"><a href="introduction-to-r-and-rstudio.html#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="introduction-to-r-and-rstudio.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine them</span></span>
+<span id="cb2-9"><a href="introduction-to-r-and-rstudio.html#cb2-9" aria-hidden="true" tabindex="-1"></a>(<span class="dv">10</span> <span class="sc">*</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">5</span>) <span class="sc">/</span> <span class="dv">5</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb2-10"><a href="introduction-to-r-and-rstudio.html#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="introduction-to-r-and-rstudio.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Mathematical functions</span></span>
+<span id="cb2-12"><a href="introduction-to-r-and-rstudio.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span>  <span class="dv">10</span> <span class="sc">-</span><span class="dv">1</span>             <span class="co"># usual precedence rules</span></span>
+<span id="cb2-13"><a href="introduction-to-r-and-rstudio.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">10</span> <span class="sc">-</span><span class="dv">1</span>)            <span class="co"># use brackets for precedence </span></span>
+<span id="cb2-14"><a href="introduction-to-r-and-rstudio.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">25</span>)               <span class="co"># square root</span></span>
+<span id="cb2-15"><a href="introduction-to-r-and-rstudio.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">1</span>)                 <span class="co"># exponential</span></span>
+<span id="cb2-16"><a href="introduction-to-r-and-rstudio.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">100</span>)             <span class="co"># decimal log</span></span>
+<span id="cb2-17"><a href="introduction-to-r-and-rstudio.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)                <span class="co"># natural log</span></span>
+<span id="cb2-18"><a href="introduction-to-r-and-rstudio.html#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="introduction-to-r-and-rstudio.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine functions with arithmetic operators or with other functions</span></span>
+<span id="cb2-20"><a href="introduction-to-r-and-rstudio.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">25</span>) <span class="sc">*</span> <span class="fu">log10</span>(<span class="dv">100</span>) <span class="sc">/</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb2-21"><a href="introduction-to-r-and-rstudio.html#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="introduction-to-r-and-rstudio.html#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Nested functions: use functions within functions</span></span>
+<span id="cb2-23"><a href="introduction-to-r-and-rstudio.html#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">exp</span>(<span class="dv">2</span>))           <span class="co"># square root of the exponential of 2</span></span>
+<span id="cb2-24"><a href="introduction-to-r-and-rstudio.html#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">sqrt</span>(<span class="dv">2</span>))           <span class="co"># exponential of the square root of 2</span></span>
+<span id="cb2-25"><a href="introduction-to-r-and-rstudio.html#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="introduction-to-r-and-rstudio.html#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Round to the desired number of decimals</span></span>
+<span id="cb2-27"><a href="introduction-to-r-and-rstudio.html#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.141593</span>, <span class="dv">2</span>)   </span>
+<span id="cb2-28"><a href="introduction-to-r-and-rstudio.html#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.141593</span>, <span class="dv">0</span>)</span>
+<span id="cb2-29"><a href="introduction-to-r-and-rstudio.html#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.141593</span>)</span></code></pre></div>
+<p>Once you have finished the tutorial, you can save the script in the <code>Untitled1</code> pane to a file, using the save button, or the <code>File &gt; Save</code> menu option. This will open a dialog from which you can navigate to a desired folder, provide a file name (e.g. <em>my_first_R_session</em>) and click the <code>Save</code> button. A new file will appear in the folder you chose, named <em>my_first_R_session.R</em>. The <em>.R</em> extension means that this is an R script file. If you save an R script to file, you will be able to reopen it in RStudio using the menu option <code>File &gt; Open file...</code>. We recommend you save the scripts of all the tutorials in this book, so that by the end of it you will have a nice collection of examples to refer to in the future.</p>
+</div>
+<div id="r-objects" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> R objects<a href="introduction-to-r-and-rstudio.html#r-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the previous tutorial we produced some results that were printed in the console, but we did not save any. In this tutorial you will learn how to store your results in <em>objects</em>. In particular, you will learn:</p>
+<ul>
+<li><p>how to create an <em>object</em> by assigning some result to an <em>object name</em> with the <em>assignment operator</em> <code>&lt;-</code> (a handy way to compose this operator in RStudio is by pressing <code>Alt</code>+<code>-</code>).</p></li>
+<li><p>that R is case-sensitive: lowercase and uppercase letters are not the same (<span class="math inline">\(A \ne a\)</span>).</p></li>
+<li><p>how to remove objects from the <em>workspace</em> (Environment tab), with function <code>rm()</code>.</p></li>
+<li><p>how to save the objects in the workspace to a file, with function <code>save.image()</code>.</p></li>
+<li><p>how to know what is the current <em>working directory</em> in an R session (the folder of your computer R is pointing to), with function <code>getwd()</code>.</p></li>
+<li><p>how to load these file at a later time, with function <code>load()</code>.</p></li>
+</ul>
+<p>Before you start, ensure that the <em>workspace</em> (Environment tab) is empty. If it’s not, you can delete all objects listed by using the brush icon in the <code>Environment</code> tab of the top-right pane of RStudio.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-to-r-and-rstudio.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object by assigning a name to a value or expression,</span></span>
+<span id="cb3-2"><a href="introduction-to-r-and-rstudio.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the assignment operator:  &lt;-</span></span>
+<span id="cb3-3"><a href="introduction-to-r-and-rstudio.html#cb3-3" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="dv">90</span></span>
+<span id="cb3-4"><a href="introduction-to-r-and-rstudio.html#cb3-4" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fl">1.80</span></span>
+<span id="cb3-5"><a href="introduction-to-r-and-rstudio.html#cb3-5" aria-hidden="true" tabindex="-1"></a>BMI <span class="ot">&lt;-</span> weight <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb3-6"><a href="introduction-to-r-and-rstudio.html#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="introduction-to-r-and-rstudio.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># These objects now appear in the Environment tab</span></span>
+<span id="cb3-8"><a href="introduction-to-r-and-rstudio.html#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="introduction-to-r-and-rstudio.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># When you create an object, its contents is NOT printed in the console</span></span>
+<span id="cb3-10"><a href="introduction-to-r-and-rstudio.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># to print (the contents of) an existing object, just run its name</span></span>
+<span id="cb3-11"><a href="introduction-to-r-and-rstudio.html#cb3-11" aria-hidden="true" tabindex="-1"></a>weight</span>
+<span id="cb3-12"><a href="introduction-to-r-and-rstudio.html#cb3-12" aria-hidden="true" tabindex="-1"></a>BMI</span>
+<span id="cb3-13"><a href="introduction-to-r-and-rstudio.html#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="introduction-to-r-and-rstudio.html#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Object names cannot include blank spaces</span></span>
+<span id="cb3-15"><a href="introduction-to-r-and-rstudio.html#cb3-15" aria-hidden="true" tabindex="-1"></a>body weight <span class="ot">&lt;-</span> <span class="dv">90</span>          <span class="co"># this is wrong (and gives an error)</span></span>
+<span id="cb3-16"><a href="introduction-to-r-and-rstudio.html#cb3-16" aria-hidden="true" tabindex="-1"></a>body_weight <span class="ot">&lt;-</span> <span class="dv">90</span>          <span class="co"># this is ok</span></span>
+<span id="cb3-17"><a href="introduction-to-r-and-rstudio.html#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="introduction-to-r-and-rstudio.html#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># The assignment operator is an arrow composed with a left angle bracket (&lt;) and </span></span>
+<span id="cb3-19"><a href="introduction-to-r-and-rstudio.html#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># a hyphen or dash (-), WITHOUT any space between them</span></span>
+<span id="cb3-20"><a href="introduction-to-r-and-rstudio.html#cb3-20" aria-hidden="true" tabindex="-1"></a>weight <span class="sc">&lt;</span> <span class="sc">-</span> <span class="dv">50</span>              <span class="co"># this is wrong... but does not give error: why?</span></span>
+<span id="cb3-21"><a href="introduction-to-r-and-rstudio.html#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="introduction-to-r-and-rstudio.html#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Case sensitivity</span></span>
+<span id="cb3-23"><a href="introduction-to-r-and-rstudio.html#cb3-23" aria-hidden="true" tabindex="-1"></a>bmi                        <span class="co"># gets an error: there is no object with this name</span></span>
+<span id="cb3-24"><a href="introduction-to-r-and-rstudio.html#cb3-24" aria-hidden="true" tabindex="-1"></a>BMI                        <span class="co"># ok</span></span>
+<span id="cb3-25"><a href="introduction-to-r-and-rstudio.html#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="introduction-to-r-and-rstudio.html#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="fu">Round</span>(BMI, <span class="dv">1</span>)              <span class="co"># gets an error: there is no function with this name</span></span>
+<span id="cb3-27"><a href="introduction-to-r-and-rstudio.html#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(BMI, <span class="dv">1</span>)              <span class="co"># ok</span></span>
+<span id="cb3-28"><a href="introduction-to-r-and-rstudio.html#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="introduction-to-r-and-rstudio.html#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Care when using both upper and lowercase names</span></span>
+<span id="cb3-30"><a href="introduction-to-r-and-rstudio.html#cb3-30" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span>                     </span>
+<span id="cb3-31"><a href="introduction-to-r-and-rstudio.html#cb3-31" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb3-32"><a href="introduction-to-r-and-rstudio.html#cb3-32" aria-hidden="true" tabindex="-1"></a>A <span class="sc">==</span> a                     <span class="co"># is A equal to a ?</span></span>
+<span id="cb3-33"><a href="introduction-to-r-and-rstudio.html#cb3-33" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb3-34"><a href="introduction-to-r-and-rstudio.html#cb3-34" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb3-35"><a href="introduction-to-r-and-rstudio.html#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="introduction-to-r-and-rstudio.html#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove objects with function rm()</span></span>
+<span id="cb3-37"><a href="introduction-to-r-and-rstudio.html#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(body_weight, a, A)</span>
+<span id="cb3-38"><a href="introduction-to-r-and-rstudio.html#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="introduction-to-r-and-rstudio.html#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Now the environment has only three objects: BMI, height and weight</span></span>
+<span id="cb3-40"><a href="introduction-to-r-and-rstudio.html#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="introduction-to-r-and-rstudio.html#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Save your workspace (i.e., all objects in there) to a file </span></span>
+<span id="cb3-42"><a href="introduction-to-r-and-rstudio.html#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="st">&quot;my_objects.RData&quot;</span>)</span>
+<span id="cb3-43"><a href="introduction-to-r-and-rstudio.html#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="introduction-to-r-and-rstudio.html#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="co"># A file of name &quot;my_objects.RData&quot; was saved to your working directory </span></span>
+<span id="cb3-45"><a href="introduction-to-r-and-rstudio.html#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co"># The working directory is the folder R is pointing to.</span></span>
+<span id="cb3-46"><a href="introduction-to-r-and-rstudio.html#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co"># But what is this folder?</span></span>
+<span id="cb3-47"><a href="introduction-to-r-and-rstudio.html#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb3-48"><a href="introduction-to-r-and-rstudio.html#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="introduction-to-r-and-rstudio.html#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="introduction-to-r-and-rstudio.html#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, close RStudio and reopen it for a fresh new session, or</span></span>
+<span id="cb3-51"><a href="introduction-to-r-and-rstudio.html#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate a new session by just removing all objects in the workspace.</span></span>
+<span id="cb3-52"><a href="introduction-to-r-and-rstudio.html#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-53"><a href="introduction-to-r-and-rstudio.html#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co"># This will load the file you saved </span></span>
+<span id="cb3-54"><a href="introduction-to-r-and-rstudio.html#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;my_objects.RData&quot;</span>)</span>
+<span id="cb3-55"><a href="introduction-to-r-and-rstudio.html#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="introduction-to-r-and-rstudio.html#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Now you should see the objects you the objects back in the Environment tab</span></span></code></pre></div>
+<p>Note that, with RStudio, you can change the working directory using the menu option <code>Session &gt; Set working directory</code>.</p>
+</div>
+<div id="r-functions" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> R functions<a href="introduction-to-r-and-rstudio.html#r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>An R <em>function</em> is what we use to make something happen. Functions perform a specialized task and provide a result. In previous sections we used some functions, like <code>log()</code>, <code>round()</code>, and <code>Sys.Date()</code>, but there are many other built-in functions in R. In the following tutorial we discuss some general ideas about R functions, how to use them and how to get help on them.</p>
+<p>To use a function we write its name followed by brackets. Often (but not always), we write some things within the brackets which are the function <em>arguments</em>. A function may take one or more arguments, or no arguments at all. When a function takes more than one argument, we separate them with <em>commas</em>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-r-and-rstudio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a function with no arguments</span></span>
+<span id="cb4-2"><a href="introduction-to-r-and-rstudio.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span>
+<span id="cb4-3"><a href="introduction-to-r-and-rstudio.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="introduction-to-r-and-rstudio.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># a function call with one argument</span></span>
+<span id="cb4-5"><a href="introduction-to-r-and-rstudio.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">10</span><span class="sc">/</span><span class="dv">3</span>)</span>
+<span id="cb4-6"><a href="introduction-to-r-and-rstudio.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="introduction-to-r-and-rstudio.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># a function call with two arguments (comma separated)</span></span>
+<span id="cb4-8"><a href="introduction-to-r-and-rstudio.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">10</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb4-9"><a href="introduction-to-r-and-rstudio.html#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="introduction-to-r-and-rstudio.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># a function call with three arguments (comma separated)</span></span>
+<span id="cb4-11"><a href="introduction-to-r-and-rstudio.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">main =</span> <span class="st">&quot;Histogram (n = 100)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Z score&quot;</span>)</span></code></pre></div>
+<p>The arguments a function can take do have names. When calling the function, arguments are identified by name (if explicit), or by position (otherwise). For instance, the round function can take two arguments:</p>
+<ul>
+<li><p><strong>x</strong>: the number we want to round</p></li>
+<li><p><strong>digits</strong>: the number of decimals</p></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-r-and-rstudio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># arguments identified by name: order is irrelevant</span></span>
+<span id="cb5-2"><a href="introduction-to-r-and-rstudio.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>, <span class="at">x =</span> <span class="dv">10</span><span class="sc">/</span><span class="dv">3</span>)</span>
+<span id="cb5-3"><a href="introduction-to-r-and-rstudio.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="introduction-to-r-and-rstudio.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># arguments identified by position: order is relevant!</span></span>
+<span id="cb5-5"><a href="introduction-to-r-and-rstudio.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">10</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb5-6"><a href="introduction-to-r-and-rstudio.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="introduction-to-r-and-rstudio.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># a mixture of both; order is relevant for arguments not explicitly named! </span></span>
+<span id="cb5-8"><a href="introduction-to-r-and-rstudio.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">10</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb5-9"><a href="introduction-to-r-and-rstudio.html#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="introduction-to-r-and-rstudio.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># how to know the arguments a function can take, and their names? </span></span>
+<span id="cb5-11"><a href="introduction-to-r-and-rstudio.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># looking at the function help with ?function_name, e.g.:</span></span>
+<span id="cb5-12"><a href="introduction-to-r-and-rstudio.html#cb5-12" aria-hidden="true" tabindex="-1"></a>?round</span></code></pre></div>
+<p>The help of a function is always structured in several sections, like <strong>Description</strong>, <strong>Usage</strong>, <strong>Arguments</strong>, <strong>Details</strong>, and <strong>Examples</strong>. In the <strong>Arguments</strong> section you can see what are the argument names, an explanation of what they are, and their order. You can access the help of a function by running its name (without the brackets!) after a question mark (e.g., <code>?round</code>), or writing the function name in the search box of the RStudio <code>Help</code> tab.</p>
+</div>
+<div id="installing-r-packages" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Installing R packages<a href="introduction-to-r-and-rstudio.html#installing-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R is a software structured in <em>packages</em>. A package is a bunch of functions packed together. When you install R, a collection of packages is downloaded to your computer. If you look at the <code>Packages</code> tab of RStudio you will see the packages already installed. For instance, you will see packages <code>base</code> and <code>stats</code>, which are downloaded in the basic installation of R.</p>
+<p>However, there are many other packages available in the <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">CRAN repository</a>, and you need to know how to install them. For instance, there is a package called <code>mosaic</code> you will probably not find among your installed packages. Since we will use this package in future chapters, it’s a good idea to install it. To install this (or any other) package, click the <code>Install</code> button in the Packages tab of RStudio and you will be presented the dialog shown in figure <a href="introduction-to-r-and-rstudio.html#fig:1-install-package">1.1</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:1-install-package"></span>
+<img src="images/Install-package.PNG" alt="Dialog to install a package" width="289" />
+<p class="caption">
+Figure 1.1: Dialog to install a package
+</p>
+</div>
+<p>You only need to write the name <code>mosaic</code> in the Packages box, or pick it from the list that will appear as you start writing, and click on the <code>Install</code> button. Be sure the <code>Install dependencies</code> box is checked (dependencies are other packages needed by the one you are installing). You will notice that, when you click the <code>Install</code> button, the following is written in the R console:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-r-and-rstudio.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mosaic&quot;</span>)</span></code></pre></div>
+<p>This means that the <code>install.packages()</code> function is what is actually used to install packages, and the <code>Install</code> button in RStudio only sends this to the console. After running this function, you will see a confirmation message in the console (<code>package ‘mosaic’ successfully unpacked and MD5 sums checked</code>).</p>
+<p>Installing a package means downloading it to your computer, and therefore is a one time operation: you need to do it <em>just once</em> per R installation.</p>
+</div>
+<div id="loading-packages" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Loading packages<a href="introduction-to-r-and-rstudio.html#loading-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In previous sections we have used functions from packages in the base R installation such as <code>round()</code>, <code>log()</code> and others. These functions are readily available in any R session, but this is not the case of functions contained in packages <em>you install</em>. For instance, the following script calls <code>favstats()</code>, a function from the <code>mocaisc</code> package, but when we run it we get an error message stating that function <code>favstats()</code> was not found:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-r-and-rstudio.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex , <span class="at">data =</span> HELPrct)</span></code></pre></div>
+<pre><code>Error in favstats(age ~ sex, data = HELPrct): could not find function &quot;favstats&quot;</code></pre>
+<p>Thus, to use a function from packages you have installed, you need to do something special, and there are two options:</p>
+<ol style="list-style-type: decimal">
+<li><p>prefix the function with the package name plus <code>::</code>, (e.g., <code>mosaic::favstats()</code>), or</p></li>
+<li><p>load the package first using function <code>library()</code>.</p></li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction-to-r-and-rstudio.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1</span></span>
+<span id="cb9-2"><a href="introduction-to-r-and-rstudio.html#cb9-2" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">favstats</span>(age <span class="sc">~</span> sex , <span class="at">data =</span> HELPrct)             </span></code></pre></div>
+<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
+1 female  21 31     35 40.5  58 36.25234 7.584858 107       0
+2   male  19 30     35 40.0  60 35.46821 7.750110 346       0</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introduction-to-r-and-rstudio.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2</span></span>
+<span id="cb11-2"><a href="introduction-to-r-and-rstudio.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb11-3"><a href="introduction-to-r-and-rstudio.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex , <span class="at">data =</span> HELPrct)</span></code></pre></div>
+<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
+1 female  21 31     35 40.5  58 36.25234 7.584858 107       0
+2   male  19 30     35 40.0  60 35.46821 7.750110 346       0</code></pre>
+<p>As you see in the previous scripts, both options work, but while <code>library(mosaic)</code> in option 2 loads the entire package into memory, prefixing the function with the package name (option 1) does not. Another important difference is that prefixing the function with the package name makes explicit the function you are using, and this is important because some packages have functions sharing their name with some base R functions. For instance:</p>
+<ul>
+<li><p>The <code>base</code> package has a function <code>mean()</code> (see <code>?base::mean</code>).</p></li>
+<li><p>The <code>mosaic</code> package has a function <code>mean()</code> (see <code>?mosaic::mean</code>).</p></li>
+</ul>
+<p>Thus, which one is going to be used when we call <code>mean()</code>? Well, if you load the <code>mosaic</code> package with <code>library(mosaic)</code>, the following warning is printed in the console:</p>
+<pre><code>The following objects are masked from ‘package:base’:
+
+    max, mean, min, prod, range, sample, sum)</code></pre>
+<p>This means that, from now on in your session, every time you call one of the functions mentioned in the above message (e.g., <code>mean()</code>), the one from <code>mosaic</code> will be used. However, when you look at a script and see a call to <code>mean()</code>, it is hard to know if this refers to <code>mean()</code> from the <code>base</code> package, or to <code>mean()</code> from the <code>mosaic</code> package. Prefixing a function with the package name (e.g., <code>mosaic::mean()</code>) removes any possible ambiguity, and for this reason, is considered a good programming practice.</p>
+<p>Last, in case you prefer to avoid prefixing functions with the package name, remember to load the package first with <code>library()</code> and to do it in every new R session. While <em>installing</em> a package is a one time operation, <em>loading</em> an installed package is an operation you need to do in <em>every</em> R session (every time you open RStudio).</p>
+</div>
+<div id="resources" class="section level2 unnumbered hasAnchor">
+<h2>Resources<a href="introduction-to-r-and-rstudio.html#resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="https://cran.r-project.org/">CRAN</a> is the official website of R. Here you can not only download R, but also find useful information, such as the <a href="https://cran.r-project.org/web/views/">CRAN task views</a> providing guidance on which packages are relevant for tasks related to a certain topic.</p></li>
+<li><p>The <a href="https://rstudio.com/">RStudio</a> website has a Resources section where you can find webinars and videos, cheatsheets and books, among other things.</p></li>
+<li><p>A two-pages <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf">RStudio IDE Cheat Sheet</a>.</p></li>
+<li><p><a href="https://www.r-bloggers.com/">R-bloggers</a> is a blog on R publishing lots of articles on the use of R, including <a href="https://www.r-bloggers.com/how-to-learn-r-2/">tutorials for learning R</a>.</p></li>
+<li><p>A post is R-bloggers on <a href="https://www.r-bloggers.com/2020/04/analysis-essentials-using-the-help-page-for-a-function-in-r/">how to use the help page for a function in R</a></p></li>
+<li><p>Another post is R-bloggers with a <a href="https://www.r-bloggers.com/2021/02/the-comprehensive-guide-to-installing-r-packages-from-cran-bioconductor-github-and-co/">complete guide to installing R packages form CRAN and other R package repositories</a>.</p></li>
+<li><p><a href="https://www.statmethods.net/">Quick-R</a> is an extremely well organized website on R, particularly useful for beginners. There are sections on data management, statistics, graphics and more.</p></li>
+</ul>
+</div>
+<div id="exercises" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="introduction-to-r-and-rstudio.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Look at the help of <code>round()</code> and read sections <strong>Description</strong> and <strong>Usage</strong>.</p>
+<ul>
+<li><p>What do you get when using <code>floor(10/3)</code> and <code>ceiling(10/3)</code>?</p></li>
+<li><p>In the <strong>Usage</strong> section you will see <code>round(x, digits = 0)</code>. What do you think <code>digits = 0</code> means? (hint: read the explanation of <code>round</code> in the <strong>Description</strong> section).</p></li>
+</ul></li>
+</ol>
+<p><br />
+</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Start at fresh RStudio session (or empty the workspace) and write a script in a new editor tab (<code>File &gt; New File &gt; R script</code>) to:</li>
+</ol>
+<ul>
+<li><p>Create an object with name <code>my_weight</code> taking the value of your body weight, in kilograms.</p></li>
+<li><p>Create an object with name <code>my_height</code> taking the value of your body height, in meters (remember to use the dot as decimal separator, e.g. 1.78)</p></li>
+<li><p>Compute the body mass index (by dividing the weight over the square of the height) and assign it to an object with name <code>BMI</code>.</p></li>
+<li><p>Round the value of BMI to the first decimal.</p></li>
+</ul>
+<p><br />
+</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Look for a package called <code>dplyr</code> in the Packages tab of RStudio. If you are working with a new installation of R, you will not find it. Then, install this package using the <code>Install button</code> in this tab. When the installation finishes, verify that this package now appears in the Packages tab.</li>
+</ol>
+<p><br />
+</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Open RStudio and investigate what is your working directory with function <code>getwd()</code>. Then change it to another folder of your preference with the menu option <code>Session &gt; Set working directory &gt; Choose Directory...</code>. When done, use again <code>getwd()</code> to see what is now the working directory.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="structure-of-this-book.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
