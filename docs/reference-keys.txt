@@ -1,0 +1,8 @@
+fig:1-install-package
+introduction-to-r-and-rstudio
+installing-r-and-rstudio
+first-r-session
+r-objects
+r-functions
+installing-r-packages
+loading-packages
