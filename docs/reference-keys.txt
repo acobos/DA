@@ -1,4 +1,5 @@
 fig:1-install-package
+tab:vector-types
 introduction-to-r-and-rstudio
 installing-r-and-rstudio
 first-r-session
@@ -6,3 +7,10 @@ r-objects
 r-functions
 installing-r-packages
 loading-packages
+r-data-structures
+vectors
+lists
+dataframes
+factors
+dates
+other-data-structures
