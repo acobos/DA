@@ -190,10 +190,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="r-data-structures" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">2</span> R data structures<a href="r-data-structures.html#r-data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The term <em>data structures</em> refers to objects devoted to store data. There are many different data structure in R. In this chapter we introduce the most basic, and commonly used, data structures.</p>
+<p>The term <em>data structures</em> refers to objects devoted to store data. There are many different data structures in R. In this chapter we introduce the most basic, and commonly used ones.</p>
 <div id="vectors" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Vectors<a href="r-data-structures.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Vectors are the simplest possible (or <em>atomic</em>) objects in R, and they are ordered collections of elements. There are six types of vectors in R, but here we will be concerned with the three types listed in table <a href="r-data-structures.html#tab:vector-types">2.1</a>.</p>
+<p>Vectors are the simplest possible objects in R (sometimes called <em>atomic</em> objects). They are ordered collections of elements. There are six types of vectors in R, but here we will be concerned with the three types listed in table <a href="r-data-structures.html#tab:vector-types">2.1</a>.</p>
 <table>
 <caption><span id="tab:vector-types">Table 2.1: </span> Vector types</caption>
 <thead>
@@ -211,12 +211,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td align="left">character</td>
-<td align="left"><em>quoted</em> character strings</td>
+<td align="left">(quoted) character strings</td>
 <td align="left">“Yes”, “No”, “Maybe”</td>
 </tr>
 <tr class="odd">
 <td align="left">logical</td>
-<td align="left"><em>unquoted</em> logical values</td>
+<td align="left">(unquoted) logical values</td>
 <td align="left">TRUE, TRUE, FALSE, TRUE</td>
 </tr>
 </tbody>
@@ -225,443 +225,479 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 <p>A vector can contain any number of elements, but all of them have to be of the same type: we cannot mix different data types in a single vector (e.g., character and numeric elements).</p>
 <p>In the following tutorial you will learn how to create vectors with function <code>c()</code>, verify what is the type of a vector with function <code>class()</code>, and what is the number of its elements with function <code>length()</code>. A vector can have missing elements, and these are represented with the symbol <code>NA</code>. Last, you will see how to get particular elements in a vector with the subsetting operator <code>[]</code>, and how to set them using the assignment operator <code>&lt;-</code>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="r-data-structures.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating vectors with function c()</span></span>
-<span id="cb14-2"><a href="r-data-structures.html#cb14-2" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">51</span>, <span class="dv">65</span>, <span class="dv">90</span>, <span class="dv">93</span>, <span class="dv">72</span>)                    <span class="co"># a numeric vector</span></span>
-<span id="cb14-3"><a href="r-data-structures.html#cb14-3" aria-hidden="true" tabindex="-1"></a>ages                                              </span>
-<span id="cb14-4"><a href="r-data-structures.html#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="r-data-structures.html#cb14-5" aria-hidden="true" tabindex="-1"></a>antec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;stroke&quot;</span>,<span class="st">&quot;AMI&quot;</span>,<span class="st">&quot;Breast ca.&quot;</span>)          <span class="co"># a character vector</span></span>
-<span id="cb14-6"><a href="r-data-structures.html#cb14-6" aria-hidden="true" tabindex="-1"></a>antec                                         </span>
-<span id="cb14-7"><a href="r-data-structures.html#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="r-data-structures.html#cb14-8" aria-hidden="true" tabindex="-1"></a>current_smoker <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)          <span class="co"># a logical vector</span></span>
-<span id="cb14-9"><a href="r-data-structures.html#cb14-9" aria-hidden="true" tabindex="-1"></a>current_smoker</span>
-<span id="cb14-10"><a href="r-data-structures.html#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="r-data-structures.html#cb14-11" aria-hidden="true" tabindex="-1"></a>mixed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">67</span>, <span class="st">&quot;stroke&quot;</span>, <span class="cn">FALSE</span>)             <span class="co"># try to mix types: no error issued ?</span></span>
-<span id="cb14-12"><a href="r-data-structures.html#cb14-12" aria-hidden="true" tabindex="-1"></a>mixed                                       <span class="co"># but coerced to character (note the quotes)</span></span>
-<span id="cb14-13"><a href="r-data-structures.html#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-14"><a href="r-data-structures.html#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the type of a vector </span></span>
-<span id="cb14-15"><a href="r-data-structures.html#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ages)</span>
-<span id="cb14-16"><a href="r-data-structures.html#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(antec)</span>
-<span id="cb14-17"><a href="r-data-structures.html#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(current_smoker)</span>
-<span id="cb14-18"><a href="r-data-structures.html#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="r-data-structures.html#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the number of elements in a vector </span></span>
-<span id="cb14-20"><a href="r-data-structures.html#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(ages)</span>
-<span id="cb14-21"><a href="r-data-structures.html#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(antec)</span>
-<span id="cb14-22"><a href="r-data-structures.html#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(current_smoker)</span>
-<span id="cb14-23"><a href="r-data-structures.html#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-24"><a href="r-data-structures.html#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the symbol NA for missing elements</span></span>
-<span id="cb14-25"><a href="r-data-structures.html#cb14-25" aria-hidden="true" tabindex="-1"></a>more_ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">69</span>, <span class="cn">NA</span>, <span class="dv">37</span>)                  </span>
-<span id="cb14-26"><a href="r-data-structures.html#cb14-26" aria-hidden="true" tabindex="-1"></a>more_ages </span>
-<span id="cb14-27"><a href="r-data-structures.html#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-28"><a href="r-data-structures.html#cb14-28" aria-hidden="true" tabindex="-1"></a>all_ages <span class="ot">&lt;-</span> <span class="fu">c</span>(ages, more_ages)              <span class="co"># can concatenate vectors with c()</span></span>
-<span id="cb14-29"><a href="r-data-structures.html#cb14-29" aria-hidden="true" tabindex="-1"></a>all_ages</span>
-<span id="cb14-30"><a href="r-data-structures.html#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-31"><a href="r-data-structures.html#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting/setting vector elements </span></span>
-<span id="cb14-32"><a href="r-data-structures.html#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Refer to an element by position using square brackets:</span></span>
-<span id="cb14-33"><a href="r-data-structures.html#cb14-33" aria-hidden="true" tabindex="-1"></a>all_ages</span>
-<span id="cb14-34"><a href="r-data-structures.html#cb14-34" aria-hidden="true" tabindex="-1"></a>all_ages[<span class="dv">7</span>]                  <span class="co"># gets the 7th element</span></span>
-<span id="cb14-35"><a href="r-data-structures.html#cb14-35" aria-hidden="true" tabindex="-1"></a>all_ages[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="dv">65</span>            <span class="co"># sets the 7th element to 65</span></span>
-<span id="cb14-36"><a href="r-data-structures.html#cb14-36" aria-hidden="true" tabindex="-1"></a>all_ages                     <span class="co"># verify</span></span>
-<span id="cb14-37"><a href="r-data-structures.html#cb14-37" aria-hidden="true" tabindex="-1"></a>all_ages[<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>]                <span class="co"># gets elements from positions 2 to 4</span></span></code></pre></div>
-<p>Very often we need of perform arithmetic operations with numeric vectors. For instance, we may want to compute the body mass index (BMI) from a vector body weights and a vector of body heights. Then, we may want to compute summary statistics of the BMI values, like the mean and standard deviation.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-data-structures.html#cb15-1" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">51</span>, <span class="dv">65</span>, <span class="dv">90</span>, <span class="dv">93</span>, <span class="dv">85</span>)                       <span class="co"># weights of five patients</span></span>
-<span id="cb15-2"><a href="r-data-structures.html#cb15-2" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.65</span>, <span class="cn">NA</span>, <span class="fl">1.85</span>, <span class="fl">1.80</span>, <span class="fl">1.60</span>)               <span class="co"># heights of the same five patients</span></span>
-<span id="cb15-3"><a href="r-data-structures.html#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="r-data-structures.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Arithmetic operations</span></span>
-<span id="cb15-5"><a href="r-data-structures.html#cb15-5" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="fu">round</span>(weight <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>)                    <span class="co"># compute BMI</span></span>
-<span id="cb15-6"><a href="r-data-structures.html#cb15-6" aria-hidden="true" tabindex="-1"></a>bmi                                                   <span class="co"># result is NA if height or weight is NA</span></span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-data-structures.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating vectors with function c()</span></span>
+<span id="cb15-2"><a href="r-data-structures.html#cb15-2" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">51</span>, <span class="dv">65</span>, <span class="dv">90</span>, <span class="dv">93</span>, <span class="dv">72</span>)                    <span class="co"># a numeric vector</span></span>
+<span id="cb15-3"><a href="r-data-structures.html#cb15-3" aria-hidden="true" tabindex="-1"></a>ages                                              </span>
+<span id="cb15-4"><a href="r-data-structures.html#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="r-data-structures.html#cb15-5" aria-hidden="true" tabindex="-1"></a>antec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;stroke&quot;</span>,<span class="st">&quot;AMI&quot;</span>,<span class="st">&quot;Breast ca.&quot;</span>)          <span class="co"># a character vector</span></span>
+<span id="cb15-6"><a href="r-data-structures.html#cb15-6" aria-hidden="true" tabindex="-1"></a>antec                                         </span>
 <span id="cb15-7"><a href="r-data-structures.html#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="r-data-structures.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical functions </span></span>
-<span id="cb15-9"><a href="r-data-structures.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(weight)                 <span class="co"># the mean of weights </span></span>
-<span id="cb15-10"><a href="r-data-structures.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(weight)               <span class="co"># the median </span></span>
-<span id="cb15-11"><a href="r-data-structures.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(weight)                   <span class="co"># the standard deviation</span></span>
-<span id="cb15-12"><a href="r-data-structures.html#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(weight)              <span class="co"># some of the previous at once </span></span>
+<span id="cb15-8"><a href="r-data-structures.html#cb15-8" aria-hidden="true" tabindex="-1"></a>current_smoker <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)          <span class="co"># a logical vector</span></span>
+<span id="cb15-9"><a href="r-data-structures.html#cb15-9" aria-hidden="true" tabindex="-1"></a>current_smoker</span>
+<span id="cb15-10"><a href="r-data-structures.html#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="r-data-structures.html#cb15-11" aria-hidden="true" tabindex="-1"></a>mixed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">67</span>, <span class="st">&quot;stroke&quot;</span>, <span class="cn">FALSE</span>)             <span class="co"># try to mix types: no error issued ?</span></span>
+<span id="cb15-12"><a href="r-data-structures.html#cb15-12" aria-hidden="true" tabindex="-1"></a>mixed                                       <span class="co"># but coerced to character (note the quotes)</span></span>
 <span id="cb15-13"><a href="r-data-structures.html#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="r-data-structures.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Care with missings!</span></span>
-<span id="cb15-15"><a href="r-data-structures.html#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># If missing data (NA), you need to set argument na.rm = TRUE </span></span>
-<span id="cb15-16"><a href="r-data-structures.html#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># in most statistical functions:</span></span>
-<span id="cb15-17"><a href="r-data-structures.html#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(bmi)                    <span class="co"># since some values are NA, result is NA</span></span>
-<span id="cb15-18"><a href="r-data-structures.html#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(bmi, <span class="at">na.rm=</span><span class="cn">TRUE</span>)        <span class="co"># removes NA for calculation</span></span>
+<span id="cb15-14"><a href="r-data-structures.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the type of a vector </span></span>
+<span id="cb15-15"><a href="r-data-structures.html#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ages)</span>
+<span id="cb15-16"><a href="r-data-structures.html#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(antec)</span>
+<span id="cb15-17"><a href="r-data-structures.html#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(current_smoker)</span>
+<span id="cb15-18"><a href="r-data-structures.html#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mixed)</span>
 <span id="cb15-19"><a href="r-data-structures.html#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-20"><a href="r-data-structures.html#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(bmi)                      <span class="co"># same for sd()</span></span>
-<span id="cb15-21"><a href="r-data-structures.html#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(bmi, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb15-22"><a href="r-data-structures.html#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-23"><a href="r-data-structures.html#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bmi)                 <span class="co"># but not needed for summary()</span></span></code></pre></div>
+<span id="cb15-20"><a href="r-data-structures.html#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the number of elements in a vector </span></span>
+<span id="cb15-21"><a href="r-data-structures.html#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(ages)</span>
+<span id="cb15-22"><a href="r-data-structures.html#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(antec)</span>
+<span id="cb15-23"><a href="r-data-structures.html#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(current_smoker)</span>
+<span id="cb15-24"><a href="r-data-structures.html#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="r-data-structures.html#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the symbol NA for missing elements</span></span>
+<span id="cb15-26"><a href="r-data-structures.html#cb15-26" aria-hidden="true" tabindex="-1"></a>more_ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">69</span>, <span class="cn">NA</span>, <span class="dv">37</span>)                  </span>
+<span id="cb15-27"><a href="r-data-structures.html#cb15-27" aria-hidden="true" tabindex="-1"></a>more_ages </span>
+<span id="cb15-28"><a href="r-data-structures.html#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="r-data-structures.html#cb15-29" aria-hidden="true" tabindex="-1"></a>all_ages <span class="ot">&lt;-</span> <span class="fu">c</span>(ages, more_ages)              <span class="co"># can concatenate vectors with c()</span></span>
+<span id="cb15-30"><a href="r-data-structures.html#cb15-30" aria-hidden="true" tabindex="-1"></a>all_ages</span>
+<span id="cb15-31"><a href="r-data-structures.html#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="r-data-structures.html#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting/setting vector elements </span></span>
+<span id="cb15-33"><a href="r-data-structures.html#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Refer to an element by position using square brackets:</span></span>
+<span id="cb15-34"><a href="r-data-structures.html#cb15-34" aria-hidden="true" tabindex="-1"></a>all_ages</span>
+<span id="cb15-35"><a href="r-data-structures.html#cb15-35" aria-hidden="true" tabindex="-1"></a>all_ages[<span class="dv">7</span>]                  <span class="co"># gets the 7th element</span></span>
+<span id="cb15-36"><a href="r-data-structures.html#cb15-36" aria-hidden="true" tabindex="-1"></a>all_ages[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="dv">65</span>            <span class="co"># sets the 7th element to 65</span></span>
+<span id="cb15-37"><a href="r-data-structures.html#cb15-37" aria-hidden="true" tabindex="-1"></a>all_ages                     <span class="co"># verify</span></span>
+<span id="cb15-38"><a href="r-data-structures.html#cb15-38" aria-hidden="true" tabindex="-1"></a>all_ages[<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>]                <span class="co"># gets elements from positions 3 to 6</span></span></code></pre></div>
+<p><br />
+</p>
+<p>Very often we need of perform arithmetic operations with numeric vectors. For instance, we may want to compute the body mass index (BMI) from a vector of body weights and a vector of body heights. Then, we may want to compute summary statistics of the BMI values, like the mean and standard deviation.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-data-structures.html#cb16-1" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">51</span>, <span class="dv">65</span>, <span class="dv">90</span>, <span class="dv">93</span>, <span class="dv">85</span>)                       <span class="co"># weights of five patients</span></span>
+<span id="cb16-2"><a href="r-data-structures.html#cb16-2" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.65</span>, <span class="cn">NA</span>, <span class="fl">1.85</span>, <span class="fl">1.80</span>, <span class="fl">1.60</span>)               <span class="co"># heights of the same five patients</span></span>
+<span id="cb16-3"><a href="r-data-structures.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="r-data-structures.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Arithmetic operations</span></span>
+<span id="cb16-5"><a href="r-data-structures.html#cb16-5" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="fu">round</span>(weight <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span>)                    <span class="co"># compute BMI</span></span>
+<span id="cb16-6"><a href="r-data-structures.html#cb16-6" aria-hidden="true" tabindex="-1"></a>bmi                                                   <span class="co"># result is NA if height or weight is NA</span></span>
+<span id="cb16-7"><a href="r-data-structures.html#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="r-data-structures.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical functions </span></span>
+<span id="cb16-9"><a href="r-data-structures.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(weight)                 <span class="co"># the mean of weights </span></span>
+<span id="cb16-10"><a href="r-data-structures.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(weight)               <span class="co"># the median </span></span>
+<span id="cb16-11"><a href="r-data-structures.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(weight)                   <span class="co"># the standard deviation</span></span>
+<span id="cb16-12"><a href="r-data-structures.html#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(weight)              <span class="co"># some of the previous at once </span></span>
+<span id="cb16-13"><a href="r-data-structures.html#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="r-data-structures.html#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Care with missings!  If a vector contains missing data (NA), </span></span>
+<span id="cb16-15"><a href="r-data-structures.html#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># you need to set argument na.rm = TRUE in most statistical functions:</span></span>
+<span id="cb16-16"><a href="r-data-structures.html#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(bmi)                    <span class="co"># since some values are NA, result is NA</span></span>
+<span id="cb16-17"><a href="r-data-structures.html#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(bmi, <span class="at">na.rm=</span><span class="cn">TRUE</span>)        <span class="co"># removes NA for calculation</span></span>
+<span id="cb16-18"><a href="r-data-structures.html#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="r-data-structures.html#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(bmi)                      <span class="co"># same for sd()</span></span>
+<span id="cb16-20"><a href="r-data-structures.html#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(bmi, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb16-21"><a href="r-data-structures.html#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="r-data-structures.html#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bmi)                 <span class="co"># but not needed for summary()</span></span></code></pre></div>
+<p><br />
+</p>
 <p>Also, a very common task is to compare the elements of a numeric vector to some threshold value using <em>relational operators</em> such as <code>==</code>, <code>!=</code>, <code>&gt;</code>, or <code>&gt;=</code>. We can also compare two vectors <code>x</code> and <code>y</code> element-wise, provided they have the same length (e.g., <code>x == y</code>). In any case, the result of a comparison is always a logical vector.</p>
-<p>Note that the equality operator is not a single (<code>=</code>) but a <em>double</em> equal sign (<code>==</code>): try to remember this, it’s very common mistake! Another very common mistake is to compare something to <code>NA</code> using the equality operator (<code>==</code>): this does not work, and function <code>is.na()</code> should be used for this purpose. Comparisons ar illustrated in the following tutorial, which is a continuation of the previous one (do not empty the workspace!).</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-data-structures.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Relational operators for comparisons</span></span>
-<span id="cb16-2"><a href="r-data-structures.html#cb16-2" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">==</span> <span class="fl">18.7</span>            <span class="co"># is bmi equal to 18.7?  note the DOUBLE equal sign!</span></span>
-<span id="cb16-3"><a href="r-data-structures.html#cb16-3" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">!=</span> <span class="fl">18.7</span>            <span class="co"># is x different from 18.7?</span></span>
-<span id="cb16-4"><a href="r-data-structures.html#cb16-4" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">&lt;</span>  <span class="dv">25</span>              <span class="co"># is bmi less than 25?</span></span>
-<span id="cb16-5"><a href="r-data-structures.html#cb16-5" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">&lt;=</span> <span class="dv">25</span>              <span class="co"># is bmi less than, or equal to 25?</span></span>
-<span id="cb16-6"><a href="r-data-structures.html#cb16-6" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">&gt;</span>  <span class="dv">30</span>              <span class="co"># is bmi greater than 30?</span></span>
-<span id="cb16-7"><a href="r-data-structures.html#cb16-7" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">&gt;=</span> <span class="dv">30</span>              <span class="co"># is v greater than, or equal to 30?</span></span>
-<span id="cb16-8"><a href="r-data-structures.html#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="r-data-structures.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Can also compare two vectors having the same number of elements</span></span>
-<span id="cb16-10"><a href="r-data-structures.html#cb16-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb16-11"><a href="r-data-structures.html#cb16-11" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb16-12"><a href="r-data-structures.html#cb16-12" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span>
-<span id="cb16-13"><a href="r-data-structures.html#cb16-13" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span>
-<span id="cb16-14"><a href="r-data-structures.html#cb16-14" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span>  y</span>
-<span id="cb16-15"><a href="r-data-structures.html#cb16-15" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;=</span> y</span>
-<span id="cb16-16"><a href="r-data-structures.html#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="r-data-structures.html#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Very important!  </span></span>
-<span id="cb16-18"><a href="r-data-structures.html#cb16-18" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">==</span> <span class="cn">NA</span>              <span class="co"># this does not work with NA</span></span>
-<span id="cb16-19"><a href="r-data-structures.html#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(bmi)             <span class="co"># use this instead</span></span></code></pre></div>
-<p>Character vectors are useful to store textual information like diseases, symptoms or drugs. However, working with character vectors is often a challenge for several reasons. First, a word may be written in lowercase, uppercase, or a mixture of both. Because R is case sensitive, “stroke” is not the same as “STROKE”. Second, white spaces are also characters (though they do not catch the eye!) and therefore “stroke” and “stroke” are also different. For these reasons, it is sometimes useful to convert character vectors to uppercase (or lowercase), and to know how to remove leading or trailing blanks. Here is a demo:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-data-structures.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Working with character vectors </span></span>
-<span id="cb17-2"><a href="r-data-structures.html#cb17-2" aria-hidden="true" tabindex="-1"></a>antec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;stroke&quot;</span>, <span class="st">&quot; stroke &quot;</span>, <span class="st">&quot;Breast cancer&quot;</span>, <span class="st">&quot;STROKE&quot;</span>, <span class="st">&quot; Stroke &quot;</span>)</span>
-<span id="cb17-3"><a href="r-data-structures.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="r-data-structures.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember case sensitivity: </span></span>
-<span id="cb17-5"><a href="r-data-structures.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;stroke&quot;, &quot; stroke &quot;, &quot;STROKE&quot;, and &quot; Stroke &quot; are different things!</span></span>
-<span id="cb17-6"><a href="r-data-structures.html#cb17-6" aria-hidden="true" tabindex="-1"></a>antec <span class="sc">==</span> <span class="st">&quot;stroke&quot;</span></span>
-<span id="cb17-7"><a href="r-data-structures.html#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="r-data-structures.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(antec)                           <span class="co"># convert to uppercase</span></span>
-<span id="cb17-9"><a href="r-data-structures.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(antec)                           <span class="co"># convert to lowercase</span></span>
-<span id="cb17-10"><a href="r-data-structures.html#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="r-data-structures.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">trimws</span>(antec)                            <span class="co"># remove leading and trailing blanks</span></span>
-<span id="cb17-12"><a href="r-data-structures.html#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="r-data-structures.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(antec) <span class="sc">==</span> <span class="st">&quot;stroke&quot;</span>               <span class="co"># useful for comparisons</span></span>
-<span id="cb17-14"><a href="r-data-structures.html#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">trimws</span>(<span class="fu">tolower</span>(antec)) <span class="sc">==</span> <span class="st">&quot;stroke&quot;</span>       <span class="co"># better</span></span></code></pre></div>
-<p>A very useful function to combine strings is the <code>paste()</code> function. In fact, you can combine not only strings, but also numeric values (that will be coerced to character). Sometimes we need to know what is the number of characters of the elements of a character vector, and this can be done with function <code>nchar()</code>.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-data-structures.html#cb18-1" aria-hidden="true" tabindex="-1"></a>patient_no <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb18-2"><a href="r-data-structures.html#cb18-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">62</span>, <span class="dv">88</span>, <span class="dv">35</span>, <span class="dv">75</span>, <span class="dv">81</span>)</span>
-<span id="cb18-3"><a href="r-data-structures.html#cb18-3" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>)</span>
-<span id="cb18-4"><a href="r-data-structures.html#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="r-data-structures.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(patient_no, sex)                   <span class="co"># paste corresponding elements </span></span>
-<span id="cb18-6"><a href="r-data-structures.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(patient_no, sex, <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>)       <span class="co"># can define a separator (default: blank space)</span></span>
+<p>Note that the equality operator is not a single (<code>=</code>) but a <em>double</em> equal sign (<code>==</code>): try to remember this, it’s a very common mistake! Another very common mistake is to compare something to <code>NA</code> using the equality operator (<code>==</code>): this does not work, and function <code>is.na()</code> should be used for this purpose. Comparisons are illustrated in the following tutorial, which is a continuation of the previous one (do not empty the workspace!).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-data-structures.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Relational operators for comparisons</span></span>
+<span id="cb17-2"><a href="r-data-structures.html#cb17-2" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">==</span> <span class="fl">18.7</span>            <span class="co"># is bmi equal to 18.7?  note the DOUBLE equal sign!</span></span>
+<span id="cb17-3"><a href="r-data-structures.html#cb17-3" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">!=</span> <span class="fl">18.7</span>            <span class="co"># is x different from 18.7?</span></span>
+<span id="cb17-4"><a href="r-data-structures.html#cb17-4" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">&lt;</span>  <span class="dv">25</span>              <span class="co"># is bmi less than 25?</span></span>
+<span id="cb17-5"><a href="r-data-structures.html#cb17-5" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">&lt;=</span> <span class="dv">25</span>              <span class="co"># is bmi less than, or equal to 25?</span></span>
+<span id="cb17-6"><a href="r-data-structures.html#cb17-6" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">&gt;</span>  <span class="dv">30</span>              <span class="co"># is bmi greater than 30?</span></span>
+<span id="cb17-7"><a href="r-data-structures.html#cb17-7" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">&gt;=</span> <span class="dv">30</span>              <span class="co"># is v greater than, or equal to 30?</span></span>
+<span id="cb17-8"><a href="r-data-structures.html#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="r-data-structures.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Can also compare two vectors having the same number of elements</span></span>
+<span id="cb17-10"><a href="r-data-structures.html#cb17-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb17-11"><a href="r-data-structures.html#cb17-11" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb17-12"><a href="r-data-structures.html#cb17-12" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span>
+<span id="cb17-13"><a href="r-data-structures.html#cb17-13" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> y</span>
+<span id="cb17-14"><a href="r-data-structures.html#cb17-14" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span>  y</span>
+<span id="cb17-15"><a href="r-data-structures.html#cb17-15" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;=</span> y</span>
+<span id="cb17-16"><a href="r-data-structures.html#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="r-data-structures.html#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Very important!  </span></span>
+<span id="cb17-18"><a href="r-data-structures.html#cb17-18" aria-hidden="true" tabindex="-1"></a>bmi <span class="sc">==</span> <span class="cn">NA</span>              <span class="co"># this does not work with NA</span></span>
+<span id="cb17-19"><a href="r-data-structures.html#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(bmi)             <span class="co"># use this instead</span></span></code></pre></div>
+<p><br />
+</p>
+<p>Character vectors are useful to store textual information like diseases, symptoms or drugs. However, working with character data (sometimes called <em>strings</em>) is often a challenge for several reasons. First, a word may be written in lowercase, uppercase, or a mixture of both. Because R is case sensitive, “stroke” is not the same as “STROKE”. Second, white spaces are also characters (though they do not catch the eye!) and therefore “stroke” and “stroke <span class="math inline">\(\;\)</span>” are also different. For these reasons, it is sometimes useful to convert character vectors to uppercase (or lowercase), and to know how to remove leading or trailing blanks. Here is a demo:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-data-structures.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Working with character vectors </span></span>
+<span id="cb18-2"><a href="r-data-structures.html#cb18-2" aria-hidden="true" tabindex="-1"></a>antec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;stroke&quot;</span>, <span class="st">&quot; stroke &quot;</span>, <span class="st">&quot;Breast cancer&quot;</span>, <span class="st">&quot;STROKE&quot;</span>, <span class="st">&quot; Stroke &quot;</span>)</span>
+<span id="cb18-3"><a href="r-data-structures.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="r-data-structures.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember case sensitivity: </span></span>
+<span id="cb18-5"><a href="r-data-structures.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;stroke&quot;, &quot; stroke &quot;, &quot;STROKE&quot;, and &quot; Stroke &quot; are different things!</span></span>
+<span id="cb18-6"><a href="r-data-structures.html#cb18-6" aria-hidden="true" tabindex="-1"></a>antec <span class="sc">==</span> <span class="st">&quot;stroke&quot;</span></span>
 <span id="cb18-7"><a href="r-data-structures.html#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="r-data-structures.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Can paste more than two vectors, and mix with constants strings (&quot;Patient&quot;, &quot;is a&quot;) </span></span>
-<span id="cb18-9"><a href="r-data-structures.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># note that constants are recycled (i.e., reused for all elements)</span></span>
-<span id="cb18-10"><a href="r-data-structures.html#cb18-10" aria-hidden="true" tabindex="-1"></a>narrative <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Patient&quot;</span>, patient_no, </span>
-<span id="cb18-11"><a href="r-data-structures.html#cb18-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;is a&quot;</span>, age, <span class="st">&quot;years old&quot;</span>, sex, </span>
-<span id="cb18-12"><a href="r-data-structures.html#cb18-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;with antecedent of&quot;</span>, <span class="fu">trimws</span>(<span class="fu">tolower</span>(antec)))  </span>
-<span id="cb18-13"><a href="r-data-structures.html#cb18-13" aria-hidden="true" tabindex="-1"></a>narrative</span>
-<span id="cb18-14"><a href="r-data-structures.html#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-15"><a href="r-data-structures.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of elements and number of characters </span></span>
-<span id="cb18-16"><a href="r-data-structures.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(narrative)             <span class="co"># the number of elements in vector</span></span>
-<span id="cb18-17"><a href="r-data-structures.html#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(narrative)              <span class="co"># the number of characters of each element</span></span></code></pre></div>
-<p>Other common tasks with the strings of character vectors are to extract just a part of them, or to substitute a part of them. These can be done with functions <code>substr()</code> (for <em>substring</em>) and <code>sub()</code> (for <em>substitute</em>), respectively. In both functions we indicate the character vector from which to extract or substitute a part in argument <code>x</code>. In <code>substr()</code> we need to specify the part we want to extract from <code>x</code> by indicating the first and last positions in arguments <code>start</code> and <code>stop</code>. In <code>sub()</code> we need to specify the <code>pattern</code> to be replaced, the <code>replacement</code> string, and the addition argument <code>fixed = YES</code> to avoid alternative interpretations of the <code>pattern</code> argument <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-data-structures.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a part of the string </span></span>
-<span id="cb19-2"><a href="r-data-structures.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(narrative, <span class="at">start =</span> <span class="dv">16</span>, <span class="at">stop =</span> <span class="dv">23</span>)     <span class="co"># characters 16 to 23 </span></span>
-<span id="cb19-3"><a href="r-data-structures.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(narrative, <span class="dv">16</span>, <span class="dv">17</span>)                    <span class="co"># characters 16 to 17 </span></span>
-<span id="cb19-4"><a href="r-data-structures.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(narrative, <span class="dv">16</span>, <span class="fu">nchar</span>(narrative))      <span class="co"># characters 16 to last </span></span>
-<span id="cb19-5"><a href="r-data-structures.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="r-data-structures.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace a part of the string</span></span>
-<span id="cb19-7"><a href="r-data-structures.html#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sub</span>(<span class="at">pattern =</span> <span class="st">&quot;is&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;was&quot;</span>, <span class="at">x =</span>narrative, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<span id="cb18-8"><a href="r-data-structures.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(antec)                           <span class="co"># convert to uppercase</span></span>
+<span id="cb18-9"><a href="r-data-structures.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(antec)                           <span class="co"># convert to lowercase</span></span>
+<span id="cb18-10"><a href="r-data-structures.html#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="r-data-structures.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">trimws</span>(antec)                            <span class="co"># remove leading and trailing blanks</span></span>
+<span id="cb18-12"><a href="r-data-structures.html#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="r-data-structures.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">tolower</span>(antec) <span class="sc">==</span> <span class="st">&quot;stroke&quot;</span>               <span class="co"># useful for comparisons</span></span>
+<span id="cb18-14"><a href="r-data-structures.html#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="fu">trimws</span>(<span class="fu">tolower</span>(antec)) <span class="sc">==</span> <span class="st">&quot;stroke&quot;</span>       <span class="co"># better</span></span></code></pre></div>
+<p><br />
+</p>
+<p>A very useful function to combine strings is the <code>paste()</code> function. In fact, you can combine not only strings, but also numeric values (that will be coerced to character). Sometimes we need to know what is the number of characters of the elements of a character vector, and this can be done with function <code>nchar()</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-data-structures.html#cb19-1" aria-hidden="true" tabindex="-1"></a>patient_no <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb19-2"><a href="r-data-structures.html#cb19-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">62</span>, <span class="dv">88</span>, <span class="dv">35</span>, <span class="dv">75</span>, <span class="dv">81</span>)</span>
+<span id="cb19-3"><a href="r-data-structures.html#cb19-3" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>)</span>
+<span id="cb19-4"><a href="r-data-structures.html#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="r-data-structures.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(patient_no, sex)                   <span class="co"># paste corresponding elements </span></span>
+<span id="cb19-6"><a href="r-data-structures.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(patient_no, sex, <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>)       <span class="co"># can define a separator (default is a blank space)</span></span>
+<span id="cb19-7"><a href="r-data-structures.html#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="r-data-structures.html#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Can paste more than two vectors, and mix with constants strings (&quot;Patient&quot;, &quot;is a&quot;) </span></span>
+<span id="cb19-9"><a href="r-data-structures.html#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># note that constants are recycled (i.e., reused for all elements)</span></span>
+<span id="cb19-10"><a href="r-data-structures.html#cb19-10" aria-hidden="true" tabindex="-1"></a>narrative <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Patient&quot;</span>, patient_no, </span>
+<span id="cb19-11"><a href="r-data-structures.html#cb19-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;is a&quot;</span>, age, <span class="st">&quot;years old&quot;</span>, sex, </span>
+<span id="cb19-12"><a href="r-data-structures.html#cb19-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;with antecedent of&quot;</span>, <span class="fu">trimws</span>(<span class="fu">tolower</span>(antec)))  </span>
+<span id="cb19-13"><a href="r-data-structures.html#cb19-13" aria-hidden="true" tabindex="-1"></a>narrative</span>
+<span id="cb19-14"><a href="r-data-structures.html#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="r-data-structures.html#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of elements and number of characters </span></span>
+<span id="cb19-16"><a href="r-data-structures.html#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(narrative)             <span class="co"># the number of elements in vector</span></span>
+<span id="cb19-17"><a href="r-data-structures.html#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(narrative)              <span class="co"># the number of characters of each element</span></span></code></pre></div>
+<p><br />
+</p>
+<p>Other common tasks with the strings are to extract just a part of them, or to substitute a part of them. These can be done with functions <code>substr()</code> (for <em>substring</em>) and <code>sub()</code> (for <em>substitute</em>), respectively. In both functions we indicate the character vector from which to extract or substitute a part in the first argument (named <code>x</code>). In <code>substr()</code> we need to specify the part we want to extract from <code>x</code> by indicating the first and last positions in arguments <code>start</code> and <code>stop</code>, respectively. In <code>sub()</code> we need to specify the <code>pattern</code> to be replaced, the <code>replacement</code> string, and the addition argument <code>fixed = YES</code> to avoid alternative interpretations of the <code>pattern</code> argument <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="r-data-structures.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a part of the string </span></span>
+<span id="cb20-2"><a href="r-data-structures.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(narrative, <span class="at">start =</span> <span class="dv">16</span>, <span class="at">stop =</span> <span class="dv">23</span>)     <span class="co"># characters 16 to 23 </span></span>
+<span id="cb20-3"><a href="r-data-structures.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(narrative, <span class="dv">16</span>, <span class="dv">17</span>)                    <span class="co"># characters 16 to 17 </span></span>
+<span id="cb20-4"><a href="r-data-structures.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(narrative, <span class="dv">16</span>, <span class="fu">nchar</span>(narrative))      <span class="co"># characters 16 to last </span></span>
+<span id="cb20-5"><a href="r-data-structures.html#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="r-data-structures.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace a part of the string</span></span>
+<span id="cb20-7"><a href="r-data-structures.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sub</span>(<span class="at">pattern =</span> <span class="st">&quot;is&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;was&quot;</span>, <span class="at">x =</span>narrative, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><br />
+</p>
 <p>Whatever the type of a vector, its elements can be <em>named</em>. We can provide names for the elements of a vector when creating it with function <code>c()</code>, or later with <code>names() &lt;-</code> .</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="r-data-structures.html#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Peter =</span> <span class="dv">31</span>, <span class="at">Paul =</span> <span class="dv">28</span>, <span class="at">Mary =</span> <span class="dv">25</span>)</span>
-<span id="cb20-2"><a href="r-data-structures.html#cb20-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb20-3"><a href="r-data-structures.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="r-data-structures.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)                          <span class="co"># gives the names as a character vector</span></span>
-<span id="cb20-5"><a href="r-data-structures.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)[<span class="dv">3</span>]                       <span class="co"># therefore, you can refer to any element </span></span>
-<span id="cb20-6"><a href="r-data-structures.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Adeline&quot;</span>          <span class="co"># or set any element</span></span>
-<span id="cb20-7"><a href="r-data-structures.html#cb20-7" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb20-8"><a href="r-data-structures.html#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="r-data-structures.html#cb20-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>                          <span class="co"># a numeric vector </span></span>
-<span id="cb20-10"><a href="r-data-structures.html#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(y)                          <span class="co"># whose elements have no names</span></span>
-<span id="cb20-11"><a href="r-data-structures.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(y) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)      <span class="co"># but we can set them later</span></span>
-<span id="cb20-12"><a href="r-data-structures.html#cb20-12" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
-<p>Last, it is possible to make type conversions. For instance, you may need to convert a numeric vector containing zeros and ones to a logical vector, or viceversa. Sometimes, you want to extract part of a string containing digits with <code>substr()</code>. However, because a part of a string is by definition a string as well (even if it contains only digits!), we need to convert these to numeric. Other conversions are less common but possible, using a family of functions (the <code>as.</code> family). In some instances, type conversions are done automatically. For example if we try to sum the elements of a logical vector. Because addition is an operation defined for numbers, logical values will be coerced to numeric behind the scene, as shown at the end of the following tutorial on type conversions.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="r-data-structures.html#cb21-1" aria-hidden="true" tabindex="-1"></a>number_of_seizures <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb21-2"><a href="r-data-structures.html#cb21-2" aria-hidden="true" tabindex="-1"></a>number_of_seizures</span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="r-data-structures.html#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Peter =</span> <span class="dv">31</span>, <span class="at">Paul =</span> <span class="dv">28</span>, <span class="at">Mary =</span> <span class="dv">25</span>)</span>
+<span id="cb21-2"><a href="r-data-structures.html#cb21-2" aria-hidden="true" tabindex="-1"></a>x</span>
 <span id="cb21-3"><a href="r-data-structures.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="r-data-structures.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric to logical (rule:  0 -&gt; FALSE, anything else -&gt; TRUE)</span></span>
-<span id="cb21-5"><a href="r-data-structures.html#cb21-5" aria-hidden="true" tabindex="-1"></a>seizures <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(number_of_seizures)  </span>
-<span id="cb21-6"><a href="r-data-structures.html#cb21-6" aria-hidden="true" tabindex="-1"></a>seizures</span>
-<span id="cb21-7"><a href="r-data-structures.html#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="r-data-structures.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># character to numeric</span></span>
-<span id="cb21-9"><a href="r-data-structures.html#cb21-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">substr</span>(narrative, <span class="dv">16</span>, <span class="dv">17</span>)     <span class="co"># extracts the age   </span></span>
-<span id="cb21-10"><a href="r-data-structures.html#cb21-10" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb21-11"><a href="r-data-structures.html#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)                           <span class="co"># but the result is a character vector</span></span>
-<span id="cb21-12"><a href="r-data-structures.html#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-13"><a href="r-data-structures.html#cb21-13" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(x)               <span class="co"># now it&#39;s a numeric vector</span></span>
-<span id="cb21-14"><a href="r-data-structures.html#cb21-14" aria-hidden="true" tabindex="-1"></a>age</span>
-<span id="cb21-15"><a href="r-data-structures.html#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-16"><a href="r-data-structures.html#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># logical to numeric (rule:  FALSE -&gt; 0, TRUE -&gt; 1)</span></span>
-<span id="cb21-17"><a href="r-data-structures.html#cb21-17" aria-hidden="true" tabindex="-1"></a>diabetes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb21-18"><a href="r-data-structures.html#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(diabetes)</span>
-<span id="cb21-19"><a href="r-data-structures.html#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-20"><a href="r-data-structures.html#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co"># character to numeric or logical (less common)</span></span>
-<span id="cb21-21"><a href="r-data-structures.html#cb21-21" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;One&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;120&quot;</span>, <span class="st">&quot;TRUE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>, <span class="st">&quot;Are you tired?&quot;</span>)</span>
-<span id="cb21-22"><a href="r-data-structures.html#cb21-22" aria-hidden="true" tabindex="-1"></a>z</span>
-<span id="cb21-23"><a href="r-data-structures.html#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(z)       <span class="co"># only digits converted to numbers</span></span>
-<span id="cb21-24"><a href="r-data-structures.html#cb21-24" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(z)       <span class="co"># only words &quot;TRUE&quot; and &quot;FALSE&quot; converted to logical</span></span>
-<span id="cb21-25"><a href="r-data-structures.html#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-26"><a href="r-data-structures.html#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-27"><a href="r-data-structures.html#cb21-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatic conversion from logical to numeric (rule:  FALSE -&gt; 0, TRUE -&gt; 1)</span></span>
-<span id="cb21-28"><a href="r-data-structures.html#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(diabetes)     </span></code></pre></div>
+<span id="cb21-4"><a href="r-data-structures.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)                          <span class="co"># gives the names as a character vector</span></span>
+<span id="cb21-5"><a href="r-data-structures.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)[<span class="dv">3</span>]                       <span class="co"># therefore, you can refer to any element </span></span>
+<span id="cb21-6"><a href="r-data-structures.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Adeline&quot;</span>          <span class="co"># or set any element</span></span>
+<span id="cb21-7"><a href="r-data-structures.html#cb21-7" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb21-8"><a href="r-data-structures.html#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="r-data-structures.html#cb21-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>                          <span class="co"># a numeric vector </span></span>
+<span id="cb21-10"><a href="r-data-structures.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(y)                          <span class="co"># whose elements have no names</span></span>
+<span id="cb21-11"><a href="r-data-structures.html#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(y) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)      <span class="co"># but we can set them later</span></span>
+<span id="cb21-12"><a href="r-data-structures.html#cb21-12" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<p><br />
+</p>
+<p>Last, it is possible to make type conversions. For instance, you may need to convert a numeric vector containing zeros and ones to a logical vector, or viceversa. Sometimes, you want to extract part of a string containing digits with <code>substr()</code>. However, because a part of a string is by definition a string as well (even if it contains only digits!), we need to convert these to numeric. Other conversions are less common but possible, using a family of functions, the <code>as.</code> family. In some instances, type conversions are done automatically. For example if we try to sum the elements of a logical vector: because addition is an operation defined on numbers, logical values will be coerced to numeric behind the scene, as shown at the end of the following tutorial on type conversions.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="r-data-structures.html#cb22-1" aria-hidden="true" tabindex="-1"></a>number_of_seizures <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb22-2"><a href="r-data-structures.html#cb22-2" aria-hidden="true" tabindex="-1"></a>number_of_seizures</span>
+<span id="cb22-3"><a href="r-data-structures.html#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="r-data-structures.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric to logical (rule:  0 -&gt; FALSE, anything else -&gt; TRUE)</span></span>
+<span id="cb22-5"><a href="r-data-structures.html#cb22-5" aria-hidden="true" tabindex="-1"></a>seizures <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(number_of_seizures)  </span>
+<span id="cb22-6"><a href="r-data-structures.html#cb22-6" aria-hidden="true" tabindex="-1"></a>seizures</span>
+<span id="cb22-7"><a href="r-data-structures.html#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="r-data-structures.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># character to numeric</span></span>
+<span id="cb22-9"><a href="r-data-structures.html#cb22-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">substr</span>(narrative, <span class="dv">16</span>, <span class="dv">17</span>)     <span class="co"># extracts the age   </span></span>
+<span id="cb22-10"><a href="r-data-structures.html#cb22-10" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb22-11"><a href="r-data-structures.html#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)                           <span class="co"># but the result is a character vector</span></span>
+<span id="cb22-12"><a href="r-data-structures.html#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="r-data-structures.html#cb22-13" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(x)               <span class="co"># now it&#39;s a numeric vector</span></span>
+<span id="cb22-14"><a href="r-data-structures.html#cb22-14" aria-hidden="true" tabindex="-1"></a>age</span>
+<span id="cb22-15"><a href="r-data-structures.html#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age)</span>
+<span id="cb22-16"><a href="r-data-structures.html#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="r-data-structures.html#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co"># logical to numeric (rule:  FALSE -&gt; 0, TRUE -&gt; 1)</span></span>
+<span id="cb22-18"><a href="r-data-structures.html#cb22-18" aria-hidden="true" tabindex="-1"></a>diabetes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb22-19"><a href="r-data-structures.html#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(diabetes)</span>
+<span id="cb22-20"><a href="r-data-structures.html#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="r-data-structures.html#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="co"># character to numeric or logical (less common)</span></span>
+<span id="cb22-22"><a href="r-data-structures.html#cb22-22" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;One&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;120&quot;</span>, <span class="st">&quot;TRUE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>, <span class="st">&quot;Are you tired?&quot;</span>)</span>
+<span id="cb22-23"><a href="r-data-structures.html#cb22-23" aria-hidden="true" tabindex="-1"></a>z</span>
+<span id="cb22-24"><a href="r-data-structures.html#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(z)       <span class="co"># only digits converted to numbers</span></span>
+<span id="cb22-25"><a href="r-data-structures.html#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(z)       <span class="co"># only words &quot;TRUE&quot; and &quot;FALSE&quot; converted to logical</span></span>
+<span id="cb22-26"><a href="r-data-structures.html#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="r-data-structures.html#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-28"><a href="r-data-structures.html#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatic conversion from logical to numeric (rule:  FALSE -&gt; 0, TRUE -&gt; 1)</span></span>
+<span id="cb22-29"><a href="r-data-structures.html#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(diabetes)     </span></code></pre></div>
+<p><br />
+</p>
 <p>Ops! just one more thing. In R, scalars (single numbers) are considered vectors of length one. Same for a single character string, or a single logical value. So, nothing exists in R simpler than a vector!</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="r-data-structures.html#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">3.14</span></span>
-<span id="cb22-2"><a href="r-data-structures.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb22-3"><a href="r-data-structures.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(x)</span>
-<span id="cb22-4"><a href="r-data-structures.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span>
-<span id="cb22-5"><a href="r-data-structures.html#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="r-data-structures.html#cb22-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;A&quot;</span></span>
-<span id="cb22-7"><a href="r-data-structures.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb22-8"><a href="r-data-structures.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(x)</span>
-<span id="cb22-9"><a href="r-data-structures.html#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span>
-<span id="cb22-10"><a href="r-data-structures.html#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-11"><a href="r-data-structures.html#cb22-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb22-12"><a href="r-data-structures.html#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb22-13"><a href="r-data-structures.html#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(x)</span>
-<span id="cb22-14"><a href="r-data-structures.html#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="r-data-structures.html#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">3.14</span></span>
+<span id="cb23-2"><a href="r-data-structures.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb23-3"><a href="r-data-structures.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(x)</span>
+<span id="cb23-4"><a href="r-data-structures.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span>
+<span id="cb23-5"><a href="r-data-structures.html#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="r-data-structures.html#cb23-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;A&quot;</span></span>
+<span id="cb23-7"><a href="r-data-structures.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb23-8"><a href="r-data-structures.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(x)</span>
+<span id="cb23-9"><a href="r-data-structures.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span>
+<span id="cb23-10"><a href="r-data-structures.html#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="r-data-structures.html#cb23-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb23-12"><a href="r-data-structures.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb23-13"><a href="r-data-structures.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(x)</span>
+<span id="cb23-14"><a href="r-data-structures.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
 </div>
 <div id="lists" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Lists<a href="r-data-structures.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the previous section we have seen that vectors cannot mix data types, but <em>lists</em> can. In fact, lists can mix not only <em>data</em> types, but <em>object</em> types. Lists are arbitrary collections of objects (including other lists!), and therefore provide a highly flexible structure to store data of any kind.</p>
 <p>Lists can be created with function <code>list()</code>, by enumerating its elements separated by commas. The length of a list is the number of elements it contains, and can be obtained with <code>length()</code>.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="r-data-structures.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a list</span></span>
-<span id="cb23-2"><a href="r-data-structures.html#cb23-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;male&quot;</span>,                                                       <span class="co"># 1st element</span></span>
-<span id="cb23-3"><a href="r-data-structures.html#cb23-3" aria-hidden="true" tabindex="-1"></a>          <span class="dv">79</span>,                                                           <span class="co"># 2nd element</span></span>
-<span id="cb23-4"><a href="r-data-structures.html#cb23-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">c</span>(<span class="st">&quot;arterial hypertension&quot;</span>, <span class="st">&quot;diabetes&quot;</span>, <span class="st">&quot;stroke&quot;</span>),             <span class="co"># 3rd element</span></span>
-<span id="cb23-5"><a href="r-data-structures.html#cb23-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">260</span>,<span class="dv">110</span>, <span class="dv">190</span>, <span class="dv">100</span>, <span class="dv">185</span>, <span class="dv">100</span>, <span class="dv">160</span>, <span class="dv">95</span>), <span class="at">nrow=</span><span class="dv">2</span>,       <span class="co"># 4th element</span></span>
-<span id="cb23-6"><a href="r-data-structures.html#cb23-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">BP =</span> <span class="fu">c</span>(<span class="st">&quot;SBP&quot;</span>, <span class="st">&quot;DBP&quot;</span>),                  </span>
-<span id="cb23-7"><a href="r-data-structures.html#cb23-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">day =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)))</span>
-<span id="cb23-8"><a href="r-data-structures.html#cb23-8" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb23-9"><a href="r-data-structures.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)           <span class="co"># object type?</span></span>
-<span id="cb23-10"><a href="r-data-structures.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)          <span class="co"># number of elements it contains</span></span></code></pre></div>
-<p>When working with lists, to common operations are <em>subsetting</em> and <em>extraction</em>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="r-data-structures.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a list</span></span>
+<span id="cb24-2"><a href="r-data-structures.html#cb24-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;male&quot;</span>,                                                       <span class="co"># 1st element</span></span>
+<span id="cb24-3"><a href="r-data-structures.html#cb24-3" aria-hidden="true" tabindex="-1"></a>          <span class="dv">79</span>,                                                           <span class="co"># 2nd element</span></span>
+<span id="cb24-4"><a href="r-data-structures.html#cb24-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">c</span>(<span class="st">&quot;arterial hypertension&quot;</span>, <span class="st">&quot;diabetes&quot;</span>, <span class="st">&quot;stroke&quot;</span>),             <span class="co"># 3rd element</span></span>
+<span id="cb24-5"><a href="r-data-structures.html#cb24-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">260</span>,<span class="dv">110</span>, <span class="dv">190</span>, <span class="dv">100</span>, <span class="dv">185</span>, <span class="dv">100</span>, <span class="dv">160</span>, <span class="dv">95</span>), <span class="at">nrow=</span><span class="dv">2</span>,       <span class="co"># 4th element</span></span>
+<span id="cb24-6"><a href="r-data-structures.html#cb24-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">BP =</span> <span class="fu">c</span>(<span class="st">&quot;SBP&quot;</span>, <span class="st">&quot;DBP&quot;</span>),                  </span>
+<span id="cb24-7"><a href="r-data-structures.html#cb24-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">day =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)))</span>
+<span id="cb24-8"><a href="r-data-structures.html#cb24-8" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb24-9"><a href="r-data-structures.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)           <span class="co"># object type?</span></span>
+<span id="cb24-10"><a href="r-data-structures.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)          <span class="co"># number of elements it contains</span></span></code></pre></div>
+<p><br />
+</p>
+<p>When working with lists, two common operations are <em>subsetting</em> and <em>extraction</em>:</p>
 <ul>
 <li><p>Subsetting a list means taking a part or subset of the list elements, and the result is always a <em>list</em> (even when we subset just one of its elements!); this is done with the <em>subsetting operator</em>: <code>[]</code>.</p></li>
 <li><p>Extracting from a list, means getting an element of the list, and the result will not be a list, but an object of the class this element belongs to; this is done with the <em>extraction operator</em>: <code>[[]]</code>.</p></li>
 </ul>
-<p>When applied to vectors, these two operators produce the same result (<code>x[3] == x[[3]]</code>), but this is not the case with lists. For instance, in the example above, we created a list with data of a patient, the second of which is the age, a numeric vector of length one. Suppose we want to get this value and plug it in some mathematical formula to make a prediction. In this case we need to <em>extract</em> these element (<code>x[[2]]</code>), the result being a numeric vector we can use in arithmetic expressions. However, if we <em>subset</em> the second element of the list (<code>x[2]</code>), the result will be a list of length one (but still a list!), and we cannot plug a list in a mathematical formula. The following tutorial demonstrates these important difference.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="r-data-structures.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset a list with the SUBSETTING operator: []</span></span>
-<span id="cb24-2"><a href="r-data-structures.html#cb24-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
-<span id="cb24-3"><a href="r-data-structures.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])       <span class="co"># the result will be ALWAYS another list</span></span>
-<span id="cb24-4"><a href="r-data-structures.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="r-data-structures.html#cb24-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]                <span class="co"># even when subsetting just one element!</span></span>
-<span id="cb24-6"><a href="r-data-structures.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[<span class="dv">2</span>])         <span class="co"># see?</span></span>
-<span id="cb24-7"><a href="r-data-structures.html#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="r-data-structures.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract an element from a list with the EXTRACTION operator: [[]] </span></span>
-<span id="cb24-9"><a href="r-data-structures.html#cb24-9" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]]</span>
-<span id="cb24-10"><a href="r-data-structures.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[[<span class="dv">2</span>]])       <span class="co"># the result is the element class (numeric vector in this case)</span></span>
-<span id="cb24-11"><a href="r-data-structures.html#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-12"><a href="r-data-structures.html#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="r-data-structures.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># We can use numeric vectors in mathematical expressions, but NOT lists!</span></span>
-<span id="cb24-14"><a href="r-data-structures.html#cb24-14" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]] <span class="sc">+</span> <span class="dv">10</span>    <span class="co"># is OK</span></span>
-<span id="cb24-15"><a href="r-data-structures.html#cb24-15" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>] <span class="sc">+</span> <span class="dv">10</span>      <span class="co"># is WRONG</span></span></code></pre></div>
-<p>People is often confused about the difference between <code>x [2]</code> and <code>x[[2]]</code>. If this is your case, think of a list a set of numbered boxes each one containing something, and suppose that box number 2 contains a sandwich. Subsetting the list means taking some of the boxes, maybe just one, maybe just box number 2, but you still have <em>a box</em> in your hands and you can`t eat a box! If you want to eat your sandwich, you open the box to <em>extract</em> your sandwich, and then you eat it. If you are hungry, you better understand the difference between <em>subsetting</em> a list and <em>extracting</em> from a list.</p>
-<p>Just like vectors, lists can be named, and the names of elements can be provided when creating the list or later with <code>names()</code>. In the previous tutorial we saw how to extract a single element from a list indicating its position with the extraction operator <code>[[]]</code>. When a list has names, we can extract elements by position, but also by name, using either the extraction operator or the construct <em>listname</em>$<em>elementname</em>. The last is very practical, and is shown below:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="r-data-structures.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Provide names when creating the list</span></span>
-<span id="cb25-2"><a href="r-data-structures.html#cb25-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">sex =</span> <span class="st">&quot;male&quot;</span>,</span>
-<span id="cb25-3"><a href="r-data-structures.html#cb25-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">age =</span> <span class="dv">79</span>,</span>
-<span id="cb25-4"><a href="r-data-structures.html#cb25-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">antecedents =</span> <span class="fu">c</span>(<span class="st">&quot;arterial hypertension&quot;</span>, <span class="st">&quot;diabetes&quot;</span>, <span class="st">&quot;stroke&quot;</span>),</span>
-<span id="cb25-5"><a href="r-data-structures.html#cb25-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">260</span>,<span class="dv">110</span>, <span class="dv">190</span>, <span class="dv">100</span>, <span class="dv">185</span>, <span class="dv">100</span>, <span class="dv">160</span>, <span class="dv">95</span>), <span class="at">nrow=</span><span class="dv">2</span>,</span>
-<span id="cb25-6"><a href="r-data-structures.html#cb25-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">BP =</span> <span class="fu">c</span>(<span class="st">&quot;SBP&quot;</span>, <span class="st">&quot;DBP&quot;</span>), </span>
-<span id="cb25-7"><a href="r-data-structures.html#cb25-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">day =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)))</span>
-<span id="cb25-8"><a href="r-data-structures.html#cb25-8" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb25-9"><a href="r-data-structures.html#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="r-data-structures.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)                 <span class="co"># get the names</span></span>
-<span id="cb25-11"><a href="r-data-structures.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)[<span class="dv">4</span>]              <span class="co"># 4th element has no name</span></span>
-<span id="cb25-12"><a href="r-data-structures.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">&quot;BP&quot;</span>      <span class="co"># let`s set it </span></span>
-<span id="cb25-13"><a href="r-data-structures.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)                 <span class="co"># all named now</span></span>
-<span id="cb25-14"><a href="r-data-structures.html#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-15"><a href="r-data-structures.html#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-16"><a href="r-data-structures.html#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract an element</span></span>
-<span id="cb25-17"><a href="r-data-structures.html#cb25-17" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]]                  <span class="co"># by position</span></span>
-<span id="cb25-18"><a href="r-data-structures.html#cb25-18" aria-hidden="true" tabindex="-1"></a>x[[<span class="st">&quot;course&quot;</span>]]           <span class="co"># by name</span></span>
-<span id="cb25-19"><a href="r-data-structures.html#cb25-19" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>age                   <span class="co"># by name, using $   </span></span>
-<span id="cb25-20"><a href="r-data-structures.html#cb25-20" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>sex</span>
-<span id="cb25-21"><a href="r-data-structures.html#cb25-21" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>antecedents</span>
-<span id="cb25-22"><a href="r-data-structures.html#cb25-22" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>BP</span></code></pre></div>
-<p>Lists are very important data structures for several reasons, but one of them is because the results of many functions in R, including functions for statistical analysis, are lists. For instance, in the following tutorial we use a binomial test<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> to evaluate if the probability of boy and girl is the same from a series of 100 deliveries. Then, we inspect the result to realize it is a list, we investigate the name of its elements, and we extract some of them.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="r-data-structures.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A binomial test for the probability of boy being 0.5</span></span>
-<span id="cb26-2"><a href="r-data-structures.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># suppose we observe n = 100 births, among which x = 45 are boys</span></span>
-<span id="cb26-3"><a href="r-data-structures.html#cb26-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">45</span>, <span class="at">n =</span> <span class="dv">100</span>)   </span>
-<span id="cb26-4"><a href="r-data-structures.html#cb26-4" aria-hidden="true" tabindex="-1"></a>res</span>
-<span id="cb26-5"><a href="r-data-structures.html#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="r-data-structures.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(res)             <span class="co"># class &quot;htest&quot; is a specialized type of list, but still a list</span></span>
-<span id="cb26-7"><a href="r-data-structures.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(res)           <span class="co"># see?</span></span>
-<span id="cb26-8"><a href="r-data-structures.html#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="r-data-structures.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(res)             <span class="co"># get the names of its elements</span></span>
-<span id="cb26-10"><a href="r-data-structures.html#cb26-10" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>p.value            <span class="co"># get the p.value</span></span>
-<span id="cb26-11"><a href="r-data-structures.html#cb26-11" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>estimate           <span class="co"># get the proportion of boys</span></span>
-<span id="cb26-12"><a href="r-data-structures.html#cb26-12" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>conf.int           <span class="co"># get the confidence interval for this proportion</span></span></code></pre></div>
+<p>When applied to vectors, these two operators produce the same result (<code>x[3] == x[[3]]</code>), but this is not the case with lists. For instance, in the example above, we created a list with data from a patient, the second of which elements is the age, a numeric vector of length one. Suppose we want to get this value and plug it in some mathematical formula. In this case we need to <em>extract</em> this element (<code>x[[2]]</code>), the result being a numeric vector we can use in arithmetic expressions. However, if we <em>subset</em> the second element of the list (<code>x[2]</code>), the result will be a list of length one (but still a list!), and we cannot plug a list in a mathematical expression. The following tutorial demonstrates this important difference.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="r-data-structures.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset a list with the SUBSETTING operator: []</span></span>
+<span id="cb25-2"><a href="r-data-structures.html#cb25-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb25-3"><a href="r-data-structures.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])       <span class="co"># the result will be ALWAYS another list</span></span>
+<span id="cb25-4"><a href="r-data-structures.html#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="r-data-structures.html#cb25-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]                <span class="co"># even when subsetting just one element!</span></span>
+<span id="cb25-6"><a href="r-data-structures.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[<span class="dv">2</span>])         <span class="co"># see?</span></span>
+<span id="cb25-7"><a href="r-data-structures.html#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="r-data-structures.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract an element from a list with the EXTRACTION operator: [[]] </span></span>
+<span id="cb25-9"><a href="r-data-structures.html#cb25-9" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]]</span>
+<span id="cb25-10"><a href="r-data-structures.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[[<span class="dv">2</span>]])       <span class="co"># the result is the element class (numeric vector in this case)</span></span>
+<span id="cb25-11"><a href="r-data-structures.html#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="r-data-structures.html#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="r-data-structures.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co"># We can use numeric vectors in mathematical expressions, but NOT lists!</span></span>
+<span id="cb25-14"><a href="r-data-structures.html#cb25-14" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]] <span class="sc">+</span> <span class="dv">10</span>    <span class="co"># is OK</span></span>
+<span id="cb25-15"><a href="r-data-structures.html#cb25-15" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>] <span class="sc">+</span> <span class="dv">10</span>      <span class="co"># is WRONG</span></span></code></pre></div>
+<p><br />
+</p>
+<p>People is often confused about the difference between <code>x[2]</code> and <code>x[[2]]</code>. If this is your case, think of a list as a set of numbered boxes, each one containing something. Suppose that box number 2 contains a sandwich. Subsetting the list means taking some of the boxes, maybe just one, maybe just box number 2, but you still have <em>a box</em> in your hands and you can`t eat a box! If you want to eat your sandwich, you open the box to <em>extract</em> your sandwich, and then you eat it. If you are hungry, you better understand the difference between <em>subsetting</em> a list and <em>extracting</em> from a list.</p>
+<p>Just like vectors, lists can be named, and the names of elements can be provided when creating the list, or later with <code>names()</code>. In the previous tutorial we saw how to extract a single element from a list indicating its position with the extraction operator <code>[[]]</code>. When a list has names, we can extract elements by position, but also by name, using either the extraction operator or the construct <em>listname</em>$<em>elementname</em>. The last is very practical, and is shown below:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="r-data-structures.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Provide names when creating the list</span></span>
+<span id="cb26-2"><a href="r-data-structures.html#cb26-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">sex =</span> <span class="st">&quot;male&quot;</span>,</span>
+<span id="cb26-3"><a href="r-data-structures.html#cb26-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">age =</span> <span class="dv">79</span>,</span>
+<span id="cb26-4"><a href="r-data-structures.html#cb26-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">antecedents =</span> <span class="fu">c</span>(<span class="st">&quot;arterial hypertension&quot;</span>, <span class="st">&quot;diabetes&quot;</span>, <span class="st">&quot;stroke&quot;</span>),</span>
+<span id="cb26-5"><a href="r-data-structures.html#cb26-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">260</span>,<span class="dv">110</span>, <span class="dv">190</span>, <span class="dv">100</span>, <span class="dv">185</span>, <span class="dv">100</span>, <span class="dv">160</span>, <span class="dv">95</span>), </span>
+<span id="cb26-6"><a href="r-data-structures.html#cb26-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">nrow=</span><span class="dv">2</span>,</span>
+<span id="cb26-7"><a href="r-data-structures.html#cb26-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">BP =</span> <span class="fu">c</span>(<span class="st">&quot;SBP&quot;</span>, <span class="st">&quot;DBP&quot;</span>), <span class="at">day =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)))</span>
+<span id="cb26-8"><a href="r-data-structures.html#cb26-8" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb26-9"><a href="r-data-structures.html#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="r-data-structures.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)                 <span class="co"># get the names</span></span>
+<span id="cb26-11"><a href="r-data-structures.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)[<span class="dv">4</span>]              <span class="co"># 4th element has no name</span></span>
+<span id="cb26-12"><a href="r-data-structures.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">&quot;BP&quot;</span>      <span class="co"># let`s set it </span></span>
+<span id="cb26-13"><a href="r-data-structures.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)                 <span class="co"># all named now</span></span>
+<span id="cb26-14"><a href="r-data-structures.html#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="r-data-structures.html#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="r-data-structures.html#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract an element</span></span>
+<span id="cb26-17"><a href="r-data-structures.html#cb26-17" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]]                  <span class="co"># by position</span></span>
+<span id="cb26-18"><a href="r-data-structures.html#cb26-18" aria-hidden="true" tabindex="-1"></a>x[[<span class="st">&quot;BP&quot;</span>]]               <span class="co"># by name</span></span>
+<span id="cb26-19"><a href="r-data-structures.html#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="r-data-structures.html#cb26-20" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>age                   <span class="co"># by name, using $   </span></span>
+<span id="cb26-21"><a href="r-data-structures.html#cb26-21" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>sex</span>
+<span id="cb26-22"><a href="r-data-structures.html#cb26-22" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>antecedents</span>
+<span id="cb26-23"><a href="r-data-structures.html#cb26-23" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>BP</span></code></pre></div>
+<p><br />
+</p>
+<p>Lists are very important data structures for several reasons, but one of them is because the results produced by many functions in R, including functions for statistical analysis, are stored in a list. For instance, in the following tutorial we use a binomial test<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> to evaluate if fathering a boy or a girl are equal likely, from a series of 100 deliveries. Then, we inspect the result to realize it is a list, we investigate the name of its elements, and we extract some of them.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="r-data-structures.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A binomial test for the probability of boy being 0.5</span></span>
+<span id="cb27-2"><a href="r-data-structures.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># suppose we observe n = 100 births, among which x = 45 are boys</span></span>
+<span id="cb27-3"><a href="r-data-structures.html#cb27-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">45</span>, <span class="at">n =</span> <span class="dv">100</span>)   </span>
+<span id="cb27-4"><a href="r-data-structures.html#cb27-4" aria-hidden="true" tabindex="-1"></a>res</span>
+<span id="cb27-5"><a href="r-data-structures.html#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="r-data-structures.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(res)             <span class="co"># class &quot;htest&quot; is a specialized type of list, but still a list</span></span>
+<span id="cb27-7"><a href="r-data-structures.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(res)           <span class="co"># see?</span></span>
+<span id="cb27-8"><a href="r-data-structures.html#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="r-data-structures.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(res)             <span class="co"># get the names of its elements</span></span>
+<span id="cb27-10"><a href="r-data-structures.html#cb27-10" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>p.value            <span class="co"># get the p.value</span></span>
+<span id="cb27-11"><a href="r-data-structures.html#cb27-11" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>estimate           <span class="co"># get the proportion of boys</span></span>
+<span id="cb27-12"><a href="r-data-structures.html#cb27-12" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>conf.int           <span class="co"># get the confidence interval for this proportion</span></span></code></pre></div>
 </div>
 <div id="dataframes" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Dataframes<a href="r-data-structures.html#dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Dataframes are named lists of vectors <em>having the same length</em>. Because they are lists, they can mix vectors of different types, which makes them ideal to store tabular data (arranged in rows and columns). Dataframe vectors are the <em>columns</em> of a data frame, and are usually called <em>variables</em>.</p>
-<p>Dataframes can be created with <code>data.frame()</code>, by enumerating its vectors separated by commas. These can be already existing vectors, or vectors we create on the fly. The <code>length()</code>of a dataframe is the number of variables it contains. Because dataframes are named lists of vectors, we can refer to these dataframe variables using the construct <em>dataframename$variablename</em>. This can be used in conjunction with the assignment operator ro add a new variable to a dataframe, or to remove an existing variable from a dataframe (by passing it <code>NULL</code>), as shown in this tutorial.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="r-data-structures.html#cb27-1" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>)</span>
-<span id="cb27-2"><a href="r-data-structures.html#cb27-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="fl">69.5</span>, <span class="fl">83.9</span>, <span class="fl">76.3</span>, <span class="fl">77.3</span>, <span class="fl">88.8</span>)</span>
-<span id="cb27-3"><a href="r-data-structures.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="r-data-structures.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a dataframe form vectors of the same length)</span></span>
-<span id="cb27-5"><a href="r-data-structures.html#cb27-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">case =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,                         <span class="co"># vector created on the fly</span></span>
-<span id="cb27-6"><a href="r-data-structures.html#cb27-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">32</span>, <span class="dv">19</span>, <span class="dv">41</span>, <span class="cn">NA</span>, <span class="dv">56</span>),    <span class="co"># same</span></span>
-<span id="cb27-7"><a href="r-data-structures.html#cb27-7" aria-hidden="true" tabindex="-1"></a>                sex,                                <span class="co"># already existing vector</span></span>
-<span id="cb27-8"><a href="r-data-structures.html#cb27-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">weight =</span> w)                         <span class="co"># same, but give it name </span></span>
-<span id="cb27-9"><a href="r-data-structures.html#cb27-9" aria-hidden="true" tabindex="-1"></a>d</span>
-<span id="cb27-10"><a href="r-data-structures.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d)        </span>
-<span id="cb27-11"><a href="r-data-structures.html#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="r-data-structures.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(d)       <span class="co"># number of variables (columns)</span></span>
-<span id="cb27-13"><a href="r-data-structures.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(d)         <span class="co"># same</span></span>
-<span id="cb27-14"><a href="r-data-structures.html#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(d)         <span class="co"># the number of rows</span></span>
-<span id="cb27-15"><a href="r-data-structures.html#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)        <span class="co"># get variable names as a character vector</span></span>
-<span id="cb27-16"><a href="r-data-structures.html#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-17"><a href="r-data-structures.html#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Get dataframe variables </span></span>
-<span id="cb27-18"><a href="r-data-structures.html#cb27-18" aria-hidden="true" tabindex="-1"></a>d[[<span class="dv">2</span>]]          <span class="co"># by position</span></span>
-<span id="cb27-19"><a href="r-data-structures.html#cb27-19" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>age           <span class="co"># by name</span></span>
-<span id="cb27-20"><a href="r-data-structures.html#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-21"><a href="r-data-structures.html#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>age)    <span class="co"># class of this object?</span></span>
-<span id="cb27-22"><a href="r-data-structures.html#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>sex)</span>
-<span id="cb27-23"><a href="r-data-structures.html#cb27-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-24"><a href="r-data-structures.html#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that sex and d$sex are two different objects</span></span>
-<span id="cb27-25"><a href="r-data-structures.html#cb27-25" aria-hidden="true" tabindex="-1"></a>sex <span class="sc">==</span> d<span class="sc">$</span>sex               <span class="co"># equal by now</span></span>
-<span id="cb27-26"><a href="r-data-structures.html#cb27-26" aria-hidden="true" tabindex="-1"></a>sex[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>               <span class="co"># change sex  </span></span>
-<span id="cb27-27"><a href="r-data-structures.html#cb27-27" aria-hidden="true" tabindex="-1"></a>sex                        <span class="co"># verify change</span></span>
-<span id="cb27-28"><a href="r-data-structures.html#cb27-28" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>sex                      <span class="co"># d$sex remains unaltered</span></span>
-<span id="cb27-29"><a href="r-data-structures.html#cb27-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-30"><a href="r-data-structures.html#cb27-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Add variable to a dataframe </span></span>
-<span id="cb27-31"><a href="r-data-structures.html#cb27-31" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">165</span>, <span class="dv">175</span>, <span class="dv">158</span>, <span class="dv">180</span>, <span class="dv">175</span>, <span class="dv">160</span>)       </span>
-<span id="cb27-32"><a href="r-data-structures.html#cb27-32" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(d)</span>
-<span id="cb27-33"><a href="r-data-structures.html#cb27-33" aria-hidden="true" tabindex="-1"></a>d</span>
-<span id="cb27-34"><a href="r-data-structures.html#cb27-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-35"><a href="r-data-structures.html#cb27-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove variable from a dataframe </span></span>
-<span id="cb27-36"><a href="r-data-structures.html#cb27-36" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>case <span class="ot">&lt;-</span> <span class="cn">NULL</span>  </span>
-<span id="cb27-37"><a href="r-data-structures.html#cb27-37" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(d)</span>
-<span id="cb27-38"><a href="r-data-structures.html#cb27-38" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
-<p>The <code>dataframe()</code> function is not the only way to create a dataframe. In the next chapter you will learn how to read data stored in an external file (e.g., an Excel file), resulting in a dataframe. This is in fact the most common way to create dataframes.</p>
+<p>Dataframes are named lists of vectors, <em>all having the same length</em>. Because they are lists, they can mix vectors of different types, making dataframes ideal to store tabular data (arranged in rows and columns). Dataframe vectors are the <em>columns</em> of a data frame, and are usually called <em>variables</em>.</p>
+<p>Dataframes can be created with <code>data.frame()</code>, by enumerating its vectors separated by commas. These can be already existing vectors, or vectors we create on the fly. The <code>length()</code>of a dataframe is the number of variables it contains. Because dataframes are named lists of vectors, we can refer to these vectors using the construct <em>dataframename$variablename</em>. This can be used in conjunction with the assignment operator to add a new variable to a dataframe, or to remove an existing variable from a dataframe (by passing it <code>NULL</code>), as shown in below.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="r-data-structures.html#cb28-1" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>)</span>
+<span id="cb28-2"><a href="r-data-structures.html#cb28-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="fl">69.5</span>, <span class="fl">83.9</span>, <span class="fl">76.3</span>, <span class="fl">77.3</span>, <span class="fl">88.8</span>)</span>
+<span id="cb28-3"><a href="r-data-structures.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="r-data-structures.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a dataframe from vectors of the same length)</span></span>
+<span id="cb28-5"><a href="r-data-structures.html#cb28-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">case =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,                         <span class="co"># vector created on the fly</span></span>
+<span id="cb28-6"><a href="r-data-structures.html#cb28-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">32</span>, <span class="dv">19</span>, <span class="dv">41</span>, <span class="cn">NA</span>, <span class="dv">56</span>),    <span class="co"># same</span></span>
+<span id="cb28-7"><a href="r-data-structures.html#cb28-7" aria-hidden="true" tabindex="-1"></a>                sex,                                <span class="co"># already existing vector</span></span>
+<span id="cb28-8"><a href="r-data-structures.html#cb28-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">weight =</span> w)                         <span class="co"># same, but give it a name </span></span>
+<span id="cb28-9"><a href="r-data-structures.html#cb28-9" aria-hidden="true" tabindex="-1"></a>d</span>
+<span id="cb28-10"><a href="r-data-structures.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d)        </span>
+<span id="cb28-11"><a href="r-data-structures.html#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="r-data-structures.html#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(d)       <span class="co"># number of variables (columns)</span></span>
+<span id="cb28-13"><a href="r-data-structures.html#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(d)         <span class="co"># same</span></span>
+<span id="cb28-14"><a href="r-data-structures.html#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(d)         <span class="co"># the number of rows</span></span>
+<span id="cb28-15"><a href="r-data-structures.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)        <span class="co"># get variable names as a character vector</span></span>
+<span id="cb28-16"><a href="r-data-structures.html#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="r-data-structures.html#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Get dataframe variables </span></span>
+<span id="cb28-18"><a href="r-data-structures.html#cb28-18" aria-hidden="true" tabindex="-1"></a>d[[<span class="dv">2</span>]]          <span class="co"># by position</span></span>
+<span id="cb28-19"><a href="r-data-structures.html#cb28-19" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>age           <span class="co"># by name</span></span>
+<span id="cb28-20"><a href="r-data-structures.html#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="r-data-structures.html#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>age)    <span class="co"># class of this object?</span></span>
+<span id="cb28-22"><a href="r-data-structures.html#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>sex)</span>
+<span id="cb28-23"><a href="r-data-structures.html#cb28-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-24"><a href="r-data-structures.html#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that sex and d$sex are two different objects</span></span>
+<span id="cb28-25"><a href="r-data-structures.html#cb28-25" aria-hidden="true" tabindex="-1"></a>sex <span class="sc">==</span> d<span class="sc">$</span>sex               <span class="co"># equal by now</span></span>
+<span id="cb28-26"><a href="r-data-structures.html#cb28-26" aria-hidden="true" tabindex="-1"></a>sex[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>               <span class="co"># change sex  </span></span>
+<span id="cb28-27"><a href="r-data-structures.html#cb28-27" aria-hidden="true" tabindex="-1"></a>sex                        <span class="co"># verify change</span></span>
+<span id="cb28-28"><a href="r-data-structures.html#cb28-28" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>sex                      <span class="co"># d$sex remains unaltered</span></span>
+<span id="cb28-29"><a href="r-data-structures.html#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-30"><a href="r-data-structures.html#cb28-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Add variable to a dataframe </span></span>
+<span id="cb28-31"><a href="r-data-structures.html#cb28-31" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">165</span>, <span class="dv">175</span>, <span class="dv">158</span>, <span class="dv">180</span>, <span class="dv">175</span>, <span class="dv">160</span>)       </span>
+<span id="cb28-32"><a href="r-data-structures.html#cb28-32" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(d)</span>
+<span id="cb28-33"><a href="r-data-structures.html#cb28-33" aria-hidden="true" tabindex="-1"></a>d</span>
+<span id="cb28-34"><a href="r-data-structures.html#cb28-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-35"><a href="r-data-structures.html#cb28-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove variable from a dataframe </span></span>
+<span id="cb28-36"><a href="r-data-structures.html#cb28-36" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>case <span class="ot">&lt;-</span> <span class="cn">NULL</span>  </span>
+<span id="cb28-37"><a href="r-data-structures.html#cb28-37" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(d)</span>
+<span id="cb28-38"><a href="r-data-structures.html#cb28-38" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<p><br />
+</p>
+<p>The <code>data.frame()</code> function is not the only way to create a dataframe. In the next chapter you will learn how to read data stored in an external file (e.g., an Excel file), resulting in a dataframe. This is in fact a very common way to create a dataframe.</p>
 </div>
 <div id="factors" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Factors<a href="r-data-structures.html#factors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A <em>factor</em> is the data structure used in R to represent categorical variables. Categorical variables are classifications having a number of classes, categories or <em>levels</em>. Examples of categorical variables are sex (male or female), smoker (never smoked, ex-smoker or current smoker) or previous surgery (yes or no). Data on categorical variables are usually stored as either a character vector of level descriptors (e.g., “male”, “male”, “female”, …), or as a numeric vector using numeric codes (e.g., 1 for males, 2 for females).</p>
+<p>A <em>factor</em> is the data structure used in R to represent <em>categorical variables</em>. Categorical variables are classifications having a number of classes, categories or <em>levels</em>. Examples of categorical variables are sex (male or female), smoker (never smoked, ex-smoker or current smoker) or previous surgery (yes or no). Data on a categorical variable is usually stored as either a character vector of level descriptors (e.g., “male”, “male”, “female”, …), or as a numeric vector using numeric codes (e.g., 1 for males, 2 for females).</p>
 <p>Factors are created with function <code>factor()</code>. The first argument to this function is the (numeric or character) vector containing the data. If numeric, we need to clarify the meaning of numeric codes, with two additional arguments:</p>
 <ul>
 <li><p><code>levels</code>: to specify the numeric codes (as a numeric vector)</p></li>
 <li><p><code>labels</code>: to specify the corresponding texts (as a character vector)</p></li>
 </ul>
-<p>The following script shows how to create a factor from a numeric vector of codes, or from a character vector. We first create a numeric vector <code>x</code> using the <code>rep()</code> function (to repeat values 1 and 2, five times), and then define a factor from it.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="r-data-structures.html#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">5</span>)                   <span class="co"># numeric vector using rep()</span></span>
-<span id="cb28-2"><a href="r-data-structures.html#cb28-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb28-3"><a href="r-data-structures.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="r-data-structures.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a factor from a numeric vector</span></span>
-<span id="cb28-5"><a href="r-data-structures.html#cb28-5" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(x, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
-<span id="cb28-6"><a href="r-data-structures.html#cb28-6" aria-hidden="true" tabindex="-1"></a>sex</span>
-<span id="cb28-7"><a href="r-data-structures.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sex)</span></code></pre></div>
-<p>A couple of things are worth noting in the previous example. First, both <code>levels</code> and <code>labels</code> have to be passed as <em>vectors</em>. Second, it is the <em>order</em> of <code>levels</code> and <code>labels</code> what establishes their correspondence: first level with first label, and so on. Last, when a factor (like <code>sex</code>) is printed to the console, its values are not surrounded by quotes (as is the case with character vectors), and the levels of the factor are stated after printing the values.</p>
-<p>Let’s now see how to define a factor from a character vector. In this case, if the strings of this vector are self-explanatory (e.g., “male”, o “female”), we can avoid further specifications. However, the levels will be defined in alphabetical order, and this is not always what we want. If we want a specific ordering of levels, we can just define them in the <code>levels</code> argument. Last, if the strings are not self-explanatory, or we want to change them, we can also use the <code>labels</code> argument. The following script illustrated these three options.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="r-data-structures.html#cb29-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>), <span class="dv">2</span>)</span>
+<p>The following script shows how to create a factor from a numeric vector. We first create a numeric vector <code>x</code> using the <code>rep()</code> function (to repeat values 1 and 2, five times), and then define a factor from it.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="r-data-structures.html#cb29-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">5</span>)                   <span class="co"># numeric vector using rep()</span></span>
 <span id="cb29-2"><a href="r-data-structures.html#cb29-2" aria-hidden="true" tabindex="-1"></a>x</span>
 <span id="cb29-3"><a href="r-data-structures.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="r-data-structures.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1:  levels and labels not explicitly defined</span></span>
-<span id="cb29-5"><a href="r-data-structures.html#cb29-5" aria-hidden="true" tabindex="-1"></a>hb <span class="ot">&lt;-</span> <span class="fu">factor</span>(x) </span>
-<span id="cb29-6"><a href="r-data-structures.html#cb29-6" aria-hidden="true" tabindex="-1"></a>hb</span>
-<span id="cb29-7"><a href="r-data-structures.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(hb)</span>
-<span id="cb29-8"><a href="r-data-structures.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(hb)</span>
-<span id="cb29-9"><a href="r-data-structures.html#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-10"><a href="r-data-structures.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2: define levels to force desired ordering</span></span>
-<span id="cb29-11"><a href="r-data-structures.html#cb29-11" aria-hidden="true" tabindex="-1"></a>hb <span class="ot">&lt;-</span> <span class="fu">factor</span>(x, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>)) </span>
-<span id="cb29-12"><a href="r-data-structures.html#cb29-12" aria-hidden="true" tabindex="-1"></a>hb</span>
-<span id="cb29-13"><a href="r-data-structures.html#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(hb)</span>
-<span id="cb29-14"><a href="r-data-structures.html#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(hb)</span>
-<span id="cb29-15"><a href="r-data-structures.html#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-16"><a href="r-data-structures.html#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co"># option 3: define levels and labels </span></span>
-<span id="cb29-17"><a href="r-data-structures.html#cb29-17" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span> (<span class="fu">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;n&quot;</span>, <span class="st">&quot;h&quot;</span>), <span class="dv">2</span>)</span>
-<span id="cb29-18"><a href="r-data-structures.html#cb29-18" aria-hidden="true" tabindex="-1"></a>hb <span class="ot">&lt;-</span> <span class="fu">factor</span>(x, </span>
-<span id="cb29-19"><a href="r-data-structures.html#cb29-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;n&quot;</span>, <span class="st">&quot;h&quot;</span>), </span>
-<span id="cb29-20"><a href="r-data-structures.html#cb29-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>)) </span>
-<span id="cb29-21"><a href="r-data-structures.html#cb29-21" aria-hidden="true" tabindex="-1"></a>hb</span>
-<span id="cb29-22"><a href="r-data-structures.html#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(hb)</span>
-<span id="cb29-23"><a href="r-data-structures.html#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(hb)</span></code></pre></div>
-<p>You may be wondering why we should care about the order in which the levels of a factor are defined. The point is that it has implications for graphics, tables and statistical analyses. For instance, when we tabulate results for a factor, its levels appear in the order they are defined. Also, the <em>first</em> level of a factor, which is sometimes called the <em>reference level</em>, is the one other levels are compared to in ANOVA or regression models. For this reasons, it is convenient to ensure the order of levels is a reasonable one.</p>
+<span id="cb29-4"><a href="r-data-structures.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a factor from a numeric vector</span></span>
+<span id="cb29-5"><a href="r-data-structures.html#cb29-5" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(x, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb29-6"><a href="r-data-structures.html#cb29-6" aria-hidden="true" tabindex="-1"></a>sex</span>
+<span id="cb29-7"><a href="r-data-structures.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sex)</span></code></pre></div>
+<p><br />
+</p>
+<p>A couple of things are worth noting in the previous example. First, both <code>levels</code> and <code>labels</code> have to be passed as <em>vectors</em>. Second, it is the <em>order</em> of <code>levels</code> and <code>labels</code> what establishes their correspondence: first level with first label, second level with second label, and so on. Last, when a factor (like <code>sex</code>) is printed to the console, its values are not surrounded by quotes (as is the case with character vectors), and the levels of the factor are stated after printing the values.</p>
+<p>Let’s now see how to define a factor from a character vector. In this case, if the strings of this vector are self-explanatory (e.g., “male”, o “female”), we only need to specify the character vector from which the factor is to be created. However, the levels will be defined in alphabetical order, and this is not always what we want. If we want a specific ordering of the levels, we can just define them in the <code>levels</code> argument. Last, if the strings are not self-explanatory, or we want to change them, we can also use the <code>labels</code> argument. The following script illustrates these three options.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="r-data-structures.html#cb30-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>), <span class="dv">2</span>)</span>
+<span id="cb30-2"><a href="r-data-structures.html#cb30-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb30-3"><a href="r-data-structures.html#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="r-data-structures.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1:  levels and labels not explicitly defined</span></span>
+<span id="cb30-5"><a href="r-data-structures.html#cb30-5" aria-hidden="true" tabindex="-1"></a>hb <span class="ot">&lt;-</span> <span class="fu">factor</span>(x) </span>
+<span id="cb30-6"><a href="r-data-structures.html#cb30-6" aria-hidden="true" tabindex="-1"></a>hb</span>
+<span id="cb30-7"><a href="r-data-structures.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(hb)</span>
+<span id="cb30-8"><a href="r-data-structures.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(hb)</span>
+<span id="cb30-9"><a href="r-data-structures.html#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="r-data-structures.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2: define levels to force desired ordering</span></span>
+<span id="cb30-11"><a href="r-data-structures.html#cb30-11" aria-hidden="true" tabindex="-1"></a>hb <span class="ot">&lt;-</span> <span class="fu">factor</span>(x, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>)) </span>
+<span id="cb30-12"><a href="r-data-structures.html#cb30-12" aria-hidden="true" tabindex="-1"></a>hb</span>
+<span id="cb30-13"><a href="r-data-structures.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(hb)</span>
+<span id="cb30-14"><a href="r-data-structures.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(hb)</span>
+<span id="cb30-15"><a href="r-data-structures.html#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="r-data-structures.html#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co"># option 3: define levels and labels </span></span>
+<span id="cb30-17"><a href="r-data-structures.html#cb30-17" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span> (<span class="fu">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;n&quot;</span>, <span class="st">&quot;h&quot;</span>), <span class="dv">2</span>)</span>
+<span id="cb30-18"><a href="r-data-structures.html#cb30-18" aria-hidden="true" tabindex="-1"></a>hb <span class="ot">&lt;-</span> <span class="fu">factor</span>(x, </span>
+<span id="cb30-19"><a href="r-data-structures.html#cb30-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;l&quot;</span>, <span class="st">&quot;n&quot;</span>, <span class="st">&quot;h&quot;</span>), </span>
+<span id="cb30-20"><a href="r-data-structures.html#cb30-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;high&quot;</span>)) </span>
+<span id="cb30-21"><a href="r-data-structures.html#cb30-21" aria-hidden="true" tabindex="-1"></a>hb</span>
+<span id="cb30-22"><a href="r-data-structures.html#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(hb)</span>
+<span id="cb30-23"><a href="r-data-structures.html#cb30-23" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(hb)</span></code></pre></div>
+<p><br />
+</p>
+<p>You may be wondering why we should care about the ordering of the levels of a factor. The reason is this ordering has implications for graphics, tables and statistical analyses. For instance, when we tabulate results of a factor, its levels appear in the order they are defined. Also, the <em>first</em> level of a factor, which is sometimes called the <em>reference level</em>, is the one other levels will be compared to in some analyses such as ANOVA or regression models. For this reasons, it is convenient to ensure a reasonable ordering of factor levels.</p>
 </div>
 <div id="dates" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Dates<a href="r-data-structures.html#dates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><code>Date</code> is the class of objects used to represent dates in R. There are two related object classes that are used to represent date-time values (values that combine date and time, such as “21/03/2020 07:45:28”): <code>POSIXct</code>, and <code>POSIXlt</code>. When we have just date values (e.g., “21/03/2020), the appropriate class to use is <code>Date</code>.</p>
+<p><code>Date</code> is a class of objects used to represent dates in R. There are two related object classes that are used to represent date-time values (values that combine date and time, such as “21/03/2020 07:45:28”): <code>POSIXct</code>, and <code>POSIXlt</code>. When we have just date values (e.g., “21/03/2020), the appropriate class to use is <code>Date</code>.</p>
 <p>Dates can be created from a character vector with <code>as.Date()</code>. The <code>format</code> argument is used to specify the formatting of the character strings. If these are formatted as yyyy-mm-dd, we don’t need to specify the format value, but otherwise we need to specify it. Dates can be created from <code>POSIXct</code> and <code>POSIXlt</code> objects as well.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="r-data-structures.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From a character vector of yyyy-mm-dd values</span></span>
-<span id="cb30-2"><a href="r-data-structures.html#cb30-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1958-03-05&quot;</span>, <span class="st">&quot;1991-10-28&quot;</span>)      </span>
-<span id="cb30-3"><a href="r-data-structures.html#cb30-3" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb30-4"><a href="r-data-structures.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb30-5"><a href="r-data-structures.html#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="r-data-structures.html#cb30-6" aria-hidden="true" tabindex="-1"></a>dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(x)                       </span>
-<span id="cb30-7"><a href="r-data-structures.html#cb30-7" aria-hidden="true" tabindex="-1"></a>dob</span>
-<span id="cb30-8"><a href="r-data-structures.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dob)</span>
-<span id="cb30-9"><a href="r-data-structures.html#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="r-data-structures.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># From a character vector of dd/mm/yyyy values</span></span>
-<span id="cb30-11"><a href="r-data-structures.html#cb30-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;05/03/1958&quot;</span>, <span class="st">&quot;28/10/1991&quot;</span>)     </span>
-<span id="cb30-12"><a href="r-data-structures.html#cb30-12" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb30-13"><a href="r-data-structures.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb30-14"><a href="r-data-structures.html#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-15"><a href="r-data-structures.html#cb30-15" aria-hidden="true" tabindex="-1"></a>dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(x, <span class="at">format =</span> <span class="st">&quot;%d/%m/%Y&quot;</span>)     </span>
-<span id="cb30-16"><a href="r-data-structures.html#cb30-16" aria-hidden="true" tabindex="-1"></a>dob</span>
-<span id="cb30-17"><a href="r-data-structures.html#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dob)</span>
-<span id="cb30-18"><a href="r-data-structures.html#cb30-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-19"><a href="r-data-structures.html#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="co"># see help on format symbols (Details section)</span></span>
-<span id="cb30-20"><a href="r-data-structures.html#cb30-20" aria-hidden="true" tabindex="-1"></a>?strptime   </span>
-<span id="cb30-21"><a href="r-data-structures.html#cb30-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-22"><a href="r-data-structures.html#cb30-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-23"><a href="r-data-structures.html#cb30-23" aria-hidden="true" tabindex="-1"></a><span class="co"># From POSIXct or POSIXt values</span></span>
-<span id="cb30-24"><a href="r-data-structures.html#cb30-24" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="fu">c</span>(<span class="st">&quot;1958-03-05 07:30:04&quot;</span>, <span class="st">&quot;1991-10-28 10:05:39&quot;</span>))</span>
-<span id="cb30-25"><a href="r-data-structures.html#cb30-25" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb30-26"><a href="r-data-structures.html#cb30-26" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb30-27"><a href="r-data-structures.html#cb30-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-28"><a href="r-data-structures.html#cb30-28" aria-hidden="true" tabindex="-1"></a>dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(x)</span>
-<span id="cb30-29"><a href="r-data-structures.html#cb30-29" aria-hidden="true" tabindex="-1"></a>dob</span>
-<span id="cb30-30"><a href="r-data-structures.html#cb30-30" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dob)</span></code></pre></div>
-<p>The reason why we should dates stores in a <code>Date</code> object is to allow computations. For instance, we can compute the current age from birth dates. Or, we can determine the date in ninety days from today. When we operate on dates, the result is <em>not</em> a standard numeric value, but a <code>difftime</code> object. However, we can convert to numeric with <code>as.numeric()</code>. This is recommended before further operations with time intervals.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="r-data-structures.html#cb31-1" aria-hidden="true" tabindex="-1"></a>dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;1958-03-05&quot;</span>, <span class="st">&quot;1991-10-28&quot;</span>))       <span class="co"># birth dates</span></span>
-<span id="cb31-2"><a href="r-data-structures.html#cb31-2" aria-hidden="true" tabindex="-1"></a>dob</span>
-<span id="cb31-3"><a href="r-data-structures.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dob)</span>
-<span id="cb31-4"><a href="r-data-structures.html#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="r-data-structures.html#cb31-5" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()                                 <span class="co"># current date</span></span>
-<span id="cb31-6"><a href="r-data-structures.html#cb31-6" aria-hidden="true" tabindex="-1"></a>today</span>
-<span id="cb31-7"><a href="r-data-structures.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(today)</span>
-<span id="cb31-8"><a href="r-data-structures.html#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="r-data-structures.html#cb31-9" aria-hidden="true" tabindex="-1"></a>today <span class="sc">+</span> <span class="dv">90</span>                                          <span class="co"># 90 days from today</span></span>
-<span id="cb31-10"><a href="r-data-structures.html#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-11"><a href="r-data-structures.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Current age </span></span>
-<span id="cb31-12"><a href="r-data-structures.html#cb31-12" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> today <span class="sc">-</span> dob1                                 <span class="co"># difference as number of days</span></span>
-<span id="cb31-13"><a href="r-data-structures.html#cb31-13" aria-hidden="true" tabindex="-1"></a>age</span>
-<span id="cb31-14"><a href="r-data-structures.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age)                                          <span class="co"># a difftime object</span></span>
-<span id="cb31-15"><a href="r-data-structures.html#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-16"><a href="r-data-structures.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Use as.numeric to get standard numeric vector </span></span>
-<span id="cb31-17"><a href="r-data-structures.html#cb31-17" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(today <span class="sc">-</span> dob1)                     </span>
-<span id="cb31-18"><a href="r-data-structures.html#cb31-18" aria-hidden="true" tabindex="-1"></a>age</span>
-<span id="cb31-19"><a href="r-data-structures.html#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age)</span>
-<span id="cb31-20"><a href="r-data-structures.html#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-21"><a href="r-data-structures.html#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="co"># To compute age in years we divide the NUMERIC version by 365.25</span></span>
-<span id="cb31-22"><a href="r-data-structures.html#cb31-22" aria-hidden="true" tabindex="-1"></a>age_in_years <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(today <span class="sc">-</span> dob1) <span class="sc">/</span> <span class="fl">365.25</span></span>
-<span id="cb31-23"><a href="r-data-structures.html#cb31-23" aria-hidden="true" tabindex="-1"></a>age_in_years</span>
-<span id="cb31-24"><a href="r-data-structures.html#cb31-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-25"><a href="r-data-structures.html#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Use floor() to get whole years</span></span>
-<span id="cb31-26"><a href="r-data-structures.html#cb31-26" aria-hidden="true" tabindex="-1"></a>age_in_years <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">as.numeric</span>(today <span class="sc">-</span> dob1) <span class="sc">/</span> <span class="fl">365.25</span>)</span>
-<span id="cb31-27"><a href="r-data-structures.html#cb31-27" aria-hidden="true" tabindex="-1"></a>age_in_years</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="r-data-structures.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From a character vector of yyyy-mm-dd values</span></span>
+<span id="cb31-2"><a href="r-data-structures.html#cb31-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1958-03-05&quot;</span>, <span class="st">&quot;1991-10-28&quot;</span>)      </span>
+<span id="cb31-3"><a href="r-data-structures.html#cb31-3" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb31-4"><a href="r-data-structures.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb31-5"><a href="r-data-structures.html#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="r-data-structures.html#cb31-6" aria-hidden="true" tabindex="-1"></a>dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(x)                       </span>
+<span id="cb31-7"><a href="r-data-structures.html#cb31-7" aria-hidden="true" tabindex="-1"></a>dob</span>
+<span id="cb31-8"><a href="r-data-structures.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dob)</span>
+<span id="cb31-9"><a href="r-data-structures.html#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="r-data-structures.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co"># From a character vector of dd/mm/yyyy values</span></span>
+<span id="cb31-11"><a href="r-data-structures.html#cb31-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;05/03/1958&quot;</span>, <span class="st">&quot;28/10/1991&quot;</span>)     </span>
+<span id="cb31-12"><a href="r-data-structures.html#cb31-12" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb31-13"><a href="r-data-structures.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb31-14"><a href="r-data-structures.html#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="r-data-structures.html#cb31-15" aria-hidden="true" tabindex="-1"></a>dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(x, <span class="at">format =</span> <span class="st">&quot;%d/%m/%Y&quot;</span>)     </span>
+<span id="cb31-16"><a href="r-data-structures.html#cb31-16" aria-hidden="true" tabindex="-1"></a>dob</span>
+<span id="cb31-17"><a href="r-data-structures.html#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dob)</span>
+<span id="cb31-18"><a href="r-data-structures.html#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="r-data-structures.html#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="co"># see help on format symbols (Details section)</span></span>
+<span id="cb31-20"><a href="r-data-structures.html#cb31-20" aria-hidden="true" tabindex="-1"></a>?strptime   </span>
+<span id="cb31-21"><a href="r-data-structures.html#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-22"><a href="r-data-structures.html#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="r-data-structures.html#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="co"># From POSIXct or POSIXt values</span></span>
+<span id="cb31-24"><a href="r-data-structures.html#cb31-24" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="fu">c</span>(<span class="st">&quot;1958-03-05 07:30:04&quot;</span>, <span class="st">&quot;1991-10-28 10:05:39&quot;</span>))</span>
+<span id="cb31-25"><a href="r-data-structures.html#cb31-25" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb31-26"><a href="r-data-structures.html#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb31-27"><a href="r-data-structures.html#cb31-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-28"><a href="r-data-structures.html#cb31-28" aria-hidden="true" tabindex="-1"></a>dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(x)</span>
+<span id="cb31-29"><a href="r-data-structures.html#cb31-29" aria-hidden="true" tabindex="-1"></a>dob</span>
+<span id="cb31-30"><a href="r-data-structures.html#cb31-30" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dob)</span></code></pre></div>
+<p><br />
+</p>
+<p>The reason why we should store dates in a <code>Date</code> object is to allow computations. For instance, we can compute the current age from birth dates. Or, we can determine the date in ninety days from today. When we operate on dates, the result is <em>not</em> a standard numeric value, but a <code>difftime</code> object. However, we can convert it to numeric with <code>as.numeric()</code>. This is recommended before further operations with time intervals.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="r-data-structures.html#cb32-1" aria-hidden="true" tabindex="-1"></a>dob <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;1958-03-05&quot;</span>, <span class="st">&quot;1991-10-28&quot;</span>))       <span class="co"># birth dates</span></span>
+<span id="cb32-2"><a href="r-data-structures.html#cb32-2" aria-hidden="true" tabindex="-1"></a>dob</span>
+<span id="cb32-3"><a href="r-data-structures.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(dob)</span>
+<span id="cb32-4"><a href="r-data-structures.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="r-data-structures.html#cb32-5" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()                                 <span class="co"># current date</span></span>
+<span id="cb32-6"><a href="r-data-structures.html#cb32-6" aria-hidden="true" tabindex="-1"></a>today</span>
+<span id="cb32-7"><a href="r-data-structures.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(today)</span>
+<span id="cb32-8"><a href="r-data-structures.html#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="r-data-structures.html#cb32-9" aria-hidden="true" tabindex="-1"></a>today <span class="sc">+</span> <span class="dv">90</span>                                          <span class="co"># 90 days from today</span></span>
+<span id="cb32-10"><a href="r-data-structures.html#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="r-data-structures.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Current age </span></span>
+<span id="cb32-12"><a href="r-data-structures.html#cb32-12" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> today <span class="sc">-</span> dob1                                 <span class="co"># difference as number of days</span></span>
+<span id="cb32-13"><a href="r-data-structures.html#cb32-13" aria-hidden="true" tabindex="-1"></a>age</span>
+<span id="cb32-14"><a href="r-data-structures.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age)                                          <span class="co"># a difftime object</span></span>
+<span id="cb32-15"><a href="r-data-structures.html#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="r-data-structures.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Use as.numeric to get standard numeric vector </span></span>
+<span id="cb32-17"><a href="r-data-structures.html#cb32-17" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(today <span class="sc">-</span> dob1)                     </span>
+<span id="cb32-18"><a href="r-data-structures.html#cb32-18" aria-hidden="true" tabindex="-1"></a>age</span>
+<span id="cb32-19"><a href="r-data-structures.html#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age)</span>
+<span id="cb32-20"><a href="r-data-structures.html#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="r-data-structures.html#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="co"># To compute age in years we divide the NUMERIC version by 365.25</span></span>
+<span id="cb32-22"><a href="r-data-structures.html#cb32-22" aria-hidden="true" tabindex="-1"></a>age_in_years <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(today <span class="sc">-</span> dob1) <span class="sc">/</span> <span class="fl">365.25</span></span>
+<span id="cb32-23"><a href="r-data-structures.html#cb32-23" aria-hidden="true" tabindex="-1"></a>age_in_years</span>
+<span id="cb32-24"><a href="r-data-structures.html#cb32-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-25"><a href="r-data-structures.html#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Use floor() to get whole years</span></span>
+<span id="cb32-26"><a href="r-data-structures.html#cb32-26" aria-hidden="true" tabindex="-1"></a>age_in_years <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">as.numeric</span>(today <span class="sc">-</span> dob1) <span class="sc">/</span> <span class="fl">365.25</span>)</span>
+<span id="cb32-27"><a href="r-data-structures.html#cb32-27" aria-hidden="true" tabindex="-1"></a>age_in_years</span></code></pre></div>
 </div>
 <div id="other-data-structures" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Other data structures<a href="r-data-structures.html#other-data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The data structures covered in previous sections are those you will be using again and again, so it’s really important you get familiar with them. There are many other data structures in R, but by now you don’t need to know them. However, let’s just introduce two addition data structures, because you may find them when looking at the help of some functions. These are <em>matrices</em> and <em>arrays</em>.</p>
-<p>A <em>matrix</em> is just a vector with a <code>dim</code> attribute defining the dimensions of the matrix, that is, the number of rows and number of columns. A matrix can be created with function <code>matrix()</code>, or by defining the <code>dim</code> attribute of a vector with <code>dim()</code>. Like vectors, matrices cannot mix data types (e.g., character and numeric).</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="r-data-structures.html#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>                             <span class="co"># a vector</span></span>
-<span id="cb32-2"><a href="r-data-structures.html#cb32-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb32-3"><a href="r-data-structures.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb32-4"><a href="r-data-structures.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="r-data-structures.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix of 2 rows and 5 cols</span></span>
-<span id="cb32-6"><a href="r-data-structures.html#cb32-6" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(x, <span class="at">nrow =</span> <span class="dv">2</span>)              </span>
-<span id="cb32-7"><a href="r-data-structures.html#cb32-7" aria-hidden="true" tabindex="-1"></a>m</span>
-<span id="cb32-8"><a href="r-data-structures.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(m)</span>
-<span id="cb32-9"><a href="r-data-structures.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m)</span>
-<span id="cb32-10"><a href="r-data-structures.html#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-11"><a href="r-data-structures.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)                                <span class="co"># vectors do not have a dim attribute</span></span>
-<span id="cb32-12"><a href="r-data-structures.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)                     <span class="co"># but we can define it </span></span>
-<span id="cb32-13"><a href="r-data-structures.html#cb32-13" aria-hidden="true" tabindex="-1"></a>x                                     <span class="co"># and now its a matrix</span></span>
-<span id="cb32-14"><a href="r-data-structures.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb32-15"><a href="r-data-structures.html#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
-<p>Matrices are a special case of a more general data structure called <em>array</em>. In fact, a matrix is an array with two dimensions (rows and columns) but, in general, arrays are multidimensional data structures. Arrays are created with function <code>array()</code>, or by defining the <code>dim</code> attribute of a vector.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="r-data-structures.html#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span></span>
-<span id="cb33-2"><a href="r-data-structures.html#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="r-data-structures.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an three-dimensional array</span></span>
-<span id="cb33-4"><a href="r-data-structures.html#cb33-4" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">array</span>(x, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>))           </span>
-<span id="cb33-5"><a href="r-data-structures.html#cb33-5" aria-hidden="true" tabindex="-1"></a>a</span>
-<span id="cb33-6"><a href="r-data-structures.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span>
-<span id="cb33-7"><a href="r-data-structures.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(a)</span>
-<span id="cb33-8"><a href="r-data-structures.html#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-9"><a href="r-data-structures.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)                                <span class="co"># vectors do not have a dim attribute</span></span>
-<span id="cb33-10"><a href="r-data-structures.html#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>)                  <span class="co"># but we can define it </span></span>
-<span id="cb33-11"><a href="r-data-structures.html#cb33-11" aria-hidden="true" tabindex="-1"></a>x                                     <span class="co"># and now its an array </span></span>
-<span id="cb33-12"><a href="r-data-structures.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
-<span id="cb33-13"><a href="r-data-structures.html#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
+<p>The data structures presented in previous sections are those you will be using again and again, so it’s really important you get familiar with them. In this section we briefly introduce a couple of additional data structures, because you may find them when looking at the help of some functions. These are <em>matrices</em> and <em>arrays</em>.</p>
+<p>A <em>matrix</em> is just a vector with a <code>dim</code> attribute defining the dimensions of the matrix, that is, the number of rows and columns. A matrix can be created with function <code>matrix()</code>, or by defining the <code>dim</code> attribute of a vector with <code>dim()</code>. Like vectors, matrices cannot mix data types (e.g., character and numeric).</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="r-data-structures.html#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>                             <span class="co"># a vector</span></span>
+<span id="cb33-2"><a href="r-data-structures.html#cb33-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb33-3"><a href="r-data-structures.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb33-4"><a href="r-data-structures.html#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="r-data-structures.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix of 2 rows and 5 cols</span></span>
+<span id="cb33-6"><a href="r-data-structures.html#cb33-6" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(x, <span class="at">nrow =</span> <span class="dv">2</span>)              </span>
+<span id="cb33-7"><a href="r-data-structures.html#cb33-7" aria-hidden="true" tabindex="-1"></a>m</span>
+<span id="cb33-8"><a href="r-data-structures.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(m)</span>
+<span id="cb33-9"><a href="r-data-structures.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(m)</span>
+<span id="cb33-10"><a href="r-data-structures.html#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="r-data-structures.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)                                <span class="co"># vectors do not have a dim attribute</span></span>
+<span id="cb33-12"><a href="r-data-structures.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)                     <span class="co"># but we can define it </span></span>
+<span id="cb33-13"><a href="r-data-structures.html#cb33-13" aria-hidden="true" tabindex="-1"></a>x                                     <span class="co"># and now its a matrix</span></span>
+<span id="cb33-14"><a href="r-data-structures.html#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb33-15"><a href="r-data-structures.html#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
+<p><br />
+</p>
+<p>Matrices are a special case of a more general data structure called <em>array</em>. In fact, a matrix is an array with two dimensions (rows and columns) but, in general, arrays can have multiple dimensions. Arrays are created with function <code>array()</code>, or by defining the <code>dim</code> attribute of a vector.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="r-data-structures.html#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span></span>
+<span id="cb34-2"><a href="r-data-structures.html#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="r-data-structures.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an three-dimensional array</span></span>
+<span id="cb34-4"><a href="r-data-structures.html#cb34-4" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">array</span>(x, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>))           </span>
+<span id="cb34-5"><a href="r-data-structures.html#cb34-5" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb34-6"><a href="r-data-structures.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span>
+<span id="cb34-7"><a href="r-data-structures.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(a)</span>
+<span id="cb34-8"><a href="r-data-structures.html#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="r-data-structures.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)                                <span class="co"># vectors do not have a dim attribute</span></span>
+<span id="cb34-10"><a href="r-data-structures.html#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>)                  <span class="co"># but we can define it </span></span>
+<span id="cb34-11"><a href="r-data-structures.html#cb34-11" aria-hidden="true" tabindex="-1"></a>x                                     <span class="co"># and now its an array </span></span>
+<span id="cb34-12"><a href="r-data-structures.html#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb34-13"><a href="r-data-structures.html#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
+<p><br />
+</p>
 <p>For more information on matrices and arrays see <a href="http://adv-r.had.co.nz/Data-structures.html#matrices-and-arrays">this section</a> of the <em>first edition</em> of the book <em>Advanced R</em> by Hadley Wickham.</p>
 </div>
 <div id="resources-1" class="section level2 unnumbered hasAnchor">
@@ -675,67 +711,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercises-1" class="section level2 unnumbered hasAnchor">
 <h2>Exercises<a href="r-data-structures.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before undertaking each exercise, ensure your workspace is clean (i.e., there are no objects in the <code>Environment</code> pane).</p>
+<p><br />
+</p>
 <ol style="list-style-type: decimal">
-<li>Create a vectors of body weights in kilograms (<code>w</code>) and a vector of body heights in centimeters (<code>h</code>), with the following values:</li>
-</ol>
+<li><p>Create a vector <code>w</code> of body weights in kilograms, and a vector <code>h</code> of body heights in centimeters, with the following values corresponding to 10 patients:</p>
 <ul>
-<li><p><code>w</code>: 47.3, 87.0, 80.9, 85.1, 95.4, 90.0, 70.3, 46.9, 86.7, 72.2, 74.0</p></li>
-<li><p><code>h</code>: 160, 165, 180, 170, 190, 180, 172, 156, 170, NA, 169</p></li>
+<li><p><code>w</code>: 47.3, 87.0, 80.9, 85.1, 95.4, 90.0, 70.3, 46.9, 86.7, 74.0</p></li>
+<li><p><code>h</code>: 160, 165, 180, 170, 190, 180, 172, 156, 170, 169</p></li>
 </ul>
 <p>Then compute the body mass index (kg/m^2), store it as <code>bmi</code>, and write appropriate expressions to:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Verify that <code>bmi</code> is a numeric vector.</li>
 <li>Get the number individuals with low weight (BMI below 18.5).</li>
-<li>Get the number individuals with (BMI of 25 or more).</li>
+<li>Get the number individuals with overweight (BMI of 25 or more).</li>
 <li>Get the number individuals with obesity (BMI of 30 or more).</li>
-<li>Is there anyone having a BMI of 25?</li>
-<li>Is there anyone having a BMI of 30?</li>
-<li>Get the number of missings in <code>bmi</code>.</li>
 <li>Get the mean and standard deviation of <code>bmi</code> values.</li>
 </ol>
-<p>Hint: remember that the result of a comparison is a logical vector, and that the sum of a logical vector is the number of TRUEs it contains.</p>
+<p>Hint: remember that the result of a comparison is a logical vector, and that the sum of a logical vector is the number of <code>TRUE</code>s it contains.</p></li>
+</ol>
 <p><br />
 </p>
 <ol start="2" style="list-style-type: decimal">
-<li><code>LETTERS</code> and <code>letters</code>are built-in vectors containing all the letters in the alphabet (print them in the console to see them). Using this vectors and the <code>paste()</code> function, get the following character vectors:</li>
-</ol>
-<!-- -->
+<li><p><code>LETTERS</code> and <code>letters</code>are built-in vectors containing all the letters in the alphabet (print them in the console to see them). What is <code>length(letters)</code>? Using these vectors, get the following:</p>
 <ol style="list-style-type: lower-alpha">
-<li>One whose first element is “A is in position 1 of the alphabet” (and similar statements for the remaining letters). Hint: use <code>1:length(LETTERS)</code>.</li>
-<li>One whose first element is “A is an LETTER, and a is a letter” (and similar statements for the remaining letters).</li>
-<li>One with the first five LETTERS only.</li>
-<li>The letter in position 20.</li>
-<li>Last, try this: <code>x &lt;- c(5, 14, 4); LETTERS[x]</code>. Can you devise a way to get the same result with just one expression rather than two?</li>
+<li>The <code>letter</code> in position 20.</li>
+<li>A character vector with the first five <code>LETTERS</code> only.</li>
+<li>A character vector whose first element is “A is an uppercase LETTER, and a is a lowercase letter” (and similar statements for the remaining letters). Hint: use the <code>paste()</code> function.</li>
+<li>A character vector whose first element is “A is in position 1 of the alphabet” (and similar statements for the remaining letters). Hint: use <code>1:length(LETTERS)</code> in the <code>paste()</code> function. What is the result of <code>1:length(LETTERS)</code>?</li>
+</ol></li>
 </ol>
 <p><br />
 </p>
 <ol start="3" style="list-style-type: decimal">
-<li>The following are five CIP codes, whose structure is as follows: the first four characters are initials of surname and first name, the first digit is a code for sex (0 for male, 1 for female), followed by birth date in format yyddmm, and three trailing zeros:</li>
-</ol>
+<li><p>The following are five CIP codes, whose structure is as follows: the first four characters are initials of surname and first name, the first digit is a code for sex (0 for male, 1 for female), followed by birth date in format yyddmm, and three trailing zeros:</p>
 <p>YAGU0741511000, DEFO0702702000, GITI1642102000, AOPU1620401000, BABE0740206000</p>
-<p>Define a vector <code>cip</code> containing these CIP codes. Then, from this vector:</p>
+<p>Define vector <code>cip</code> containing these CIP codes and then:</p>
 <ol style="list-style-type: lower-alpha">
-<li>Get a vector with the years of birth in format yyyy (4-digits years).</li>
+<li>Get a vector containing the two digits corresponding to the year of birth. Is it a numeric vector?</li>
+<li>Get a vector of four-digit years of birth by adding 1900.</li>
 <li>Using only the year of birth (ignore month and day of birth), get an estimate of their ages by 2050.</li>
 <li>Get a vector with first element “YAGU was born in 1974” (and analogous for the remaining persons).</li>
+</ol></li>
 </ol>
 <p><br />
 </p>
 <ol start="4" style="list-style-type: decimal">
-<li>See the help of the <code>rep()</code> function by running <code>?rep</code>, and look at the first two examples. Use this function to create three vectors containing the following elements:</li>
-</ol>
-<!-- -->
+<li><p>See the help of the <code>rep()</code> function by running <code>?rep</code>, and look at the first two examples. Use this function to create three vectors containing the following elements:</p>
 <ol style="list-style-type: lower-alpha">
 <li>0, 1, 0, 1, 0, 1</li>
 <li>0, 0, 0, 1, 1, 1</li>
 <li>“male”, “female”, “male”, “female”, “male”, “female”</li>
+</ol>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="r-data-structures.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb35-2"><a href="r-data-structures.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">each =</span> <span class="dv">3</span>)</span>
+<span id="cb35-3"><a href="r-data-structures.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>), <span class="dv">3</span>)</span></code></pre></div></li>
 </ol>
 <p><br />
 </p>
 <ol start="5" style="list-style-type: decimal">
 <li>See the help of the <code>seq()</code> function by running <code>?seq</code>, and look at the examples. Use this function to create vectors containing:</li>
 </ol>
-<!-- -->
 <ol style="list-style-type: lower-alpha">
 <li>All multiples of five up to 100.</li>
 <li>All odd numbers between zero and ten.</li>
@@ -744,24 +779,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <ol start="6" style="list-style-type: decimal">
-<li>Run the following code to conduct a t-test on the <code>lwb</code> data in package <code>COUNT</code>:</li>
+<li><p>Run the following code to conduct a t-test on the <code>lwb</code> data in package <code>COUNT</code> (you need to install this package if you do not have it!):</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="r-data-structures.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(COUNT)</span>
+<span id="cb36-2"><a href="r-data-structures.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lbw)</span>
+<span id="cb36-3"><a href="r-data-structures.html#cb36-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(bwt <span class="sc">~</span> smoke, <span class="at">data =</span> lbw)</span>
+<span id="cb36-4"><a href="r-data-structures.html#cb36-4" aria-hidden="true" tabindex="-1"></a>res</span></code></pre></div></li>
 </ol>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="r-data-structures.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(COUNT)</span>
-<span id="cb34-2"><a href="r-data-structures.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lbw)</span>
-<span id="cb34-3"><a href="r-data-structures.html#cb34-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(bwt <span class="sc">~</span> smoke, <span class="at">data =</span> lbw)</span>
-<span id="cb34-4"><a href="r-data-structures.html#cb34-4" aria-hidden="true" tabindex="-1"></a>res</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>What is the class of object <code>res</code>? Is it a list?</li>
 <li>What are the names of the elements in <code>res</code>?</li>
 <li>Get the p-value of the test, with 3 decimals.</li>
 <li>Get the means of <code>bwt</code> for smokers and non-smokers, rounded to one decimal.</li>
 <li>Get their difference with function <code>diff()</code>, and round to one decimal.</li>
-<li>Get the confidence interval for this difference, rounded to one decimals.</li>
+<li>Get the confidence interval for this difference, rounded to one decimal.</li>
 </ol>
 <p><br />
 </p>
 <ol start="7" style="list-style-type: decimal">
-<li>In one step, crate a dataframe with these data:</li>
+<li>In one step, create a dataframe with these data:</li>
 </ol>
 <table>
 <thead>
@@ -792,10 +827,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Then extend this dataframe with the following additional variables:</p>
 <ol style="list-style-type: lower-alpha">
 <li><code>case_id</code> containing numbers 1 to 3.</li>
-<li><code>age_in_10y</code> reflecting the age the each patient will have in 10 years from now.</li>
+<li><code>age_in_10y</code> reflecting the age they will have in 10 years from now.</li>
 <li><code>older_than_30</code> as TRUE or FALSE.</li>
 <li><code>is_male</code> as TRUE of FALSE.</li>
-<li>Remove variable <code>male</code> from the dataframe</li>
+<li>Remove variable <code>is_male</code> from the dataframe</li>
 <li>What is now the <code>length</code> of the dataframe? and what is the number of rows?</li>
 </ol>
 <p><br />
@@ -806,22 +841,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br />
 </p>
 <ol start="9" style="list-style-type: decimal">
-<li>Create a character vector <code>x</code> with two repetitions of the vector c(“never-smoker”, “ex-smoker”, “current-smoker”), and then define a factor from <code>x</code>.</li>
-</ol>
+<li><p>Create a character vector <code>x</code> with two repetitions of the vector c(“never-smoker”, “ex-smoker”, “current-smoker”), and then define a factor from <code>x</code>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Is the ordering of levels good enough?</li>
 <li>Redefine the factor with a better ordering.</li>
+</ol></li>
 </ol>
 <p><br />
 </p>
 <ol start="10" style="list-style-type: decimal">
-<li>Create two <code>Date</code> objects: one with today’s date, and the other with your date of birth. Then, use these objects to:</li>
-</ol>
+<li><p>Create two <code>Date</code> objects: one with today’s date, and the other with your date of birth. Then, use these objects to:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Compute your age in days</li>
 <li>Compute your age in (whole) years</li>
-<li>Print your date of birth, including the weekday</li>
-<li>Print a calendar of ten weekly celebrations, starting today.</li>
+<li>Print your date of birth, including the weekday the full name of the month and the year with four digits</li>
+</ol></li>
 </ol>
 
 </div>
