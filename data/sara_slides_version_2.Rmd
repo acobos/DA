@@ -1,0 +1,175 @@
+---
+title: "The SARA clinical trial"
+author: "Albert Cobos"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.align = 'center')
+
+# invalid patients to exclude
+invalid <- c("1-038", "1-054", "2-012", "5-002", "1-013", "6-021")
+
+# reading data
+library(dplyr)
+d <- readxl::read_excel("SARA_with_outcomes.xlsx") %>% 
+  # exclude invalid patients
+  filter(!patient %in% invalid) %>% 
+  mutate(group = factor(group, levels = 1:2, labels = c("CA", "ADT")),
+         sex = factor(sex, levels = 1:2, labels = c("male", "female")),
+         PEP = factor(PEP, levels = 0:1, labels = c("AF-free", "AF")),
+         SEP = factor(SEP, levels = 0:1, labels = c("AF-free", "AF")),
+         NYHA = as.factor(NYHA),
+         # converting character to Date
+         rand_dt = as.Date(rand_dt),
+         birth_dt = as.Date(birth_dt),
+         # computing age at randomization
+         age = floor(as.numeric(rand_dt - birth_dt)/365.25),
+         bmi = weight / (height/100)^2)
+
+# loading packages
+library(mosaic)
+library(ggformula)
+library(patchwork)
+library(compareGroups)
+
+```
+
+## Objectives and trial design
+
+### Objective
+
+To compare the effectiveness of CA vs. ADT in treating persistent AF.
+
+### Trial design
+
+- Multicenter, open, parallel-groups, randomized 
+
+- Randomization to either CA or ADT, with 2:1 allocation ratio.
+
+- 12-month follow-up. 
+
+- All centres experienced in AF ablation procedures.
+
+## Outcomes
+
+### Primary outcome
+
+- AF/flutter lasting more than 24 h or requiring cardioversion, during follow-up. 
+
+### Secondary outcomes
+
+- AF/flutter lasting at least 30 s, during follow-up. 
+
+- Number of cardioversions during follow-up. 
+
+- AF-QoL questionnaire (total score) at baseline, 6 and 12 months. 
+
+## Results - Baseline characteristics {.smaller}
+
+
+```{r pats_per_group}
+
+# petients per group
+ng <- tally(~group, data = d)
+
+```
+
+`r nrow(d)` patients randomized (`r paste(names(ng), ng, collapse = ", ")`), from `r format(min(d$rand_dt), "%B %Y")` to `r format(max(d$rand_dt), "%B %Y")`.
+
+```{r baseline}
+
+# labels for dataset variables
+Hmisc::label(d$age) <- "Age at randomization (y)"
+Hmisc::label(d$sex) <- "Sex"
+Hmisc::label(d$bmi) <- "BMI (kg/m^2)"
+Hmisc::label(d$SBP) <- "SBP (mmHg)"
+Hmisc::label(d$DBP) <- "DBP (mmHg)"
+Hmisc::label(d$HR) <- "Heart rate (bpm)"
+Hmisc::label(d$QoL_bas) <- "AF-QoL score"
+
+descrTable(group ~ age + sex + bmi + NYHA + SBP + DBP + HR + QoL_bas, data = d,
+           show.p.overall = FALSE) %>% 
+  export2md(caption = "")
+
+```
+
+
+## Results - Outcomes {.smaller}
+
+```{r outcomes}
+
+d <- d %>% 
+  # recode cardioversions and compute AF-QoL change at 6 and 12 months
+  mutate(Cardioversions = factor(ifelse(d$Cardioversions > 1, 
+                                        "2++", 
+                                        as.character(d$Cardioversions))),
+         qol_change_6m = QoL_6m - QoL_bas,
+         qol_change_12m = QoL_12m - QoL_bas)
+
+Hmisc::label(d$PEP) <- "Free of AF or flutter (during >24 h)"
+Hmisc::label(d$SEP) <- "Free of AF or flutter (during >30 s)"
+Hmisc::label(d$Cardioversions) <- "Number of cardioversions"
+Hmisc::label(d$qol_change_6m) <- "AF-QoL, 6 months change"
+Hmisc::label(d$qol_change_12m) <- "AF-QoL, 12 months change"
+
+descrTable(group ~ PEP + SEP + Cardioversions + qol_change_6m + qol_change_12m, data = d,
+           show.p.overall = TRUE,
+           hide.no = "AF") %>% 
+  export2md(caption = "",
+            header.labels = c('p.overall' = "P-value"))
+
+```
+
+
+## Results - AF-QoL {.smaller}
+
+```{r qol_change_boxplots, fig.height=2, fig.cap="Changes from baseline in AF-QoL, at 6 and 12 months"}
+
+p1 <- gf_boxplot(qol_change_6m ~ group, data = d,
+                 xlab = "",
+                 ylab = "AF-QoL, 6 months change") %>% 
+  gf_refine(coord_flip()) %>% 
+  gf_theme(theme_light())
+  
+
+p2 <- gf_boxplot(qol_change_12m ~ group, data = d,
+                 xlab = "",
+                 ylab = "AF-QoL, 12 months change") %>% 
+  gf_refine(coord_flip()) %>% 
+  gf_theme(theme_light())
+
+p1 + p2
+
+
+```
+
+```{r qol_mean_diff}
+
+# extracting results from the Welch t-tests for change at 6 months
+r6 <- t.test(qol_change_6m ~ group, data = d, R = 5000)
+r6_means <- r6$estimate
+r6_mean_diff <- round(-diff(r6_means), 1)
+names(r6_mean_diff) <- "difference (ADT-CA)"
+r6_mean_diff_ci <- reporttools::displayCI(r6$conf.int, digit=1)
+
+# extracting results from the Welch t-tests for change at 12 months
+r12 <- t.test(qol_change_12m ~ group, data = d, R = 5000)
+r12_means <- r12$estimate
+r12_mean_diff <- round(-diff(r12_means), 1)
+names(r12_mean_diff) <- "difference (ADT-CA)"
+r12_mean_diff_ci <- reporttools::displayCI(r12$conf.int, digit=1)
+
+```
+
+\
+
+
+- Change at 6 months: CA = `r r6_means["mean in group CA"] %>% round(1)`, ADT = `r r6_means["mean in group ADT"] %>% round(1)`, difference [95% CI]: `r r6_mean_diff` `r r6_mean_diff_ci`. 
+
+- Change at 12 months: CA = `r r12_means["mean in group CA"] %>% round(1)`, ADT = `r r12_means["mean in group ADT"] %>% round(1)`, difference [95% CI]:`r r12_mean_diff` `r r12_mean_diff_ci`.
+
+## Conclusions
+
+- Catheter ablation was superior to medical therapy for the maintenance of sinus rhythm in patients with persistent AF at 12-month follow-up.

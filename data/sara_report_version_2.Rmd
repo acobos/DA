@@ -1,0 +1,175 @@
+---
+title: "The SARA clinical trial"
+author: "Albert Cobos"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.align = 'center')
+
+# invalid patients to exclude
+invalid <- c("1-038", "1-054", "2-012", "5-002", "1-013", "6-021")
+
+# reading data
+library(dplyr)
+d <- readxl::read_excel("SARA_with_outcomes.xlsx") %>% 
+  # exclude invalid patients
+  filter(!patient %in% invalid) %>% 
+  mutate(group = factor(group, levels = 1:2, labels = c("CA", "ADT")),
+         sex = factor(sex, levels = 1:2, labels = c("male", "female")),
+         PEP = factor(PEP, levels = 0:1, labels = c("AF-free", "AF")),
+         SEP = factor(SEP, levels = 0:1, labels = c("AF-free", "AF")),
+         NYHA = as.factor(NYHA),
+         # converting character to Date
+         rand_dt = as.Date(rand_dt),
+         birth_dt = as.Date(birth_dt),
+         # computing age at randomization
+         age = floor(as.numeric(rand_dt - birth_dt)/365.25),
+         bmi = weight / (height/100)^2)
+
+# loading packages
+library(mosaic)
+library(ggformula)
+library(patchwork)
+library(compareGroups)
+
+```
+
+## Introduction
+
+Catheter ablation (CA) is a highly effective therapy for the treatment of paroxysmal atrial fibrillation (AF) when compared with antiarrhythmic drug therapy (ADT). However, no randomized studies have compared the two strategies in persistent AF. The present randomized trial aimed to compare the effectiveness of CA vs. ADT in treating persistent AF.
+
+## Methods
+
+### Patients
+
+Patients with symptomatic persistent AF refractory to at least one class I or class III antiarrhythmic drug were recruited for the trial. Exclusion criteria were: age out of the 18-70 years range, long-standing persistent AF, first episode of AF, hyper- or hypothyroidism, hypertrophic cardiomyopathy, implanted pacemaker or defibrillator, moderate or severe mitral disease or mitral prosthesis, left ventricular ejection fraction less than 30%, prior ablation procedure, contraindication for oral anticoagulation, left atrial thrombus, active infection or sepsis, pregnancy, unstable angina, acute myocardial infarction during previous 3 months, life expectancy less than 12 months, current participation in another clinical trial, mental disease or inability to give informed consent, or disease contraindicating CA or ADT. All patients gave written informed consent before enrolment. The study protocol was approved by the Ethics Committee of each participating centre. 
+
+### Study design
+
+We conducted a multicenter, open, parallel-groups, randomized trial, with allocation ratio 2:1 (CA:ADT), aimed to compare the effectiveness and safety of using CA or ADT to maintain sinus rhythm at 12-month follow-up. All recruiting centres have arrhythmia units with extensive experience in AF ablation procedures.
+
+### Interventions
+
+_Ablation procedure_: Pre- and postprocedural oral anticoagulation (international normalized ratio between 2 and 3) was required for at least 1 month before and after CA. Antiarrhythmic drugs were discontinued at least 5 half-life periods (or 1 week for amiodarone) before ablation.
+
+_Antiarrhythmic drugs_: Patients were treated depending on physician's choice and according to current guidelines. Discontinuation of the antiarrhythmic treatment was not required before inclusion in the ADT group. Class III drugs (amiodarone) were recommended for patients with structural cardiomyopathy and class Ic (flecainide) plus diltiazem or betablockers otherwise.
+
+### Outcomes
+
+The primary outcome was defined as any episode of AF or flutter lasting more than 24 h or requiring cardioversion, during the 12-months follow-up. Predefined secondary outcomes included any recurrence of AF or flutter lasting at least 30 s, electrical or pharmacological cardioversion during follow-up, and health-related quality of life (QoL) as measured by the AF-QoL questionnaire (total score) at baseline and 6 and 12 months. Higher AF-QoL scores indicate better QoL.
+
+#### Statistical analysis
+
+Data are described as n (%) or mean (SD), as appropriate. Between-group comparisons were made by a chi-square test with continuity correction for the primary outcome and categorical secondary outcomes. Changes in AF-QoL scores were computed as 6 or 12 months score minus baseline score, so that positive (negative) values reflect improvement (deterioration), and were compared by a Welch t-test. All tests were two-sided, and statistical significance was declared when p < 0.05. All analyses were conducted with the R language (version 4.0.4).
+
+## Results
+
+```{r pats_per_group}
+
+# petients per group
+ng <- tally(~group, data = d)
+
+```
+
+
+From `r format(min(d$rand_dt), "%B %Y")` to `r format(max(d$rand_dt), "%B %Y")`, `r nrow(d)` eligible patients were randomized (`r paste(names(ng), ng, collapse = ", ")`). The demographic and baseline characteristics of patients are described in table \ref{tab:baseline}.    
+
+
+```{r baseline}
+
+# labels for dataset variables
+Hmisc::label(d$age) <- "Age at randomization (y)"
+Hmisc::label(d$sex) <- "Sex"
+Hmisc::label(d$bmi) <- "BMI (kg/m^2)"
+Hmisc::label(d$SBP) <- "SBP (mmHg)"
+Hmisc::label(d$DBP) <- "DBP (mmHg)"
+Hmisc::label(d$HR) <- "Heart rate (bpm)"
+Hmisc::label(d$QoL_bas) <- "AF-QoL score"
+
+descrTable(group ~ age + sex + bmi + NYHA + SBP + DBP + HR + QoL_bas, data = d,
+           show.p.overall = FALSE) %>% 
+  export2md(caption = "Demographic and baseline characteristics of patients")
+
+```
+
+\newpage
+
+### Outcomes
+
+Table \ref{tab:outcomes} shows the results of between-group comparisons of trial outcomes. AF/flutter recurrence and cardioversions were less frequent in the CA group than in the ADT group. The mean change in AF-QoL scores at 6 and 12 months was also higher with CA than with ADT, though their difference failed to reach statistical significance.
+
+
+```{r outcomes}
+
+d <- d %>% 
+  # recode cardioversions and compute AF-QoL change at 6 and 12 months
+  mutate(Cardioversions = factor(ifelse(d$Cardioversions > 1, 
+                                        "2++", 
+                                        as.character(d$Cardioversions))),
+         qol_change_6m = QoL_6m - QoL_bas,
+         qol_change_12m = QoL_12m - QoL_bas)
+
+Hmisc::label(d$PEP) <- "Free of AF or flutter (during >24 h)"
+Hmisc::label(d$SEP) <- "Free of AF or flutter (during >30 s)"
+Hmisc::label(d$Cardioversions) <- "Number of cardioversions"
+Hmisc::label(d$qol_change_6m) <- "AF-QoL, 6 months change"
+Hmisc::label(d$qol_change_12m) <- "AF-QoL, 12 months change"
+
+descrTable(group ~ PEP + SEP + Cardioversions + qol_change_6m + qol_change_12m, data = d,
+           show.p.overall = TRUE,
+           hide.no = "AF") %>% 
+  export2md(caption = "Trial outcomes",
+            header.labels = c('p.overall' = "P-value"))
+
+```
+
+
+```{r qol_mean_diff}
+
+# extracting results from the Welch t-tests for change at 6 months
+r6 <- t.test(qol_change_6m ~ group, data = d, R = 5000)
+r6_means <- r6$estimate
+r6_mean_diff <- round(-diff(r6_means), 1)
+names(r6_mean_diff) <- "difference (ADT-CA)"
+r6_mean_diff_ci <- reporttools::displayCI(r6$conf.int, digit=1)
+
+# extracting results from the Welch t-tests for change at 12 months
+r12 <- t.test(qol_change_12m ~ group, data = d, R = 5000)
+r12_means <- r12$estimate
+r12_mean_diff <- round(-diff(r12_means), 1)
+names(r12_mean_diff) <- "difference (ADT-CA)"
+r12_mean_diff_ci <- reporttools::displayCI(r12$conf.int, digit=1)
+
+```
+
+
+Figure \ref{fig:qol_change_boxplots} displays the distributions of the AF-QoL changes at 6 and 12 months. At 6 months, the mean changes were `r r6_means["mean in group CA"] %>% round(1)` and `r r6_means["mean in group ADT"] %>% round(1)` in groups CA and ADT respectively, with a difference [95% CI] of `r r6_mean_diff` `r r6_mean_diff_ci`. At 12 months, mean changes were `r r12_means["mean in group CA"] %>% round(1)` and `r r12_means["mean in group ADT"] %>% round(1)` in groups CA and ADT respectively, with a difference [95% CI] of `r r12_mean_diff` `r r12_mean_diff_ci`.
+
+```{r qol_change_boxplots, fig.height=2, fig.cap="Changes from baseline in AF-QoL, at 6 and 12 months"}
+
+p1 <- gf_boxplot(qol_change_6m ~ group, data = d,
+                 xlab = "",
+                 ylab = "AF-QoL, 6 months change") %>% 
+  gf_refine(coord_flip()) %>% 
+  gf_theme(theme_light())
+  
+
+p2 <- gf_boxplot(qol_change_12m ~ group, data = d,
+                 xlab = "",
+                 ylab = "AF-QoL, 12 months change") %>% 
+  gf_refine(coord_flip()) %>% 
+  gf_theme(theme_light())
+
+p1 + p2
+
+
+```
+
+
+## Conclusions
+
+Catheter ablation was superior to medical therapy for the maintenance of sinus rhythm in patients with persistent AF at 12-month follow-up.
+
+
