@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Data preparation | Data Analysis for Clinical Researchers</title>
+  <meta name="description" content="4 Data preparation | Data Analysis for Clinical Researchers" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Data preparation | Data Analysis for Clinical Researchers" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Data preparation | Data Analysis for Clinical Researchers" />
+  
+  
+  
+
+<meta name="author" content="Albert Cobos" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-acquisition.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="structure-of-this-book.html"><a href="structure-of-this-book.html"><i class="fa fa-check"></i>Structure of this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#first-r-session"><i class="fa fa-check"></i><b>1.2</b> First R session</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-objects"><i class="fa fa-check"></i><b>1.3</b> R objects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-functions"><i class="fa fa-check"></i><b>1.4</b> R functions</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>1.5</b> Installing R packages</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#loading-packages"><i class="fa fa-check"></i><b>1.6</b> Loading packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-data-structures.html"><a href="r-data-structures.html"><i class="fa fa-check"></i><b>2</b> R data structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-data-structures.html"><a href="r-data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="r-data-structures.html"><a href="r-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3" data-path="r-data-structures.html"><a href="r-data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="r-data-structures.html"><a href="r-data-structures.html#factors"><i class="fa fa-check"></i><b>2.4</b> Factors</a></li>
+<li class="chapter" data-level="2.5" data-path="r-data-structures.html"><a href="r-data-structures.html#dates"><i class="fa fa-check"></i><b>2.5</b> Dates</a></li>
+<li class="chapter" data-level="2.6" data-path="r-data-structures.html"><a href="r-data-structures.html#other-data-structures"><i class="fa fa-check"></i><b>2.6</b> Other data structures</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-acquisition.html"><a href="data-acquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-ms-excel-data"><i class="fa fa-check"></i><b>3.1</b> Reading MS Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-text-data"><i class="fa fa-check"></i><b>3.2</b> Reading text data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-spss-sas-or-stata-data"><i class="fa fa-check"></i><b>3.3</b> Reading SPSS, SAS or Stata data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-databases"><i class="fa fa-check"></i><b>3.4</b> Reading databases</a></li>
+<li class="chapter" data-level="3.5" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-other-formats"><i class="fa fa-check"></i><b>3.5</b> Reading other formats</a></li>
+<li class="chapter" data-level="3.6" data-path="data-acquisition.html"><a href="data-acquisition.html#getting-data-from-r-packages"><i class="fa fa-check"></i><b>3.6</b> Getting data from R packages</a></li>
+<li class="chapter" data-level="3.7" data-path="data-acquisition.html"><a href="data-acquisition.html#problems-when-importing-data-from-external-files"><i class="fa fa-check"></i><b>3.7</b> Problems when importing data from external files</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="data-acquisition.html"><a href="data-acquisition.html#package-dplyr"><i class="fa fa-check"></i><b>3.7.1</b> Package <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.7.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-the-sara-data"><i class="fa fa-check"></i><b>3.7.2</b> Reading the SARA data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>4</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-preparation.html"><a href="data-preparation.html#steps-in-data-preparation"><i class="fa fa-check"></i><b>4.1</b> Steps in data preparation</a></li>
+<li class="chapter" data-level="4.2" data-path="data-preparation.html"><a href="data-preparation.html#reading-raw-data"><i class="fa fa-check"></i><b>4.2</b> Reading raw data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#reviewing-data"><i class="fa fa-check"></i><b>4.3</b> Reviewing data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-preparation.html"><a href="data-preparation.html#missings"><i class="fa fa-check"></i><b>4.3.1</b> Missings</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-preparation.html"><a href="data-preparation.html#data-errors"><i class="fa fa-check"></i><b>4.3.2</b> Data errors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#modifying-data"><i class="fa fa-check"></i><b>4.4</b> Modifying data</a></li>
+<li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#computing-new-variables"><i class="fa fa-check"></i><b>4.5</b> Computing new variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="data-preparation.html"><a href="data-preparation.html#defining-factors"><i class="fa fa-check"></i><b>4.5.1</b> Defining factors</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data-preparation.html"><a href="data-preparation.html#formulas"><i class="fa fa-check"></i><b>4.5.2</b> Formulas</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data-preparation.html"><a href="data-preparation.html#conditional-assignments"><i class="fa fa-check"></i><b>4.5.3</b> Conditional assignments</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data-preparation.html"><a href="data-preparation.html#categorization-of-quantitative-variables"><i class="fa fa-check"></i><b>4.5.4</b> Categorization of quantitative variables</a></li>
+<li class="chapter" data-level="4.5.5" data-path="data-preparation.html"><a href="data-preparation.html#grouping-factor-levels"><i class="fa fa-check"></i><b>4.5.5</b> Grouping factor levels</a></li>
+<li class="chapter" data-level="4.5.6" data-path="data-preparation.html"><a href="data-preparation.html#character-strings"><i class="fa fa-check"></i><b>4.5.6</b> Character strings</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#selecting-valid-cases"><i class="fa fa-check"></i><b>4.6</b> Selecting valid cases</a></li>
+<li class="chapter" data-level="4.7" data-path="data-preparation.html"><a href="data-preparation.html#saving-the-r-script"><i class="fa fa-check"></i><b>4.7</b> Saving the R script</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis for Clinical Researchers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-preparation" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Data preparation<a href="data-preparation.html#data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Data preparation is the process by which we generate <em>tidy data</em> from <em>raw data</em>. Raw data is the original version of the data as stored during collection, whatever its source, format, structure and state. It is very common that raw data need some tweaks to make them ready for statistical analysis. These tweaks may involve simplifying the data structure, providing appropriate labels for coded variables, detecting and amending errors, recovering missing data, or computing new variables from those available. Tidy data is what we get after these tweaks: a version of the data ready for analysis.</p>
+<p>For a set of data to be considered <em>tidy</em> it should have the following structure:</p>
+<ul>
+<li><p>Each variable is a column in a dataframe</p></li>
+<li><p>Each observation is a row in a dataframe</p></li>
+<li><p>Each type of observational unit is a dataframe</p></li>
+</ul>
+<p>For instance, suppose we conducted a study on 100 patients and collected data on demographic and anthopometric variables age, sex, and body height and weight. The observational unit is then the patient, and these data can be arranged in a dataframe, having columns for patient, age, sex, height and weight, so that all data for one patient fits in a single row (see table <a href="data-preparation.html#tab:4-demo">4.1</a>).</p>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:4-demo">Table 4.1: </span>Demographic and anthropometic data
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+patient
+</th>
+<th style="text-align:left;">
+age
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:left;">
+height
+</th>
+<th style="text-align:left;">
+weight
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+67
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+180
+</td>
+<td style="text-align:left;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+168
+</td>
+<td style="text-align:left;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+176
+</td>
+<td style="text-align:left;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>Now consider data on vital signs such as pulse, systolic and diastolic blood pressure, taken in three visits for the same set of patients. In this case, the observational unit is not the patient, but the visit of a patient, and data should be stored in a dataframe having patient, visit, temperature, pulse, systolic and diastolic blood pressure as columns, so that all data of one visit (of a given patient) fits in one row (see table <a href="data-preparation.html#tab:4-vitals">4.2</a>).</p>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:4-vitals">Table 4.2: </span>Vital signs
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+patient
+</th>
+<th style="text-align:right;">
+visit
+</th>
+<th style="text-align:left;">
+pulse
+</th>
+<th style="text-align:left;">
+sbp
+</th>
+<th style="text-align:left;">
+dbp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+85
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+85
+</td>
+<td style="text-align:left;">
+145
+</td>
+<td style="text-align:left;">
+90
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+69
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+70
+</td>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+85
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+80
+</td>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:left;">
+85
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>Last, consider data on adverse events collected during a clinical trial. For each event, some characteristics are recorded, such as the duration(days), severity, actions taken, and outcome. In this case, the observational unit is the adverse event, and the data should be stored in a dataframe with columns patient, event, start date and stop date, severity, actions taken, and outcome. Again in this case, all data for an event fits in a single row (see table <a href="data-preparation.html#tab:4-aes">4.3</a>.</p>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:4-aes">Table 4.3: </span>Adverse events
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+patient
+</th>
+<th style="text-align:right;">
+visit
+</th>
+<th style="text-align:left;">
+event
+</th>
+<th style="text-align:left;">
+duration
+</th>
+<th style="text-align:left;">
+actions
+</th>
+<th style="text-align:left;">
+outcome
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Headache
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+recovered
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Nausea
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+recovered
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Vomiting
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+recovered
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Abdominal cramps
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+recovered
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Hip fracture
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+surgery
+</td>
+<td style="text-align:left;">
+recovered
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+<td style="text-align:left;">
+…
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>You will note that the dataframe of figure <a href="data-preparation.html#tab:4-demo">4.1</a> will have as many rows as patients in the study, that is, one-hundred. However, the dataframe of figure <a href="data-preparation.html#tab:4-vitals">4.2</a> will have three rows per patient, therefore totaling three-hundred rows (assuming all patients were visited three times). Last, the number of rows in the dataframe of figure <a href="data-preparation.html#tab:4-aes">4.3</a> cannot be known in advance, because a patient can experience no AE at all, one AE or many AE. It should be clear that the structure of these three dataframes is different, and that is why we need three dataframes to accommodate all the data. Trying to put all of it in a single dataframe would result in undesirable things, such as having different columns containing the same type of data (such as AE1, AE2, AE3, …), and structural missings (AE2, AE3, … will be missing for patients experiencing just one AE, but this missings do not reflect lack of data, and are only due to an inappropriate data structure).</p>
+<p>For the sake of simplicity, in this chapter we will be concerned with the case where all the available data can be stored in a single dataframe having the simplest possible structure, just like the one in figure <a href="data-preparation.html#tab:4-demo">4.1</a>. If this is the case, each row will correspond to a patient, and each column to a variable. This should be enough for many simple observational studies collecting a limited amount of data on a single time point. But even in this simple case, it is important to have a <em>unique case identifier</em>; this is always convenient, and it is critical when the data has to be split in different dataframes, to allow record linkage.</p>
+<p>In any case, it is good practice to create dataframes with the following additional characteristics:</p>
+<ul>
+<li><p>Variable names should be short but meaningful, and should contain neither spaces, nor non-standard characters (like slashes, or accents in Spanish words). Variable names may follow different styles, like CAPITALIZED, camelCase, or snake_case, but whatever the style, consistency is a plus. In these book we use the snake_case style.</p></li>
+<li><p>Categorical variables should have meaningful levels (e.g., “male” or “female” rather than 1 or 2, or “m”, or “f”), and should be factors rather than character vectors.</p></li>
+<li><p>Quantitative variables should have the units of measurement documented somewhere, though not necessarily in the variable name (in fact this is not recommended, to keep variable names as short as possible, and free of special characters such as brackets, slashes or Greek letters); the study protocol is a reasonable place to document variable units.</p></li>
+<li><p>A minimal information on the study design, or on how the data were collected, should be available somewhere (e.g., in the study protocol).</p></li>
+</ul>
+<p>It is <em>very</em> important that the data preparation process is traceable and reproducible. To ensure traceability and reproducibility, this process should be done <em>programmatically</em> rather than manually. Manual editions of the data are not reproducible (unless very well documented, which takes a lot of time and is prone to errors), and should be avoided. In this chapter we will see what are the most common tasks in data preparation and how to accomplish them following this principle by writing R scripts.</p>
+<div id="steps-in-data-preparation" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Steps in data preparation<a href="data-preparation.html#steps-in-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is convenient to approach data preparation in a systematic way. The following is a reasonable order of the most common data preparations tasks:</p>
+<ol style="list-style-type: decimal">
+<li>Reading raw data</li>
+<li>Reviewing data (looking for problems: <em>missings</em> and <em>errors</em>)</li>
+<li>Modifying data (to fix problems)</li>
+<li>Computing new variables</li>
+<li>Selecting valid cases</li>
+<li>Saving the R script performing steps 1 to 5 above</li>
+</ol>
+<p>All the data preparation tasks in steps 2 to 5 above, no matter how complex, can be accomplished using base R. However, some of them are easier using the <code>dplyr</code> package introduced in the previous chapter, and this is the approach we will follow, with few exceptions.</p>
+</div>
+<div id="reading-raw-data" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Reading raw data<a href="data-preparation.html#reading-raw-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Reading external data files was addressed in the previous chapter, where we read the SARA data with the following script:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-preparation.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb69-2"><a href="data-preparation.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb69-3"><a href="data-preparation.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb69-4"><a href="data-preparation.html#cb69-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-5"><a href="data-preparation.html#cb69-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/SARA_simplified.xlsx&quot;</span>) <span class="sc">%&gt;%</span>               </span>
+<span id="cb69-6"><a href="data-preparation.html#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span>                                            </span>
+<span id="cb69-7"><a href="data-preparation.html#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">patient  =</span> patient_no,                                </span>
+<span id="cb69-8"><a href="data-preparation.html#cb69-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">birth_dt =</span> birth_date_yyyymm_dd,</span>
+<span id="cb69-9"><a href="data-preparation.html#cb69-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rand_dt  =</span> date_of_randomization,</span>
+<span id="cb69-10"><a href="data-preparation.html#cb69-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> random_allocation_of_treatment,</span>
+<span id="cb69-11"><a href="data-preparation.html#cb69-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">weight =</span> body_weight_at_baseline_kg,</span>
+<span id="cb69-12"><a href="data-preparation.html#cb69-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">height =</span> body_height_at_baseline_cm,</span>
+<span id="cb69-13"><a href="data-preparation.html#cb69-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">nyha =</span> nyha_classification_at_baseline,</span>
+<span id="cb69-14"><a href="data-preparation.html#cb69-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">sbp =</span> sbp_at_baseline_mm_hg,</span>
+<span id="cb69-15"><a href="data-preparation.html#cb69-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">dbp =</span> dbp_at_baseline_mm_hg,</span>
+<span id="cb69-16"><a href="data-preparation.html#cb69-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">hr =</span> heart_rate_at_baseline_bpm) <span class="sc">%&gt;%</span> </span>
+<span id="cb69-17"><a href="data-preparation.html#cb69-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight =</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="at">pattern =</span> <span class="st">&quot;,&quot;</span>,                </span>
+<span id="cb69-18"><a href="data-preparation.html#cb69-18" aria-hidden="true" tabindex="-1"></a>                            <span class="at">replacement =</span> <span class="st">&quot;.&quot;</span>,                 </span>
+<span id="cb69-19"><a href="data-preparation.html#cb69-19" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x =</span> weight,                       </span>
+<span id="cb69-20"><a href="data-preparation.html#cb69-20" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fixed=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb69-21"><a href="data-preparation.html#cb69-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">birth_dt =</span> <span class="fu">as.Date</span>(birth_dt),                         </span>
+<span id="cb69-22"><a href="data-preparation.html#cb69-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">rand_dt =</span> <span class="fu">as.Date</span>(rand_dt, <span class="st">&quot;%d/%m/%Y&quot;</span>))</span>
+<span id="cb69-23"><a href="data-preparation.html#cb69-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-24"><a href="data-preparation.html#cb69-24" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code># A tibble: 6 × 11
+  patient birth_dt     sex rand_dt    group      weight height  nyha   sbp   dbp
+  &lt;chr&gt;   &lt;date&gt;     &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 1-001   1974-11-15     1 2009-05-11 Catheter …    104    188     1   110    70
+2 1-002   1970-02-27     1 2009-05-12 Antiarrhy…     92    182     1    NA    NA
+3 1-003   1964-02-21     2 2009-06-11 Catheter …     95    177     1   125    70
+4 1-004   1962-01-04     2 2009-07-20 Catheter …     80    162     1   139    63
+5 1-005   1974-06-02     1 2009-08-17 Antiarrhy…     93    175    NA   122    74
+6 1-006   1964-06-22     1 2009-09-21 Catheter …    115    185     1   120    80
+# … with 1 more variable: hr &lt;dbl&gt;</code></pre>
+<p>We will use this <code>d</code> dataframe to illustrate the data preparation tasks covered in this chapter.</p>
+</div>
+<div id="reviewing-data" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Reviewing data<a href="data-preparation.html#reviewing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Data review is a must with any real data set. You cannot assume your data is free of errors. Rather, you should assume that data has errors <em>unless</em> you prove otherwise.</p>
+<p>The very first test of a dataset should be to verify that the unique case identifier is really <em>unique</em>, i.e., that all patients have a <em>different</em> value in this variable. The <code>unique()</code> function applied to a vector returns all distinct values with no repetitions (if any). Then, the <code>length()</code> of the resulting vector will be the number of distinct values, and this can be compared to the number of patients (rows) in the dataset:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="data-preparation.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(d<span class="sc">$</span>patient))                 <span class="co"># number of distinct values in d$patient</span></span></code></pre></div>
+<pre><code>[1] 152</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-preparation.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(d<span class="sc">$</span>patient)) <span class="sc">==</span> <span class="fu">nrow</span>(d)      <span class="co"># is it equal to the number of rows in d?</span></span></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<p>Now we are sure that there are no two patients with the same case identifier (otherwise the previous comparison would have produced a <code>FALSE</code>).</p>
+<div id="missings" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Missings<a href="data-preparation.html#missings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Because missing data is a very common problem in real life datasets, we should always start by looking at the number of missings in the data. There are several functions for this purpose, but the simplest one is the base R function <code>is.na()</code>. In previous chapters we used this function on a vector, and summed the result to get the number of missings:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="data-preparation.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(d<span class="sc">$</span>weight))                                 <span class="co"># missings in weight</span></span></code></pre></div>
+<pre><code>[1] 19</code></pre>
+<p>Interestingly, we can use <code>is.na()</code> with dataframes as well. In this case, the result will be a matrix of logical values, the columns (and rows) of which correspond to the columns (and rows) of the dataframe. The <code>colSums()</code> function applied to this matrix will result in the number of missings for each column in the original dataframe. By nesting both functions, a single line of code is enough to get the number of missings in each variable of a dataframe, as shown below (you can do it in two steps if you want to see the matrix produced by <code>is.na(d)</code>)</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-preparation.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(d))                                  <span class="co"># missings in columns of d</span></span></code></pre></div>
+<pre><code> patient birth_dt      sex  rand_dt    group   weight   height     nyha 
+       0        0        0        0        0       19       22        2 
+     sbp      dbp       hr 
+      14       14        0 </code></pre>
+<p><br />
+</p>
+<p>Another option is provided by the <code>plot_missing()</code> function in package <code>DataExplorer</code>, showing the number (and percentage) of missings for each variable in a graphic:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="data-preparation.html#cb79-1" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">plot_missing</span>(d)</span></code></pre></div>
+<p><img src="_main_files/figure-html/4-missings2-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="data-errors" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Data errors<a href="data-preparation.html#data-errors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Errors in the data are very common, and we should attempt to detect at least gross errors before proceeding with the analysis. Error detection may be easy or very difficult depending on the type of variable and the type of error. Gross errors in numeric variables and dates can be easily detected by looking at their extreme values (minimum and maximum). These (among other statistics) are provided by <code>summary()</code> for each numeric variable in a dataframe:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="data-preparation.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d)</span></code></pre></div>
+<pre><code>   patient             birth_dt               sex            rand_dt          
+ Length:152         Min.   :1939-06-24   Min.   : 1.000   Min.   :2009-05-07  
+ Class :character   1st Qu.:1949-11-09   1st Qu.: 1.000   1st Qu.:2010-01-17  
+ Mode  :character   Median :1954-03-30   Median : 1.000   Median :2010-08-25  
+                    Mean   :1955-11-06   Mean   : 1.362   Mean   :2010-08-27  
+                    3rd Qu.:1962-01-01   3rd Qu.: 1.000   3rd Qu.:2011-03-22  
+                    Max.   :1983-06-22   Max.   :22.000   Max.   :2011-11-24  
+                                                                              
+    group               weight           height           nyha     
+ Length:152         Min.   : 50.00   Min.   : 83.0   Min.   :1.00  
+ Class :character   1st Qu.: 74.00   1st Qu.:165.0   1st Qu.:1.00  
+ Mode  :character   Median : 84.50   Median :174.0   Median :1.00  
+                    Mean   : 85.75   Mean   :172.0   Mean   :1.26  
+                    3rd Qu.: 95.00   3rd Qu.:179.8   3rd Qu.:1.00  
+                    Max.   :167.00   Max.   :193.0   Max.   :3.00  
+                    NA&#39;s   :19       NA&#39;s   :22      NA&#39;s   :2     
+      sbp             dbp               hr        
+ Min.   :100.0   Min.   : 60.00   Min.   :  4.00  
+ 1st Qu.:119.2   1st Qu.: 70.00   1st Qu.: 57.00  
+ Median :127.0   Median : 80.00   Median : 66.00  
+ Mean   :127.4   Mean   : 80.42   Mean   : 71.14  
+ 3rd Qu.:137.0   3rd Qu.: 87.00   3rd Qu.: 82.00  
+ Max.   :197.0   Max.   :110.00   Max.   :150.00  
+ NA&#39;s   :14      NA&#39;s   :14                       </code></pre>
+<p><br />
+</p>
+<p>In the previous output we see the maximum value of <code>sex</code> is 22, which is an obvious error. There is also a suspicious maximum of 167 (kg) in <code>weight</code>, a very suspicious minimum of 83 (cm) in <code>height</code>, and an impossible minimum heart rate (<code>hr</code>) of 4 (bpm). However, the previous output is not useful for the <code>group</code> variable, and this is because it’s a character vector. The result would be useful if <code>group</code> was a factor (we would then see each possible value and its frequency), but we have not defined factors yet. Note that <code>summary()</code> also provides information on the number of missings (<code>NA's</code>).</p>
+<p>We can inspect the values of a categorical variable stored in a character vector using <code>unique()</code>. This will print all distinct values appearing in the vector, without repetitions:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="data-preparation.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(d<span class="sc">$</span>group)</span></code></pre></div>
+<pre><code>[1] &quot;Catheter ablation&quot;             &quot;Antiarrhythmic drug treatment&quot;</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="data-preparation.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(d<span class="sc">$</span>sex)                 <span class="co"># useful for coded categorical variables as well</span></span></code></pre></div>
+<pre><code>[1]  1  2 22</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="data-preparation.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(d<span class="sc">$</span>nyha)</span></code></pre></div>
+<pre><code>[1]  1 NA  2  3</code></pre>
+<p><br />
+</p>
+<p>Sometimes it is worth looking at a graphic combining two variables whose values are related. For instance, we may look at the join distribution of <code>weight</code>and <code>height</code> as done in figure <a href="data-preparation.html#fig:4-weight-height">4.1</a> (these and other graphics will be presented in detail in the next chapter).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:4-weight-height"></span>
+<img src="_main_files/figure-html/4-weight-height-1.png" alt="Weight and height" width="672" />
+<p class="caption">
+Figure 4.1: Weight and height
+</p>
+</div>
+<p><br />
+</p>
+<p>By looking at this figure we confirm the <code>weight</code> value 167 kg is an error, since it corresponds to the patient with the minimum <code>height</code> value of 83 cm. This error is likely due to a permutation of <code>heigh</code> and <code>weight</code> values for this patient, which is a common data entry error. Interestingly, there is another patient showing an unusual combination of weight (125 kg) and height (about 160 cm). Though these values have nothing strange when we consider them separately, their combination is unlikely. For this reason, this error was not detected when we looked at these variables separately by inspecting their extreme values, but are easily detected in the plot above.</p>
+<p>Once we have detected problematic values in our data, we need to investigate what are the patients affected by these errors.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-preparation.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Patients with errors</span></span>
+<span id="cb88-2"><a href="data-preparation.html#cb88-2" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="dv">22</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(patient, sex)</span></code></pre></div>
+<pre><code># A tibble: 1 × 2
+  patient   sex
+  &lt;chr&gt;   &lt;dbl&gt;
+1 3-001      22</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-preparation.html#cb90-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hr <span class="sc">&lt;</span> <span class="dv">40</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(patient, hr)</span></code></pre></div>
+<pre><code># A tibble: 1 × 2
+  patient    hr
+  &lt;chr&gt;   &lt;dbl&gt;
+1 6-030       4</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-preparation.html#cb92-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> <span class="fu">filter</span>(weight <span class="sc">&gt;</span> <span class="dv">124</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(patient, weight, height)</span></code></pre></div>
+<pre><code># A tibble: 2 × 3
+  patient weight height
+  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1 4-001      167     83
+2 5-007      125    158</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-preparation.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Patients with missings</span></span>
+<span id="cb94-2"><a href="data-preparation.html#cb94-2" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb94-3"><a href="data-preparation.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="fu">is.na</span>(weight) <span class="sc">|</span> <span class="fu">is.na</span>(height) <span class="sc">|</span> <span class="fu">is.na</span>(nyha)<span class="sc">|</span> <span class="fu">is.na</span>(sbp) <span class="sc">|</span> <span class="fu">is.na</span>(dbp)) <span class="sc">%&gt;%</span> </span>
+<span id="cb94-4"><a href="data-preparation.html#cb94-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, weight<span class="sc">:</span> dbp )</span></code></pre></div>
+<pre><code># A tibble: 30 × 6
+   patient weight height  nyha   sbp   dbp
+   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 1-002       92    182     1    NA    NA
+ 2 1-005       93    175    NA   122    74
+ 3 1-008       77    178     1    NA    NA
+ 4 2-002       93    180     1    NA    NA
+ 5 2-003       93    179     1    NA    NA
+ 6 2-005       95     NA     2   120    70
+ 7 2-016       65    158     1    NA    NA
+ 8 2-017      120    192     1    NA    NA
+ 9 3-004       70    175    NA   130    70
+10 5-005       NA     NA     1   135    75
+# … with 20 more rows</code></pre>
+<p><br />
+</p>
+<p>Now we should appeal to source documents (such as the clinical records) and try to recover the missing or erroneous data for these patients.</p>
+</div>
+</div>
+<div id="modifying-data" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Modifying data<a href="data-preparation.html#modifying-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose we have recovered the following data from clinical records, and the remaining missing data could not be recovered:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+patient
+</th>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+correct_value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1-005
+</td>
+<td style="text-align:left;">
+nyha
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3-004
+</td>
+<td style="text-align:left;">
+nyha
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3-001
+</td>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4-001
+</td>
+<td style="text-align:left;">
+weight
+</td>
+<td style="text-align:left;">
+83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4-001
+</td>
+<td style="text-align:left;">
+height
+</td>
+<td style="text-align:left;">
+167
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6-030
+</td>
+<td style="text-align:left;">
+hr
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>To set these data points to their correct values it is very practical to use vector subsetting. When we subset a vector by a condition which is either TRUE or FALSE for each patient, the returned values are those for whom the condition is TRUE. Thus, if we subset a variable using a condition that identifies a single patient, we refer to the value of this variable for this patient. Note that we need to prefix the variable names with the dataframe names, since this is base R (not <code>dplyr</code>):</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="data-preparation.html#cb96-1" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>sex[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;3-001&quot;</span>]                  <span class="co"># sex for patient 3-001</span></span></code></pre></div>
+<pre><code>[1] 22</code></pre>
+<p><br />
+</p>
+<p>Then, we can use this to set a new value for this data point:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-preparation.html#cb98-1" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>sex[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;3-001&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">1</span>                 <span class="co"># sex for patient 3-001</span></span>
+<span id="cb98-2"><a href="data-preparation.html#cb98-2" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>sex[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;3-001&quot;</span>]                      <span class="co"># verify</span></span></code></pre></div>
+<pre><code>[1] 1</code></pre>
+<p><br />
+</p>
+<p>In this manner, we can set all the remaining correct values:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-preparation.html#cb100-1" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>nyha[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;1-005&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb100-2"><a href="data-preparation.html#cb100-2" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>nyha[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;3-004&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb100-3"><a href="data-preparation.html#cb100-3" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>weight[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;4-001&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">83</span></span>
+<span id="cb100-4"><a href="data-preparation.html#cb100-4" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>height[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;4-001&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">167</span></span>
+<span id="cb100-5"><a href="data-preparation.html#cb100-5" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>hr[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;6-030&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
+<p><br />
+</p>
+<p>Finally, we can verify if everything went as expected by printing data for the patients we set new (correct) values. To filter these patients we use <code>%in%</code> operator, so that <code>d</code> rows will be filtered if the <code>patient</code> is one of those specified in the character vector after <code>%in%</code>.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="data-preparation.html#cb101-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb101-2"><a href="data-preparation.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;1-005&quot;</span>, <span class="st">&quot;3-001&quot;</span>, <span class="st">&quot;3-004&quot;</span>, <span class="st">&quot;4-001&quot;</span>, <span class="st">&quot;6-030&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-3"><a href="data-preparation.html#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, sex, weight, height, nyha, hr)</span></code></pre></div>
+<pre><code># A tibble: 5 × 6
+  patient   sex weight height  nyha    hr
+  &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 1-005       1     93    175     1    70
+2 3-001       1    101    187     1    75
+3 3-004       1     70    175     1    60
+4 4-001       1     83    167     1    51
+5 6-030       1     NA     NA     1    NA</code></pre>
+<p>It seems that everything is fine now!</p>
+</div>
+<div id="computing-new-variables" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Computing new variables<a href="data-preparation.html#computing-new-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once all data problems are fixed, the next step is to define factors for all categorical variables, and to compute new variables derived from those in the data. Computing new variables may involve different type of operations, such as using computational formulas, making conditional assignments, categorizing a quantitative variable, recoding categorical variables or manipulating character strings. All these cases are very common, and are illustrated in the following sections.</p>
+<div id="defining-factors" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Defining factors<a href="data-preparation.html#defining-factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dataframe <code>d</code> includes the following categorical variables:</p>
+<ul>
+<li><p><code>sex</code> is a categorical variable coded as 1 (for males), or 2 (for females).</p></li>
+<li><p><code>nyha</code> is a categorical variable coded with numbers 1 to 3 to represent NYHA classes I, II and III respectively.</p></li>
+<li><p><code>group</code> is a a categorical variable stored as a character vector, with self-explanatory values but a bit too long to be practical (for example, when producing graphics, long strings are usually a problem); we can take the chance of defining a factor to shorten the descriptors as “CA” for Catheter ablation and “ADT” for Antiarrhythmic drug treatment.</p></li>
+</ul>
+<p>The following script defines factors for these three variables and overrides<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> <code>d</code> with the result.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="data-preparation.html#cb103-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb103-2"><a href="data-preparation.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">factor</span>(sex, </span>
+<span id="cb103-3"><a href="data-preparation.html#cb103-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, </span>
+<span id="cb103-4"><a href="data-preparation.html#cb103-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>)),</span>
+<span id="cb103-5"><a href="data-preparation.html#cb103-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">nyha =</span> <span class="fu">factor</span>(nyha, </span>
+<span id="cb103-6"><a href="data-preparation.html#cb103-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb103-7"><a href="data-preparation.html#cb103-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;II&quot;</span>, <span class="st">&quot;III&quot;</span>)),</span>
+<span id="cb103-8"><a href="data-preparation.html#cb103-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group,</span>
+<span id="cb103-9"><a href="data-preparation.html#cb103-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Catheter ablation&quot;</span>, <span class="st">&quot;Antiarrhythmic drug treatment&quot;</span>),</span>
+<span id="cb103-10"><a href="data-preparation.html#cb103-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;CA&quot;</span>, <span class="st">&quot;ADT&quot;</span>)))  </span>
+<span id="cb103-11"><a href="data-preparation.html#cb103-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-12"><a href="data-preparation.html#cb103-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code># A tibble: 6 × 11
+  patient birth_dt   sex    rand_dt    group weight height nyha    sbp   dbp
+  &lt;chr&gt;   &lt;date&gt;     &lt;fct&gt;  &lt;date&gt;     &lt;fct&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 1-001   1974-11-15 male   2009-05-11 CA       104    188 I       110    70
+2 1-002   1970-02-27 male   2009-05-12 ADT       92    182 I        NA    NA
+3 1-003   1964-02-21 female 2009-06-11 CA        95    177 I       125    70
+4 1-004   1962-01-04 female 2009-07-20 CA        80    162 I       139    63
+5 1-005   1974-06-02 male   2009-08-17 ADT       93    175 I       122    74
+6 1-006   1964-06-22 male   2009-09-21 CA       115    185 I       120    80
+# … with 1 more variable: hr &lt;dbl&gt;</code></pre>
+</div>
+<div id="formulas" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Formulas<a href="data-preparation.html#formulas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Many derived variables are obtained using a computational formula involving arithmetic operations, mathematical functions, or both. For instance, the age of patients at randomization can be computed from the birth and randomization dates; the body mas index is computed from the body height and weight. These computations are easily implemented via <code>mutate()</code>, as in the following script, where we finish by selecting relevant variables to verify the result of the computations:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-preparation.html#cb105-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb105-2"><a href="data-preparation.html#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">floor</span>(<span class="fu">as.numeric</span>(rand_dt <span class="sc">-</span> birth_dt)<span class="sc">/</span><span class="fl">365.25</span>),</span>
+<span id="cb105-3"><a href="data-preparation.html#cb105-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">bmi =</span> <span class="fu">round</span>(weight <span class="sc">/</span> (height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>,<span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb105-4"><a href="data-preparation.html#cb105-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, rand_dt, birth_dt, age, weight, height, bmi)</span></code></pre></div>
+<pre><code># A tibble: 152 × 7
+   patient rand_dt    birth_dt     age weight height   bmi
+   &lt;chr&gt;   &lt;date&gt;     &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+ 1 1-001   2009-05-11 1974-11-15    34    104    188  29.4
+ 2 1-002   2009-05-12 1970-02-27    39     92    182  27.8
+ 3 1-003   2009-06-11 1964-02-21    45     95    177  30.3
+ 4 1-004   2009-07-20 1962-01-04    47     80    162  30.5
+ 5 1-005   2009-08-17 1974-06-02    35     93    175  30.4
+ 6 1-006   2009-09-21 1964-06-22    45    115    185  33.6
+ 7 1-007   2009-10-01 1950-06-30    59     89    177  28.4
+ 8 1-008   2009-10-06 1955-03-29    54     77    178  24.3
+ 9 1-009   2009-11-10 1941-07-25    68     62    162  23.6
+10 1-010   2009-11-17 1955-04-22    54     86    168  30.5
+# … with 142 more rows</code></pre>
+<p><br />
+</p>
+<p>We computed the age of patients as the difference of the randomization and birth dates (which results in a number of days) divided by 365.25 to take into account leap years, and then used <code>floor()</code> to round down so as to get completed years. The body weigh (kg/m^2) is defined as weight in kilograms over the square of height in meters. Because <code>height</code> is expressed in centimeters, we divided by 100 to convert it to meters before squaring.</p>
+</div>
+<div id="conditional-assignments" class="section level3 hasAnchor" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Conditional assignments<a href="data-preparation.html#conditional-assignments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Computational formulas are applied exactly the same way for all rows in a dataframe. However, in some instances we want to assign different values to a new variable depending on a condition. For instance, we may want to create an indicator of obesity, which is defined as a body mass index of 30 kg/m^2 or more. Thus, a new variable <code>obesity</code> should take the value “no” for patients having <code>bmi &lt; 30</code>, or “yes” otherwise. This is called a <em>conditional</em> assignment, and can be done with function <code>iflese()</code>, which takes three arguments specified in this order: a condition that can be evaluated as either TRUE or FALSE, the value we want to assign when the condition is TRUE, and the value to be assigned when the condition is FALSE. This is done in the following script after computing <code>bmi</code>:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="data-preparation.html#cb107-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb107-2"><a href="data-preparation.html#cb107-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> <span class="fu">round</span>(weight <span class="sc">/</span> (height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>,<span class="dv">1</span>),</span>
+<span id="cb107-3"><a href="data-preparation.html#cb107-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">obesity =</span> <span class="fu">ifelse</span>(bmi <span class="sc">&lt;</span> <span class="dv">30</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb107-4"><a href="data-preparation.html#cb107-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, bmi, obesity)</span></code></pre></div>
+<pre><code># A tibble: 152 × 3
+   patient   bmi obesity
+   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  
+ 1 1-001    29.4 no     
+ 2 1-002    27.8 no     
+ 3 1-003    30.3 yes    
+ 4 1-004    30.5 yes    
+ 5 1-005    30.4 yes    
+ 6 1-006    33.6 yes    
+ 7 1-007    28.4 no     
+ 8 1-008    24.3 no     
+ 9 1-009    23.6 no     
+10 1-010    30.5 yes    
+# … with 142 more rows</code></pre>
+<p><br />
+</p>
+<p>For more complex conditional assignments, several <code>iflese()</code>functions may be nested as in the following example:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="data-preparation.html#cb109-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb109-2"><a href="data-preparation.html#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> <span class="fu">round</span>(weight <span class="sc">/</span> (height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>,<span class="dv">1</span>),</span>
+<span id="cb109-3"><a href="data-preparation.html#cb109-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">nutritional_status =</span> <span class="fu">ifelse</span>(bmi <span class="sc">&lt;</span> <span class="fl">18.5</span>,</span>
+<span id="cb109-4"><a href="data-preparation.html#cb109-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;underweight&quot;</span>,</span>
+<span id="cb109-5"><a href="data-preparation.html#cb109-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(bmi <span class="sc">&lt;</span> <span class="dv">25</span>,</span>
+<span id="cb109-6"><a href="data-preparation.html#cb109-6" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">&quot;normal weight&quot;</span>,</span>
+<span id="cb109-7"><a href="data-preparation.html#cb109-7" aria-hidden="true" tabindex="-1"></a>                                            <span class="fu">ifelse</span>(bmi <span class="sc">&lt;</span><span class="dv">30</span>,</span>
+<span id="cb109-8"><a href="data-preparation.html#cb109-8" aria-hidden="true" tabindex="-1"></a>                                                   <span class="st">&quot;overweight&quot;</span>,</span>
+<span id="cb109-9"><a href="data-preparation.html#cb109-9" aria-hidden="true" tabindex="-1"></a>                                                   <span class="st">&quot;obesity&quot;</span>)))) <span class="sc">%&gt;%</span> </span>
+<span id="cb109-10"><a href="data-preparation.html#cb109-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, bmi, nutritional_status)</span></code></pre></div>
+<pre><code># A tibble: 152 × 3
+   patient   bmi nutritional_status
+   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;             
+ 1 1-001    29.4 overweight        
+ 2 1-002    27.8 overweight        
+ 3 1-003    30.3 obesity           
+ 4 1-004    30.5 obesity           
+ 5 1-005    30.4 obesity           
+ 6 1-006    33.6 obesity           
+ 7 1-007    28.4 overweight        
+ 8 1-008    24.3 normal weight     
+ 9 1-009    23.6 normal weight     
+10 1-010    30.5 obesity           
+# … with 142 more rows</code></pre>
+<p><br />
+</p>
+<p>Nesting <code>ifelse()</code> functions is very flexible, and there is no limit to the number of nested levels, but it becomes difficult to follow if more than two or three nesting levels are necessary. If the condition depend on a single quantitative variable (as in this case, <code>bmi</code>) it is easier to use a different function allowing to define cutpoints, which is presented in the next section.</p>
+</div>
+<div id="categorization-of-quantitative-variables" class="section level3 hasAnchor" number="4.5.4">
+<h3><span class="header-section-number">4.5.4</span> Categorization of quantitative variables<a href="data-preparation.html#categorization-of-quantitative-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A common type of derived variable is what results from the categorization of a numeric variable according to one or more cutpoints. For instance, suppose we want to create age groups by decades, i.e., group patients in bins defined by cutpoints 20, 30, 40, … and so on. This can be easily done using function <code>cut()</code>, that takes two arguments: the numeric variable we want to categorize, and the <code>breaks</code> or cutpoints we want to use, passed as a numeric vector such as <code>c(20, 30, 40, ...)</code>. When the cutpoints are equidistant, it is practical to create this numeric vector with <code>seq()</code>, as done in the following script:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="data-preparation.html#cb111-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb111-2"><a href="data-preparation.html#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">floor</span>(<span class="fu">as.numeric</span>(rand_dt <span class="sc">-</span> birth_dt)<span class="sc">/</span><span class="fl">365.25</span>),</span>
+<span id="cb111-3"><a href="data-preparation.html#cb111-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_group =</span> <span class="fu">cut</span>(age, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">70</span>, <span class="dv">10</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb111-4"><a href="data-preparation.html#cb111-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, age, age_group) <span class="ot">-&gt;</span> foo</span>
+<span id="cb111-5"><a href="data-preparation.html#cb111-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-6"><a href="data-preparation.html#cb111-6" aria-hidden="true" tabindex="-1"></a>foo</span></code></pre></div>
+<pre><code># A tibble: 152 × 3
+   patient   age age_group
+   &lt;chr&gt;   &lt;dbl&gt; &lt;fct&gt;    
+ 1 1-001      34 (30,40]  
+ 2 1-002      39 (30,40]  
+ 3 1-003      45 (40,50]  
+ 4 1-004      47 (40,50]  
+ 5 1-005      35 (30,40]  
+ 6 1-006      45 (40,50]  
+ 7 1-007      59 (50,60]  
+ 8 1-008      54 (50,60]  
+ 9 1-009      68 (60,70]  
+10 1-010      54 (50,60]  
+# … with 142 more rows</code></pre>
+<p><br />
+</p>
+<p>The result is a factor with the following levels:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="data-preparation.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(foo<span class="sc">$</span>age_group)</span></code></pre></div>
+<pre><code>[1] &quot;(20,30]&quot; &quot;(30,40]&quot; &quot;(40,50]&quot; &quot;(50,60]&quot; &quot;(60,70]&quot;</code></pre>
+<p>By default, intervals are defined from cutpoints as left-open and right-closed, using standard symbols <code>(</code> and <code>]</code> respectively. This means that the lower bound is <em>not</em> included in the interval, and the upper bound is included. For instance, a patient 40 years old is included in interval <code>(30, 40]</code> , and excluded from interval <code>(40, 50]</code>). Sometimes we may need left-closed and right-open intervals instead. For instance, the <a href="https://www.euro.who.int/en/health-topics/disease-prevention/nutrition/a-healthy-lifestyle/body-mass-index-bmi">WHO nutritional status</a> defines intervals in this way (note there is an error in the definition of the interval for Obesity class III, which is defined as <em>Above 40</em>; a patient with a BMI of exactly 40 does not fit in any of the classes! Therefore, the last class should be defined as <em>40 or more</em>). We can produce this classification with <code>cut()</code>, using the argument <code>right =  FALSE</code>, as done below. Note the use of <code>count()</code> to get the number of cases in each of the <code>who_ns</code>intervals.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="data-preparation.html#cb115-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb115-2"><a href="data-preparation.html#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> <span class="fu">round</span>(weight <span class="sc">/</span> (height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>,<span class="dv">1</span>),</span>
+<span id="cb115-3"><a href="data-preparation.html#cb115-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">who_ns =</span> <span class="fu">cut</span>(bmi, </span>
+<span id="cb115-4"><a href="data-preparation.html#cb115-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="cn">Inf</span>), </span>
+<span id="cb115-5"><a href="data-preparation.html#cb115-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">right =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb115-6"><a href="data-preparation.html#cb115-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(who_ns) </span></code></pre></div>
+<pre><code># A tibble: 6 × 2
+  who_ns        n
+  &lt;fct&gt;     &lt;int&gt;
+1 [18.5,25)    25
+2 [25,30)      61
+3 [30,35)      38
+4 [35,40)       5
+5 [40,Inf)      1
+6 &lt;NA&gt;         22</code></pre>
+<p><br />
+</p>
+<p>We could also define custom labels for the resulting intervals as in the following:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="data-preparation.html#cb117-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb117-2"><a href="data-preparation.html#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> <span class="fu">round</span>(weight <span class="sc">/</span> (height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>,<span class="dv">1</span>),</span>
+<span id="cb117-3"><a href="data-preparation.html#cb117-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">who_ns =</span> <span class="fu">cut</span>(bmi, </span>
+<span id="cb117-4"><a href="data-preparation.html#cb117-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="cn">Inf</span>),</span>
+<span id="cb117-5"><a href="data-preparation.html#cb117-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Underweight&quot;</span>, <span class="st">&quot;Normal weight&quot;</span>,</span>
+<span id="cb117-6"><a href="data-preparation.html#cb117-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">&quot;Overweight&quot;</span>, <span class="st">&quot;Obesity class I&quot;</span>,</span>
+<span id="cb117-7"><a href="data-preparation.html#cb117-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">&quot;Obesity class II&quot;</span>, <span class="st">&quot;Obesity class III&quot;</span>),</span>
+<span id="cb117-8"><a href="data-preparation.html#cb117-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">right =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb117-9"><a href="data-preparation.html#cb117-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(who_ns)</span></code></pre></div>
+<pre><code># A tibble: 6 × 2
+  who_ns                n
+  &lt;fct&gt;             &lt;int&gt;
+1 Normal weight        25
+2 Overweight           61
+3 Obesity class I      38
+4 Obesity class II      5
+5 Obesity class III     1
+6 &lt;NA&gt;                 22</code></pre>
+</div>
+<div id="grouping-factor-levels" class="section level3 hasAnchor" number="4.5.5">
+<h3><span class="header-section-number">4.5.5</span> Grouping factor levels<a href="data-preparation.html#grouping-factor-levels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes we want to re-classify observations by pooling some of the levels of a factor. For instance, suppose we want a simpler classification of the nutritional status with a single obesity class obtained by merging the three obesity classes I, II and III. This can be done in with function <code>recode()</code> from the <code>dplyr</code> package as shown below. Note that we only need to specify the levels to recode, plus <code>.default = levels(who_ns)</code> to keep all other levels unchanged.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="data-preparation.html#cb119-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb119-2"><a href="data-preparation.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> <span class="fu">round</span>(weight <span class="sc">/</span> (height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>,<span class="dv">1</span>),</span>
+<span id="cb119-3"><a href="data-preparation.html#cb119-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">who_ns =</span> <span class="fu">cut</span>(bmi, </span>
+<span id="cb119-4"><a href="data-preparation.html#cb119-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="cn">Inf</span>),</span>
+<span id="cb119-5"><a href="data-preparation.html#cb119-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Underweight&quot;</span>, <span class="st">&quot;Normal weight&quot;</span>,</span>
+<span id="cb119-6"><a href="data-preparation.html#cb119-6" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">&quot;Overweight&quot;</span>, <span class="st">&quot;Obesity class I&quot;</span>,</span>
+<span id="cb119-7"><a href="data-preparation.html#cb119-7" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">&quot;Obesity class II&quot;</span>, <span class="st">&quot;Obesity class III&quot;</span>),</span>
+<span id="cb119-8"><a href="data-preparation.html#cb119-8" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">right =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb119-9"><a href="data-preparation.html#cb119-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">simpler_ns =</span> <span class="fu">recode</span>(who_ns, </span>
+<span id="cb119-10"><a href="data-preparation.html#cb119-10" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Obesity class I&quot;</span> <span class="ot">=</span> <span class="st">&quot;Obesity&quot;</span>, </span>
+<span id="cb119-11"><a href="data-preparation.html#cb119-11" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Obesity class II&quot;</span> <span class="ot">=</span> <span class="st">&quot;Obesity&quot;</span>, </span>
+<span id="cb119-12"><a href="data-preparation.html#cb119-12" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Obesity class III&quot;</span> <span class="ot">=</span> <span class="st">&quot;Obesity&quot;</span>, </span>
+<span id="cb119-13"><a href="data-preparation.html#cb119-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.default =</span> <span class="fu">levels</span>(who_ns))) <span class="sc">%&gt;%</span> </span>
+<span id="cb119-14"><a href="data-preparation.html#cb119-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(simpler_ns)</span></code></pre></div>
+<pre><code># A tibble: 4 × 2
+  simpler_ns        n
+  &lt;fct&gt;         &lt;int&gt;
+1 Normal weight    25
+2 Overweight       61
+3 Obesity          44
+4 &lt;NA&gt;             22</code></pre>
+</div>
+<div id="character-strings" class="section level3 hasAnchor" number="4.5.6">
+<h3><span class="header-section-number">4.5.6</span> Character strings<a href="data-preparation.html#character-strings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We sometimes need to use strings stored in a character variable to derive a new variable. For instance, variable <code>patient</code> is a character vector containing a code for the study center (hospital), a hyphen, and a patient number within the center. Suppose we want to have a variable with the center code. This can be done with <code>substr()</code>. Similarly, we could extract the number of patient in each center.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="data-preparation.html#cb121-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb121-2"><a href="data-preparation.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site =</span> <span class="fu">substr</span>(patient, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb121-3"><a href="data-preparation.html#cb121-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">site_patient =</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(patient, <span class="dv">3</span>, <span class="dv">5</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb121-4"><a href="data-preparation.html#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, site, site_patient)</span></code></pre></div>
+<pre><code># A tibble: 152 × 3
+   patient site  site_patient
+   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;
+ 1 1-001   1                1
+ 2 1-002   1                2
+ 3 1-003   1                3
+ 4 1-004   1                4
+ 5 1-005   1                5
+ 6 1-006   1                6
+ 7 1-007   1                7
+ 8 1-008   1                8
+ 9 1-009   1                9
+10 1-010   1               10
+# … with 142 more rows</code></pre>
+<p><br />
+</p>
+<p>Function <code>substr()</code> always returns a character vector, as is the case of <code>site</code> above. However, we can easily get a numeric vector by wrapping <code>substr()</code> within <code>as.numeric()</code>, as we did for <code>site_patient</code>.</p>
+<p>Another common need is exactly the opposite of what we did: to combine two variables to form a new one. As an example, we recompose the <code>patient</code> variable from the two pieces obtained above, using <code>paste()</code>:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="data-preparation.html#cb123-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb123-2"><a href="data-preparation.html#cb123-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site =</span> <span class="fu">substr</span>(patient, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb123-3"><a href="data-preparation.html#cb123-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">site_patient =</span> <span class="fu">substr</span>(patient, <span class="dv">3</span>, <span class="dv">5</span>),</span>
+<span id="cb123-4"><a href="data-preparation.html#cb123-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">recompose_patient =</span> <span class="fu">paste</span>(site, site_patient, <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb123-5"><a href="data-preparation.html#cb123-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, site, site_patient, recompose_patient) </span></code></pre></div>
+<pre><code># A tibble: 152 × 4
+   patient site  site_patient recompose_patient
+   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            
+ 1 1-001   1     001          1-001            
+ 2 1-002   1     002          1-002            
+ 3 1-003   1     003          1-003            
+ 4 1-004   1     004          1-004            
+ 5 1-005   1     005          1-005            
+ 6 1-006   1     006          1-006            
+ 7 1-007   1     007          1-007            
+ 8 1-008   1     008          1-008            
+ 9 1-009   1     009          1-009            
+10 1-010   1     010          1-010            
+# … with 142 more rows</code></pre>
+<p><br />
+</p>
+<p>Working with strings is always difficult, and we often face problems we did not cover in the previous examples. However, you should be aware that there is much more power in R for working with strings, including detection and substitution of complex patterns, fuzzy string matching, and translations from, or to other languages. In the resources section we provide some links which are relevant for working with strings.</p>
+</div>
+</div>
+<div id="selecting-valid-cases" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Selecting valid cases<a href="data-preparation.html#selecting-valid-cases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In virtually all real studies, some of the patients included in the study database are not valid for analysis. Common causes for this are inappropriate enrollment of patients that do not meet all predefined selection criteria, and lack of critical data. Then, we need to get rid of these patients, and keep only those who are valid.</p>
+<p>Validity criteria are always functions of the variables in our data, so that we should be able to write an expression to retain valid patients only. For instance suppose we want to declare invalid only those patients having a missing in <code>hr</code>. The result is a dataframe with 151 rows, after removing the only case with missing <code>hr</code>, as shown below:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="data-preparation.html#cb125-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb125-2"><a href="data-preparation.html#cb125-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(hr)) <span class="sc">%&gt;%</span> </span>
+<span id="cb125-3"><a href="data-preparation.html#cb125-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
+<pre><code>[1] 151</code></pre>
+<p><br />
+</p>
+<p>Note the use of the <em>not</em> operator <code>!</code> in front of <code>is.na()</code> in the <code>filter()</code> function. This operator reverses the meaning of what follows. Therefore, if <code>is.na(hr)</code> means <em><code>hr</code> is missing</em>, <code>!is.na(hr)</code> means <em><code>hr</code> is NOT missing</em>.</p>
+<p>Sometimes you will need to drop all cases having a missing somewhere, so as to keep only cases with complete data. This is easily achieved with function <code>na.omit()</code>.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="data-preparation.html#cb127-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb127-2"><a href="data-preparation.html#cb127-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="ot">-&gt;</span> complete </span>
+<span id="cb127-3"><a href="data-preparation.html#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="data-preparation.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(complete)</span></code></pre></div>
+<pre><code>[1] 124</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="data-preparation.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(complete))  </span></code></pre></div>
+<pre><code> patient birth_dt      sex  rand_dt    group   weight   height     nyha 
+       0        0        0        0        0        0        0        0 
+     sbp      dbp       hr 
+       0        0        0 </code></pre>
+<p><br />
+</p>
+<p>In a more realistic case, you may need to investigate different aspects of the data, including compliance with all selection criteria (collected in several variables) and availability of important variables. This may take deriving a new variable that summarizes several validity criteria (such as <code>valid</code>: yes or no), and then use this variable for selection of valid patients.</p>
+<p>In the SARA study, only patients that did not comply with the study selection criteria were declared invalid and excluded form all analyses. These patients were: 1-013, 1-038, 1-054, 2-012, 5-002, and 6-021. In the following script we define a vector <code>invalid</code>, and then use the <code>%in%</code> operator to identify rows in <code>d</code> where <code>patient</code> is one of those in <code>invalid</code>:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="data-preparation.html#cb131-1" aria-hidden="true" tabindex="-1"></a>invalid <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1-013&quot;</span>, <span class="st">&quot;1-038&quot;</span>, <span class="st">&quot;1-054&quot;</span>, <span class="st">&quot;2-012&quot;</span>, <span class="st">&quot;5-002&quot;</span>, <span class="st">&quot;6-021&quot;</span>)</span>
+<span id="cb131-2"><a href="data-preparation.html#cb131-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-3"><a href="data-preparation.html#cb131-3" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb131-4"><a href="data-preparation.html#cb131-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient <span class="sc">%in%</span> invalid)</span></code></pre></div>
+<pre><code># A tibble: 6 × 11
+  patient birth_dt   sex    rand_dt    group weight height nyha    sbp   dbp
+  &lt;chr&gt;   &lt;date&gt;     &lt;fct&gt;  &lt;date&gt;     &lt;fct&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 1-013   1955-01-01 male   2010-01-22 ADT      100    176 II      143   100
+2 1-038   1953-05-03 male   2011-03-14 CA       106    180 II      142   107
+3 1-054   1943-05-16 female 2011-11-07 CA        67    162 I       130    84
+4 2-012   1951-12-05 male   2010-06-25 CA       110    180 I       120    70
+5 5-002   1946-03-12 male   2009-09-16 CA        85    179 I       133    87
+6 6-021   1969-12-22 male   2011-01-31 ADT       NA     NA I       140    90
+# … with 1 more variable: hr &lt;dbl&gt;</code></pre>
+<p><br />
+</p>
+<p>To subset <code>d</code>retaining all the remaining patients, we just use the <em>not</em> operator in front of the same expression to get just the opposite result, i.e., patients <em>not in</em> the <code>invalid</code> vector.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="data-preparation.html#cb133-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb133-2"><a href="data-preparation.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(patient <span class="sc">%in%</span> invalid))</span></code></pre></div>
+<pre><code># A tibble: 146 × 11
+   patient birth_dt   sex    rand_dt    group weight height nyha    sbp   dbp
+   &lt;chr&gt;   &lt;date&gt;     &lt;fct&gt;  &lt;date&gt;     &lt;fct&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 1-001   1974-11-15 male   2009-05-11 CA       104    188 I       110    70
+ 2 1-002   1970-02-27 male   2009-05-12 ADT       92    182 I        NA    NA
+ 3 1-003   1964-02-21 female 2009-06-11 CA        95    177 I       125    70
+ 4 1-004   1962-01-04 female 2009-07-20 CA        80    162 I       139    63
+ 5 1-005   1974-06-02 male   2009-08-17 ADT       93    175 I       122    74
+ 6 1-006   1964-06-22 male   2009-09-21 CA       115    185 I       120    80
+ 7 1-007   1950-06-30 male   2009-10-01 CA        89    177 I       126   102
+ 8 1-008   1955-03-29 male   2009-10-06 CA        77    178 I        NA    NA
+ 9 1-009   1941-07-25 female 2009-11-10 ADT       62    162 I       140    85
+10 1-010   1955-04-22 male   2009-11-17 ADT       86    168 I       122    83
+# … with 136 more rows, and 1 more variable: hr &lt;dbl&gt;</code></pre>
+</div>
+<div id="saving-the-r-script" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Saving the R script<a href="data-preparation.html#saving-the-r-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Saving the R script that performs all the needed data preparation tasks is critical if we want this process to be reproducible. This is why we should <em>always</em> save the data preparation script, <em>rather than its result</em>, the tidy dataframe. There is no need to save the tidy data if we can reproduce it at no cost<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>, and as we will see, there is a very easy way to run the data preparation script once it has been saved to a file.</p>
+<p>The following script accumulates what we have done in previous sections, from the reading of raw data to the selection of valid cases:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="data-preparation.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reading raw data, cleaning and renaming vars </span></span>
+<span id="cb135-2"><a href="data-preparation.html#cb135-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/SARA_simplified.xlsx&quot;</span>) <span class="sc">%&gt;%</span>               </span>
+<span id="cb135-3"><a href="data-preparation.html#cb135-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span>                                            </span>
+<span id="cb135-4"><a href="data-preparation.html#cb135-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">patient  =</span> patient_no,                                </span>
+<span id="cb135-5"><a href="data-preparation.html#cb135-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">birth_dt =</span> birth_date_yyyymm_dd,</span>
+<span id="cb135-6"><a href="data-preparation.html#cb135-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">rand_dt  =</span> date_of_randomization,</span>
+<span id="cb135-7"><a href="data-preparation.html#cb135-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> random_allocation_of_treatment,</span>
+<span id="cb135-8"><a href="data-preparation.html#cb135-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">weight =</span> body_weight_at_baseline_kg,</span>
+<span id="cb135-9"><a href="data-preparation.html#cb135-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">height =</span> body_height_at_baseline_cm,</span>
+<span id="cb135-10"><a href="data-preparation.html#cb135-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">nyha =</span> nyha_classification_at_baseline,</span>
+<span id="cb135-11"><a href="data-preparation.html#cb135-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">sbp =</span> sbp_at_baseline_mm_hg,</span>
+<span id="cb135-12"><a href="data-preparation.html#cb135-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">dbp =</span> dbp_at_baseline_mm_hg,</span>
+<span id="cb135-13"><a href="data-preparation.html#cb135-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">hr =</span> heart_rate_at_baseline_bpm) <span class="sc">%&gt;%</span> </span>
+<span id="cb135-14"><a href="data-preparation.html#cb135-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fixing problems in weight (commas instead of points!), and dates</span></span>
+<span id="cb135-15"><a href="data-preparation.html#cb135-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight =</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="at">pattern =</span> <span class="st">&quot;,&quot;</span>,                </span>
+<span id="cb135-16"><a href="data-preparation.html#cb135-16" aria-hidden="true" tabindex="-1"></a>                            <span class="at">replacement =</span> <span class="st">&quot;.&quot;</span>,                 </span>
+<span id="cb135-17"><a href="data-preparation.html#cb135-17" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x =</span> weight,                       </span>
+<span id="cb135-18"><a href="data-preparation.html#cb135-18" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fixed=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb135-19"><a href="data-preparation.html#cb135-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">birth_dt =</span> <span class="fu">as.Date</span>(birth_dt),                         </span>
+<span id="cb135-20"><a href="data-preparation.html#cb135-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">rand_dt =</span> <span class="fu">as.Date</span>(rand_dt, <span class="st">&quot;%d/%m/%Y&quot;</span>))</span>
+<span id="cb135-21"><a href="data-preparation.html#cb135-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-22"><a href="data-preparation.html#cb135-22" aria-hidden="true" tabindex="-1"></a><span class="co"># data changes (after verification in hospital records)</span></span>
+<span id="cb135-23"><a href="data-preparation.html#cb135-23" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>sex[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;3-001&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">1</span>                 </span>
+<span id="cb135-24"><a href="data-preparation.html#cb135-24" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>nyha[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;1-005&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb135-25"><a href="data-preparation.html#cb135-25" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>nyha[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;3-004&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb135-26"><a href="data-preparation.html#cb135-26" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>weight[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;4-001&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">83</span></span>
+<span id="cb135-27"><a href="data-preparation.html#cb135-27" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>height[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;4-001&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">167</span></span>
+<span id="cb135-28"><a href="data-preparation.html#cb135-28" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>hr[d<span class="sc">$</span>patient <span class="sc">==</span> <span class="st">&quot;6-030&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb135-29"><a href="data-preparation.html#cb135-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-30"><a href="data-preparation.html#cb135-30" aria-hidden="true" tabindex="-1"></a><span class="co"># invalid patients</span></span>
+<span id="cb135-31"><a href="data-preparation.html#cb135-31" aria-hidden="true" tabindex="-1"></a>invalid <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1-013&quot;</span>, <span class="st">&quot;1-038&quot;</span>, <span class="st">&quot;1-054&quot;</span>, <span class="st">&quot;2-012&quot;</span>, <span class="st">&quot;5-002&quot;</span>, <span class="st">&quot;6-021&quot;</span>)</span>
+<span id="cb135-32"><a href="data-preparation.html#cb135-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb135-33"><a href="data-preparation.html#cb135-33" aria-hidden="true" tabindex="-1"></a><span class="co"># derived vars</span></span>
+<span id="cb135-34"><a href="data-preparation.html#cb135-34" aria-hidden="true" tabindex="-1"></a>sara <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb135-35"><a href="data-preparation.html#cb135-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define factors</span></span>
+<span id="cb135-36"><a href="data-preparation.html#cb135-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">factor</span>(sex, </span>
+<span id="cb135-37"><a href="data-preparation.html#cb135-37" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, </span>
+<span id="cb135-38"><a href="data-preparation.html#cb135-38" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>)),</span>
+<span id="cb135-39"><a href="data-preparation.html#cb135-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">nyha =</span> <span class="fu">factor</span>(nyha, </span>
+<span id="cb135-40"><a href="data-preparation.html#cb135-40" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb135-41"><a href="data-preparation.html#cb135-41" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;II&quot;</span>, <span class="st">&quot;III&quot;</span>)),</span>
+<span id="cb135-42"><a href="data-preparation.html#cb135-42" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group,</span>
+<span id="cb135-43"><a href="data-preparation.html#cb135-43" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Catheter ablation&quot;</span>, <span class="st">&quot;Antiarrhythmic drug treatment&quot;</span>),</span>
+<span id="cb135-44"><a href="data-preparation.html#cb135-44" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;CA&quot;</span>, <span class="st">&quot;ADT&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb135-45"><a href="data-preparation.html#cb135-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define new variables</span></span>
+<span id="cb135-46"><a href="data-preparation.html#cb135-46" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">floor</span>(<span class="fu">as.numeric</span>(rand_dt <span class="sc">-</span> birth_dt)<span class="sc">/</span><span class="fl">365.25</span>),</span>
+<span id="cb135-47"><a href="data-preparation.html#cb135-47" aria-hidden="true" tabindex="-1"></a>          <span class="at">age_group =</span> <span class="fu">cut</span>(age, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">70</span>, <span class="dv">10</span>)),</span>
+<span id="cb135-48"><a href="data-preparation.html#cb135-48" aria-hidden="true" tabindex="-1"></a>          <span class="at">bmi =</span> <span class="fu">round</span>(weight <span class="sc">/</span> (height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>,<span class="dv">1</span>),</span>
+<span id="cb135-49"><a href="data-preparation.html#cb135-49" aria-hidden="true" tabindex="-1"></a>          <span class="at">obesity =</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(bmi <span class="sc">&lt;</span> <span class="dv">30</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)),</span>
+<span id="cb135-50"><a href="data-preparation.html#cb135-50" aria-hidden="true" tabindex="-1"></a>          <span class="at">who_ns =</span> <span class="fu">cut</span>(bmi, </span>
+<span id="cb135-51"><a href="data-preparation.html#cb135-51" aria-hidden="true" tabindex="-1"></a>                   <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="cn">Inf</span>), </span>
+<span id="cb135-52"><a href="data-preparation.html#cb135-52" aria-hidden="true" tabindex="-1"></a>                   <span class="at">right =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb135-53"><a href="data-preparation.html#cb135-53" aria-hidden="true" tabindex="-1"></a>          <span class="at">simpler_ns =</span> <span class="fu">recode</span>(who_ns, </span>
+<span id="cb135-54"><a href="data-preparation.html#cb135-54" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Obesity class I&quot;</span> <span class="ot">=</span> <span class="st">&quot;Obesity&quot;</span>, </span>
+<span id="cb135-55"><a href="data-preparation.html#cb135-55" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Obesity class II&quot;</span> <span class="ot">=</span> <span class="st">&quot;Obesity&quot;</span>, </span>
+<span id="cb135-56"><a href="data-preparation.html#cb135-56" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Obesity class III&quot;</span> <span class="ot">=</span> <span class="st">&quot;Obesity&quot;</span>, </span>
+<span id="cb135-57"><a href="data-preparation.html#cb135-57" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.default =</span> <span class="fu">levels</span>(who_ns)),</span>
+<span id="cb135-58"><a href="data-preparation.html#cb135-58" aria-hidden="true" tabindex="-1"></a>          <span class="at">site =</span> <span class="fu">substr</span>(patient, <span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb135-59"><a href="data-preparation.html#cb135-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(patient <span class="sc">%in%</span> invalid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb135-60"><a href="data-preparation.html#cb135-60" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sort by patient</span></span>
+<span id="cb135-61"><a href="data-preparation.html#cb135-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(patient) <span class="sc">%&gt;%</span> </span>
+<span id="cb135-62"><a href="data-preparation.html#cb135-62" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define order of variables in dataframe</span></span>
+<span id="cb135-63"><a href="data-preparation.html#cb135-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(patient, site, birth_dt<span class="sc">:</span>group, </span>
+<span id="cb135-64"><a href="data-preparation.html#cb135-64" aria-hidden="true" tabindex="-1"></a>         age, age_group, </span>
+<span id="cb135-65"><a href="data-preparation.html#cb135-65" aria-hidden="true" tabindex="-1"></a>         height, weight, bmi, simpler_ns,</span>
+<span id="cb135-66"><a href="data-preparation.html#cb135-66" aria-hidden="true" tabindex="-1"></a>         <span class="fu">everything</span>(),</span>
+<span id="cb135-67"><a href="data-preparation.html#cb135-67" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span>who_ns)</span>
+<span id="cb135-68"><a href="data-preparation.html#cb135-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-69"><a href="data-preparation.html#cb135-69" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(invalid, d)</span></code></pre></div>
+<p><br />
+</p>
+<p>After filtering valid cases, we used <code>arrange()</code> to ensure that rows will be sorted by patient, and <code>select()</code> to sort the variables as desired. Finally, we removed intermediate objects we no longer need with <code>rm()</code>.</p>
+<p>In the <code>select()</code> statement, note some useful possibilities:</p>
+<ul>
+<li><p>colons to indicate groups of adjacent variables (as in <code>birth_dt:group</code>).</p></li>
+<li><p><code>everything()</code> to indicate <em>all the remaining, non-mentioned</em> variables.</p></li>
+<li><p>negative sign preceding a variable to drop it (<code>-who_ns</code>).</p></li>
+</ul>
+<p>We now print the first rows of <code>sara</code> to verify the result:</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-preparation.html#cb136-1" aria-hidden="true" tabindex="-1"></a>sara</span></code></pre></div>
+<pre><code># A tibble: 146 × 17
+   patient site  birth_dt   sex   rand_dt    group   age age_group height weight
+   &lt;chr&gt;   &lt;chr&gt; &lt;date&gt;     &lt;fct&gt; &lt;date&gt;     &lt;fct&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+ 1 1-001   1     1974-11-15 male  2009-05-11 CA       34 (30,40]      188    104
+ 2 1-002   1     1970-02-27 male  2009-05-12 ADT      39 (30,40]      182     92
+ 3 1-003   1     1964-02-21 fema… 2009-06-11 CA       45 (40,50]      177     95
+ 4 1-004   1     1962-01-04 fema… 2009-07-20 CA       47 (40,50]      162     80
+ 5 1-005   1     1974-06-02 male  2009-08-17 ADT      35 (30,40]      175     93
+ 6 1-006   1     1964-06-22 male  2009-09-21 CA       45 (40,50]      185    115
+ 7 1-007   1     1950-06-30 male  2009-10-01 CA       59 (50,60]      177     89
+ 8 1-008   1     1955-03-29 male  2009-10-06 CA       54 (50,60]      178     77
+ 9 1-009   1     1941-07-25 fema… 2009-11-10 ADT      68 (60,70]      162     62
+10 1-010   1     1955-04-22 male  2009-11-17 ADT      54 (50,60]      168     86
+# … with 136 more rows, and 7 more variables: bmi &lt;dbl&gt;, simpler_ns &lt;fct&gt;,
+#   nyha &lt;fct&gt;, sbp &lt;dbl&gt;, dbp &lt;dbl&gt;, hr &lt;dbl&gt;, obesity &lt;fct&gt;</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-preparation.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sara)         <span class="co"># to see variable order</span></span></code></pre></div>
+<pre><code> [1] &quot;patient&quot;    &quot;site&quot;       &quot;birth_dt&quot;   &quot;sex&quot;        &quot;rand_dt&quot;   
+ [6] &quot;group&quot;      &quot;age&quot;        &quot;age_group&quot;  &quot;height&quot;     &quot;weight&quot;    
+[11] &quot;bmi&quot;        &quot;simpler_ns&quot; &quot;nyha&quot;       &quot;sbp&quot;        &quot;dbp&quot;       
+[16] &quot;hr&quot;         &quot;obesity&quot;   </code></pre>
+<p><br />
+</p>
+<p>The R script above should be saved to file, with an appropriate name such as “data_preparation.R”, in the same folder where the raw_data is located (e.g., the study folder). Once this is done, you can start a fresh new R session and run this script using function <code>source()</code> with the complete file name as argument (don’t forget the quotes and the .R file extension!). As long as your working directory is the study folder, this will run the script, and the <code>sara</code> dataframe will appear in your <em>workspace</em> (i.e., <code>Environment</code> pane):</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="data-preparation.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;data_preparation.R&quot;</span>)</span></code></pre></div>
+<p>You are now ready for statistical analysis!</p>
+</div>
+<div id="resources-3" class="section level2 unnumbered hasAnchor">
+<h2>Resources<a href="data-preparation.html#resources-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>The <code>forecats</code> package provides useful functions to work with factors (and there is a <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/factors.pdf">Factors with forcats Cheat Sheet</a>.</p></li>
+<li><p>The <code>lubridate</code> package provides useful functions to work with dates (and there is a <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf">Dates and Times Cheat Sheet</a>.</p></li>
+<li><p>The <code>stringr</code> package provides useful functions to work with strings (and there is a <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf">Work with Strings Cheat Sheet</a>.</p></li>
+<li><p>For exact matching of strings, see the help of the <code>grep()</code> function of base R.</p></li>
+<li><p>If you need fuzzy matching (approximate matching) of strings, see the help of the <code>agrep()</code> function of base for starters; if you want more, see packages <a href="https://cran.r-project.org/web/packages/fuzzywuzzyR/vignettes/functionality_of_fuzzywuzzyR_package.html">fuzzywuzzyR</a>; if you want to get mad, see package <a href="https://amunategui.github.io/stringdist/">stringdist</a>.</p></li>
+<li><p>The <a href="https://rpubs.com/Yach/google-translation-R">googleLanguageR</a> package uses Google Cloud Translation API for language detection and translation of strings to a different language (e.g., Spanish to English). It comes at a price, though quite affordable if you don’t exceed a billion of characters per month (and free for the first 500000 characters).</p></li>
+</ul>
+</div>
+<div id="exercises-3" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="data-preparation.html#exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>The following script generates a dataframe with a <code>hospital</code>code, and a within-hospital <code>patient</code> number.</li>
+</ol>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="data-preparation.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>); d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">hospital =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each=</span><span class="dv">20</span>)),</span>
+<span id="cb141-2"><a href="data-preparation.html#cb141-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">patient =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">5</span>) <span class="sc">-</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="fl">0.05</span>),</span>
+<span id="cb141-3"><a href="data-preparation.html#cb141-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">sex =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">100</span>),</span>
+<span id="cb141-4"><a href="data-preparation.html#cb141-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">age =</span> <span class="fu">floor</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="dv">45</span>, <span class="at">sd=</span><span class="dv">15</span>))) </span>
+<span id="cb141-5"><a href="data-preparation.html#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code>  hospital patient    sex age
+1        1       1 female  35
+2        1       2 female  45
+3        1       3 female  31
+4        1       4   male  47
+5        1       5   male  35
+6        1       6   male  71</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Create a unique case identifier by combining <code>hospital</code> and <code>patient</code> into a single variable <code>case_id</code>.</li>
+<li>Is <code>case_id</code> really unique? If it’s not, investigate what is/are repeated <code>case_id</code> value(s), and what are their positions (rows) in the dataframe</li>
+<li>Fix the problem by appending “a” or “b” to the <code>case_id</code>, so that it is unique.</li>
+<li>Amend the following data errors:
+<ul>
+<li>The true age of the 16 year old patient is 26.</li>
+<li>Patient 1 in hospital 1 is not a female, but a male.</li>
+</ul></li>
+<li>The top age for this study was 75 years, so that any patient older than 75 is invalid. Eliminate these patients from the tidy dataframe. How many patients are left?</li>
+</ol>
+<p><br />
+</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Read <a href="https://raw.githubusercontent.com/acobos/Datasets/master/pre_hta.txt">this data</a> of an observational study on pre-hypertension (previous stage to arterial hypertension) conducted in relatives of patients with arterial hypertension (the units of quantitative variables are whole years for age, cm for height and abdominal circumference, kg for weight, and mmHg for SBP and DBP).</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Ensure that all variable have appropriate names in snake_case, and that the case identifier is unique.</li>
+<li>Investigate the number of missings in this dataset. What are the variables containing missings? How many missings are there in each variable?</li>
+<li>Look at the minimum and maximum values of numeric variables. Are there gross errors, like impossible or very suspicious values?</li>
+<li>Define factors for all categorical variables (see the coding <a href="https://raw.githubusercontent.com/acobos/Datasets/master/pre_hta_dictionaries.txt">here</a>).</li>
+<li>Compute the following derived variables:
+<ul>
+<li><code>age_group</code>: defined as <em>working age</em> (15-64 years) or <em>elderly</em> (65 years or older).</li>
+<li><code>bmi</code>: the body mass index (BMI) (kg/^2), rounded to 1 decimal.</li>
+<li><code>nutritional status</code>: defined as <em>underweight</em> (BMI &lt; 18.5), <em>normal weight</em> (18.5–24.9), <em>overweight</em> (25.0–29.9), or <em>obesity</em> (30 or above).</li>
+</ul></li>
+<li>Keep only the patients having complete data (no missings).</li>
+<li>Reorder variables so that derived variables come immediately after those they depend on.</li>
+<li>Ensure rows are ordered by subject number.</li>
+<li>Save your R script to a file with the name “pre_hta_data_preparation.R”, start a fresh R session, and verify your working directory is the folder where you saved the file (check this by running <code>getwd()</code>). Without opening the script in the RStudio editor, run it with <code>source("pre_hta_data_preparation.R")</code>.</li>
+<li>Answer these questions:
+<ul>
+<li>How many patients are left?</li>
+<li>Are there any missings?</li>
+<li>What is the mean of <code>bmi</code>?</li>
+<li>How many patients are there in each nutritional status category?</li>
+</ul></li>
+</ol>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>Overriding the dataframe you start with (<code>d</code> in this case) is not a good idea unless you have tested the code and are pretty sure it works well. For testing, use a different name, so that you do not loose <code>d</code> if something goes wrong.<a href="data-preparation.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>In studies with lots of data and/or very complex data preparation, the R script may be very long and take too much time to be executed. In these cases, it is reasonable to save not only the data preparation script, but also the resulting tidy dataframe.<a href="data-preparation.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-acquisition.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
