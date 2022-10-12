@@ -485,7 +485,6 @@ Figure 3.5: Text data file (delim: semicolon)
 2    174          1.74
 3    168          1.68</code></pre>
 <p>We have only scraped the surface of the <code>dplyr</code> package, and there is much more power in it for dataframe operations. But what we covered should be enough to start using it as we do in the following section.</p>
-<!-- HASTA AQUI -->
 </div>
 <div id="reading-the-sara-data" class="section level3 hasAnchor" number="3.7.2">
 <h3><span class="header-section-number">3.7.2</span> Reading the SARA data<a href="data-acquisition.html#reading-the-sara-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -509,7 +508,7 @@ Figure 3.5: Text data file (delim: semicolon)
  [7] &quot;body_height_at_baseline_cm&quot;      &quot;nyha_classification_at_baseline&quot;
  [9] &quot;sbp_at_baseline_mm_hg&quot;           &quot;dbp_at_baseline_mm_hg&quot;          
 [11] &quot;heart_rate_at_baseline_bpm&quot;     </code></pre>
-<p>Note that spaces have been replaced with underscores, and the special character like brackets have been eliminated. This function made a good job, and in many instances the result will be good enough to proceed. In this case however, variable names are too long, so we rename them using the <code>rename()</code> function of <code>dplyr</code>:</p>
+<p>Note that spaces have been replaced with underscores, and special character like brackets have been eliminated. This function made a good job, and in many instances the result will be good enough to proceed. In this case however, variable names are too long, so we rename them using the <code>rename()</code> function of <code>dplyr</code>:</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-acquisition.html#cb51-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">rename</span>(d,                                                     <span class="co"># rename vars</span></span>
 <span id="cb51-2"><a href="data-acquisition.html#cb51-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">patient  =</span> patient_no,</span>
 <span id="cb51-3"><a href="data-acquisition.html#cb51-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">birth_dt =</span> birth_date_yyyymm_dd,</span>
@@ -546,8 +545,8 @@ Figure 3.5: Text data file (delim: semicolon)
 <p>But let’s verify the object classes of these three variables:</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-acquisition.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>birth_dt)     </span></code></pre></div>
 <pre><code>[1] &quot;POSIXct&quot; &quot;POSIXt&quot; </code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-acquisition.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>birth_dt)     </span></code></pre></div>
-<pre><code>[1] &quot;POSIXct&quot; &quot;POSIXt&quot; </code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-acquisition.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>rand_dt)     </span></code></pre></div>
+<pre><code>[1] &quot;character&quot;</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-acquisition.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>weight)</span></code></pre></div>
 <pre><code>[1] &quot;character&quot;</code></pre>
 <p>Yes, these objects classes are as indicated by the abbreviations in the output above.</p>
@@ -621,7 +620,7 @@ Figure 3.5: Text data file (delim: semicolon)
 <span id="cb67-3"><a href="data-acquisition.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb67-4"><a href="data-acquisition.html#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-5"><a href="data-acquisition.html#cb67-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/SARA_simplified.xlsx&quot;</span>) <span class="sc">%&gt;%</span>               <span class="co"># reads data</span></span>
-<span id="cb67-6"><a href="data-acquisition.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span>                                            <span class="co"># standard names</span></span>
+<span id="cb67-6"><a href="data-acquisition.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span>                                            <span class="co"># for well formed names</span></span>
 <span id="cb67-7"><a href="data-acquisition.html#cb67-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">patient  =</span> patient_no,                                <span class="co"># for shorter names</span></span>
 <span id="cb67-8"><a href="data-acquisition.html#cb67-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">birth_dt =</span> birth_date_yyyymm_dd,</span>
 <span id="cb67-9"><a href="data-acquisition.html#cb67-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rand_dt  =</span> date_of_randomization,</span>
@@ -634,9 +633,9 @@ Figure 3.5: Text data file (delim: semicolon)
 <span id="cb67-16"><a href="data-acquisition.html#cb67-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">hr =</span> heart_rate_at_baseline_bpm) <span class="sc">%&gt;%</span> </span>
 <span id="cb67-17"><a href="data-acquisition.html#cb67-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight =</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="at">pattern =</span> <span class="st">&quot;,&quot;</span>,                <span class="co"># commas to dots,</span></span>
 <span id="cb67-18"><a href="data-acquisition.html#cb67-18" aria-hidden="true" tabindex="-1"></a>                            <span class="at">replacement =</span> <span class="st">&quot;.&quot;</span>,                 <span class="co"># and convert to </span></span>
-<span id="cb67-19"><a href="data-acquisition.html#cb67-19" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x =</span> weight,                        <span class="co"># numeric</span></span>
+<span id="cb67-19"><a href="data-acquisition.html#cb67-19" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x =</span> weight,                        <span class="co"># ...numeric</span></span>
 <span id="cb67-20"><a href="data-acquisition.html#cb67-20" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fixed=</span><span class="cn">TRUE</span>)),</span>
-<span id="cb67-21"><a href="data-acquisition.html#cb67-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">birth_dt =</span> <span class="fu">as.Date</span>(birth_dt),                         <span class="co"># dates</span></span>
+<span id="cb67-21"><a href="data-acquisition.html#cb67-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">birth_dt =</span> <span class="fu">as.Date</span>(birth_dt),                         <span class="co"># convert to Date</span></span>
 <span id="cb67-22"><a href="data-acquisition.html#cb67-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">rand_dt =</span> <span class="fu">as.Date</span>(rand_dt, <span class="st">&quot;%d/%m/%Y&quot;</span>))</span>
 <span id="cb67-23"><a href="data-acquisition.html#cb67-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-24"><a href="data-acquisition.html#cb67-24" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
@@ -664,12 +663,13 @@ Figure 3.5: Text data file (delim: semicolon)
 <li><p><a href="https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf">Data Import Cheat Sheet</a></p></li>
 <li><p>For more information on the use of package <code>janitor</code>, see <a href="https://garthtarr.github.io/meatR/janitor.html">this tutorial</a>.</p></li>
 <li><p>For more information on the use of package <code>dplyr</code>, see <a href="https://dplyr.tidyverse.org/">this tutorial</a>.</p></li>
+<li><p>To easily read many different data formats with a single function, see <a href="https://cran.r-project.org/web/packages/rio/vignettes/rio.html">this introduction to the rio package</a>.</p></li>
 </ul>
 </div>
 <div id="exercises-2" class="section level2 unnumbered hasAnchor">
 <h2>Exercises<a href="data-acquisition.html#exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li><p>Download <a href="https://github.com/acobos/Datasets/raw/master/Life_expectancy.xls">this Excel file</a> and read it using the <code>Import Dataset</code> button in the <code>Environment</code> pane of RStudio. How many variables are in the resulting dataframe, and what are their names?</p></li>
+<li><p>Download <a href="https://github.com/acobos/Datasets/raw/master/Life_expectancy.xls">this Excel file</a> and read it using the <code>Import Dataset</code> button in the <code>Environment</code> pane of RStudio. How many variables are in the resulting dataframe, and what are their names? Get well formed names with function <code>clean_names()</code> of package <code>janitor</code>.</p></li>
 <li><p>Download <a href="https://github.com/acobos/Datasets/raw/master/data_four.xls">this Excel file</a> and read it using the <code>Import Dataset</code> button in the <code>Environment</code> pane of RStudio. How many variables are in the resulting dataframe, and what are their names? Give appropriate names to the dataframe variables.</p></li>
 <li><p>Read <a href="https://raw.githubusercontent.com/acobos/Datasets/master/data_one.txt">this text data file</a>. Why do you think the <code>Weight</code> variable is read as character vector? Look at the character used for missings. Can you imagine a way to read this correctly, so that <code>Weight</code> is a numeric vector? (Hint:explore changing the NA <code>Import Option</code>to NA, and look at the Code Preview; maybe if you copy this code to the editor you can adapt it to indicate that the NA symbol is…).</p></li>
 <li><p>Read <a href="https://raw.githubusercontent.com/acobos/Datasets/master/Life_Expectancy_with_continent.csv">this text file</a>. Are the names of the countries properly written? Try to use the <strong>Locale</strong> Import Option to set the Encoding to “ISO-8859-1”.</p></li>
@@ -678,12 +678,12 @@ Figure 3.5: Text data file (delim: semicolon)
 </ol>
 <ol style="list-style-type: lower-alpha">
 <li>Look at the class of variables <code>born</code> and <code>died</code>. If not <code>Date</code>, convert this variables to standard dates.</li>
-<li>Nobel Laureates are awarded the Nobel prize in a ceremony held the 10 December every year, on the anniversary of Alfred Nobel’s death. Use <code>paste()</code> to build a character vector containing the dates the laureates were awarded the prize.</li>
+<li>Nobel Laureates are awarded the Nobel prize in a ceremony held the 10 December every <code>year</code>, on the anniversary of Alfred Nobel’s death. Use <code>paste()</code> to build a character vector containing the dates the laureates were awarded the prize.</li>
 <li>Convert the previous result to a <code>Date</code> object and use it to compute the age each laureate was awarded the Nobel Prize.</li>
 <li>Filter laureates for the “medicine” category and save the resulting dataframe as <code>medicine</code>.</li>
 <li>Use <code>count(medicine, born_country)</code> to get the number of medicine laureates per country of birth; look at the help of <code>count()</code> to see how to get the result sorted by frequency.</li>
 <li>Use the same function to get the number of medicine laureates per <code>name</code>, and then filter institutions with more than one laureate.</li>
-<li>Filter <code>medicine</code> to see the laureates that, when awarded the prize, where working in a <code>country</code> different from their <code>born_country</code>.</li>
+<li>Filter <code>medicine</code> to see the laureates that, when awarded the prize, where working in a <code>country</code> different from their <code>born_country</code>. How many were in a different country?</li>
 </ol>
 
 </div>
