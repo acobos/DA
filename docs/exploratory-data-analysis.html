@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Exploratory Data Analysis | Data Analysis for Clinical Researchers</title>
+  <meta name="description" content="5 Exploratory Data Analysis | Data Analysis for Clinical Researchers" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Exploratory Data Analysis | Data Analysis for Clinical Researchers" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Exploratory Data Analysis | Data Analysis for Clinical Researchers" />
+  
+  
+  
+
+<meta name="author" content="Albert Cobos" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-preparation.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="structure-of-this-book.html"><a href="structure-of-this-book.html"><i class="fa fa-check"></i>Structure of this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#first-r-session"><i class="fa fa-check"></i><b>1.2</b> First R session</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-objects"><i class="fa fa-check"></i><b>1.3</b> R objects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-functions"><i class="fa fa-check"></i><b>1.4</b> R functions</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>1.5</b> Installing R packages</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#loading-packages"><i class="fa fa-check"></i><b>1.6</b> Loading packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-data-structures.html"><a href="r-data-structures.html"><i class="fa fa-check"></i><b>2</b> R data structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-data-structures.html"><a href="r-data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="r-data-structures.html"><a href="r-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3" data-path="r-data-structures.html"><a href="r-data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="r-data-structures.html"><a href="r-data-structures.html#factors"><i class="fa fa-check"></i><b>2.4</b> Factors</a></li>
+<li class="chapter" data-level="2.5" data-path="r-data-structures.html"><a href="r-data-structures.html#dates"><i class="fa fa-check"></i><b>2.5</b> Dates</a></li>
+<li class="chapter" data-level="2.6" data-path="r-data-structures.html"><a href="r-data-structures.html#other-data-structures"><i class="fa fa-check"></i><b>2.6</b> Other data structures</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-acquisition.html"><a href="data-acquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-ms-excel-data"><i class="fa fa-check"></i><b>3.1</b> Reading MS Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-text-data"><i class="fa fa-check"></i><b>3.2</b> Reading text data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-spss-sas-or-stata-data"><i class="fa fa-check"></i><b>3.3</b> Reading SPSS, SAS or Stata data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-databases"><i class="fa fa-check"></i><b>3.4</b> Reading databases</a></li>
+<li class="chapter" data-level="3.5" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-other-formats"><i class="fa fa-check"></i><b>3.5</b> Reading other formats</a></li>
+<li class="chapter" data-level="3.6" data-path="data-acquisition.html"><a href="data-acquisition.html#getting-data-from-r-packages"><i class="fa fa-check"></i><b>3.6</b> Getting data from R packages</a></li>
+<li class="chapter" data-level="3.7" data-path="data-acquisition.html"><a href="data-acquisition.html#problems-when-importing-data-from-external-files"><i class="fa fa-check"></i><b>3.7</b> Problems when importing data from external files</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="data-acquisition.html"><a href="data-acquisition.html#package-dplyr"><i class="fa fa-check"></i><b>3.7.1</b> Package <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.7.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-the-sara-data"><i class="fa fa-check"></i><b>3.7.2</b> Reading the SARA data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>4</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-preparation.html"><a href="data-preparation.html#steps-in-data-preparation"><i class="fa fa-check"></i><b>4.1</b> Steps in data preparation</a></li>
+<li class="chapter" data-level="4.2" data-path="data-preparation.html"><a href="data-preparation.html#reading-raw-data"><i class="fa fa-check"></i><b>4.2</b> Reading raw data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#reviewing-data"><i class="fa fa-check"></i><b>4.3</b> Reviewing data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-preparation.html"><a href="data-preparation.html#missings"><i class="fa fa-check"></i><b>4.3.1</b> Missings</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-preparation.html"><a href="data-preparation.html#data-errors"><i class="fa fa-check"></i><b>4.3.2</b> Data errors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#modifying-data"><i class="fa fa-check"></i><b>4.4</b> Modifying data</a></li>
+<li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#computing-new-variables"><i class="fa fa-check"></i><b>4.5</b> Computing new variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="data-preparation.html"><a href="data-preparation.html#defining-factors"><i class="fa fa-check"></i><b>4.5.1</b> Defining factors</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data-preparation.html"><a href="data-preparation.html#formulas"><i class="fa fa-check"></i><b>4.5.2</b> Formulas</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data-preparation.html"><a href="data-preparation.html#conditional-assignments"><i class="fa fa-check"></i><b>4.5.3</b> Conditional assignments</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data-preparation.html"><a href="data-preparation.html#categorization-of-quantitative-variables"><i class="fa fa-check"></i><b>4.5.4</b> Categorization of quantitative variables</a></li>
+<li class="chapter" data-level="4.5.5" data-path="data-preparation.html"><a href="data-preparation.html#grouping-factor-levels"><i class="fa fa-check"></i><b>4.5.5</b> Grouping factor levels</a></li>
+<li class="chapter" data-level="4.5.6" data-path="data-preparation.html"><a href="data-preparation.html#character-strings"><i class="fa fa-check"></i><b>4.5.6</b> Character strings</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#selecting-valid-cases"><i class="fa fa-check"></i><b>4.6</b> Selecting valid cases</a></li>
+<li class="chapter" data-level="4.7" data-path="data-preparation.html"><a href="data-preparation.html#saving-the-r-script"><i class="fa fa-check"></i><b>4.7</b> Saving the R script</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#number-and-type-of-variables"><i class="fa fa-check"></i><b>5.1</b> Number and type of variables</a></li>
+<li class="chapter" data-level="5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#univariate-description"><i class="fa fa-check"></i><b>5.2</b> Univariate description</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#categorical-variable"><i class="fa fa-check"></i><b>5.2.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="5.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-variable"><i class="fa fa-check"></i><b>5.2.2</b> Quantitative variable</a></li>
+<li class="chapter" data-level="5.2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#important-remarks"><i class="fa fa-check"></i><b>5.2.3</b> Important remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#bivariate-description"><i class="fa fa-check"></i><b>5.3</b> Bivariate description</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.3.1</b> Two categorical variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-and-categorical-variable"><i class="fa fa-check"></i><b>5.3.2</b> Quantitative and categorical variable</a></li>
+<li class="chapter" data-level="5.3.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#eda-2-quantis"><i class="fa fa-check"></i><b>5.3.3</b> Two quantitative variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#adding-infromation-from-additional-variables"><i class="fa fa-check"></i><b>5.4</b> Adding infromation from additional variables</a></li>
+<li class="chapter" data-level="5.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#graphic-refinement"><i class="fa fa-check"></i><b>5.5</b> Graphic refinement</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis for Clinical Researchers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploratory-data-analysis" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Exploratory Data Analysis<a href="exploratory-data-analysis.html#exploratory-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Data exploration and description are first steps in data analysis. Graphics are the best tool for exploring data, while <em>summary statistics</em> are best suited for description under space restrictions, as is the case of published papers. Of course, papers include graphics as well, but these are often restricted to the most relevant results.</p>
+<p><em>Exploratory</em> graphics differ from <em>publication ready</em> graphics. Graphics for publication must have a title, appropriate labels in axes and legends, and must be stored in a high quality image, all of which takes time, and it is usually done only for a selection of a few graphics. Conversely, data exploration requires lots of graphics, and we do not care about nice labeling or super-high image quality. So, exploratory graphics are <em>fast and dirty</em>.</p>
+<p>There are several graphics functions in base R., such as <code>plot()</code>, <code>hist()</code>, <code>boxplot()</code>, and <code>barplot()</code>. There are also several packages specialized in graphics, such as <code>ggplot2</code>, <code>plotly</code>, <code>lattice</code> and <code>ggformula</code>. With few exceptions, in this chapter we use the latter because of its simple, consistent, user-friendly syntax, that makes it ideal for <em>fast</em> (though not so dirty!) graphics.</p>
+<p>Similarly, there are several functions in base R to compute summary statistics, but we will use functions from the <code>mosaic</code> package. You should install the <code>ggformula</code> and <code>mosaic</code> packages now (using the <code>Install</code> button in the Packages pane of RStudio), and then load them with <code>library()</code>.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="exploratory-data-analysis.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
+<span id="cb143-2"><a href="exploratory-data-analysis.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code></pre></div>
+<p>All the graphic functions in the <code>ggformula</code> package start with <code>gf_</code> (e.g., <code>gf_histogram()</code>), so you will recognize them very easily.</p>
+<p>To illustrate the exploratory methods in this chapter, we use data from the <a href="https://www.nejm.org/doi/10.1056/NEJMoa1800389?url_ver=Z39.88-2003&amp;rfr_id=ori:rid:crossref.org&amp;rfr_dat=cr_pub%3dwww.ncbi.nlm.nih.gov">Predimed trial</a> that compared two Mediterranean Diets (MD) to a Control diet. The <code>compareGroups</code> package includes dataframe <code>predimed</code> containing a simplified version of the trial data. The following script loads this package, uses function <code>data(predimed)</code> to make this dataset available, redefines the levels of the <code>group</code> variable (to have shorter labels for graphics), and shows the first 6 lines of (a subset of columns of) the <code>predimed</code> dataset. For a brief description of this dataset run <code>?predimed</code>.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="exploratory-data-analysis.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember to install the compareGroups package first,</span></span>
+<span id="cb144-2"><a href="exploratory-data-analysis.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the `Install` button in the Packages pane of RStudio</span></span>
+<span id="cb144-3"><a href="exploratory-data-analysis.html#cb144-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-4"><a href="exploratory-data-analysis.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(compareGroups)</span>
+<span id="cb144-5"><a href="exploratory-data-analysis.html#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(predimed)</span>
+<span id="cb144-6"><a href="exploratory-data-analysis.html#cb144-6" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> predimed</span>
+<span id="cb144-7"><a href="exploratory-data-analysis.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(d<span class="sc">$</span>group) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;MD+nuts&quot;</span>, <span class="st">&quot;MD+VOO&quot;</span>)     </span>
+<span id="cb144-8"><a href="exploratory-data-analysis.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)    </span></code></pre></div>
+<pre><code>    group    sex age   smoke   bmi waist       wth htn diab hyperchol famhist
+1 Control   Male  58  Former 33.53   122 0.7530864  No   No       Yes      No
+2 Control   Male  77 Current 31.05   119 0.7300614 Yes  Yes        No      No
+4  MD+VOO Female  72  Former 30.86   106 0.6543210  No  Yes        No     Yes
+5 MD+nuts   Male  71  Former 27.68   118 0.6941177 Yes   No       Yes      No
+6  MD+VOO Female  79   Never 35.94   129 0.8062500 Yes   No       Yes      No
+8 Control   Male  63  Former 41.66   143 0.8033708 Yes  Yes       Yes      No
+  hormo p14  toevent event
+1    No  10 5.374401   Yes
+2    No  10 6.097194    No
+4    No   8 5.946612    No
+5    No   8 2.907598   Yes
+6    No   9 4.761123    No
+8  &lt;NA&gt;   9 3.148528   Yes</code></pre>
+<div id="number-and-type-of-variables" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Number and type of variables<a href="exploratory-data-analysis.html#number-and-type-of-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The descriptive methods presented in this chapter are classified according to the number and type of variables they deal with. Concerning the number of variables, statistical methods are usually characterized as <em>univariate</em>, <em>bivariate</em>, or <em>multivariate</em>, when they deal with one, two, or more than two variables, respectively. While univariate methods are used to summarize or display the <em>distribution</em><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> of a single variable, bivariate and multivariate methods deal with the relationship between variables.</p>
+<p>There are two main types of variables:</p>
+<ul>
+<li><p><em>Categorical</em> variables: nominal, or ordinal</p></li>
+<li><p><em>Quantitative</em> variables: continuous, or discrete</p></li>
+</ul>
+<p>Categorical variables are classifications, like gender (male or female) or the New York Heart Association (NYHA) Classification of heart failure (I: No symptoms, II: Mild symptoms, III: Marked limitation in activity due to symptoms, or IV: Severe limitations). When the classes or <em>categories</em> of a categorical variable have a natural ordering, as is the case of the NYHA classification, the variable is said to be <em>ordinal</em>. Otherwise, it is said to be <em>nominal</em>, and this is the case of gender or ethnicity. Categorical variables with only two categories (like sex) are sometimes called <em>dichotomous</em>, <em>binary</em> or <em>indicator</em> variables, while those with more than two categories are called <em>polytomous</em> variables.</p>
+<p>Quantitative variables express a quantity and are the result of a counting or measurement procedure. Examples of quantitative variables are the number of seizures experienced by patient in a period of time, or his/her body weight. If the variable can only take a finite number of values in a given interval, it is said to be <em>discrete</em>. This is the case of the number of seizures: given any interval of values (like 2 and 8), there is only a finite number of possible values between them (3, 4, 5, 6, or 7). Otherwise, the variable is said to be <em>continuous</em> (there are infinite possible values of weight between 60 and 61 Kg: e.g., 60.5, 60.05, etc.).</p>
+</div>
+<div id="univariate-description" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Univariate description<a href="exploratory-data-analysis.html#univariate-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Table <a href="exploratory-data-analysis.html#tab:5-univariate">5.1</a> shows the most common summary statistics and graphics used for univariate description. All methods listed in this table are presented in this section.</p>
+<table>
+<caption><span id="tab:5-univariate">Table 5.1: </span> Univariate description</caption>
+<colgroup>
+<col width="11%" />
+<col width="65%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Statistics</th>
+<th align="left">Graphics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Categorical</td>
+<td align="left">frequencies (counts, proportions, percentages)</td>
+<td align="left">barchart</td>
+</tr>
+<tr class="even">
+<td align="left">Quantitative</td>
+<td align="left">mean, median, standard deviation, variance, interquartile range, extremes, quantiles</td>
+<td align="left">histogram, density, boxplot</td>
+</tr>
+</tbody>
+</table>
+<div id="categorical-variable" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Categorical variable<a href="exploratory-data-analysis.html#categorical-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The tools for the univariate description of a categorical variable are <em>frequency tables</em> and <em>barcharts</em>. They both inform on the <em>frequency distribution</em> of the variable, that is, how frequent are the different values the variable can take. We can compute either absolute frequencies (counts), or relative frequencies (proportions or percentages).</p>
+<div id="summary-statistics" class="section level4 hasAnchor" number="5.2.1.1">
+<h4><span class="header-section-number">5.2.1.1</span> Summary statistics<a href="exploratory-data-analysis.html#summary-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <code>tally()</code> function from the <code>mosaic</code> package can be used to produce frequency tables. Below we have used this function to get counts and percentages for the <code>event</code> variable of the <code>d</code> dataframe.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="exploratory-data-analysis.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>( <span class="sc">~</span>  event, <span class="at">data =</span> d)                            <span class="co"># counts </span></span></code></pre></div>
+<pre><code>event
+  No  Yes 
+6072  252 </code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="exploratory-data-analysis.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>( <span class="sc">~</span>  event, <span class="at">data =</span> d, <span class="at">format =</span> <span class="st">&quot;percent&quot;</span>)        <span class="co"># percentages</span></span></code></pre></div>
+<pre><code>event
+      No      Yes 
+96.01518  3.98482 </code></pre>
+<p>From these results we see that 252 subjects experienced a cardiovascular event during the study, which is roughly a 4 % of the total number of subjects.</p>
+<p>Note the tilde (<code>~</code>) preceding the variable name in the <code>tally()</code> function calls. This symbol is needed, and omitting it will produce an error.</p>
+</div>
+<div id="graphics" class="section level4 hasAnchor" number="5.2.1.2">
+<h4><span class="header-section-number">5.2.1.2</span> Graphics<a href="exploratory-data-analysis.html#graphics" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A <em>barchart</em> is nothing but the graphical expression of a frequency table: for each value of the variable, we draw a bar extending from zero to the value indicated in a frequency axis. Bar charts are easily produced with functions <code>gf_bar()</code> and <code>gf_percents()</code> from the <code>ggformula</code> package. In the following script we save the plots produced by these functions as <code>plot1</code> and <code>plot2</code>, and then use package <code>patchwork</code> to print them at once, side by side.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="exploratory-data-analysis.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
+<span id="cb150-2"><a href="exploratory-data-analysis.html#cb150-2" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">gf_bar</span>( <span class="sc">~</span>  event, <span class="at">data =</span> d)                 <span class="co"># counts </span></span>
+<span id="cb150-3"><a href="exploratory-data-analysis.html#cb150-3" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">gf_percents</span>(<span class="sc">~</span>  event, <span class="at">data =</span> d)             <span class="co"># percentages</span></span>
+<span id="cb150-4"><a href="exploratory-data-analysis.html#cb150-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb150-5"><a href="exploratory-data-analysis.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb150-6"><a href="exploratory-data-analysis.html#cb150-6" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> plot2                                               <span class="co"># print both in a row</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-barcharts"></span>
+<img src="_main_files/figure-html/5-barcharts-1.png" alt="Barcharts" width="672" />
+<p class="caption">
+Figure 5.1: Barcharts
+</p>
+</div>
+<p>As you can see in figure <a href="exploratory-data-analysis.html#fig:5-barcharts">5.1</a>, barcharts of absolute or relative frequencies display exactly the same image, but for the scale shown in the vertical axis (counts or percentages). This implies we can use either to get an idea of how common are the different values of the variable.</p>
+</div>
+</div>
+<div id="quantitative-variable" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Quantitative variable<a href="exploratory-data-analysis.html#quantitative-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="stats" class="section level4 hasAnchor" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> Sumary statistics<a href="exploratory-data-analysis.html#stats" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The summary statistics used to describe the distribution of a quantitative variable can be classified in three types: <em>centrality</em> measures, <em>spread</em> or <em>variability</em> measures, and <em>position</em> measures:</p>
+<ul>
+<li><p><em>Centrality</em> measures provide a typical or “central” value, informing on where the distribution is centered; the most common ones are the <em>mean</em> and the <em>median</em> (see table <a href="exploratory-data-analysis.html#tab:5-centrality">5.2</a>).</p></li>
+<li><p><em>Spread</em> measures inform on the variability of values, that is, how scattered the values are around the center of the distribution; the most common ones are the <em>variance</em>, the <em>standard deviation</em> (SD), and the <em>interquartile range</em> (IQR)(see table <a href="exploratory-data-analysis.html#tab:5-variability">5.3</a>).</p></li>
+<li><p><em>Position</em> measures inform on the relative position of specific values in the distribution. There are two types of position measures: <em>extremes</em> (<em>minimum</em>, <em>maximum</em>) and <em>quantiles</em>(<em>quartiles</em>, <em>quintiles</em>, <em>deciles</em>, <em>percentiles</em>)(see table <a href="exploratory-data-analysis.html#tab:5-position">5.4</a>).</p></li>
+</ul>
+<p>In tables <a href="exploratory-data-analysis.html#tab:5-centrality">5.2</a> to <a href="exploratory-data-analysis.html#tab:5-position">5.4</a> we provide the definitions of the statistics listed above. In these tables we denote <span class="math inline">\(x_i\)</span> the <span class="math inline">\(i-th\)</span> value of variable <em>X</em> in a collection of <span class="math inline">\(n\)</span> observations (so that <span class="math inline">\(i = 1, 2, ... n\)</span>), and <span class="math inline">\(\sum\)</span> denotes summation over <span class="math inline">\(i\)</span>:</p>
+<table>
+<caption><span id="tab:5-centrality">Table 5.2: </span> Centrality measures</caption>
+<colgroup>
+<col width="3%" />
+<col width="92%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Definition: symbol = formula</th>
+<th>R function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mean</td>
+<td>Sum of all values divided by the number of values: <span class="math inline">\(\bar{x} = \frac{\sum x_i}{n}\)</span></td>
+<td><code>mean()</code></td>
+</tr>
+<tr class="even">
+<td>median</td>
+<td>Value that occupies the central place in the <em>ordered</em> collection of the <span class="math inline">\(n\)</span> values, thus dividing it in two parts having the same number of values. If <span class="math inline">\(n\)</span> is even, there is no single central place, but two; in this case, these two central values are averaged.</td>
+<td><code>median()</code></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<br />
+</p>
+<table>
+<caption><span id="tab:5-variability">Table 5.3: </span> Variability measures</caption>
+<colgroup>
+<col width="8%" />
+<col width="87%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Definition: symbol = formula</th>
+<th>R function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Variance</td>
+<td>Sum of the <em>squared deviations</em> from the mean, divided the number of values: <span class="math inline">\(\sigma^2 = \frac{\sum (x_i - \bar{x})^2}{n}\)</span>. For estimation purposes (i.e., when the collection of values is a sample rather than a population) we use <span class="math inline">\(s^2 = \frac{\sum (x_i - \bar{x})^2}{n-1}\)</span></td>
+<td><code>var(x)</code></td>
+</tr>
+<tr class="even">
+<td>Standard deviation (SD)</td>
+<td>Square root of the variance: <span class="math inline">\(\sigma = \sqrt{\sigma^2}\)</span>, or <span class="math inline">\(s = \sqrt{s^2}\)</span></td>
+<td><code>sd(x)</code></td>
+</tr>
+<tr class="odd">
+<td>Interquartile range (IQR)</td>
+<td>Difference between the third and the first quartiles (see position measures): <span class="math inline">\(IQR = Q_3 -Q_1\)</span>.</td>
+<td><code>IQR(x)</code></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<br />
+</p>
+<table>
+<caption><span id="tab:5-position">Table 5.4: </span> Position measures</caption>
+<colgroup>
+<col width="10%" />
+<col width="74%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Definition: symbol = formula</th>
+<th>R function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Extremes: minimum and maximum</td>
+<td>Lowest and highest value in the collection, respectively</td>
+<td><p><code>min(x)</code></p>
+<p><code>max(x)</code></p></td>
+</tr>
+<tr class="even">
+<td>Quantiles</td>
+<td>Values that occupy particular positions in the <em>ordered</em> collection of values, dividing the collection in a number of parts having the same number of values. They are named according to the number of parts they generate:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Quartiles</td>
+<td>Divide the distribution in four parts: <span class="math inline">\(Q_1, Q_2, Q_3\)</span></td>
+<td><code>quantile(x)</code></td>
+</tr>
+<tr class="even">
+<td>Quintiles</td>
+<td>Divide the distribution in five parts: <span class="math inline">\(Q_1, Q_2, Q_3\)</span></td>
+<td><code>quantile(x, probs = c(.2, .4, .6, .8))</code></td>
+</tr>
+<tr class="odd">
+<td>Deciles</td>
+<td>Divide the distribution in ten parts: <span class="math inline">\(D_1, D_2,…, D_9\)</span></td>
+<td><code>quantile(x, probs = seq(.1, .9, .1))</code></td>
+</tr>
+<tr class="even">
+<td>Percentiles</td>
+<td>Divide the distribution in 100 parts: <span class="math inline">\(P_1, P_2,…, P_{99}\)</span></td>
+<td><code>quantile(x, probs = seq(.1, .99, .1))</code></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<br />
+</p>
+<p>A couple of comments on quantiles:</p>
+<ul>
+<li><p>Note that we need K-1 cuts to divide the distribution in K parts; therefore, there are three quartiles, four quintiles, nine deciles, and ninety-nine percentiles.</p></li>
+<li><p>It should be clear that:</p>
+<ul>
+<li>the median is the same as the second quartile and the percentile 50 (median = <span class="math inline">\(Q_2 = P_{50}\)</span>)</li>
+<li>the first quartile is the same as percentile 25 (<span class="math inline">\(Q_1 = P_{25}\)</span>), and</li>
+<li>the third quartile is the same as percentile 75 <span class="math inline">\(Q_3 = P_{75}\)</span>.</li>
+</ul></li>
+</ul>
+<p><br />
+</p>
+<p>The R functions listed in tables <a href="exploratory-data-analysis.html#tab:5-centrality">5.2</a> to <a href="exploratory-data-analysis.html#tab:5-position">5.4</a> are useful when we want to compute just one of these statistics. However, there are other functions providing several statistics at once. This is the case of function <code>favstats()</code> from package <code>mosaic</code>, which is used in the script below to get summary statistics for the <code>age</code> variable (as you see, we use the pipe to <code>round()</code> to the first decimal the results obtained with <code>favstats()</code>).</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="exploratory-data-analysis.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb151-2"><a href="exploratory-data-analysis.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>( <span class="sc">~</span> age, <span class="at">data=</span>d) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code> min Q1 median Q3 max mean  sd    n missing
+  49 62     67 72  87   67 6.2 6324       0</code></pre>
+<p><br />
+</p>
+<p>In the resuls above we see that the age of subjects ranged from 49 to 87 years, with mean and median values of 67 years. The fact that they match is an indication that the distribution is pretty symmetric (in asymmetric distributions the median and the mean are different, the extent of the difference depending on the degree of asymmetry). The standard deviation of 6.2 can be loosely interpreted as the <em>average</em> deviation from the mean of age values.</p>
+<p>Quantiles can be obtained with the <code>quantile()</code> function. By default, the quartiles (and extremes) are provided, but other quantiles can be obtained by providing appropriate probabilities, as a numeric vector, in argument <code>probs</code>. In some of the example below we use <code>seq()</code> to generate this vector of probabilities.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="exploratory-data-analysis.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>( <span class="sc">~</span> age, <span class="at">data=</span>d)                                    <span class="co"># quartiles (default)</span></span></code></pre></div>
+<pre><code>  0%  25%  50%  75% 100% 
+  49   62   67   72   87 </code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="exploratory-data-analysis.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>( <span class="sc">~</span> age, <span class="at">data=</span>d, <span class="at">probs =</span> <span class="fu">seq</span>(.<span class="dv">2</span>, .<span class="dv">8</span>, .<span class="dv">2</span>))           <span class="co"># quintiles</span></span></code></pre></div>
+<pre><code>20% 40% 60% 80% 
+ 61  65  69  73 </code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="exploratory-data-analysis.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>( <span class="sc">~</span> age, <span class="at">data=</span>d, <span class="at">probs =</span> <span class="fu">seq</span>(.<span class="dv">1</span>, .<span class="dv">9</span>, .<span class="dv">1</span>))           <span class="co"># deciles</span></span></code></pre></div>
+<pre><code>10% 20% 30% 40% 50% 60% 70% 80% 90% 
+ 59  61  63  65  67  69  71  73  76 </code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="exploratory-data-analysis.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>( <span class="sc">~</span> age, <span class="at">data=</span>d, <span class="at">probs =</span> <span class="fu">c</span>(.<span class="dv">05</span>, .<span class="dv">95</span>))               <span class="co"># percentiles 5 and 95</span></span></code></pre></div>
+<pre><code> 5% 95% 
+ 58  77 </code></pre>
+<p><br />
+</p>
+<p>From the last result above, we see that only 5% of the cases are 58 years or younger, and an additional 5% are 77 years or older. Therefore, 90% of the cases have an age between 58 and 77 years.</p>
+</div>
+<div id="graphics-1" class="section level4 hasAnchor" number="5.2.2.2">
+<h4><span class="header-section-number">5.2.2.2</span> Graphics<a href="exploratory-data-analysis.html#graphics-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The most classical graphic to show the distribution of a quantitative variable is the <em>histogram</em>. Histograms are built by defining bins in a variable axis, and drawing a bar for each bin, the <em>area</em> of which is proportional to the frequency of cases in that bin. You can produce histograms with functions <code>gf_dhistogram()</code> or <code>gf_histogram()</code>: the former draws a density axis (which is the relative frequency divided by the bin width), and the later a count axis. They both produce the same skyline, as shown in figure <a href="exploratory-data-analysis.html#fig:5-histograms1">5.2</a>.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="exploratory-data-analysis.html#cb161-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">gf_dhistogram</span>( <span class="sc">~</span> age, <span class="at">data=</span>d) </span>
+<span id="cb161-2"><a href="exploratory-data-analysis.html#cb161-2" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">gf_histogram</span>( <span class="sc">~</span> age, <span class="at">data=</span>d) </span>
+<span id="cb161-3"><a href="exploratory-data-analysis.html#cb161-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-4"><a href="exploratory-data-analysis.html#cb161-4" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> plot2</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-histograms1"></span>
+<img src="_main_files/figure-html/5-histograms1-1.png" alt="Histograms" width="672" />
+<p class="caption">
+Figure 5.2: Histograms
+</p>
+</div>
+<p><br />
+</p>
+<p>A limitation of histograms is that the resulting shape depends on how the bins are defined, which is an arbitrary decision. In the two histograms of figure <a href="exploratory-data-analysis.html#fig:5-histograms2">5.3</a>, we get quite different shapes for the age distribution by just changing the number of bins (and therefore the bin width), and the bin boundaries. Clearly, this is not desirable for a graphic aimed at characterizing the shape of a distribution.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="exploratory-data-analysis.html#cb162-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">gf_histogram</span>( <span class="sc">~</span> age, <span class="at">data=</span>d, <span class="at">bins =</span> <span class="dv">10</span>)</span>
+<span id="cb162-2"><a href="exploratory-data-analysis.html#cb162-2" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">gf_histogram</span>( <span class="sc">~</span> age, <span class="at">data=</span>d, <span class="at">bins =</span> <span class="dv">10</span>, <span class="at">boundary =</span> <span class="dv">50</span>)</span>
+<span id="cb162-3"><a href="exploratory-data-analysis.html#cb162-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-4"><a href="exploratory-data-analysis.html#cb162-4" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> plot2</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-histograms2"></span>
+<img src="_main_files/figure-html/5-histograms2-1.png" alt="Histograms changing bin width and boundaries" width="672" />
+<p class="caption">
+Figure 5.3: Histograms changing bin width and boundaries
+</p>
+</div>
+<p><br />
+</p>
+<p>A better approach to see the shape of a distribution is the <em>density plot</em>, which is a smoothed version of a histogram. Figure<a href="exploratory-data-analysis.html#fig:5-densities">5.4</a> shows the density plots produced by functions <code>gf_dens()</code> and <code>gf_density()</code>: the former shows the curve and the later fills the area under it.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="exploratory-data-analysis.html#cb163-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">gf_dens</span>( <span class="sc">~</span> age, <span class="at">data=</span>d, <span class="at">bins =</span> <span class="dv">10</span>, <span class="at">boundary =</span> <span class="dv">50</span>)</span>
+<span id="cb163-2"><a href="exploratory-data-analysis.html#cb163-2" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">gf_density</span>( <span class="sc">~</span> age, <span class="at">data=</span>d, <span class="at">bins =</span> <span class="dv">10</span>, <span class="at">boundary =</span> <span class="dv">50</span>)</span>
+<span id="cb163-3"><a href="exploratory-data-analysis.html#cb163-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-4"><a href="exploratory-data-analysis.html#cb163-4" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> plot2</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-densities"></span>
+<img src="_main_files/figure-html/5-densities-1.png" alt="Density plots" width="672" />
+<p class="caption">
+Figure 5.4: Density plots
+</p>
+</div>
+<p><br />
+</p>
+<p>The density plots in figure <a href="exploratory-data-analysis.html#fig:5-densities">5.4</a> display a bell-shaped distribution, though not perfectly symmetric. In a density plot, the area below the curve for any given interval of values is proportional to the frequency of observations in it. Thus, age values in the 60-75 interval are far more common than below 60 or above 75, just because the corresponding areas under the curve are markedly different.</p>
+<p>A simple but very useful graphic is the <em>box-and-whiskers plot</em> or <em>boxplot</em> for short (see figure <a href="exploratory-data-analysis.html#fig:5-boxplot1">5.5</a>). In a boxplot, a box is drawn from the first to the third quartile, and is divided by a line at the median. In addition, two lines (the whiskers) are drawn from the box limits to either the extremes, if there are no <em>outliers</em>, or to the last non-outlier observation. Outliers are values lying farther away than 1.5 times the IQR from the box edges, and are depicted individually using dots, if any (there is none in figure <a href="exploratory-data-analysis.html#fig:5-boxplot1">5.5</a>, but there are several in the distribution of <code>bmi</code> shown in figure <a href="exploratory-data-analysis.html#fig:5-boxplot2">5.6</a>).</p>
+<p>Boxplots can be produced with function <code>gf_boxplot()</code> of the <code>ggformula</code> package.</p>
+<!-- By default, boxplots are drawn vertically, but here we used the pipe (`%>%`) and `gf_refine(coord_flip())` to flip the plot so as to get a horizontal boxplot. -->
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="exploratory-data-analysis.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>( <span class="sc">~</span> age, <span class="at">data=</span>d)                               </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-boxplot1"></span>
+<img src="_main_files/figure-html/5-boxplot1-1.png" alt="Boxplot" width="672" />
+<p class="caption">
+Figure 5.5: Boxplot
+</p>
+</div>
+<p><br />
+</p>
+<p>In figure <a href="exploratory-data-analysis.html#fig:5-boxplot1">5.5</a> it’s easy to see that the age distribution is pretty symmetric about its median of 67 years (there is just a slight asymmetry identified by an upper whisker a bit lengthier than the lower one), and that no outliers are detected. Because there are no outliers, the whisker limits are the minimum and maximum values (49 and 87, respectively). Also, the box limits are the first and third quartiles (62 and 72, respectively), and thus the box contains the central half of the age values. Last, note that the width of the box does not convey any information and is irrelevant, as is the unlabeled vertical axis.</p>
+<p>Boxplots are very good at detecting asymmetry and outliers. For instance, in figure <a href="exploratory-data-analysis.html#fig:5-boxplot2">5.6</a>, a clear asymmetry is apparent in the <code>toevent</code> variable, outliers are seen in the upper tail of the distribution of the <code>bmi</code>, and both asymmetry and outliers are present in the case of <code>p14</code>.</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="exploratory-data-analysis.html#cb165-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">gf_boxplot</span>( <span class="sc">~</span> toevent, <span class="at">data=</span>d) </span>
+<span id="cb165-2"><a href="exploratory-data-analysis.html#cb165-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="exploratory-data-analysis.html#cb165-3" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">gf_boxplot</span>( <span class="sc">~</span> bmi, <span class="at">data=</span>d) </span>
+<span id="cb165-4"><a href="exploratory-data-analysis.html#cb165-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-5"><a href="exploratory-data-analysis.html#cb165-5" aria-hidden="true" tabindex="-1"></a>plot3 <span class="ot">&lt;-</span> <span class="fu">gf_boxplot</span>( <span class="sc">~</span> p14, <span class="at">data=</span>d) </span>
+<span id="cb165-6"><a href="exploratory-data-analysis.html#cb165-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-7"><a href="exploratory-data-analysis.html#cb165-7" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">/</span> plot2 <span class="sc">/</span> plot3                                       <span class="co"># print them stacked </span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-boxplot2"></span>
+<img src="_main_files/figure-html/5-boxplot2-1.png" alt="Boxplots showing assymetry, outliers, or both" width="672" />
+<p class="caption">
+Figure 5.6: Boxplots showing assymetry, outliers, or both
+</p>
+</div>
+</div>
+</div>
+<div id="important-remarks" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Important remarks<a href="exploratory-data-analysis.html#important-remarks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When summarizing the distribution of a variable using only summary statistics (as is the case in published papers), it is extremely important to select the appropriate ones. This is not a problem for categorical variables, because a frequency table summarizes the distribution with no information loss. Consider for instance this frequency table:</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+Percentage
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+</tbody>
+</table>
+<p>The information in the frequency table above is enough to reproduce the whole distribution of sex values:</p>
+<pre><code>female, female, female, female, male, male, male, male, male, male</code></pre>
+<p>This means that, when we summarize the distribution of a categorical variable by providing a frequency table, no information is lost. However, when we summarize the distribution of a quantitative variable by its mean and SD, we loose <em>a lot</em> of information, and as a result we are unable to reproduce the collection of raw values. For this reason, it is especially important to choose the summary statistics wisely.</p>
+<p>To summarize the distribution of a quantitative variable, we need to provide at least a central tendency measure and a variability measure. The mean and SD are good choices provided the distribution has no marked asymmetry, and no influential outliers. Otherwise, the median and IQR (or the three quartiles) are much better choices. The reason for this is that the mean and SD are affected by asymmetry or influential outliers. Both asymmetry and outliers are easily detected in a boxplot, making it ideal to decide which summary statistics to use.</p>
+<p>Outliers pull the mean and inflate the SD, but these effects depend on how far they are, how many they are, and how large is the overall number of observations. For instance, it is unlikely that a single outlier in 200 observations is influential, because its effect will be diluted. Conversely, it might have a dramatic effect in a collection of 20 observations.</p>
+<p>All in all, the main messages for the description of a quantitative variable are:</p>
+<ul>
+<li><p>Start <em>always</em> by looking at a graphic, ideally a boxplot</p></li>
+<li><p>Based on what you see in the boxplot, decide how to summarize the distribution:</p>
+<ul>
+<li><p>Use mean and SD if neither marked asymmetry nor influential outliers are seen</p></li>
+<li><p>Use the median and IQR otherwise</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="bivariate-description" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Bivariate description<a href="exploratory-data-analysis.html#bivariate-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bivariate descriptions involve two variables. The following table <a href="exploratory-data-analysis.html#tab:5-bivariate">5.5</a> shows the most common statistics and graphics used in bivariate descriptions according to the type of the two variables.</p>
+<table>
+<caption><span id="tab:5-bivariate">Table 5.5: </span> Bivariate description</caption>
+<colgroup>
+<col width="10%" />
+<col width="64%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Variables</th>
+<th align="left">Statistics</th>
+<th align="left">Graphics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Both categorical</td>
+<td align="left">frequencies in contingency tables, <em>Pearson’s chi-square, risk difference, relative risk, odds ratio, number needed to treat</em></td>
+<td align="left">stacked barchart, mosaic plot</td>
+</tr>
+<tr class="even">
+<td align="left">Both quantitative</td>
+<td align="left"><em>covariance, correlation coefficients</em></td>
+<td align="left">scatterplot, contour plot</td>
+</tr>
+<tr class="odd">
+<td align="left">One of each type</td>
+<td align="left">mean, median, standard deviation, variance, interquartile range, extremes, quantiles, <em>mean difference, effect size</em></td>
+<td align="left">histogram, density, jitter, violin plot, boxplot</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>In this section, all the graphics and most of the statistics mentioned in table <a href="exploratory-data-analysis.html#tab:5-bivariate">5.5</a> will be illustrated, but we will defer the discussion of some statistics - those in <em>italics</em> in the table above - until the chapters devoted to statistical inference.</p>
+<div id="two-categorical-variables" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Two categorical variables<a href="exploratory-data-analysis.html#two-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<!-- 
+contingency tables, expected freqs, Pearson's chi-square, degrees of freedom 
+measures in 2-by-2 tables: rd, nnt, rr, or
+-->
+<p>The most basic methods to describe the join distribution of two categorical variables are <em>contingency tables</em> and <em>stacked barcharts</em>.</p>
+<p>A contingency table is a table showing all possible combinations of values of the two variables, and the frequencies of these combinations. In the script below, the <code>tally()</code> function of the <code>mosaic</code> package is used to build contingency tables for the <code>event</code> and <code>group</code> variables. By default, counts are computed. If the <code>format = "percent"</code>argument is used, percentages are computed. Note that, in this last case, <em>column</em> percentages are computed, and columns correspond to the variable after the <code>~</code>). The optional <code>margins = TRUE</code> argument is used to print the column totals to make it clear that the percentages are column percentages, since they add up to 100% in each column.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="exploratory-data-analysis.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(event <span class="sc">~</span> group, <span class="at">data =</span> d)                                <span class="co"># counts</span></span></code></pre></div>
+<pre><code>     group
+event Control MD+nuts MD+VOO
+  No     1945    2030   2097
+  Yes      97      70     85</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="exploratory-data-analysis.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(event <span class="sc">~</span> group, <span class="at">data =</span> d, <span class="at">format =</span> <span class="st">&quot;percent&quot;</span>,            <span class="co"># percentages</span></span>
+<span id="cb169-2"><a href="exploratory-data-analysis.html#cb169-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">margins =</span> <span class="cn">TRUE</span>)                                         <span class="co"># print col totals</span></span></code></pre></div>
+<pre><code>       group
+event      Control    MD+nuts     MD+VOO
+  No     95.249755  96.666667  96.104491
+  Yes     4.750245   3.333333   3.895509
+  Total 100.000000 100.000000 100.000000</code></pre>
+<p><br />
+</p>
+<p>The results above show that the frequency of events is very low in all three groups, but the percentage is slightly higher in the control group than in any MD group.</p>
+<p>A stacked barchart is a barchart showing a bar for each category of one of the variables, with each bar split (using different colors) according to the distribution of the other variable. Stacked barcharts can be produced with functions <code>gf_bar()</code> and <code>gf_props()</code>, that show an axis of absolute or relative frequencies, respectively.</p>
+<p>In the first barchart of figure <a href="exploratory-data-analysis.html#fig:5-stacked-barcharts">5.7</a> (left), the length of each bar is determined by the absolute frequency (count) of the corresponding diet group. This is not very useful to compare the splits of different bars. This is not very problematic in this case, because the number of patients randomized to each diet group is similar. Even so, it is better to display a vertical axis of proportions, so that all bars have the same length and their splits can be compared fairly. This is the case of the second barchart in figure <a href="exploratory-data-analysis.html#fig:5-stacked-barcharts">5.7</a> (right), where the higher proportion of events in the control group is apparent.</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="exploratory-data-analysis.html#cb171-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">gf_bar</span>( <span class="sc">~</span> group , <span class="at">fill =</span> <span class="sc">~</span> event, <span class="at">data =</span> d)                      <span class="co"># counts </span></span>
+<span id="cb171-2"><a href="exploratory-data-analysis.html#cb171-2" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">gf_props</span>(<span class="sc">~</span> group , <span class="at">fill =</span> <span class="sc">~</span> event, <span class="at">data =</span> d, <span class="at">position =</span> <span class="st">&quot;fill&quot;</span>)  <span class="co"># percentages</span></span>
+<span id="cb171-3"><a href="exploratory-data-analysis.html#cb171-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-4"><a href="exploratory-data-analysis.html#cb171-4" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> plot2</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-stacked-barcharts"></span>
+<img src="_main_files/figure-html/5-stacked-barcharts-1.png" alt="Staked barcharts" width="672" />
+<p class="caption">
+Figure 5.7: Staked barcharts
+</p>
+</div>
+<p><br />
+</p>
+<p>An interesting alternative to stacked barcharts is the <em>mosaic plot</em>. Such a plot is composed of tiles corresponding to the cells of a contingency table, created by recursive vertical and horizontal splits of a square. The area of each tile is proportional to the corresponding cell frequency, given the dimensions of previous splits. A mosaic plot can be produced with the <code>mosaic()</code> function of package <code>vcd</code>.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="exploratory-data-analysis.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb172-2"><a href="exploratory-data-analysis.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(event <span class="sc">~</span> group, <span class="at">data=</span>d)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-mosaic1"></span>
+<img src="_main_files/figure-html/5-mosaic1-1.png" alt="Mosaic plot" width="672" />
+<p class="caption">
+Figure 5.8: Mosaic plot
+</p>
+</div>
+<p><br />
+</p>
+<p>Mosaic plots are particularly useful when we want to represent higher dimensional tables involving more than two variables. For instance, because diabetes is a known risk factor of cardiovascular events, we may want to take it into account when comparing the frequency of events among the tree treatment groups. Here is a mosaic plot on the three-dimensional contingency table generated by the <code>event</code>, <code>group</code> and <code>diab</code> variables:</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="exploratory-data-analysis.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb173-2"><a href="exploratory-data-analysis.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(event <span class="sc">~</span> group <span class="sc">+</span> diab, <span class="at">data=</span>d)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-mosaic2"></span>
+<img src="_main_files/figure-html/5-mosaic2-1.png" alt="Mosaic plot with three variables" width="672" />
+<p class="caption">
+Figure 5.9: Mosaic plot with three variables
+</p>
+</div>
+<p><br />
+</p>
+<p>Several things are immediately apparent in this plot. First, the number of diabetics is higher in the MD+VOO group, followed by the control group and by the MD+nuts group. Second, for both diabetic and non-diabetic subjects, the frequency of events is higher in the control group than in any of the MD groups.</p>
+<!-- HASTA AQUI -->
+</div>
+<div id="quantitative-and-categorical-variable" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Quantitative and categorical variable<a href="exploratory-data-analysis.html#quantitative-and-categorical-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When one of the variables is quantitative and the other is categorical, we can apply the methods for the description of a quantitative variable for each level of the categorical variable.</p>
+<p>For instance, suppose we want to compare the body mass index (BMI) in the three treatment groups of the predimed trial. We can compute summary statistics for each group, using the <code>favstats()</code> function, indicating the quantitative variable before the tilde, and the categorical variable after it as shown below:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="exploratory-data-analysis.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d)</span></code></pre></div>
+<pre><code>    group   min    Q1 median      Q3   max     mean       sd    n missing
+1 Control 19.71 27.53 30.000 32.7675 51.94 30.28044 3.963947 2042       0
+2 MD+nuts 19.64 26.95 29.455 32.1800 51.83 29.68725 3.766372 2100       0
+3  MD+VOO 20.04 27.22 29.735 32.4200 49.12 29.94050 3.706966 2182       0</code></pre>
+<p><br />
+</p>
+<p>In terms of graphics, we can plot the density of the BMI for each group, using colors to differentiate groups. This can be done with function <code>gf_density()</code> by assigning different fill colors depending on the group: note the use of the <code>fill</code> argument, and the <code>~</code> preceding variable <code>group</code>. In this case, the distribution of the BMI is very similar in all three groups, since the densities are almost perfectly overlapped.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="exploratory-data-analysis.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>( <span class="sc">~</span> bmi, <span class="at">data =</span> d, <span class="at">fill =</span> <span class="sc">~</span> group)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-density-by-group"></span>
+<img src="_main_files/figure-html/5-density-by-group-1.png" alt="Density by group" width="672" />
+<p class="caption">
+Figure 5.10: Density by group
+</p>
+</div>
+<p>We can also use boxplots, <em>violin plots</em>, or <em>jitter plots</em>. These are illustrated in in figure <a href="exploratory-data-analysis.html#fig:5-box-violin">5.11</a>. A violin plot (figure <a href="exploratory-data-analysis.html#fig:5-box-violin">5.11</a>, center) is just a mirrored density for each diet group. A jitter plot (figure <a href="exploratory-data-analysis.html#fig:5-box-violin">5.11</a>, right) displays all individual values as points, randomly scattered in the direction perpendicular to the variable axis to prevent excessive overlapping of points. In the jitter plot below we have used the argument <code>alpha</code> to decrease the opacity of the points, making them transparent. Transparency is important when plotting very many observations, so that regions with higher density of cases are distinguished (if a solid color was used, the result would be too pasted to appreciate density variations). In all three plots, we have used different colors for fancy: they do not convey any information, since groups are already distinguished by the horizontal axis. Later in this chapter we will show a wiser way to use colors.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="exploratory-data-analysis.html#cb177-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d, <span class="at">color =</span> <span class="sc">~</span> group)</span>
+<span id="cb177-2"><a href="exploratory-data-analysis.html#cb177-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">gf_violin</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d, <span class="at">color =</span> <span class="sc">~</span> group)</span>
+<span id="cb177-3"><a href="exploratory-data-analysis.html#cb177-3" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">gf_jitter</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d, <span class="at">color =</span> <span class="sc">~</span> group, <span class="at">alpha=</span><span class="fl">0.2</span>)</span>
+<span id="cb177-4"><a href="exploratory-data-analysis.html#cb177-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-5"><a href="exploratory-data-analysis.html#cb177-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-box-violin"></span>
+<img src="_main_files/figure-html/5-box-violin-1.png" alt="Boxplot, violin and jitter plots, by group" width="1440" />
+<p class="caption">
+Figure 5.11: Boxplot, violin and jitter plots, by group
+</p>
+</div>
+<p><br />
+</p>
+<p>All three plots above allow to compare the distribution of the BMI among treatment groups, which are very similar as expected by the random allocation of the three diets.</p>
+</div>
+<div id="eda-2-quantis" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Two quantitative variables<a href="exploratory-data-analysis.html#eda-2-quantis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When we want to look at the bivariate distribution of two quantitative variables, the <em>scatterplot</em> is the graphic of choice. In a scatterplot, individual observations are depicted as points positioned according to the value of each variable. The points collectively form a <em>cloud of points</em> whose shape characterizes the relationship between the two variables. Figure <a href="exploratory-data-analysis.html#fig:5-scatter">5.12</a> shows the scatterplot of <code>waist</code> and <code>bmi</code> obtained with function <code>gf_poin()</code>.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="exploratory-data-analysis.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(waist <span class="sc">~</span> bmi, <span class="at">data=</span>d, <span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">%&gt;%</span>          <span class="co"># scatterplot</span></span>
+<span id="cb178-2"><a href="exploratory-data-analysis.html#cb178-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lims</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">55</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">180</span>))              <span class="co"># sets axis limits</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-scatter"></span>
+<img src="_main_files/figure-html/5-scatter-1.png" alt="Scatterplot" width="672" />
+<p class="caption">
+Figure 5.12: Scatterplot
+</p>
+</div>
+<p>Despite using a low value in the <code>alpha</code> argument, the cloud of points in figure <a href="exploratory-data-analysis.html#fig:5-scatter">5.12</a> is quite pasted due to the high number of observations (n = 6324), making it difficult to appreciate density variations in the inner part of the cloud.</p>
+<p>An alternative to the scatterplot when the number of observations is very high is the <em>contour plot</em>, which is a sliced two-dimensional density: points of the plane having the same density are connected with lines. Figure <a href="exploratory-data-analysis.html#fig:5-contour">5.13</a> shows the contour plot for the <code>bmi</code> and <code>waist</code> variables, obtained with function <code>gf_density2d()</code>. It is easy to see that the density increases progressively towards the center of the cloud from any outside point.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="exploratory-data-analysis.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density2d</span>(waist <span class="sc">~</span> bmi, <span class="at">data=</span>d) <span class="sc">%&gt;%</span>                 <span class="co"># contour plot</span></span>
+<span id="cb179-2"><a href="exploratory-data-analysis.html#cb179-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lims</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">55</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">180</span>))                     <span class="co"># set axis limits</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-contour"></span>
+<img src="_main_files/figure-html/5-contour-1.png" alt="Contour plot" width="672" />
+<p class="caption">
+Figure 5.13: Contour plot
+</p>
+</div>
+<p><br />
+</p>
+<p>The scatterplot and the contour plot above were built using the same scale for easy comparison, setting the axis limits with <code>gf_lims()</code> after a pipe (<code>%&gt;%</code>). In both graphics, <code>bmi</code>and <code>waist</code>appear positively related, since low (or high) values of one variable tend to be associated with low (or high) values in the other.</p>
+</div>
+</div>
+<div id="adding-infromation-from-additional-variables" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Adding infromation from additional variables<a href="exploratory-data-analysis.html#adding-infromation-from-additional-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The graphic functions in the <code>ggformula</code> package have several arguments we can use to create more informative graphics, by adding information on additional variables. In fact, we have already used one of these arguments, the <code>fill</code> argument, in figure <a href="exploratory-data-analysis.html#fig:5-stacked-barcharts">5.7</a> to split the bars according to the event variable, or in figure <a href="exploratory-data-analysis.html#fig:5-density-by-group">5.10</a> to distinguish the densities in each treatment group. The <code>fill</code> argument is useful to color areas.</p>
+<p>Similarly, there is a <code>color</code> argument to color lines and symbols. This was used in figure <a href="exploratory-data-analysis.html#fig:5-color">5.14</a> to map the color of points to variable <code>sex</code>, making it clear that, for any given value of <code>waist</code>, the waist to height ratio (<code>wth</code>) tends to be higher in females than in males. Note that this plot was built from a random sample of 300 subjects of the <code>d</code> dataset, to improve the visibility of individual points.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="exploratory-data-analysis.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)                                         <span class="co"># for reproducibility</span></span>
+<span id="cb180-2"><a href="exploratory-data-analysis.html#cb180-2" aria-hidden="true" tabindex="-1"></a>rand_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(d,<span class="dv">150</span>)                 <span class="co"># random sample of 150 cases</span></span>
+<span id="cb180-3"><a href="exploratory-data-analysis.html#cb180-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-4"><a href="exploratory-data-analysis.html#cb180-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(wth <span class="sc">~</span> waist, <span class="at">col=</span> <span class="sc">~</span> sex, <span class="at">data=</span>rand_sample, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-color"></span>
+<img src="_main_files/figure-html/5-color-1.png" alt="Scatterplot with color maped to sex" width="672" />
+<p class="caption">
+Figure 5.14: Scatterplot with color maped to sex
+</p>
+</div>
+<p><br />
+</p>
+<p>Also, the <code>size</code> argument can be used to map the size of symbols to a variable, as done for <code>bmi</code> in the <em>bubble plot</em> of figure <a href="exploratory-data-analysis.html#fig:5-size">5.15</a>. In the resulting plot, the size of the bubbles tends to increase as the <code>waist</code> and <code>wth</code> increase.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="exploratory-data-analysis.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(wth <span class="sc">~</span> waist, <span class="at">size=</span> <span class="sc">~</span> bmi, <span class="at">data=</span>rand_sample, <span class="at">alpha=</span><span class="fl">0.1</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-size"></span>
+<img src="_main_files/figure-html/5-size-1.png" alt="Bubble plot" width="672" />
+<p class="caption">
+Figure 5.15: Bubble plot
+</p>
+</div>
+<p><br />
+</p>
+<p>A very useful way to add information on a categorical variable, that can be used with any type of graphic, is to use <em>facets</em>. These are obtained by adding the variable to the formula after a bar symbol (<code>|</code>), as done in the script below: the resulting expression can be read <em>BMI as a function of group, given sex</em>. As you see in figure <a href="exploratory-data-analysis.html#fig:5-facets">5.16</a>, this results in a boxplot of <code>bmi</code> by <code>group</code>, but the two levels of <code>sex</code> are shown in two panels or <em>facets</em> that share the same scale for <code>bmi</code> to facilitate the comparison. It is quite clear that females have slightly higher BMI values than males, but no clear differences are see between treatment groups in either males or females.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="exploratory-data-analysis.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group <span class="sc">|</span> sex, <span class="at">data=</span>d, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-facets"></span>
+<img src="_main_files/figure-html/5-facets-1.png" alt="Facets" width="672" />
+<p class="caption">
+Figure 5.16: Facets
+</p>
+</div>
+<p><br />
+</p>
+<p>Facets can be defined according to two variables as well, as shown in the following script (note the use of the <code>+</code> to add <code>smoke</code> after <code>sex</code>). In the resulting figure <a href="exploratory-data-analysis.html#fig:5-facets-2vars">5.17</a>, facets are arranged in a matrix, the rows of which define the sex, and the columns the smoking status.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="exploratory-data-analysis.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group <span class="sc">|</span> sex <span class="sc">+</span> smoke, <span class="at">data=</span>d, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-facets-2vars"></span>
+<img src="_main_files/figure-html/5-facets-2vars-1.png" alt="Facets for sex and smoking habit" width="672" />
+<p class="caption">
+Figure 5.17: Facets for sex and smoking habit
+</p>
+</div>
+<p><br />
+</p>
+<p>Last, we can combine some of the previous options as in the following boxplots, where we can inspect the distribution of <code>bmi</code> according to four variables (<code>group</code>, <code>sex</code>, <code>smoke</code> and <code>diab</code>).</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="exploratory-data-analysis.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group <span class="sc">|</span> sex <span class="sc">+</span> smoke, <span class="at">color=</span> <span class="sc">~</span>diab, <span class="at">data=</span>d, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-color-facets"></span>
+<img src="_main_files/figure-html/5-color-facets-1.png" alt="Facets for sex and smoking habit, and color for diabetes" width="672" />
+<p class="caption">
+Figure 5.18: Facets for sex and smoking habit, and color for diabetes
+</p>
+</div>
+<p><br />
+</p>
+<p>There are still other arguments that can be used in some functions of the <code>gg_formula</code> package we did not cover here. You should be aware that not all arguments can be used in all functions (for instance, <code>gf_contour()</code> has no <code>size</code> argument). To know which arguments are available in a particular function of <code>gg_formula</code>, look at its <em>fast help</em> , by calling the function with no arguments, as shown below for <code>gf_point()</code>:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="exploratory-data-analysis.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>()</span></code></pre></div>
+<pre><code>gf_point() uses 
+    * a formula with shape y ~ x. 
+    * geom:  point 
+    * key attributes:  alpha, color, size, shape, fill, group, stroke
+
+For more information, try ?gf_point</code></pre>
+</div>
+<div id="graphic-refinement" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Graphic refinement<a href="exploratory-data-analysis.html#graphic-refinement" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We started this chapter saying that EDA graphics are fast and dirty. This does not mean you cannot produce “proper” graphics with <code>ggformula</code> functions. For instance, all functions in this package have optional arguments like <code>title</code>, <code>subtitle</code>, <code>xlab</code>, <code>ylab</code> allowing to define titles and axis labels within the function call.</p>
+<p>In some cases, overlaying two graphics produces a more informative result. You can overlay graphics using the <code>%&gt;%</code>, as in the following examples. In figure <a href="exploratory-data-analysis.html#fig:5-overlay1">5.19</a> contours are overlaid on the scatterplot of more than six-thousand points, to make visible the density gradient. When calling two functions chained by <code>%&gt;%</code>, there is no need to repeat identical arguments in the second function.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="exploratory-data-analysis.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(waist <span class="sc">~</span> bmi, <span class="at">data=</span>rand_sample, <span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb187-2"><a href="exploratory-data-analysis.html#cb187-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_density2d</span>()                                         <span class="co"># no need to repeat formula and data</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-overlay1"></span>
+<img src="_main_files/figure-html/5-overlay1-1.png" alt="Countour overlaid on a scatterplot" width="672" />
+<p class="caption">
+Figure 5.19: Countour overlaid on a scatterplot
+</p>
+</div>
+<p><br />
+</p>
+<p>As a second example, in figure <a href="exploratory-data-analysis.html#fig:5-overlay2">5.20</a> jitter points are overlaid on a boxplot. The <code>with</code> argument in the <code>gf_jitter()</code> function controls the amount of horizontal jitter. Note the <code>outlier.alpha = 0</code> to avoid double plotting of outliers.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="exploratory-data-analysis.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>( bmi <span class="sc">~</span> group <span class="sc">|</span> sex, <span class="at">data=</span>rand_sample, </span>
+<span id="cb188-2"><a href="exploratory-data-analysis.html#cb188-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="cn">NULL</span>, <span class="at">color =</span> <span class="sc">~</span> group, </span>
+<span id="cb188-3"><a href="exploratory-data-analysis.html#cb188-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">outlier.alpha =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-4"><a href="exploratory-data-analysis.html#cb188-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-overlay2"></span>
+<img src="_main_files/figure-html/5-overlay2-1.png" alt="Jittered points overlaid on a boxplot" width="672" />
+<p class="caption">
+Figure 5.20: Jittered points overlaid on a boxplot
+</p>
+</div>
+<p><br />
+</p>
+<p>Overlaying can be used to add information on summary statistics computed by function <code>df_stats</code>, which is very similar to the <code>favstats()</code> function presented in section <a href="exploratory-data-analysis.html#stats">5.2.2.1</a>. In the following script, we compute the summary statistics for <code>bmi</code>, save them in dataframe <code>bmi_stats</code>, and use this dataframe to overlay mean values to a boxplot. This is very useful to assess the influence of outliers, by comparing the mean and the median.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="exploratory-data-analysis.html#cb189-1" aria-hidden="true" tabindex="-1"></a>bmi_stats <span class="ot">&lt;-</span> <span class="fu">df_stats</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d)                       <span class="co"># compute stats</span></span>
+<span id="cb189-2"><a href="exploratory-data-analysis.html#cb189-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-3"><a href="exploratory-data-analysis.html#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d) <span class="sc">%&gt;%</span></span>
+<span id="cb189-4"><a href="exploratory-data-analysis.html#cb189-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(mean <span class="sc">~</span> group, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">data =</span> bmi_stats) <span class="sc">%&gt;%</span>      <span class="co"># use them here</span></span>
+<span id="cb189-5"><a href="exploratory-data-analysis.html#cb189-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">coord_flip</span>())                         <span class="co"># flips axes (to get horizontal boxplots)</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-overlay-stats"></span>
+<img src="_main_files/figure-html/5-overlay-stats-1.png" alt="Boxplot with means overlaid (red dot)" width="672" />
+<p class="caption">
+Figure 5.21: Boxplot with means overlaid (red dot)
+</p>
+</div>
+<p><br />
+</p>
+<p>In figure <a href="exploratory-data-analysis.html#fig:5-overlay-stats">5.21</a> the means and the medians of each group are practically identical, reflecting no or little influence of outliers on the mean, despite being quite far away (some values above 50!).</p>
+<p>Last, functions <code>gf_text()</code> and <code>gf_label()</code> are very handy to overlay annotations on a graphic. For instance, the lack of influence of outliers on the mean of <code>bmi</code> commented above is likely due to dilution because the number of observations, but this number is not reflected in the boxplot. Thus, it is a good idea to print this number for each group. This has been done in figure <a href="exploratory-data-analysis.html#fig:5-overlay-text">5.22</a>, using variable <code>n</code> from <code>bmi_stats</code> in function <code>gf_label()</code>. Note the use of <code>paste()</code> to prefix <code>n</code> with the text <code>N =</code>.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exploratory-data-analysis.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d) <span class="sc">%&gt;%</span></span>
+<span id="cb190-2"><a href="exploratory-data-analysis.html#cb190-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(mean <span class="sc">~</span> group, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">data =</span> bmi_stats) <span class="sc">%&gt;%</span></span>
+<span id="cb190-3"><a href="exploratory-data-analysis.html#cb190-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_label</span>(<span class="dv">15</span> <span class="sc">~</span> group, </span>
+<span id="cb190-4"><a href="exploratory-data-analysis.html#cb190-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="sc">~</span> <span class="fu">paste</span>(<span class="st">&quot;N =&quot;</span>, n),               </span>
+<span id="cb190-5"><a href="exploratory-data-analysis.html#cb190-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> bmi_stats) <span class="sc">%&gt;%</span> </span>
+<span id="cb190-6"><a href="exploratory-data-analysis.html#cb190-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lims</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">54</span>)) <span class="sc">%&gt;%</span>               <span class="co"># to get space for labels</span></span>
+<span id="cb190-7"><a href="exploratory-data-analysis.html#cb190-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">coord_flip</span>())</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-overlay-text"></span>
+<img src="_main_files/figure-html/5-overlay-text-1.png" alt="Boxplot with means and annotation of N" width="672" />
+<p class="caption">
+Figure 5.22: Boxplot with means and annotation of N
+</p>
+</div>
+</div>
+<div id="resources-4" class="section level2 unnumbered hasAnchor">
+<h2>Resources<a href="exploratory-data-analysis.html#resources-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><em>Plotting with formulas</em> is a tutorial on the <code>ggformula</code> package you will find it in the <code>Tutorial</code> pane of RStudio (once you have installed this package). We strongly advise you follow this tutorial. If you enjoy it, you may want to learn how to refine your plots by following the second tutorial <em>Refining ggformula plots</em>.</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/DataExplorer/vignettes/dataexplorer-intro.html">DataExplorer</a> is a package for EDA you might want to know about.</p></li>
+<li><p>The <a href="https://www.r-bloggers.com/2019/05/easily-explore-your-data-using-the-summarytools-package/">summarytools package</a> provides a few functions to neatly summarize your data.</p></li>
+<li><p><a href="https://www.r-bloggers.com/2020/04/upset-plots/">Venn diagrams and upset plots</a> are useful when we want to visualize the combination for multiple dichotomous variables (like combinations of COVID19 symptoms).</p></li>
+<li><p>The <a href="https://shiny.gmw.rug.nl/ggplotgui/">ggplotgui</a> package is graphical user interface (GUI) to build <code>ggplot2</code> and <code>Plotly</code> graphics. No need to write R code, but you can save the code for reproducibility.</p></li>
+<li><p>The <a href="https://cran.r-project.org/web/packages/esquisse/vignettes/get-started.html">esquisse</a> package is another GUI for <code>ggplot2</code> graphics.</p></li>
+</ul>
+<!-- - [The Landscape of R Packages for Automated Exploratory Data Analysis](https://arxiv.org/pdf/1904.02101.pdf). -->
+</div>
+<div id="exercises-4" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="exploratory-data-analysis.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Look at the help of the <code>gf_bar()</code> function and experiment with the arguments to describe the <code>smoke</code> variable of the <code>d</code> data. We suggest the following:</p>
+<ul>
+<li><p><code>color = "darkblue"</code></p></li>
+<li><p><code>fill = "darkblue"</code></p></li>
+<li><p><code>xlab = "Treatment group"</code></p></li>
+<li><p><code>title = "Smoking habits in the Predimed trial</code></p></li>
+</ul></li>
+<li><p>In the previous exercise, the ordering of the smoking categories in the plots (Never, Current, Former) is not very nice. Reproduce some of these plots by redefining the levels of smoke so that the ordering is Never, Former, Current.</p></li>
+<li><p><a href="https://raw.githubusercontent.com/acobos/Datasets/master/Mysterious_event.txt">This text data file</a> contains data on people involved in a well known historical event. Read the data and answer the following questions:</p>
+<ul>
+<li><p>How any people were involved in this event?</p></li>
+<li><p>Explore the univariate distribution of the four variables with bar plots. Did most of these people survive? Was Sex evenly distributed? What about Age, and what about Class? What are the levels of the Class variable?</p></li>
+<li><p>Produce stacked barcharts to explore Survival by Class, by Age, and by Sex. Did children survive more than adults? Did females survive more than males? What were the Classes surviving the most and the least?</p></li>
+<li><p>Produce contingency tables to explore Age by Class and Sex by Class. Are Age and Sex evenly distributed among Classes?</p></li>
+<li><p>Do you guess what is this historical event?</p></li>
+</ul></li>
+<li><p>Install package <code>gapminder</code>. Then load it with <code>library(gapminder)</code> and look at the help of the <code>gapminder</code> dataset included in this package.</p></li>
+</ol>
+<ul>
+<li><p>Subset the <code>gapminder</code> dataset for year 2007 and answer the following questions:</p>
+<ul>
+<li><p>How many countries there are in each continent?</p></li>
+<li><p>What is the range of life expectancy (<code>LE</code>) values overall? and by continent?</p></li>
+<li><p>Look at the distribution of life expectancy in all countries by producing a density plot. Does it look symmetric?</p></li>
+<li><p>Inspection an appropriate graphic to investigate if life expectancy is similar in all continents.</p></li>
+<li><p>What was the life expectancy in Spain?</p></li>
+<li><p>Is there a relationship between life expectancy and GDP per capita? If yes, is it linear? Is it similar in all continents?</p></li>
+</ul></li>
+<li><p>Now subset the <code>gapminder</code> dataset for Spain, France, Portugal, and Italy, keeping all years (not only 2007!), and use function <code>gf_lines()</code> to plot the evolution of life expectancy in these countries (you will need to specify the <code>group</code> argument). How does Spain compare to France, Portugal, and Italy?</p></li>
+</ul>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p>Here, the term <em>distribution</em> refers to the collection of observed values of a variable in a set of individuals, which is sometimes called, more precisely, <em>empirical distribution</em> of that variable. In other contexts, notably in probability theory, it is used to refer to theoretical models characterizing the behavior of random variables, such as the normal distribution, the binomial distribution, etc.<a href="exploratory-data-analysis.html#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-preparation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
