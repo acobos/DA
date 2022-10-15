@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="data-preparation.html"/>
-
+<link rel="next" href="statistical-inference.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -216,6 +216,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#graphic-refinement"><i class="fa fa-check"></i><b>5.5</b> Graphic refinement</a></li>
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i><b>6</b> Statistical inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistical-inference.html"><a href="statistical-inference.html#population-and-sample"><i class="fa fa-check"></i><b>6.1</b> Population and sample</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-inference.html"><a href="statistical-inference.html#inference-problems"><i class="fa fa-check"></i><b>6.2</b> Inference problems</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-inference.html"><a href="statistical-inference.html#probability-distributions"><i class="fa fa-check"></i><b>6.3</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="statistical-inference.html"><a href="statistical-inference.html#the-normal-distribution"><i class="fa fa-check"></i><b>6.3.1</b> The normal distribution</a></li>
+<li class="chapter" data-level="6.3.2" data-path="statistical-inference.html"><a href="statistical-inference.html#the-chi-squared-distribution"><i class="fa fa-check"></i><b>6.3.2</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.3.3" data-path="statistical-inference.html"><a href="statistical-inference.html#the-students-t-distribution"><i class="fa fa-check"></i><b>6.3.3</b> The Student’s <em>t</em> distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="statistical-inference.html"><a href="statistical-inference.html#random-samples"><i class="fa fa-check"></i><b>6.4</b> Random samples</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-inference.html"><a href="statistical-inference.html#example-data"><i class="fa fa-check"></i><b>6.5</b> Example data</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-inference.html"><a href="statistical-inference.html#estimation"><i class="fa fa-check"></i><b>6.6</b> Estimation</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-cis"><i class="fa fa-check"></i><b>6.7</b> Sample size and CI’s</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-inference.html"><a href="statistical-inference.html#significance-tests"><i class="fa fa-check"></i><b>6.8</b> Significance tests</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-p-values"><i class="fa fa-check"></i><b>6.9</b> Sample size and <em>p</em> values</a></li>
+<li class="chapter" data-level="6.10" data-path="statistical-inference.html"><a href="statistical-inference.html#types-of-tests"><i class="fa fa-check"></i><b>6.10</b> Types of tests</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 </ul>
 
@@ -933,7 +953,7 @@ Figure 5.22: Boxplot with means and annotation of N
 <div id="exercises-4" class="section level2 unnumbered hasAnchor">
 <h2>Exercises<a href="exploratory-data-analysis.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li><p>Look at the help of the <code>gf_bar()</code> function and experiment with the arguments to describe the <code>smoke</code> variable of the <code>d</code> data. We suggest the following:</p>
+<li><p>Look at the help of the <code>gf_bar()</code> function and experiment with the arguments to describe the <code>smoke</code> variable of the <code>d</code> dataframe used in this chapter. We suggest the following:</p>
 <ul>
 <li><p><code>color = "darkblue"</code></p></li>
 <li><p><code>fill = "darkblue"</code></p></li>
@@ -966,16 +986,6 @@ Figure 5.22: Boxplot with means and annotation of N
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
 <ol start="5">
@@ -987,8 +997,8 @@ Figure 5.22: Boxplot with means and annotation of N
           </div>
         </div>
       </div>
-<a href="data-preparation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="data-preparation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="statistical-inference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

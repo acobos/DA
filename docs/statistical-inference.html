@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Statistical inference | Data Analysis for Clinical Researchers</title>
+  <meta name="description" content="6 Statistical inference | Data Analysis for Clinical Researchers" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Statistical inference | Data Analysis for Clinical Researchers" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Statistical inference | Data Analysis for Clinical Researchers" />
+  
+  
+  
+
+<meta name="author" content="Albert Cobos" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="exploratory-data-analysis.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="structure-of-this-book.html"><a href="structure-of-this-book.html"><i class="fa fa-check"></i>Structure of this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#first-r-session"><i class="fa fa-check"></i><b>1.2</b> First R session</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-objects"><i class="fa fa-check"></i><b>1.3</b> R objects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-functions"><i class="fa fa-check"></i><b>1.4</b> R functions</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>1.5</b> Installing R packages</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#loading-packages"><i class="fa fa-check"></i><b>1.6</b> Loading packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-data-structures.html"><a href="r-data-structures.html"><i class="fa fa-check"></i><b>2</b> R data structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-data-structures.html"><a href="r-data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="r-data-structures.html"><a href="r-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3" data-path="r-data-structures.html"><a href="r-data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="r-data-structures.html"><a href="r-data-structures.html#factors"><i class="fa fa-check"></i><b>2.4</b> Factors</a></li>
+<li class="chapter" data-level="2.5" data-path="r-data-structures.html"><a href="r-data-structures.html#dates"><i class="fa fa-check"></i><b>2.5</b> Dates</a></li>
+<li class="chapter" data-level="2.6" data-path="r-data-structures.html"><a href="r-data-structures.html#other-data-structures"><i class="fa fa-check"></i><b>2.6</b> Other data structures</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-acquisition.html"><a href="data-acquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-ms-excel-data"><i class="fa fa-check"></i><b>3.1</b> Reading MS Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-text-data"><i class="fa fa-check"></i><b>3.2</b> Reading text data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-spss-sas-or-stata-data"><i class="fa fa-check"></i><b>3.3</b> Reading SPSS, SAS or Stata data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-databases"><i class="fa fa-check"></i><b>3.4</b> Reading databases</a></li>
+<li class="chapter" data-level="3.5" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-other-formats"><i class="fa fa-check"></i><b>3.5</b> Reading other formats</a></li>
+<li class="chapter" data-level="3.6" data-path="data-acquisition.html"><a href="data-acquisition.html#getting-data-from-r-packages"><i class="fa fa-check"></i><b>3.6</b> Getting data from R packages</a></li>
+<li class="chapter" data-level="3.7" data-path="data-acquisition.html"><a href="data-acquisition.html#problems-when-importing-data-from-external-files"><i class="fa fa-check"></i><b>3.7</b> Problems when importing data from external files</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="data-acquisition.html"><a href="data-acquisition.html#package-dplyr"><i class="fa fa-check"></i><b>3.7.1</b> Package <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.7.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-the-sara-data"><i class="fa fa-check"></i><b>3.7.2</b> Reading the SARA data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>4</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-preparation.html"><a href="data-preparation.html#steps-in-data-preparation"><i class="fa fa-check"></i><b>4.1</b> Steps in data preparation</a></li>
+<li class="chapter" data-level="4.2" data-path="data-preparation.html"><a href="data-preparation.html#reading-raw-data"><i class="fa fa-check"></i><b>4.2</b> Reading raw data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#reviewing-data"><i class="fa fa-check"></i><b>4.3</b> Reviewing data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-preparation.html"><a href="data-preparation.html#missings"><i class="fa fa-check"></i><b>4.3.1</b> Missings</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-preparation.html"><a href="data-preparation.html#data-errors"><i class="fa fa-check"></i><b>4.3.2</b> Data errors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#modifying-data"><i class="fa fa-check"></i><b>4.4</b> Modifying data</a></li>
+<li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#computing-new-variables"><i class="fa fa-check"></i><b>4.5</b> Computing new variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="data-preparation.html"><a href="data-preparation.html#defining-factors"><i class="fa fa-check"></i><b>4.5.1</b> Defining factors</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data-preparation.html"><a href="data-preparation.html#formulas"><i class="fa fa-check"></i><b>4.5.2</b> Formulas</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data-preparation.html"><a href="data-preparation.html#conditional-assignments"><i class="fa fa-check"></i><b>4.5.3</b> Conditional assignments</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data-preparation.html"><a href="data-preparation.html#categorization-of-quantitative-variables"><i class="fa fa-check"></i><b>4.5.4</b> Categorization of quantitative variables</a></li>
+<li class="chapter" data-level="4.5.5" data-path="data-preparation.html"><a href="data-preparation.html#grouping-factor-levels"><i class="fa fa-check"></i><b>4.5.5</b> Grouping factor levels</a></li>
+<li class="chapter" data-level="4.5.6" data-path="data-preparation.html"><a href="data-preparation.html#character-strings"><i class="fa fa-check"></i><b>4.5.6</b> Character strings</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#selecting-valid-cases"><i class="fa fa-check"></i><b>4.6</b> Selecting valid cases</a></li>
+<li class="chapter" data-level="4.7" data-path="data-preparation.html"><a href="data-preparation.html#saving-the-r-script"><i class="fa fa-check"></i><b>4.7</b> Saving the R script</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#number-and-type-of-variables"><i class="fa fa-check"></i><b>5.1</b> Number and type of variables</a></li>
+<li class="chapter" data-level="5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#univariate-description"><i class="fa fa-check"></i><b>5.2</b> Univariate description</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#categorical-variable"><i class="fa fa-check"></i><b>5.2.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="5.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-variable"><i class="fa fa-check"></i><b>5.2.2</b> Quantitative variable</a></li>
+<li class="chapter" data-level="5.2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#important-remarks"><i class="fa fa-check"></i><b>5.2.3</b> Important remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#bivariate-description"><i class="fa fa-check"></i><b>5.3</b> Bivariate description</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.3.1</b> Two categorical variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-and-categorical-variable"><i class="fa fa-check"></i><b>5.3.2</b> Quantitative and categorical variable</a></li>
+<li class="chapter" data-level="5.3.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#eda-2-quantis"><i class="fa fa-check"></i><b>5.3.3</b> Two quantitative variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#adding-infromation-from-additional-variables"><i class="fa fa-check"></i><b>5.4</b> Adding infromation from additional variables</a></li>
+<li class="chapter" data-level="5.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#graphic-refinement"><i class="fa fa-check"></i><b>5.5</b> Graphic refinement</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i><b>6</b> Statistical inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistical-inference.html"><a href="statistical-inference.html#population-and-sample"><i class="fa fa-check"></i><b>6.1</b> Population and sample</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-inference.html"><a href="statistical-inference.html#inference-problems"><i class="fa fa-check"></i><b>6.2</b> Inference problems</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-inference.html"><a href="statistical-inference.html#probability-distributions"><i class="fa fa-check"></i><b>6.3</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="statistical-inference.html"><a href="statistical-inference.html#the-normal-distribution"><i class="fa fa-check"></i><b>6.3.1</b> The normal distribution</a></li>
+<li class="chapter" data-level="6.3.2" data-path="statistical-inference.html"><a href="statistical-inference.html#the-chi-squared-distribution"><i class="fa fa-check"></i><b>6.3.2</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.3.3" data-path="statistical-inference.html"><a href="statistical-inference.html#the-students-t-distribution"><i class="fa fa-check"></i><b>6.3.3</b> The Student’s <em>t</em> distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="statistical-inference.html"><a href="statistical-inference.html#random-samples"><i class="fa fa-check"></i><b>6.4</b> Random samples</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-inference.html"><a href="statistical-inference.html#example-data"><i class="fa fa-check"></i><b>6.5</b> Example data</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-inference.html"><a href="statistical-inference.html#estimation"><i class="fa fa-check"></i><b>6.6</b> Estimation</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-cis"><i class="fa fa-check"></i><b>6.7</b> Sample size and CI’s</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-inference.html"><a href="statistical-inference.html#significance-tests"><i class="fa fa-check"></i><b>6.8</b> Significance tests</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-p-values"><i class="fa fa-check"></i><b>6.9</b> Sample size and <em>p</em> values</a></li>
+<li class="chapter" data-level="6.10" data-path="statistical-inference.html"><a href="statistical-inference.html#types-of-tests"><i class="fa fa-check"></i><b>6.10</b> Types of tests</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis for Clinical Researchers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="statistical-inference" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Statistical inference<a href="statistical-inference.html#statistical-inference" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><em>Statistical inference</em> refers to the attempt to learn something about a <em>population</em> through the analysis of a <em>sample</em>. Let’s start by clarifying the meaning of these two terms.</p>
+<div id="population-and-sample" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Population and sample<a href="statistical-inference.html#population-and-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In statistics, a <em>sample</em> is a finite number (n) of observations, no matter how large, and <em>population</em> refers to a much wider set of individuals from which the sample was drawn. Actually, in statistical theory populations are often assumed to be infinite. In practical applications however, they may be finite, but much, much larger than the sample. For instance, suppose we want to investigate how common is low weight at birth (less than 2.5 kg) among singleton births. To this end, the weight of newborns in the 189 singleton births attended in hospital H is recorded during a year. This is just a sample of newborns, and our interest is not restricted to these 100 newborns in particular. Rather, we would like to learn something about the population of <em>all</em> newborns, or at least all newborns in a geographical area.</p>
+<p>Figure <a href="statistical-inference.html#fig:06-inference">6.1</a> illustrates the conceptual framework for statistical inference, were a quantity of interest in the population -like the proportion of low weight newborns- is denoted by <span class="math inline">\(\pi\)</span>. A sample of n = 100 observations is drawn from the population, and the sample proportion, denoted by p, is computed by dividing the number of low weight newborns over the sample size (p = 23/100 = 0.23). It is crucial to realize that the value of p will not necessarily be equal to that of <span class="math inline">\(\pi\)</span>. Moreover, if we draw <em>another</em> sample, it is very likely that the value of p in this new sample is different from that in the first sample, due to <em>sampling variation</em>. The pattern of variation of a statistic (like p) across samples is called its <em>sampling distribution</em>, and plays a central role in inferential statistics. In some circumstances the sampling distribution of a statistic is well known, and this knowledge is used to devise methods allowing to solve common questions about population quantities (like <span class="math inline">\(\pi\)</span>). However, for this to be the case, samples need to be drawn at random. Later in this chapter we will explain what random samples are, and how to draw a random sample from a population when this is possible.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:06-inference"></span>
+<img src="_main_files/figure-html/06-inference-1.png" alt="Conceptual framework for statistical inference" width="672" />
+<p class="caption">
+Figure 6.1: Conceptual framework for statistical inference
+</p>
+</div>
+<p><br />
+</p>
+<p>Population quantities such as <span class="math inline">\(\pi\)</span> are called <em>population parameters</em>, or simply <em>parameters</em>, while quantities computed from sample data, like p, are called <em>statistics</em>. When a statistic is used to estimate a parameter, it is said to be an <em>estimator</em> of this parameter. Because it is fundamental not to confuse parameters and estimators, we usually denote the former by Greek letters and the later by Latin letters. The following table shows the usual notation for some very common parameters and corresponding estimators:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Parameters</th>
+<th align="center">Estimators</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center"><span class="math inline">\(\mu\)</span></td>
+<td align="center"><span class="math inline">\(\bar{x}\)</span></td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center"><span class="math inline">\(\sigma\)</span></td>
+<td align="center"><span class="math inline">\(s\)</span></td>
+</tr>
+<tr class="odd">
+<td>Variance</td>
+<td align="center"><span class="math inline">\(\sigma^2\)</span></td>
+<td align="center"><span class="math inline">\(s^2\)</span></td>
+</tr>
+<tr class="even">
+<td>Proportion</td>
+<td align="center"><span class="math inline">\(\pi\)</span></td>
+<td align="center"><span class="math inline">\(p\)</span></td>
+</tr>
+<tr class="odd">
+<td>Correlation coefficient</td>
+<td align="center"><span class="math inline">\(\rho\)</span></td>
+<td align="center"><span class="math inline">\(r\)</span></td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td align="center">(greek letters)</td>
+<td align="center">(latin letters)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="inference-problems" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Inference problems<a href="statistical-inference.html#inference-problems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are two main types of inference problems: <em>estimation</em> and <em>significance testing</em>. Estimation is just a nice name for guessing quantities or, more specifically, population parameters. For instance, in the example of the previous section we were interested in estimating <span class="math inline">\(\pi\)</span>, the proportion of low weight newborns in the population. Other examples of research questions involving estimation could be:</p>
+<ul>
+<li><p>What is the mean weight of newborns?</p></li>
+<li><p>What is the median survival time of breast cancer patients?</p></li>
+<li><p>What is the length of the COVID-19 incubation period, on average?</p></li>
+<li><p>How long does the protection of a COVID-19 vaccine last, on average?</p></li>
+</ul>
+<p><br />
+</p>
+<p>Significance testing is a procedure to assess the plausibility of scientific hypotheses. A scientific hypothesis is formalized into a <em>statistical</em> hypothesis, which is a statement about one or more parameters<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. For instance, according to the <a href="https://www.cdc.gov/nchs/fastats/birthweight.htm">National Center for Health Statistics</a>, 8.31% of newborns in the US are low birthweight. Thus, we could hypothesize that this is the value of <span class="math inline">\(\pi\)</span> in the geographic area of hospital H, that is <span class="math inline">\(\pi = 0.0831\)</span>. In this case, the statistical hypothesis proposes a particular value for a parameter, but in other cases it will involve the comparison of two (or more) parameters; for example, we might be interested in testing whether the frequency of low birth weight is the same in smoking and non-smoking mothers. Other examples of questions that could be addressed by testing appropriate statistical hypotheses are:</p>
+<ul>
+<li><p>Is a new diagnostic test more specific than the test currently used ?</p></li>
+<li><p>Is a specific genotype associated with coronary heart disease ?</p></li>
+<li><p>Does vitamin D reduce the risk of COVID-19?</p></li>
+</ul>
+<p>In this and subsequent chapters we will cover estimation and significance testing methods, all of which are based on the assumption that we have a <em>random sample</em> of observations.</p>
+</div>
+<div id="probability-distributions" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Probability distributions<a href="statistical-inference.html#probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Probability distributions</em> are mathemtical models useful to describe the behaviour of <em>random variables</em> (i.e., variables taking values depending on chance). In random samples, statistics computed from sample data are random variables. There are many different probability distributions, for both <em>discrete</em> and <em>continuous</em> variables. Some important probability distributions models for discrete variables are the <a href="https://en.wikipedia.org/wiki/Bernoulli_distribution">Bernoulli</a>, the <a href="https://en.wikipedia.org/wiki/Binomial_distribution">binomial</a>, and the <a href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson</a> distributions. Important probability distributions models for continuous variables are the <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal</a>, <a href="https://en.wikipedia.org/wiki/Chi-squared_distribution">chi-squared</a>, <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">Student’s t</a>, and <a href="https://en.wikipedia.org/wiki/F-distribution">F</a> distributions.</p>
+<p>Despite probability distributions are at the heart of inferential methods, their study can be omitted in a purely instrumental approach to data analysis, such as that adopted in this book. However, we will present some basic ideas about the normal distribution for two reasons: first, because it is the most important distribution model for continuous variables; and second, because some of the inferential methods that will be introduced in later chapters will require to judge whether the normal model is adequate to represent empirical the empirical data. A couple of words will be said also on two additional distribution models, the Student’s <em>t</em> and the chi-squared distributions, because these are used in some methods of inferential analysis that will be introduced later in this book.</p>
+<div id="the-normal-distribution" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> The normal distribution<a href="statistical-inference.html#the-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The normal or Gaussian distribution is a bell-shaped curve symmetric about the mean, such as those shown in figures <a href="statistical-inference.html#fig:normals-1">6.2</a> and <a href="statistical-inference.html#fig:normals-2">6.3</a>. A normal distribution is defined by two <em>parameters</em>, the mean (<span class="math inline">\(\mu\)</span>) and the standard deviation (<span class="math inline">\(\sigma\)</span>). The mean is where the distribution is centered, and the standard deviation determines its spread. Figure <a href="statistical-inference.html#fig:normals-1">6.2</a> displays three normal distributions with means <span class="math inline">\(\mu = 0\)</span> (black), <span class="math inline">\(\mu = 5\)</span> (red), and <span class="math inline">\(\mu = 20\)</span> (blue), all having the same standard deviation <span class="math inline">\(\sigma = 1\)</span>. Conversely, figure <a href="statistical-inference.html#fig:normals-2">6.3</a> shows three other normal distributions, all having the same mean <span class="math inline">\(\mu = 10\)</span>, but differing in spread (black: <span class="math inline">\(\sigma = 1\)</span>; red: <span class="math inline">\(\sigma = 2\)</span>; and blue: <span class="math inline">\(\sigma = 4\)</span>). The vertical scale of figures <a href="statistical-inference.html#fig:normals-1">6.2</a> and <a href="statistical-inference.html#fig:normals-2">6.3</a> shows <em>probability densities</em>, which have no simple interpretation. In particular, <em>they cannot</em> be interpreted as probabilities. Rather, probabilities are given by areas under the curve.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:normals-1"></span>
+<img src="_main_files/figure-html/normals-1-1.png" alt="Normal distributions differing in mean (0, 5, and 20), and standard deviation 1" width="672" />
+<p class="caption">
+Figure 6.2: Normal distributions differing in mean (0, 5, and 20), and standard deviation 1
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:normals-2"></span>
+<img src="_main_files/figure-html/normals-2-1.png" alt="Normal distributions with mean = 10, differing in standard deviation (1, 2 and 4)" width="672" />
+<p class="caption">
+Figure 6.3: Normal distributions with mean = 10, differing in standard deviation (1, 2 and 4)
+</p>
+</div>
+<p><br />
+</p>
+<p>There is an infinite number of normal distributions that differ by the value of the parameters, which jointly determine <em>a single</em> normal distribution. Among all members of the normal distribution family, the <em>standard</em> normal distribution is of particular interest. This is a normal distribution with parameters <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>. Variables follwing a standard normal distribution are often denoted with letter <span class="math inline">\(Z\)</span>. In a standard normal distribution, the <span class="math inline">\(Z\)</span> values -1.96 and +1.96 limit a central probability interval of 95% (leaving 2.5% probability regions below -1.96 and above +1.96).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:z-95-pi"></span>
+<img src="_main_files/figure-html/z-95-pi-1.png" alt="Standard normal distribution with central 95% probability interval" width="672" />
+<p class="caption">
+Figure 6.4: Standard normal distribution with central 95% probability interval
+</p>
+</div>
+<p><br />
+</p>
+<p>Any normal distribution can be mapped to the standard normal distribution with a transformation called <em>standardization</em>. If a variable <span class="math inline">\(X\)</span> follows a normal distribution with parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, then the following transformation will map <span class="math inline">\(X\)</span> values to values of a standard normal distribution, in such a way that the relative positions of values, and the probability intervals they may define, are preserved:</p>
+<p><span class="math display">\[Z \quad = \quad \frac{X - \mu}{\sigma}\]</span></p>
+<p>For instance, suppose that a particular variable <span class="math inline">\(X\)</span> follows a normal distribution with <span class="math inline">\(\mu = 100\)</span> and <span class="math inline">\(\sigma = 10\)</span>, which is often written as <span class="math inline">\(X \sim N(100, 10)\)</span>. Solving for <span class="math inline">\(X\)</span> the stardardization formula above gives,</p>
+<p><span class="math display">\[ X \quad = \quad \mu + Z \sigma\]</span></p>
+<p>which in this case is</p>
+<p><span class="math display">\[ X \quad = \quad 100 + 10 \ Z\]</span></p>
+<p>If we know that the standard normal values <span class="math inline">\(Z_1 = -1.96\)</span> and <span class="math inline">\(Z_2 =+1.96\)</span> limit a central interval of 95% probability, then the corresponding <span class="math inline">\(X\)</span> values will also limit such an interval (see figure <a href="statistical-inference.html#fig:x-95-pi">6.5</a>):</p>
+<ul>
+<li><p><span class="math inline">\(X_1 \quad = \qquad \quad 100 + (-1.96) \ 10 \quad = \quad 100 -19.6 \quad = \quad 80.4\)</span></p></li>
+<li><p><span class="math inline">\(X_2 \quad = \qquad \quad 100 + (+1.96) \ 10 \quad = \quad 100 +19.6 \quad = \quad 119.6\)</span></p></li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:x-95-pi"></span>
+<img src="_main_files/figure-html/x-95-pi-1.png" alt="N(100,10) distribution with central 95% probability interval" width="672" />
+<p class="caption">
+Figure 6.5: N(100,10) distribution with central 95% probability interval
+</p>
+</div>
+</div>
+<div id="the-chi-squared-distribution" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> The chi-squared distribution<a href="statistical-inference.html#the-chi-squared-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The chi-squared distribution is a probability distribution model for continuous variables taking positive values only. This distribution depends on a single parameter called <em>degrees of freedom</em>, usually denoted by the greek letter <span class="math inline">\(\nu\)</span>. Figure <a href="statistical-inference.html#fig:chi-squared-distributions">6.6</a> displays several chi-squared distributions, with <span class="math inline">\(\nu = 1\)</span> (red), <span class="math inline">\(\nu = 3\)</span> (blue), and <span class="math inline">\(\nu = 5\)</span> (black) degrees of freedom.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chi-squared-distributions"></span>
+<img src="_main_files/figure-html/chi-squared-distributions-1.png" alt="Chi-squared distributions with 1, 3, and 5 degrees of freedom" width="672" />
+<p class="caption">
+Figure 6.6: Chi-squared distributions with 1, 3, and 5 degrees of freedom
+</p>
+</div>
+<p><br />
+</p>
+<p>Some statistics that are functions of table counts follow a chi-squared distribution, which provides the basis for some methods of inferential analysis we will introduce in chapter 7.</p>
+</div>
+<div id="the-students-t-distribution" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> The Student’s <em>t</em> distribution<a href="statistical-inference.html#the-students-t-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Student’s <em>t</em> distribution, or simply <em>t</em> dsitribution, is a probability distribution model for continuous variables, very similar in shape to the standard normal distribution. However, this distribution depends on one parameter only, called its <em>degrees of freedom</em>. Figure <a href="statistical-inference.html#fig:t-distribution">6.7</a> displays a <em>t</em> distributions with 5 and 10 degrees of freedom (blue), and a standard normal distribution (black). Though very similar, the <em>t</em> distribution has slightly hevier tails than the standard normal. This difference decreases as the number of degrees of freedom increases, so that for 30 degrees of freedom and above, the <em>t</em> distribution is virtualy identical to the standard normal.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:t-distribution"></span>
+<img src="_main_files/figure-html/t-distribution-1.png" alt="t distribution with 10 degrees of freedom (blue), and standard normal distribution (black dashed line)" width="672" />
+<p class="caption">
+Figure 6.7: t distribution with 10 degrees of freedom (blue), and standard normal distribution (black dashed line)
+</p>
+</div>
+<p>Under certain circumstances, some statistics that are functions of sample means follow a t-distribution, which provides the basis for some methods of inferential analysis on means we will introduce in chapter 8.</p>
+</div>
+</div>
+<div id="random-samples" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Random samples<a href="statistical-inference.html#random-samples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Many different procedures can be used to get a sample of observations from a population. When a sampling procedure is such that the probability of selecting an individual is <em>known</em> for all population individuals, we say this is a random or <em>probabilistic</em> sampling procedure, and the resulting sample a random (or probabilistic) sample. In any other case, the sampling procedure, and the resulting sample, are <em>non-random</em>. Examples of non-random samples are:</p>
+<ul>
+<li><p>Patients with surname starting with letters A to L.</p></li>
+<li><p>Patients visited on Monday, Tuesday or Wednesday.</p></li>
+<li><p>Consecutive patients.</p></li>
+</ul>
+<p>There are several types of random sampling procedures. In <em>simple</em> random sampling, all population individuals have <em>the same</em> probability of being selected. In order to guarantee this, random number generating functions should be used, such as the <code>sample()</code> function in R.</p>
+<p>Suppose we want to select a simple random sample (SRS) of patients from the population of 90,000 patients visited in an emergency service during the last year. For simplicity, assume that these patients are uniquely identified by numbers 1 to 90,000. To get a SRS of say 10 patients, we can use the <code>sample()</code> function. The first argument to this function should be either a vector of unique identifiers of all population individuals, or the size of the population (in which case identifiers are assumed to be the natural numbers from 1 up to the population size); the second argument (<code>size</code>) should be the required sample size:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="statistical-inference.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">90000</span>, <span class="dv">10</span>)                 <span class="co"># vector of identifiers as 1st argument</span></span></code></pre></div>
+<pre><code> [1]  8465  6563 62126 20205 62480 87817 76380 68581 55968  8615</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="statistical-inference.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">90000</span>, <span class="at">size =</span> <span class="dv">10</span>)            <span class="co"># population size as 1st argument</span></span></code></pre></div>
+<pre><code> [1] 41381 45196  9346 13824  8696 61798 61140 39557  7131 61256</code></pre>
+<p><br />
+</p>
+<p>The results of the two functions calls above are different, and if you run them twice you will get different results once again, so that the random sampling result is not reproducible. If we want our random selection to be reproducible (as we should), then we need to <em>set a seed</em> for the random number generator with <code>set.seed()</code>, before calling <code>sample()</code>:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="statistical-inference.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)           <span class="co"># setting the seed to 123 (arbitrary number)</span></span>
+<span id="cb195-2"><a href="statistical-inference.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">90000</span>, <span class="dv">10</span>)       </span></code></pre></div>
+<pre><code> [1] 51663 57870  2986 29925 68293 62555 45404 65161 46435  9642</code></pre>
+<p>Now, the re-execution of this code (both lines!) will produce the same results. See?</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="statistical-inference.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)           <span class="co"># second execution</span></span>
+<span id="cb197-2"><a href="statistical-inference.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">90000</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code> [1] 51663 57870  2986 29925 68293 62555 45404 65161 46435  9642</code></pre>
+<p><br />
+</p>
+<p>It should be noted that to get a SRS we do need the list of individuals in the population (a population <em>census</em>) and their unique identifiers (like 1, 2, …90000); otherwise, it is just impossible to get a SRS.</p>
+<p>There are other, more complex random sampling procedures, like <em>stratified</em> sampling, <em>cluster</em> sampling, and <em>multi-stage</em> sampling. These are frequently used in community health surveys. However, we will not discuss them because the inferential methods presented in this book, and in many other books and courses on statistics, assume the data come from a SRS. The inferential analysis of data obtained through random sampling procedures other than SRS is more complex, and is out of the scope of this book.</p>
+<p>Many people, including some researchers, have a wrong idea of what is random sampling or a random sample. It is not just an apparently harmless selection procedure like, for instance, consecutive patients. Rather, it requires the probability of selection to be known for all population individuals and, in the case of SRS, this probability should be the same for all of them. If this is not the case, the selection `procedure should not be called random, and the resulting sample should not be described as a random sample.</p>
+<p>Depending on what is the population of interest, obtaining a SRS may be just impossible (i.e., if there is no census available), and then a <em>convenience</em> sample (any sample we can possibly get) is better than nothing. However, if SRS is possible, there is no excuse to use a non-random sample. In any case, to use inferential methods with a convenience, non-random sample, requires to <em>assume</em> that the sampling process behaves as a random sampling procedure, and that the sample composition resembles that of a random sample. This is actually the case in many research studies, based on convenience samples.</p>
+</div>
+<div id="example-data" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Example data<a href="statistical-inference.html#example-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To illustrate the concepts introduced in the remaining of this chapter we will use the <code>birthwt</code> dataset in package <code>MASS</code>, containing data on 189 births collected at the Baystate Medical Center, Springfield, Massachusetts (US). We will be concerned with the following variables (see <code>?MASS::birthwt</code> for a description of all the variables in the dataset):</p>
+<ul>
+<li><p><code>low</code>: an indicator of low birth weight (less than 2500 grams).</p></li>
+<li><p><code>race</code>: mother’s race (1 = white, 2 = black, 3 = other).</p></li>
+<li><p><code>smoke</code>: mother’s smoking status during pregnancy (0 = no, 1 = yes).</p></li>
+<li><p><code>ht</code>: mother’s history of arterial hypertension (AHT) (0 = no, 1 = yes).</p></li>
+<li><p><code>bwt</code>: birth weight in grams.</p></li>
+</ul>
+<p><br />
+</p>
+<p>Here are the first six rows of the dataset:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="statistical-inference.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(MASS<span class="sc">::</span>birthwt)</span></code></pre></div>
+<pre><code>   low age lwt race smoke ptl ht ui ftv  bwt
+85   0  19 182    2     0   0  0  1   0 2523
+86   0  33 155    3     0   0  0  0   3 2551
+87   0  20 105    1     1   0  0  0   1 2557
+88   0  21 108    1     1   0  0  1   2 2594
+89   0  18 107    1     1   0  0  1   0 2600
+91   0  21 124    3     0   0  0  0   0 2622</code></pre>
+<p>The following script defines factors for categorical variables, renames <code>low</code> to <code>bw</code> (with levels labeled as <code>low</code> or <code>normal</code>) and prints the first six rows of the resulting dataframe <code>d</code>:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="statistical-inference.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb201-2"><a href="statistical-inference.html#cb201-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-3"><a href="statistical-inference.html#cb201-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> MASS<span class="sc">::</span>birthwt <span class="sc">%&gt;%</span></span>
+<span id="cb201-4"><a href="statistical-inference.html#cb201-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">low =</span> <span class="fu">factor</span>(low, </span>
+<span id="cb201-5"><a href="statistical-inference.html#cb201-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, </span>
+<span id="cb201-6"><a href="statistical-inference.html#cb201-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;normal&quot;</span>)),</span>
+<span id="cb201-7"><a href="statistical-inference.html#cb201-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">race =</span> <span class="fu">factor</span>(race, </span>
+<span id="cb201-8"><a href="statistical-inference.html#cb201-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb201-9"><a href="statistical-inference.html#cb201-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;other&quot;</span>)),</span>
+<span id="cb201-10"><a href="statistical-inference.html#cb201-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">smoke =</span> <span class="fu">factor</span>(smoke, </span>
+<span id="cb201-11"><a href="statistical-inference.html#cb201-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, </span>
+<span id="cb201-12"><a href="statistical-inference.html#cb201-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;smoker&quot;</span>, <span class="st">&quot;non-smoker&quot;</span>)),</span>
+<span id="cb201-13"><a href="statistical-inference.html#cb201-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">ui =</span> <span class="fu">factor</span>(ui, </span>
+<span id="cb201-14"><a href="statistical-inference.html#cb201-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, </span>
+<span id="cb201-15"><a href="statistical-inference.html#cb201-15" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;UI&quot;</span>, <span class="st">&quot;no-UI&quot;</span>)),</span>
+<span id="cb201-16"><a href="statistical-inference.html#cb201-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">ht =</span> <span class="fu">factor</span>(ht, </span>
+<span id="cb201-17"><a href="statistical-inference.html#cb201-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">0</span>, </span>
+<span id="cb201-18"><a href="statistical-inference.html#cb201-18" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;AHT&quot;</span>, <span class="st">&quot;no-AHT&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb201-19"><a href="statistical-inference.html#cb201-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">bw =</span> low)</span>
+<span id="cb201-20"><a href="statistical-inference.html#cb201-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-21"><a href="statistical-inference.html#cb201-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code>       bw age lwt  race      smoke ptl     ht    ui ftv  bwt
+85 normal  19 182 black non-smoker   0 no-AHT    UI   0 2523
+86 normal  33 155 other non-smoker   0 no-AHT no-UI   3 2551
+87 normal  20 105 white     smoker   0 no-AHT no-UI   1 2557
+88 normal  21 108 white     smoker   0 no-AHT    UI   2 2594
+89 normal  18 107 white     smoker   0 no-AHT    UI   0 2600
+91 normal  21 124 other non-smoker   0 no-AHT no-UI   0 2622</code></pre>
+</div>
+<div id="estimation" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Estimation<a href="statistical-inference.html#estimation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Proportions and means are common parameters we may want to estimate. Proportions are relevant when dealing with categorical variables (such as <code>bw</code>), while means are relevant when dealing with quantitative variables (such as <code>bwt</code>). For example, we may want to answer these two questions:</p>
+<ul>
+<li><p>What is the proportion of low weight newborns (<span class="math inline">\(\pi\)</span>)?</p></li>
+<li><p>What is the mean weight of newborns (<span class="math inline">\(\mu\)</span>)?</p></li>
+</ul>
+<p>The simplest way to estimate a parameter is to compute the corresponding estimator: the sample proportion (p) in the case of <span class="math inline">\(\pi\)</span>, or the sample mean (<span class="math inline">\(\bar{x}\)</span>) in the case of <span class="math inline">\(\mu\)</span>. The result provided by an estimator when computed in a particular sample is called a <em>point estimate</em> of the corresponding parameter.</p>
+<p>To get a point estimate for <span class="math inline">\(\pi\)</span>, we simply compute the frequency table of <code>bw</code> with function <code>tally()</code> of the <code>mosaic</code> package, using argument <code>format</code> to get the proportions:</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="statistical-inference.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb203-2"><a href="statistical-inference.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>bw, <span class="at">data =</span> d, <span class="at">format =</span> <span class="st">&quot;proportion&quot;</span>)    </span></code></pre></div>
+<pre><code>bw
+      low    normal 
+0.3121693 0.6878307 </code></pre>
+<p>To get a point estimate for <span class="math inline">\(\mu\)</span>, we can use function <code>mean()</code> to compute the sample mean of <code>bwt</code>:</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="statistical-inference.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>bwt, <span class="at">data =</span> d) </span></code></pre></div>
+<pre><code>[1] 2944.587</code></pre>
+<p>So, the point estimates are 31.2 % for <span class="math inline">\(\pi\)</span>, and 2945 grams for <span class="math inline">\(\mu\)</span> (rounded to unit).</p>
+<p>The problem with point estimates is that, because of (random) sampling variation, we have no idea of how similar or different from the parameter value they may be. To solve this uncertainty, confidence intervals are computed. A confidence interval (CI) is an interval around the point estimate, such that we have a given <em>confidence level</em> that it will contain the true value of the parameter, somewhere within the interval. Although it is quite common to compute CI’s with 95% confidence, we could use other confidence levels, such as 90%, or 99%.</p>
+<p>To compute the 95% confidence interval for <span class="math inline">\(\pi\)</span>, it is convenient to chain functions <code>binom.test()</code>, <code>confint()</code> and <code>round()</code>. The computation of the CI is made by function <code>binom.test()</code>, but this function produces other results as well we are not interested in right now, and function <code>confint()</code> extracts just the CI. Then, <code>round()</code> will round the results to the desired number of decimals. This will provide the 95% CI for the category of <code>bw</code> indicated in argument <code>success</code> in the <code>binom.test()</code> function (which is <code>low</code>):</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="statistical-inference.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="sc">~</span> bw, <span class="at">data =</span> d, <span class="at">success =</span> <span class="st">&quot;low&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">confint</span>() <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>  probability of success lower upper level
+1                  0.312 0.247 0.383  0.95</code></pre>
+<p>The result provided includes the point estimate (labeled as <code>probability of success</code>), the lower and upper bounds of the CI, and the confidence level (labeled as <code>level</code>). This result means that we are 95% confident that the value of <span class="math inline">\(\pi\)</span> is <em>somewhere</em> between 24.7% and 38.3%.</p>
+<p>To compute a CI with a different confidence level, use the <code>conf.level</code> argument in <code>binom.test()</code> to indicate the desired level (as a proportion, not as a percentage!):</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="statistical-inference.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="sc">~</span> bw, <span class="at">data =</span> d, <span class="at">success =</span> <span class="st">&quot;low&quot;</span>, <span class="at">conf.level =</span> .<span class="dv">99</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb209-2"><a href="statistical-inference.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">confint</span>() <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>  probability of success lower upper level
+1                  0.312 0.228 0.406  0.99</code></pre>
+<p>Thus, with 99% confidence, the value of <span class="math inline">\(\pi\)</span> is somewhere between 22.8% and 40.6%. Note that, the higher the confidence level, the wider the resulting CI.</p>
+<p>There are several methods available to compute the CI for a proportion (see <code>?binom.test</code> and references therein). Most books and courses on statistics present the so called <em>Wald</em> method, which is an approximated method based on the <em>normal distribution</em>. Though perfectly valid in many instances, in some cases it should be avoided, at the risk of getting unreliable or even absurd results (e.g., values lower than zero, or higher than one). For this reason, the default method used by <code>biniom.test()</code> (the so called <em>Clopper-Pearson</em> method) is safer, can be applied always, and never produces values out of the 0 to 1 range. However, if you ever need to compute the Wald CI, you can get it using the <code>ci.method</code> argument:</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="statistical-inference.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="sc">~</span> bw, <span class="at">data =</span> d, <span class="at">success =</span> <span class="st">&quot;low&quot;</span>, <span class="at">ci.method =</span> <span class="st">&quot;Wald&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-2"><a href="statistical-inference.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">confint</span>() <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>  probability of success lower upper level
+1                  0.312 0.246 0.378  0.95</code></pre>
+<p>As you see, this CI is slightly different to what we got when we did not specify the <code>ci.method</code>, and the default (Clopper-Pearson) was used.</p>
+<p>To compute a CI for <span class="math inline">\(\mu\)</span> we can chain functions <code>t.test()</code> and <code>confint()</code>. Again, the actual CI computation is made by <code>t.test()</code> along with other results, and <code>confint()</code> extracts just the CI.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="statistical-inference.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="sc">~</span> bwt, <span class="at">data =</span> d) <span class="sc">%&gt;%</span> <span class="fu">confint</span>()</span></code></pre></div>
+<pre><code>  mean of x    lower    upper level
+1  2944.587 2839.952 3049.222  0.95</code></pre>
+<p>Thus, we are 95% confident that the population mean <span class="math inline">\(\mu\)</span> is somewhere between 2840 and 3049 grams (rounding to unit). For a different confidence level, the <code>conf.level</code> argument of <code>t.test()</code> can be used:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="statistical-inference.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="sc">~</span> bwt, <span class="at">data =</span> d, <span class="at">conf.level =</span> <span class="fl">0.99</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb215-2"><a href="statistical-inference.html#cb215-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">confint</span>()</span></code></pre></div>
+<pre><code>  mean of x    lower    upper level
+1  2944.587 2806.558 3082.616  0.99</code></pre>
+<p>Again, we see that a higher confidence level results in a wider CI.</p>
+<p>The method used by <code>t.test()</code> to compute the CI is based on the assumption that the quantitative variable (<code>bwt</code>) is about normally distributed in the population. In practice, it will be sufficient to verify that the distribution is approximately symmetric, and there are no <em>influential</em> outliers. This can be easily verified by inspecting a boxplot:</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="statistical-inference.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
+<span id="cb217-2"><a href="statistical-inference.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(<span class="sc">~</span> bwt, <span class="at">data =</span> d)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:6-bwt-boxplot"></span>
+<img src="_main_files/figure-html/6-bwt-boxplot-1.png" alt="Boxplot of birthweights" width="672" />
+<p class="caption">
+Figure 6.8: Boxplot of birthweights
+</p>
+</div>
+<p>In this case, the distribution is fairly symmetric. There is a single outlier, pretty close to the edge of the lower whisker, so it can hardly affect the mean, given the sample size (n = 189). Therefore, we can rely on the CI computed by <code>t.test()</code>. If this was not the case, alternative methods are available, such as the <a href="https://www.bmj.com/content/350/bmj.h2622">bootstrap</a> method that will be presented in subsequent chapters.</p>
+<p>We have seen how to compute CI’s for a proportion and for a mean, but CI’s can be computed for many other parameters as well, such as:</p>
+<ul>
+<li><p>A difference of proportions, <span class="math inline">\(\pi_1 - \pi_2\)</span></p></li>
+<li><p>A difference of means, <span class="math inline">\(\mu_1 - \mu_2\)</span></p></li>
+<li><p>A relative risk</p></li>
+<li><p>An odds ratio</p></li>
+<li><p>… and many others.</p></li>
+</ul>
+<p>To compute a CI for these and other parameters, we will need to use different functions. However, the result will be always an interval (defined by a lower and an upper bound), and its interpretation is always the same: we have the specified confidence that the CI contains the value of the population parameter we are estimating.</p>
+<p>When we compute a CI with a given confidence level, there is some risk that it does not contain the value of the parameter. This risk is the complementary of the confidence level, so that:</p>
+<ul>
+<li><p>95% CI’s will not contain the parameter about 5% of the times</p></li>
+<li><p>99% CI’s will not contain the parameter about 1% of the times</p></li>
+</ul>
+<p>Therefore, the higher the confidence level used to compute a CI, the lower the risk. So, why not to compute CI’s always with a very high confidence level, such as 0.999999? Well, we have seen that increasing the confidence level results in wider, less informative CI’s. The width of the CI reflects uncertainty (since we can’t know <em>where</em> the parameter value is inside the CI). Therefore, the wider the CI the less informative it is. Fortunately, the width of the CI depends <em>also</em> on the sample size, and this makes it possible to get high confidence, as well as narrow, informative CI’s.</p>
+</div>
+<div id="sample-size-and-cis" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Sample size and CI’s<a href="statistical-inference.html#sample-size-and-cis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Figure <a href="statistical-inference.html#fig:6-ssize-ci">6.9</a> shows the 95% CI’s for a proportion <span class="math inline">\(\pi\)</span> resulting from several hypothetical studies, all of them having the same sample proportion p = 0.312 (or 31.2%), but different sample size (n). It i s clear that the CI shrinks as n increases. This means that, for a given value of p, we can choose a sample size that will produce a 95% CI of desired width. Of course, this is relevant when designing a study (once the study has been conducted, the sample size is fixed). For instance, if we want the CI width to be no larger than 0.10 (or 10%), we need to collect n = 350 subjects.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:6-ssize-ci"></span>
+<img src="_main_files/figure-html/6-ssize-ci-1.png" alt="Effect of sample size on the CI for a proportion (p = 0.312)" width="672" />
+<p class="caption">
+Figure 6.9: Effect of sample size on the CI for a proportion (p = 0.312)
+</p>
+</div>
+<p><br />
+</p>
+<p>When designing a study whose objective is to estimate a parameter with a given confidence level (say 95%), an important question is to determine the sample size needed, so that the resulting CI width is no greater than a desired value. However, because the CI width depends <em>also</em> on the value of the point estimate (p), figure <a href="statistical-inference.html#fig:6-ssize-ci">6.9</a> cannot be used as guidance (but in the case of expecting p to be 0.312).</p>
+<p>Function <code>prec_prop()</code> in package <code>presize</code> allows to compute the required sample size from the expected value of p, the desired width of the CI, and the confidence level. Several methods are available, depending on how the CI will be computed. Here we use <code>method = exact</code>. By default, 0.95 (or 95%) confidence level is assumed. The printed result documents the arguments used in the computation, and the required sample size (<code>n</code>).</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="statistical-inference.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(presize)</span>
+<span id="cb218-2"><a href="statistical-inference.html#cb218-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prec_prop</span>(<span class="at">p =</span> <span class="fl">0.312</span>, <span class="at">conf.width =</span> <span class="fl">0.10</span>, <span class="at">method =</span> <span class="st">&quot;exact&quot;</span>) </span></code></pre></div>
+<pre><code>
+     sample size for a proportion with exact confidence interval. 
+
+      p padj        n conf.width conf.level       lwr       upr
+1 0.312   NA 347.2988        0.1       0.95 0.2636203 0.3636203
+
+NOTE: padj is the adjusted proportion, from which the ci is calculated.</code></pre>
+<p>Thus, assuming we expect p = 0.312, to get a 95% CI of width = 0.10, the required sample size is 348 (obviously, the sample size has to be an integer since it is the number of subjects, so that the result should be rounded up always). If the CI is to be computed with a different confidence level (say 0.99) the <code>conf.level</code> argument should be set to this value as done below. Because increasing the confidence level results in a wider CI, the sample size required to keep the CI width = 0.10 is now n = 586, much larger than it was for a 95% CI.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="statistical-inference.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prec_prop</span>(<span class="at">p =</span> <span class="fl">0.312</span>, <span class="at">conf.width =</span> <span class="fl">0.10</span>, <span class="at">method =</span> <span class="st">&quot;exact&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.99</span>) </span></code></pre></div>
+<pre><code>
+     sample size for a proportion with exact confidence interval. 
+
+      p padj        n conf.width conf.level       lwr       upr
+1 0.312   NA 585.9679        0.1       0.99 0.2635561 0.3635561
+
+NOTE: padj is the adjusted proportion, from which the ci is calculated.</code></pre>
+<p><br />
+</p>
+<p>We have seen that the sample size has an effect on the width of the CI for a proportion, and how to use this fact to determine the sample size when designing a study. Similar arguments hold for many other parameters (i.e., increasing the sample size reduces their CI width), and in particular for means. Suppose we are designing a new study to estimate the mean weight of newborns, and we want the resulting 95% CI to have a width of 200 grams. We can use function <code>proc_mean()</code> from the <code>presize</code> package to determine the required sample size, but in this case we need to provide an estimate of the standard deviation (SD) of the weight of newborns, and we assume this to be 730 grams. Though it is not necessary for the calculation, this function expects an argument specifying the expected mean (<code>mu</code>).</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="statistical-inference.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prec_mean</span>(<span class="at">mean =</span> <span class="dv">3000</span>, <span class="at">sd =</span> <span class="dv">730</span>, <span class="at">conf.width =</span> <span class="dv">200</span>)</span></code></pre></div>
+<pre><code>
+     sample size for mean 
+
+  mean  sd        n conf.width conf.level  lwr  upr
+1 3000 730 207.1364        200       0.95 2900 3100</code></pre>
+<p>Thus, assuming that SD = 730 grams, we require a sample of size n = 208 to get a 95 CI of width = 200 grams. If the CI is to be computed with a different confidence level (e.g., 0.99), the <code>conf.level</code> argument is used:</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="statistical-inference.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prec_mean</span>(<span class="at">mean =</span> <span class="dv">3000</span>, <span class="at">sd =</span> <span class="dv">730</span>, <span class="at">conf.width =</span> <span class="dv">200</span>, <span class="at">conf.level =</span> <span class="fl">0.99</span>)</span></code></pre></div>
+<pre><code>
+     sample size for mean 
+
+  mean  sd        n conf.width conf.level  lwr  upr
+1 3000 730 357.3903        200       0.99 2900 3100</code></pre>
+<p>In this case, we would require a sample size of n = 358.</p>
+</div>
+<div id="significance-tests" class="section level2 hasAnchor" number="6.8">
+<h2><span class="header-section-number">6.8</span> Significance tests<a href="statistical-inference.html#significance-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Significance tests are tools for evaluating scientific hypotheses. To explain the basic concepts involved in a significant test, let’s consider the following example. According to a <a href="https://www.cdc.gov/nchs/data/nvsr/nvsr70/nvsr70-02-508.pdf">National Vital Statistics Report</a>, 8.31% of all births in the US in 2019 were low weight births (&lt;2500 grams). Suppose we suspect that this could be higher in the population of deliveries assisted in the Baystate Medical Center, and use the sample of births in the <code>birthwt</code> dataset to verify it.</p>
+<p>To conduct a significance test, we set a pair of conflicting formal statistical hypotheses called <em>null</em> and <em>alternative</em>, denoted <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span> respectively. In this case, these hypotheses involve a single parameter <span class="math inline">\(\pi\)</span>, that represents the proportion of low birthweight in the population of deliveries assisted in the Baystate Medical Center:</p>
+<center>
+<p><span class="math inline">\(H_0: \qquad \pi = 0.0831\)</span></p>
+<span class="math inline">\(H_1: \qquad \pi &gt; 0.0831\)</span>
+</center>
+<p><br />
+</p>
+<p>Note that the working hypothesis stated in the first `paragraph of this section (<em>we suspect that this could be higher in the population of deliveries assisted in the Baystate Medical Center</em>) is represented by the alternative hypothesis <span class="math inline">\(H_1\)</span>, the null hypothesis <span class="math inline">\(H_0\)</span> being the opposite (i,e., the proportion of low birthweights in the population of deliveries assisted in the Baystate Medical Center is as in the whole US); so that <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span> are mutually exclusive.</p>
+<p>In the <code>birthwt</code> dataset, the sample proportion of low birthweigh is 0.312. Now we compute the probability of getting a random sample of 189 births in which this proportion is 0.312 or more extreme in the direction of <span class="math inline">\(H_1\)</span>, <em>if <span class="math inline">\(H_0\)</span> was true</em>. This probability is called <em>p</em> value, and in this case is &lt;0.0000001 (that is, less than one in ten million). Now, there are two possible explanations for this result (assuming the sample is a random sample):</p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span> is true, and something <em>very unlikely</em> happened when drawing the sample, or</p></li>
+<li><p><span class="math inline">\(H_0\)</span> is false, in which case, the computed <em>p</em> value does not reflect the actual probability of the sample, since it was computed <em>assuming</em> <span class="math inline">\(H_0\)</span> is true).</p></li>
+</ul>
+<p>Clearly, the second explanation seems better, since it does not require to believe that something very unlikely happened. Therefore, a <em>very unlikely</em> result under <span class="math inline">\(H_0\)</span>, is taken as evidence against <span class="math inline">\(H_0\)</span>, and supports its rejection in favor of <span class="math inline">\(H_1\)</span>. Thus, in this case we conclude that the proportion of low birthweight in the population of deliveries assisted in the Baystate Medical Center is higher than that in the whole US.</p>
+<p>A difficulty with this argument is to decide what probability values should be considered <em>very unlikely</em>. It is usual to take values below 0.05 as unlikely enough to reject <span class="math inline">\(H_0\)</span>, but this is a choice we make as investigators, and there is nothing wrong with choosing a different, perhaps more strict value, like 0.01. In any case, the probability value below which we will reject a null hypothesis in a test is called the <em>significance level</em> of the test, is denoted by the Greek letter <span class="math inline">\(\alpha\)</span>, and should be established <em>before</em> getting the sample data. In this book, we will use <span class="math inline">\(\alpha\)</span> = 0.05 unless otherwise stated. But whatever the value of <span class="math inline">\(\alpha\)</span> chosen <em>a priori</em> by an investigator, a <em>p</em> value &lt; <span class="math inline">\(\alpha\)</span> is used as argument to reject <span class="math inline">\(H_0\)</span> and conclude <span class="math inline">\(H_1\)</span>.</p>
+<p>To compute the <em>p</em> value reported above, we used function <code>binom.test()</code>. This function is available both in base R and in the <code>mosaic</code> package, but here we use the later (by loading <code>mosaic</code> previously). The arguments we need to pass to <code>binom.test()</code> are the factor <code>bw</code> preceded by a tilde and the dataframe containing this factor, the value proposed by the null hypothesis for <span class="math inline">\(\pi\)</span> in argument <code>p</code>, the category for which we want to estimate the proportion in argument <code>success</code>, and the form of alternative hypothesis in argument <code>alternative</code>):</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="statistical-inference.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="sc">~</span> bw, <span class="at">data=</span>d, </span>
+<span id="cb226-2"><a href="statistical-inference.html#cb226-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> <span class="fl">0.0831</span>,                      <span class="co"># Null hypothesis</span></span>
+<span id="cb226-3"><a href="statistical-inference.html#cb226-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">success =</span> <span class="st">&quot;low&quot;</span>,                 <span class="co"># Category of bw we are interested in</span></span>
+<span id="cb226-4"><a href="statistical-inference.html#cb226-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)         <span class="co"># Alternative hypothesis</span></span></code></pre></div>
+<pre><code>
+
+
+data:  d$bw  [with success = low]
+number of successes = 59, number of trials = 189, p-value &lt; 2.2e-16
+alternative hypothesis: true probability of success is greater than 0.0831
+95 percent confidence interval:
+ 0.2565953 1.0000000
+sample estimates:
+probability of success 
+             0.3121693 </code></pre>
+<p>The results offered by <code>binom.test()</code> will always refer to the category indicated in its argument <code>success</code> (or to the <em>first level</em> of the factor if argument <code>success</code> is not used), and are identified in the output with the word “success”. The first line of the results includes the number of <code>low</code> cases (labeled as “number of successes”), the sample size (“number of trials”), and the <em>p</em> value in scientific notation. In a second line, the alternative hypothesis of the test is stated in words. In addition, the 95% CI for <span class="math inline">\(\pi\)</span> is provided, as well as the sample proportion (“probability of success”). Note that the CI excludes the value proposed by <span class="math inline">\(H_0\)</span>, which is consistent with the rejection of <span class="math inline">\(H_0\)</span> implied by the extremely low <em>p</em> value.</p>
+<p>In summary, when we conduct a significance test we compute a <em>p</em> value, which is a measure of how consistent the data are with <span class="math inline">\(H_0\)</span>. A very low <em>p</em> value (<em>p</em> &lt; <span class="math inline">\(\alpha\)</span>) indicates that the data are very inconsistent with <span class="math inline">\(H_0\)</span>, leading to the rejection of <span class="math inline">\(H_0\)</span>. Conversely, a high <em>p</em> value reflects consistency of the data and <span class="math inline">\(H_0\)</span>, but by no means this can be taken as proof that <span class="math inline">\(H_0\)</span> is true. Therefore, when <em>p</em> <span class="math inline">\(\ge \alpha\)</span> we can neither reject <span class="math inline">\(H_0\)</span>, nor conclude it is true: this is an inconclusive result.</p>
+<p>Current guidelines recommend to report <em>p</em> values with two or three decimal places at most, so that the <em>p</em> value we computed previously should be reported as &lt;0.001. However, when a <em>p</em> value is greater than that, its actual value should be reported (e.g. <em>p</em> = 0.021, rather than <em>p</em> &lt; 0.05).</p>
+</div>
+<div id="sample-size-and-p-values" class="section level2 hasAnchor" number="6.9">
+<h2><span class="header-section-number">6.9</span> Sample size and <em>p</em> values<a href="statistical-inference.html#sample-size-and-p-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <em>p</em> value of a test depends on how different the point estimate is from the parameter value proposed by <span class="math inline">\(H_0\)</span>: the more different they are, the lower the <em>p</em> value. For instance, suppose that we conduct the binomial test of the previous section on a sample of 100 births, 10 of which are low weight. The sample proportion is then p = 0.1 (or 10%). In this case, the <em>p</em> value would be 0.319, implying that the result is not very inconsistent with <span class="math inline">\(H_0\)</span>. Indeed, a sample proportion of 0.1 is not very different from the population value proposed by <span class="math inline">\(H_0: \pi = 0.0831\)</span>. Conversely, if the sample proportion was 0.2 (or 20%), which is quite different from 0.0831, the <em>p</em> value would be &lt;0.001.</p>
+<p>However, <em>p</em> values depend on the sample size <em>as well</em>. Table <a href="statistical-inference.html#tab:6-ssize-p">6.1</a> shows the <em>p</em> values obtained in the binomial test for a series of hypothetical studies, all having a sample proportion of 0.10, but differing in sample size. Although all studies have the same sample proportion, <em>p values</em> decrease as the sample size increases. In studies with a sample size of 800 births or less, the <em>p</em> value does not allow to reject <span class="math inline">\(H_0\)</span>, but studies based on 850 or more births would lead to the its rejection, providing evidence that the population proportion is greater than 0.0831.</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:6-ssize-p">Table 6.1: </span>Effect of the sample size on the p value of a binomial test with sample proportion 0.1 (or 10%)
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+x
+</th>
+<th style="text-align:right;">
+p
+</th>
+<th style="text-align:left;">
+p-value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.319
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.265
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.225
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.194
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.169
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.148
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.130
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+450
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.114
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.101
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+550
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.090
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+600
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.080
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+650
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.071
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+700
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.063
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+750
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.057
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+800
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.051
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+850
+</td>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.045
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.041
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+950
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.036
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:left;">
+0.033
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>The dependency of the <em>p values</em> on the sample size has two important implications. First, the <em>p</em> value (or, its “significance”), is not particularly informative in general. Rather, the point and CI estimates are much more informative. Sometimes it is said that different studies have conflicting results only because some of them report a “statistically significant” result (p &lt; 0.05) while others do not (p &gt; 0.05). However, if the point estimates are similar there is no conflict at all, and a different sample size could be enough to explain the apparent conflict.</p>
+<p>The second implication is that, when designing a study, we can choose a sample size that will produce a statistically significant result with high probability. This is called <em>sample size determination</em>, and is an important aspect of study design. The computation of the sample size for a particular study will depend on some study design characteristics, and on the test planned for the inferential analysis of its primary objective.</p>
+</div>
+<div id="types-of-tests" class="section level2 hasAnchor" number="6.10">
+<h2><span class="header-section-number">6.10</span> Types of tests<a href="statistical-inference.html#types-of-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are lots of statistical tests available, and choosing the appropriate one for a particular problem may be challenging. Tests can be classified according to several criteria, such as the form of the null and alternative hypotheses, the parameter(s) involved, or the assumptions they are based on.</p>
+<p>Depending on the form of the null hypothesis, we distinguish <em>one-sample</em>, <em>two-samples</em> or <em>many-samples</em> tests. The general form of the null hypothesis for these three types of test is shown below, where <span class="math inline">\(\theta\)</span> is some parameter of interest, and <span class="math inline">\(k\)</span> some specific value:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>One-sample tests</td>
+<td align="left"><span class="math inline">\(H_0: \theta = k\)</span></td>
+</tr>
+<tr class="even">
+<td>Two-sample tests</td>
+<td align="left"><span class="math inline">\(H_0: \theta_1 = \theta_2\)</span></td>
+</tr>
+<tr class="odd">
+<td>Many samples</td>
+<td align="left"><span class="math inline">\(H_0: \theta_1 = \theta_2 = ...= \theta_S\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>In <em>one-sample</em> tests, a particular value is proposed for a parameter. This was the case of the binomial test addressed in the previous section, where the parameter was a population proportion (<span class="math inline">\(H_0: \quad \pi = 0.0831\)</span>).</p>
+<p><em>Two-sample</em> tests compare a parameter in two populations. For example, we could compare the proportion of low birthweight cases in the populations of smoker and non-smoker mothers, setting the null hypothesis <span class="math inline">\(H_0: \quad \pi_{smoker} = \pi_{non-smoker}\)</span>.</p>
+<p><em>Many-samples</em> tests compare a parameter in more than two populations. For example, we could compare the proportion of low birthweight cases in the populations defined by race, setting the null hypothesis <span class="math inline">\(H_0: \quad \pi_{white} = \pi_{black} = \pi_{other}\)</span>.</p>
+<p>Correspondingly similar examples would result by changing the parameter to a population mean (<span class="math inline">\(\mu\)</span>) of birth weights in grams.</p>
+<p>According to the form of the alternative hypothesis, we can distinguish <em>two-sided</em> or <em>one-sided</em> tests. In a two-sided test, <span class="math inline">\(H_1\)</span> is a strict inequality. In a one-sided test, only one of the two directions (greater or lower) is of interest:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Two-sided</td>
+<td align="left"><span class="math inline">\(H_1: \theta \ne k\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">One-sided</td>
+<td align="left"><span class="math inline">\(H_1: \theta \gt k \qquad \text{or} \qquad H_1: \theta \lt k\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>The test conducted in the previous section was a one-sided test, since the alternative hypothesis was <span class="math inline">\(H_1: \quad \pi &gt; 0.0831\)</span>. We decided to set this alternative hypothesis because the working hypothesis was “we suspect that the proportion of low birthweight could be higher than in the whole US”. In general, one- and two-sided tests will produce a different p-value. For this reason it is important to be careful when setting <span class="math inline">\(H_1\)</span>. Unless the working hypothesis clearly states an expected direction and the other direction is of no interest at all, two-sided tests should be used.</p>
+<p>Some tests are based on assumptions about the data. In particular, many classic tests on means assume that the variable follows a normal distribution in the population(s). These are generically called <em>parametric</em> tests. Conversely, some other tests do not require such an assumption, and are called <em>non-parametric</em> or <em>distribution-free</em> tests.</p>
+<p>Last, tests are usually described by the type of parameter involved. When analyzing categorical variables, tests on proportions are usually performed. When analyzing quantitative variables, tests on means are most used.</p>
+<p>As stated at the beginning of this section, the number of significance tests available is endless (every day new tests are published in statistical journals), and any attempt to present a “complete” collection of tests covering all possible data analysis scenarios would be naive. Rather, in the following chapters, we will cover a selection of few tests commonly used in clinical research. Among them:</p>
+<ul>
+<li>Test for categorical variables:
+<ul>
+<li>Binomial test and one-sample proportion z-test<br />
+</li>
+<li>Independence Chi-square test<br />
+</li>
+<li>McNemar’s test</li>
+</ul></li>
+<li>Parametric tests for quantitative variables:
+<ul>
+<li>One-sample (or paired) <em>Student’s</em> t-test</li>
+<li>Two-sample (or unpaired) <em>Student’s</em> t-test</li>
+<li>Welch test</li>
+</ul></li>
+<li>Distribution-free tests for quantitative variables:
+<ul>
+<li>Wilcoxon’s rank sum test or Mann-Whitney’s test<br />
+</li>
+<li>Wilcoxon’s signed rank test</li>
+</ul></li>
+<li>Linear independence test on the Pearson’s correlation coefficient</li>
+<li>Linear independence test on the Spearman’s correlation coefficient</li>
+<li>Intercept and slope test of a regression line</li>
+</ul>
+</div>
+<div id="resources-5" class="section level2 unnumbered hasAnchor">
+<h2>Resources<a href="statistical-inference.html#resources-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>An interesting read about <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4877414/">common missinterpretations of p-values and confidence intervals</a>.</p></li>
+<li><p>Journal collections devoted to statistical methods:</p>
+<ul>
+<li>Nature’s <a href="https://www.nature.com/collections/qghhqm/pointsofsignificance">Points of Significance</a>.</li>
+<li>BMJ’s <a href="https://openwetware.org/wiki/BMJ_Statistics_Notes_series">Statistics notes</a>.</li>
+</ul></li>
+<li><p><a href="https://www.youtube.com/c/joshstarmer/playlists">StatQuest</a> is a youtube channel with several lists of videos, one of them devoted to <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUK0FLuzwntyYI10UQFUhsY9">Statistics fundamentals</a>.</p></li>
+<li><p>Package <code>presize</code> includes functions to compute the required sample size to estimate many parameters other than a mean or a proportion. In addition, a point-and-click web app implementing these functions is available <a href="https://shiny.ctu.unibe.ch/app_direct/presize/">here</a>.</p></li>
+<li><p>For a more detailed explanation of inferential statistics (covering both hypothesis testing, confidence intervals and how they relate to each other) see <a href="https://www.r-bloggers.com/2021/01/hypothesis-test-by-hand/">this R-bloggers post</a>.</p></li>
+</ul>
+</div>
+<div id="exercises-5" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="statistical-inference.html#exercises-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>What is the term used in inferential statistics to refer to population quantities of interest?</p></li>
+<li><p>What a are the two parameters of a normal distribution, and how they relate to its graphical representation?</p></li>
+<li><p>What type of sample is assumed by common inferential methods (such as those in these book and in many other books and courses on statistics)?</p></li>
+<li><p>What property of a sampling procedure allows to claim that the resulting sample is a simple random sample?</p></li>
+<li><p>What is the interpretation of a 95% confidence interval?</p></li>
+<li><p>What is a p value?</p></li>
+<li><p>What is the difference between two-sided and one-sided tests?</p></li>
+<li><p>What is the difference between parametric and non-parametric tests?</p></li>
+<li><p>A dataframe contains the hospital record numbers (HRN), and other variables, for a population of 8000 patients. Run the following code to simulate such a dataframe. Then look at the help of function <code>sample_n()</code> from package <code>dplyr</code>, and use it to randomly select 20 patients from dataframe <code>d</code>.</p></li>
+<li><p>In a study newborns conducted in a hospital of a different geographical area, only 2 out of 150 newborns were low weight. Look at the help of the <code>binom.test()</code> function in the <code>mosaic</code>package, and use it to compute a 95% CI using the Wald method. Then repeat using the default Clopper-Pearson method.</p></li>
+<li><p>You are designing a study to estimate the proportion of COVID-19 cases seen in the emergency department of a tertiary hospital who present dyspnea on admission. Determine the required sample size to get 95% CI of width 0.10 in three different scenarios:</p>
+<ul>
+<li><p>if you guess that this proportion is about 0.2 (or 50%).</p></li>
+<li><p>if you guess that this proportion is about 0.5 (or 50%).</p></li>
+<li><p>if you guess that this proportion is about 0.8 (or 50%).</p></li>
+<li><p>What value would you choose to determine the sample size if you have no idea what this value can be? Why?</p></li>
+</ul></li>
+<li><p>What is the sample size required to estimate the mean weight of newborns with 95% confidence, so that the CI width is 100 grams, assuming a SD of 730 grams and a mean of 3000 grams? What is the result if you assume a mean of 2000 grams? An what if you assume an SD = 800 grams?</p></li>
+</ol>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="6">
+<li id="fn6"><p>in some cases, statistical hypotheses refer to <em>probabilistic models</em> rather than simple parameters. However, most of the statistical hypotheses we are dealing with in this book do test hypotheses on parameters.<a href="statistical-inference.html#fnref6" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="exploratory-data-analysis.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
