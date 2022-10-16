@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Analysis of categorical data | Data Analysis for Clinical Researchers</title>
+  <meta name="description" content="7 Analysis of categorical data | Data Analysis for Clinical Researchers" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Analysis of categorical data | Data Analysis for Clinical Researchers" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Analysis of categorical data | Data Analysis for Clinical Researchers" />
+  
+  
+  
+
+<meta name="author" content="Albert Cobos" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="statistical-inference.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/font-awesome-5.13.0/js/script.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="structure-of-this-book.html"><a href="structure-of-this-book.html"><i class="fa fa-check"></i>Structure of this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#first-r-session"><i class="fa fa-check"></i><b>1.2</b> First R session</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-objects"><i class="fa fa-check"></i><b>1.3</b> R objects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-functions"><i class="fa fa-check"></i><b>1.4</b> R functions</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>1.5</b> Installing R packages</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#loading-packages"><i class="fa fa-check"></i><b>1.6</b> Loading packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-data-structures.html"><a href="r-data-structures.html"><i class="fa fa-check"></i><b>2</b> R data structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-data-structures.html"><a href="r-data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="r-data-structures.html"><a href="r-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3" data-path="r-data-structures.html"><a href="r-data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="r-data-structures.html"><a href="r-data-structures.html#factors"><i class="fa fa-check"></i><b>2.4</b> Factors</a></li>
+<li class="chapter" data-level="2.5" data-path="r-data-structures.html"><a href="r-data-structures.html#dates"><i class="fa fa-check"></i><b>2.5</b> Dates</a></li>
+<li class="chapter" data-level="2.6" data-path="r-data-structures.html"><a href="r-data-structures.html#other-data-structures"><i class="fa fa-check"></i><b>2.6</b> Other data structures</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-acquisition.html"><a href="data-acquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-ms-excel-data"><i class="fa fa-check"></i><b>3.1</b> Reading MS Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-text-data"><i class="fa fa-check"></i><b>3.2</b> Reading text data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-spss-sas-or-stata-data"><i class="fa fa-check"></i><b>3.3</b> Reading SPSS, SAS or Stata data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-databases"><i class="fa fa-check"></i><b>3.4</b> Reading databases</a></li>
+<li class="chapter" data-level="3.5" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-other-formats"><i class="fa fa-check"></i><b>3.5</b> Reading other formats</a></li>
+<li class="chapter" data-level="3.6" data-path="data-acquisition.html"><a href="data-acquisition.html#getting-data-from-r-packages"><i class="fa fa-check"></i><b>3.6</b> Getting data from R packages</a></li>
+<li class="chapter" data-level="3.7" data-path="data-acquisition.html"><a href="data-acquisition.html#problems-when-importing-data-from-external-files"><i class="fa fa-check"></i><b>3.7</b> Problems when importing data from external files</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="data-acquisition.html"><a href="data-acquisition.html#package-dplyr"><i class="fa fa-check"></i><b>3.7.1</b> Package <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.7.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-the-sara-data"><i class="fa fa-check"></i><b>3.7.2</b> Reading the SARA data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>4</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-preparation.html"><a href="data-preparation.html#steps-in-data-preparation"><i class="fa fa-check"></i><b>4.1</b> Steps in data preparation</a></li>
+<li class="chapter" data-level="4.2" data-path="data-preparation.html"><a href="data-preparation.html#reading-raw-data"><i class="fa fa-check"></i><b>4.2</b> Reading raw data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#reviewing-data"><i class="fa fa-check"></i><b>4.3</b> Reviewing data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-preparation.html"><a href="data-preparation.html#missings"><i class="fa fa-check"></i><b>4.3.1</b> Missings</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-preparation.html"><a href="data-preparation.html#data-errors"><i class="fa fa-check"></i><b>4.3.2</b> Data errors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#modifying-data"><i class="fa fa-check"></i><b>4.4</b> Modifying data</a></li>
+<li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#computing-new-variables"><i class="fa fa-check"></i><b>4.5</b> Computing new variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="data-preparation.html"><a href="data-preparation.html#defining-factors"><i class="fa fa-check"></i><b>4.5.1</b> Defining factors</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data-preparation.html"><a href="data-preparation.html#formulas"><i class="fa fa-check"></i><b>4.5.2</b> Formulas</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data-preparation.html"><a href="data-preparation.html#conditional-assignments"><i class="fa fa-check"></i><b>4.5.3</b> Conditional assignments</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data-preparation.html"><a href="data-preparation.html#categorization-of-quantitative-variables"><i class="fa fa-check"></i><b>4.5.4</b> Categorization of quantitative variables</a></li>
+<li class="chapter" data-level="4.5.5" data-path="data-preparation.html"><a href="data-preparation.html#grouping-factor-levels"><i class="fa fa-check"></i><b>4.5.5</b> Grouping factor levels</a></li>
+<li class="chapter" data-level="4.5.6" data-path="data-preparation.html"><a href="data-preparation.html#character-strings"><i class="fa fa-check"></i><b>4.5.6</b> Character strings</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#selecting-valid-cases"><i class="fa fa-check"></i><b>4.6</b> Selecting valid cases</a></li>
+<li class="chapter" data-level="4.7" data-path="data-preparation.html"><a href="data-preparation.html#saving-the-r-script"><i class="fa fa-check"></i><b>4.7</b> Saving the R script</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#number-and-type-of-variables"><i class="fa fa-check"></i><b>5.1</b> Number and type of variables</a></li>
+<li class="chapter" data-level="5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#univariate-description"><i class="fa fa-check"></i><b>5.2</b> Univariate description</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#categorical-variable"><i class="fa fa-check"></i><b>5.2.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="5.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-variable"><i class="fa fa-check"></i><b>5.2.2</b> Quantitative variable</a></li>
+<li class="chapter" data-level="5.2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#important-remarks"><i class="fa fa-check"></i><b>5.2.3</b> Important remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#bivariate-description"><i class="fa fa-check"></i><b>5.3</b> Bivariate description</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.3.1</b> Two categorical variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-and-categorical-variable"><i class="fa fa-check"></i><b>5.3.2</b> Quantitative and categorical variable</a></li>
+<li class="chapter" data-level="5.3.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#eda-2-quantis"><i class="fa fa-check"></i><b>5.3.3</b> Two quantitative variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#adding-infromation-from-additional-variables"><i class="fa fa-check"></i><b>5.4</b> Adding infromation from additional variables</a></li>
+<li class="chapter" data-level="5.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#graphic-refinement"><i class="fa fa-check"></i><b>5.5</b> Graphic refinement</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i><b>6</b> Statistical inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistical-inference.html"><a href="statistical-inference.html#population-and-sample"><i class="fa fa-check"></i><b>6.1</b> Population and sample</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-inference.html"><a href="statistical-inference.html#inference-problems"><i class="fa fa-check"></i><b>6.2</b> Inference problems</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-inference.html"><a href="statistical-inference.html#probability-distributions"><i class="fa fa-check"></i><b>6.3</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="statistical-inference.html"><a href="statistical-inference.html#the-normal-distribution"><i class="fa fa-check"></i><b>6.3.1</b> The normal distribution</a></li>
+<li class="chapter" data-level="6.3.2" data-path="statistical-inference.html"><a href="statistical-inference.html#the-chi-squared-distribution"><i class="fa fa-check"></i><b>6.3.2</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.3.3" data-path="statistical-inference.html"><a href="statistical-inference.html#the-students-t-distribution"><i class="fa fa-check"></i><b>6.3.3</b> The Student’s <em>t</em> distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="statistical-inference.html"><a href="statistical-inference.html#random-samples"><i class="fa fa-check"></i><b>6.4</b> Random samples</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-inference.html"><a href="statistical-inference.html#example-data"><i class="fa fa-check"></i><b>6.5</b> Example data</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-inference.html"><a href="statistical-inference.html#estimation"><i class="fa fa-check"></i><b>6.6</b> Estimation</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-cis"><i class="fa fa-check"></i><b>6.7</b> Sample size and CI’s</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-inference.html"><a href="statistical-inference.html#significance-tests"><i class="fa fa-check"></i><b>6.8</b> Significance tests</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-p-values"><i class="fa fa-check"></i><b>6.9</b> Sample size and <em>p</em> values</a></li>
+<li class="chapter" data-level="6.10" data-path="statistical-inference.html"><a href="statistical-inference.html#types-of-tests"><i class="fa fa-check"></i><b>6.10</b> Types of tests</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html"><i class="fa fa-check"></i><b>7</b> Analysis of categorical data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#one-sample-tests"><i class="fa fa-check"></i><b>7.1</b> One-sample tests</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#chi-square-goodness-of-fit-gof-test"><i class="fa fa-check"></i><b>7.1.1</b> Chi-square goodness-of-fit (GOF) test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#categ-is"><i class="fa fa-check"></i><b>7.2</b> Independent samples</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#association-measures"><i class="fa fa-check"></i><b>7.2.1</b> Association measures</a></li>
+<li class="chapter" data-level="7.2.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#two-sample-test-for-proportions"><i class="fa fa-check"></i><b>7.2.2</b> Two-sample test for proportions</a></li>
+<li class="chapter" data-level="7.2.3" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#chi-square-independence-test"><i class="fa fa-check"></i><b>7.2.3</b> Chi-square independence test</a></li>
+<li class="chapter" data-level="7.2.4" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#fishers-exact-test"><i class="fa fa-check"></i><b>7.2.4</b> Fisher’s exact test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#paired-samples"><i class="fa fa-check"></i><b>7.3</b> Paired samples</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#mcnemars-test"><i class="fa fa-check"></i><b>7.3.1</b> McNemar’s test</a></li>
+<li class="chapter" data-level="7.3.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#cohens-kappa"><i class="fa fa-check"></i><b>7.3.2</b> Cohen’s kappa</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis for Clinical Researchers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analysis-of-categorical-data" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Analysis of categorical data<a href="analysis-of-categorical-data.html#analysis-of-categorical-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Categorical data is extremely common in medical research, particularly dichotomous variables like cured/not-cured, success/failure, or presence/absence of symptoms. Consequently, the methods for the analysis of categorical data are used in almost all clinical research projects.</p>
+<p>In this chapter we present classical methods for the analysis of categorical variables, classifying them according to the type of statistical problem they solve:</p>
+<ul>
+<li><p><em>one-sample</em> problems, where we focus on the observed distribution of <em>a single variable</em>, and compare it to some <em>theoretical</em> distribution.</p></li>
+<li><p><em>two-sample</em> problems, where <em>two variables</em> are involved, and the purpose is to compare distributions observed in either:</p>
+<ul>
+<li><em>independent samples</em>, when the distributions to be compared come from different groups of subjects, or</li>
+<li><em>paired samples</em>, when the distributions to be compared come from the same group of subjects.</li>
+</ul></li>
+</ul>
+<p>Although the primary objective and the design of a study both determine the type of statistical problem posed by the primary objective, we can find all three cases listed above in the same study (possibly related to secondary objectives). Figure <a href="analysis-of-categorical-data.html#tab:7-indep-vs-paired">7.1</a> illustrates the three types of problem in terms of the data involved, for a hypothetical clinical trial in which patients are randomized to receive one of two treatments, A or B, for seven days, and coughing is recorded as yes or no at baseline (<code>day0</code>), and at the end of treatment (<code>day7</code>). The estimation of the coughing prevalence at baseline is a one-sample problem (left); the comparison of treatments A and B in terms of the coughing frequency at day 7 is a two-sample problem with independent samples; and the assessment of change in the coughing frequency from baseline to end of treatment is a two-sample problem with paired samples.</p>
+<table class="kable_wrapper">
+<caption>
+<span id="tab:7-indep-vs-paired">Table 7.1: </span>One-sample (left), two independent samples (center), and two paired samples (right)
+</caption>
+<tbody>
+<tr>
+<td>
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+group
+</th>
+<th style="text-align:center;">
+day0
+</th>
+<th style="text-align:center;">
+day7
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+no
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+no
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+no
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+no
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+yes
+</td>
+<td style="text-align:center;">
+no
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+group
+</th>
+<th style="text-align:center;">
+day0
+</th>
+<th style="text-align:center;">
+day7
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+no
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+no
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+no
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+no
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+group
+</th>
+<th style="text-align:center;">
+day0
+</th>
+<th style="text-align:center;">
+day7
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+no
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+no
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+no
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+no
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+yes
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+no
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<div id="one-sample-tests" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> One-sample tests<a href="analysis-of-categorical-data.html#one-sample-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the previous chapter we introduced the binomial test, which is an exact test for a proportion that makes no assumptions about the data. But there is another test commonly used and explained in many books and courses, known as the <em>one-sample proportion z-test</em>. This is an approximate test based on the normal distribution, simpler to compute, particularly i large samples. However, the approximation is not always reliable, and should not be used for extreme proportion values (i.e., close to zero or one). A rule of thumb to determine the applicability of this test is to verify that the products <span class="math inline">\(n \ \pi\)</span> and <span class="math inline">\(n \ (1-\pi)\)</span> are both at least 5. If this is the case, the test is reliable, but otherwise it is not.</p>
+<p>The one-sample proportion z-test can be used to test the same null hypothesis we tested in the previous chapter by a binomial test, i.e., <span class="math inline">\(H_0: \quad \pi = 0.0831\)</span>, becasue both <span class="math inline">\(n \ \pi = 189 \times 0.0831 = 15.7\)</span> and <span class="math inline">\(n \ (1-\pi) = 189 \times (1-0.0831) = 173.3\)</span> are well above five. This test can be done with function <code>prop.test()</code>, available in both base R and in the <code>mosaic</code> package. Here we use the later, by explicitly prefixing the function with the package name and a double colon. The arguments of this function are very similar to those in <code>binom.test()</code>:</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="analysis-of-categorical-data.html#cb228-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">prop.test</span>(<span class="sc">~</span> bw, <span class="at">success =</span> <span class="st">&quot;low&quot;</span>, <span class="at">p=</span><span class="fl">0.0831</span>, <span class="at">data=</span>d)</span></code></pre></div>
+<pre><code>
+    1-sample proportions test with continuity correction
+
+data:  d$bw  [with success = low]
+X-squared = 127.17, df = 1, p-value &lt; 2.2e-16
+alternative hypothesis: true p is not equal to 0.0831
+95 percent confidence interval:
+ 0.2479596 0.3841585
+sample estimates:
+        p 
+0.3121693 </code></pre>
+<p>The output, and in particular the p-value, is similar to what we obtained when we used the binomial test (see previous chapter), leading to the same conclusion: the rejection of the null hypotesis on teh basis of an extremely low <em>p</em> value.</p>
+<div id="chi-square-goodness-of-fit-gof-test" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Chi-square goodness-of-fit (GOF) test<a href="analysis-of-categorical-data.html#chi-square-goodness-of-fit-gof-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The chi-square GOF test is a one-sample test that compares the observed distribution of a categorical variable with <span class="math inline">\(k \ge\)</span> 2 levels to a <em>theoretical</em> distribution for this variable. The theoretical distribution is specified by the probabilities of the <span class="math inline">\(k\)</span> levels, and may come from conceptual models or from external data, like national statistics. For instance, according to 2019 data from the <a href="https://www.cdc.gov/nchs/data/nvsr/nvsr70/nvsr70-02-508.pdf">National Vital Statistics Reports</a>, the split of all births in the US by mother race was 51.1% white, 14.6% black and 34.3% other. We may want to test the null hypothesis that this split is the same in the population of births assisted in the Baystate Medical Center:</p>
+<p><span class="math display">\[H_0: \quad \pi_{white} = 0.511, \quad \pi_{black} = 0.146, \quad \pi_{other} = 0.343\]</span></p>
+<p>According to this null hypothesis, the <em>expected</em> number of births for each race in a sample of 189 births would be:</p>
+<ul>
+<li>white: 0.511 times 189 = 96.58</li>
+<li>black: 0.146 times 189 = 27.59</li>
+<li>other: 0.343 times 189 = 64.83</li>
+</ul>
+<!-- end of list -->
+<p>These expected numbers look quite similar to those actually observed:</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="analysis-of-categorical-data.html#cb230-1" aria-hidden="true" tabindex="-1"></a>race_ft <span class="ot">&lt;-</span> mosaic<span class="sc">::</span><span class="fu">tally</span>(<span class="sc">~</span>race, <span class="at">data =</span> d)</span>
+<span id="cb230-2"><a href="analysis-of-categorical-data.html#cb230-2" aria-hidden="true" tabindex="-1"></a>race_ft</span></code></pre></div>
+<pre><code>race
+white black other 
+   96    26    67 </code></pre>
+<p>To judge how different are the observed counts from those expected under the null hypothesis, we could compute their difference for each race category and add them up, but unfortunately this will be always zero due to the sign of the differences. To avoid this problem, the differences are squared and divided by the expected count before adding up, and this is called the <em>Pearson’s chi-square</em> statistic:</p>
+<p><span class="math display">\[\chi^2 \quad = \quad \sum\limits_{i=1}^{k} \ \frac{(O_i - E_i)^2}{E_i}\]</span></p>
+<p>where <span class="math inline">\(O_i\)</span> and <span class="math inline">\(E_i\)</span> are the observed and expected counts in the <span class="math inline">\(i\)</span>-th category, and the summation is taken over all categories (<span class="math inline">\(i = 1, 2, ..., k\)</span>). For the <code>race</code> of mothers in the births data, the computation is as follows:</p>
+<p><span class="math display">\[\chi^2=\frac{(96-96.58)^2}{96.58} + \frac{(26-27.59)^2}{27.59} + \frac{(67-64.83)^2}{64.83} = 0.168\]</span></p>
+<p>Perhaps you wonder why the (squared) difference in each table cell is divided by the expected count. Well, this is to judge the deviation <em>per expected case</em>, since a given difference may be modest if many cases are expected in that category (which depends on the sample size), but huge if few cases are expected.</p>
+<p>In any case, this statistic is basically a function of the difference between observed and expected counts, and is interpreted as a measure of <em>distance</em> between the observed distribution and the distribution expected according to <span class="math inline">\(H_0\)</span>. The lowest possible value is 0, if the observed and expected counts are exactly equal, and it can only grow as the observed counts diverge from those expected. In the example above, the value of this statistic is very close to zero, indicating that the observed distribution of race is very consistent with the null hypothesis.
+The <code>chisq.test()</code> function in base R computes the Pearson’s chi-square statistic and a p-value for the GOF test. This function needs at least two arguments: a frequency table as first argument, and a further argument <code>p</code>, a numeric vector containing the theoretical probabilities for all the categories <em>ordered as in the frequency table</em> (white, black, other).</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="analysis-of-categorical-data.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(race_ft, </span>
+<span id="cb232-2"><a href="analysis-of-categorical-data.html#cb232-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.511</span>, <span class="fl">0.146</span>, <span class="fl">0.343</span>))          <span class="co"># probs for white, black, other</span></span></code></pre></div>
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  race_ft
+X-squared = 0.16839, df = 2, p-value = 0.9193</code></pre>
+<p>The output informs this is a chi-square test on <em>given probabilities</em> (those we specified in argument <code>p</code>), and provides the value of the chi-square statistic, its degrees of freedom (<span class="math inline">\(k-1\)</span> for a variable with <span class="math inline">\(k\)</span> categories), and the p-value. In this case, the chi-square value is very low, reflecting the similarity of the counts observed and expected if <span class="math inline">\(H_0\)</span> was true; and the p-value is very high, indicating that the observed distribution of race is very consistent with the theoretical probabilities.</p>
+<p>The <code>mosaic</code> package provides a similar function, <code>xchisq.test()</code>, that can be passed the frequency table as first argument, just as in <code>chisq.test()</code>, but also accepts a formula, which is handy, since there is no need to compute the frequency table first. In addition, the output is more verbose, and shows the expected counts:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="analysis-of-categorical-data.html#cb234-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">xchisq.test</span>(<span class="sc">~</span> race, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.511</span>, <span class="fl">0.146</span>, <span class="fl">0.343</span>), <span class="at">data =</span> d)</span></code></pre></div>
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  x
+X-squared = 0.16839, df = 2, p-value = 0.9193
+
+   96       26       67   
+(96.58)  (27.59)  (64.83) 
+[0.0035] [0.0921] [0.0728]
+&lt;-0.059&gt; &lt;-0.303&gt; &lt; 0.270&gt;
+     
+key:
+    observed
+    (expected)
+    [contribution to X-squared]
+    &lt;Pearson residual&gt;</code></pre>
+<p>For the chi-square GOF test to be valid, the expected counts should not be too low. It is generally considered that when some expected count is less than 5, the test may be unreliable. If this is the case, a warning is printed in the output stating “the chi-squared approximation may be incorrect”.</p>
+</div>
+</div>
+<div id="categ-is" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Independent samples<a href="analysis-of-categorical-data.html#categ-is" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Independent samples (or independent distributions, or independent data) arise in many study designs, like parallel group clinical trials, concurrent or historical cohorts, case-control studies or even in single cohort studies when cohort subgroups defined by some variable (like gender) have to be compared.</p>
+<p>Suppose we want to investigate if the probability of low birth weight depends on smoking during pregnancy, and we look at the contingency table of <code>bw</code> and <code>smoking</code> to this end. Here we produce the contingency table, and the table of percentages (rounded to one decimal) with argument <code>margins=TRUE</code> to get column totals and make it clear that percentages are <em>column</em> percentages:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="analysis-of-categorical-data.html#cb236-1" aria-hidden="true" tabindex="-1"></a>bw_smoke <span class="ot">&lt;-</span> mosaic<span class="sc">::</span><span class="fu">tally</span>(bw <span class="sc">~</span> smoke, <span class="at">data =</span> d)</span>
+<span id="cb236-2"><a href="analysis-of-categorical-data.html#cb236-2" aria-hidden="true" tabindex="-1"></a>bw_smoke</span></code></pre></div>
+<pre><code>        smoke
+bw       smoker non-smoker
+  low        30         29
+  normal     44         86</code></pre>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="analysis-of-categorical-data.html#cb238-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">tally</span>(bw <span class="sc">~</span> smoke, <span class="at">data =</span> d, <span class="at">format =</span> <span class="st">&quot;percent&quot;</span>, <span class="at">margins =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb238-2"><a href="analysis-of-categorical-data.html#cb238-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>        smoke
+bw       smoker non-smoker
+  low      40.5       25.2
+  normal   59.5       74.8
+  Total   100.0      100.0</code></pre>
+<p><br />
+</p>
+<p>In the study sample, low birth weight is more frequent in smoker mothers (40.5%) than in non-smokers (25.2%). To see how compatible is this result with the possibility that these proportions are equal in the population, we can use one of the following methods:</p>
+<ul>
+<li>Association measures (or <em>effect</em> measures):
+<ul>
+<li>Risk difference (RD)</li>
+<li>Relative risk (RR)</li>
+<li>Odds ratio (OR)</li>
+</ul></li>
+<li>Significance tests:
+<ul>
+<li>Two-sample test for proportions</li>
+<li>Chi-square independence test</li>
+<li>Fisher’s test</li>
+</ul></li>
+</ul>
+<p>Association measures approach the problem from an estimation perspective: we devise a measure of how different is the proportion of low birth weight in smokers and non-smokers, and we estimate this measure in the population by computing a confidence interval (e.g., the 95% CI).</p>
+<p>In significance tests, we compute a p-value to evaluate the null hypothesis that the population proportion of low weight birth (<span class="math inline">\(\pi_{low}\)</span>) is the same for smokers and non-smokers:</p>
+<p><span class="math display">\[H_0:  \pi_{low|smoker} = \pi_{low|non-smokers}\]</span></p>
+<p>While all three tests mentioned above evaluate this same null hypothesis, the way in which the p-value is computed differs (though as we will see, the first two provide identical p-value).</p>
+<div id="association-measures" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Association measures<a href="analysis-of-categorical-data.html#association-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The association measures listed in the previous section are statistics that summarize the results of a 2x2 contingency table generated by two dichotomous variables. These measures are simple, easy to interpret, and can be used to assess the relationship of the two variables involved.</p>
+<p>For example, consider the results of birth weight according to smoking status:</p>
+<p><br />
+</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+smoker
+</th>
+<th style="text-align:right;">
+non-smoker
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+115
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>Because <code>bw</code> is a dichotomous variable, we can summarize its distribution in smokers and non-smokers with the proportion of just one of its levels (<code>low</code>, say) since the proportion of the other level (<code>normal</code>) is complementary to one. So, let’s concentrate on the proportions of <code>low</code> shown in table <a href="analysis-of-categorical-data.html#tab:7-p-low">7.2</a>:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:7-p-low">Table 7.2: </span>Proportion of low weight
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+smoker
+</th>
+<th style="text-align:right;">
+non-smoker
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+P(low)
+</td>
+<td style="text-align:right;">
+0.405
+</td>
+<td style="text-align:right;">
+0.252
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>To compare the results in smokers and non-smokers, we can compute the <em>proportion difference</em> or <em>Risk Difference</em></p>
+<p><span class="math display">\[RD \quad = \quad P(low|smoker) - P(low|non\mbox{-}smoker) \quad = \quad 0.405 - 0.252 \quad = \quad 0.153\]</span></p>
+<p><br />
+</p>
+<p>Clearly, the RD would be zero if both proportions were equal, but in this case RD = 0.153, and the interpretation of this value is straightforward: the proportion of successes is 0.153 higher in smokers than in nonsmokers. It is quite common to express the results in percentage form, e.g., 40.5% and 25.2%, and also the risk difference (15.3%).</p>
+<p>Alternatively, the results in the two groups can be compared by their ratio, which is called <em>Relative Risk</em> (RR):</p>
+<p><span class="math display">\[RR \quad = \quad \frac{P(\text(low|smoker)}{P(low|non\mbox{-}smoker)} \quad  = \quad \frac{0.405}{0.252} \quad = \quad 1.607\]</span></p>
+<p><br />
+</p>
+<p>The RR would be one if both proportions were equal, but in this case RR = 1.607, implying that the proportion of low weight births in smokers is 1.607 times that of non-smokers (a 60.7% increase in relative terms).</p>
+<p>The RD and the RR are measures derived from the proportions of low weight births shown in table <a href="analysis-of-categorical-data.html#tab:7-p-low">7.2</a>, and proportions (or percentages) are the most common way to summarize results of dichotomous variables. However, such results can be summarized just as well using <em>odds</em> rather than proportions. The odds (O) of an event is defined as the ratio of its probability (<span class="math inline">\(\pi\)</span>) to the complementary probability, that is</p>
+<center>
+<p><span class="math display">\[O \quad = \quad \frac{\pi}{1-\pi} \qquad\]</span></p>
+</center>
+<p><br />
+</p>
+<p>For any smoking status, the odds of low weight can be computed as the ratio of its corresponding proportion over the complementary proportion, or equivalently, as the ratio of the low vs normal weight counts (since the denominators of the proportions are the same and cancel out). For instance, in the case of smokers, the odds of low weight is:</p>
+<p><span class="math inline">\(O(low|smoker) \quad = \quad \frac{P(\text(low|smoker)}{1-P(low|smoker)} \quad = \quad \frac{0.405}{1-0.405} \quad = \quad \frac{\frac{30}{74}}{\frac{44}{74}} \quad = \quad \frac{30}{44} \quad = \quad 0.681\)</span></p>
+<p><br />
+</p>
+<p>The odds of low weight in smokers and non-smokers are show in table <a href="analysis-of-categorical-data.html#tab:7-odds-low">7.3</a>.</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:7-odds-low">Table 7.3: </span>Odds of low weight births
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+smoker
+</th>
+<th style="text-align:right;">
+non-smoker
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+O(low)
+</td>
+<td style="text-align:right;">
+0.681
+</td>
+<td style="text-align:right;">
+0.337
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>These two odds can be compared by computing their ratio, obtaining an <em>odds ratio</em> (OR):</p>
+<p><span class="math display">\[OR \quad = \quad \frac{O_{low|smoker}}{O_{low|non\mbox{-}smoker}} \quad = \quad \frac{0.681}{0.337} \quad = \quad 2.02\]</span></p>
+<p><br />
+</p>
+<p>The OR would be one if the odds were equal in smokers and non-smokers, but in this case OR = 2.02, implying that the odds of low weight is twice as high in smokers as in non-smokers.</p>
+<p>It is quite common to say that the OR is the cross product of counts in a contingency table. Indeed, this crossproduct produces the same result as the definition provided above:</p>
+<p><span class="math display">\[ OR \quad = \quad \frac{O_{low|smoker}}{O_{low|non\mbox{-}smoker}} \quad = \quad \frac{\frac{30}{44}}{\frac{29}{86}} \quad = \quad \frac{30 \times 86}{29 \times 44} \quad = \quad 2.02\]</span></p>
+<p><br />
+</p>
+<p>However, although the cross product is an easy way to calculate an OR, it does not reflect its definition of an OR, which is nothing but the ratio of two odds, and serves the purpose of comparing them.</p>
+<p>The following table summarizes the four measures presented above, and their fundamental properties: the theoretical range and the value that implies equality of results in the two groups compared.</p>
+<p><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Measure</th>
+<th align="center">Formula</th>
+<th align="center">Equality</th>
+<th align="center">Theoretical range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">RD</td>
+<td align="center"><span class="math inline">\(P_E - P_C\)</span></td>
+<td align="center">0</td>
+<td align="center">-1 to +1</td>
+</tr>
+<tr class="even">
+<td align="center">RR</td>
+<td align="center"><span class="math inline">\(P_E / P_C\)</span></td>
+<td align="center">1</td>
+<td align="center">0 to <span class="math inline">\(\infty\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">OR</td>
+<td align="center"><span class="math inline">\(O_E / O_C\)</span></td>
+<td align="center">1</td>
+<td align="center">0 to <span class="math inline">\(\infty\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>All these measures can be computed form a 2x2 contingency table, but it is important to be clear about how we compute them. First, what is the outcome variable, and which of its levels we want to compute the measures for (above we did it for the <code>low</code> level of the <code>bw</code> variable, but we could have done it for the <code>normal</code> level). Second, how we define the difference (RD) or the ratio (RR and OR) for the comparison. In the examples above, we defined the RD as smoker minus non-smoker, and the RR and OR as smoker over non-smoker. You should be aware that the value obtained, and its interpretation, will depend on how we computed it. For this reason, when reporting such measures we need to be explicit about their meaning, such as in the following sentences:</p>
+<ul>
+<li><p>The RD <em>of low birth weight</em> (<em>smokers minus non-smokers</em>) was 0.153 (or 15.3%).</p></li>
+<li><p>The RR <em>of low birth weight</em> (<em>smokers over non-smokers</em>) was 1.07.</p></li>
+<li><p>The OR <em>of low birth weight</em> (<em>smokers over non-smokers</em>) was 2.02.</p></li>
+</ul>
+<p>Several functions/packages in R compute some or all of these measures and their corresponding CI: <code>prop.test()</code> computes the CI for the RD (here called proportion difference), though does not compute the RD itself; the <code>fisher.test()</code> function computes the OR and its CI; the <code>mosaic</code> package has functions <code>oddsRatio()</code> and <code>relrisk()</code> to compute the OR and the RR, respectively; and function <code>twoby2()</code> from the <code>Epi</code> package computes the RD, RR, and OR at once.</p>
+<p>The use of these functions is shown below. Note that all of them take a 2x2 contingency table as argument, and you need to be aware of how they compute the different association measures from this table. For instance <code>Epi::twoby2()</code> will assume that the outcome variable is in the columns of the table, the category of interest is the <em>first</em> column, and the comparison will be done by computing the <em>first</em> row minus (or over) the <em>second</em> row. However, the contingency table we computed previously is not formed like this:</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="analysis-of-categorical-data.html#cb240-1" aria-hidden="true" tabindex="-1"></a>bw_smoke</span></code></pre></div>
+<pre><code>        smoke
+bw       smoker non-smoker
+  low        30         29
+  normal     44         86</code></pre>
+<p>Therefore, before using the <code>twoby2()</code> function, we need to <em>transpose</em> the table, so that columns become rows and viceversa. This can be done with function <code>t()</code> (for <em>transpose</em>) that can be chained with the pipe:</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="analysis-of-categorical-data.html#cb242-1" aria-hidden="true" tabindex="-1"></a>bw_smoke <span class="sc">%&gt;%</span> <span class="fu">t</span>() </span></code></pre></div>
+<pre><code>            bw
+smoke        low normal
+  smoker      30     44
+  non-smoker  29     86</code></pre>
+<p>This is the table needed for <code>Epi::twoby2()</code>, that can be chained further:</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="analysis-of-categorical-data.html#cb244-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> bw_smoke <span class="sc">%&gt;%</span> <span class="fu">t</span>() <span class="sc">%&gt;%</span> Epi<span class="sc">::</span><span class="fu">twoby2</span>() </span></code></pre></div>
+<pre><code>2 by 2 table analysis: 
+------------------------------------------------------ 
+Outcome   : low 
+Comparing : smoker vs. non-smoker 
+
+           low normal    P(low) 95% conf. interval
+smoker      30     44    0.4054    0.3001   0.5203
+non-smoker  29     86    0.2522    0.1812   0.3394
+
+                                   95% conf. interval
+             Relative Risk: 1.6076    1.0578   2.4433
+         Sample Odds Ratio: 2.0219    1.0807   3.7831
+Conditional MLE Odds Ratio: 2.0141    1.0288   3.9649
+    Probability difference: 0.1532    0.0176   0.2871
+
+             Exact P-value: 0.0362 
+        Asymptotic P-value: 0.0276 
+------------------------------------------------------</code></pre>
+<p>The first part of the output is very useful to review if the calculations were done as intended, because it shows the contingency table and then the proportions of the first column, <code>P(low)</code> (and its 95% CI) for every row. Then the RR, the OR (two versions, the first one is the one we computed above), and the RD labeled as <em>Probability difference</em>, are shown along with their 95% CI. The result of this function is a list, and we can extract the association measures from the <code>measures</code> element of the list. Because this element is matrix, we can subset it to drop the third row (using the subsetting operator<code>[-3,]</code>), and round the results to 3 decimals for better readability:</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="analysis-of-categorical-data.html#cb246-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>measures                                  <span class="co"># get the measures element (a matrix)</span></span></code></pre></div>
+<pre><code>                                       95% conf.  interval
+             Relative Risk: 1.6076421 1.05781242 2.4432623
+         Sample Odds Ratio: 2.0219436 1.08065960 3.7831115
+Conditional MLE Odds Ratio: 2.0141372 1.02878038 3.9649039
+    Probability difference: 0.1532315 0.01757833 0.2871171</code></pre>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="analysis-of-categorical-data.html#cb248-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>measures[<span class="sc">-</span><span class="dv">3</span>,] <span class="sc">%&gt;%</span>                         <span class="co"># drop third row x</span></span>
+<span id="cb248-2"><a href="analysis-of-categorical-data.html#cb248-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">3</span>)                                    <span class="co"># and round to 3rd decimal</span></span></code></pre></div>
+<pre><code>                                  95% conf. interval
+             Relative Risk: 1.608     1.058    2.443
+         Sample Odds Ratio: 2.022     1.081    3.783
+    Probability difference: 0.153     0.018    0.287</code></pre>
+<p>Finally, note that all the CI’s exclude the value of the corresponding measure that implies an equal proportion of low weight births in smoker and non-smoker mothers: the IC`s for both the RR and the OR exclude the value 1, and the CI for the RD excludes the value 0. Any of these could be used to realize that the data are not compatible with the hypothesis of an equal population proportion of low weight births in smoker and non-smoker mothers.</p>
+</div>
+<div id="two-sample-test-for-proportions" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Two-sample test for proportions<a href="analysis-of-categorical-data.html#two-sample-test-for-proportions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This test can be computed using function <code>prop.test()</code> from the <code>mosaic</code>package, but now we need to specify the outcome variable before the tilde, and the grouping variable after it. The remaining arguments are as in previous uses of this function. Beware that there is also a <code>prop.test()</code> function in base R, but it does not accept a formula. To make clear we are using the one from <code>mosaic</code>, we prefix the function with the package name.</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="analysis-of-categorical-data.html#cb250-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">prop.test</span>(bw <span class="sc">~</span> smoke, <span class="at">success =</span> <span class="st">&quot;low&quot;</span>, <span class="at">data=</span>d)</span></code></pre></div>
+<pre><code>
+    2-sample test for equality of proportions with continuity correction
+
+data:  tally(bw ~ smoke)
+X-squared = 4.2359, df = 1, p-value = 0.03958
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ 0.004967192 0.301495793
+sample estimates:
+   prop 1    prop 2 
+0.4054054 0.2521739 </code></pre>
+<p>The output title indicates that these are results for a 2-sample test for the equality of proportions, with continuity correction<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>. Then, the value of a test statistic<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> (<code>X-squared</code>), its degrees of freedom (<code>df</code>) and the resulting <code>p-value</code> are provided, and we are informed that the test was conducted with a two-sided alternative hypothesis. Then the 95%CI for the difference in proportions is given, as well as the sample proportions (though their difference is not shown).</p>
+<p>The small p-value (0.03958) indicates that the observed difference of proportions of low weight births in smoker and non-smoker mothers (0.4054054 - 0.2521739 = 0.1532315) is inconsistent with the null hypothesis stating that these proportions are equal in the population. In fact, the 95%CI for this difference is [0.0049672, 0.3014958], ruling out the possibility that the difference is zero in the population.</p>
+</div>
+<div id="chi-square-independence-test" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Chi-square independence test<a href="analysis-of-categorical-data.html#chi-square-independence-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <em>chi-square test of independence</em> allows to test a null hypothesis of independence in a contingency table. We say that two variables are independent when the distribution of one of them is the same for all values of the other. For instance, if <code>bw</code> is independent from <code>smoke</code>, then the relative frequency of low weight and normal births should be the same in smoking and in non-smoking mothers.</p>
+<p>When the contingency table has four cells (i.e., the two variables generating the table are dichotomous), the chisquare independence test is equivalent to the two-sample test for proportions discussed in the previous section, producing exactly the same p value. This test can be done with function <code>chisq.test()</code>, by passing it the contingency table as done below (<code>bw_smoke</code> defined in a previous script above). Alternatively, the two factors generating the table could be passed as arguments (see <code>?chis.test</code> for details):</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="analysis-of-categorical-data.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(bw_smoke)</span></code></pre></div>
+<pre><code>
+    Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+
+data:  bw_smoke
+X-squared = 4.2359, df = 1, p-value = 0.03958</code></pre>
+<p>The output informs that this is a Pearson’s chi-square test with Yates’ continuity correction (just as in the two-sample proportions test), and provides the value of the chi-square statistic, its degrees of freedom, and the p-value. Note that these results are exactly the same we obtained in the two-sample proportions test of the previous section.</p>
+<p>However, the chi-square test is more general, since it can be used to test the independence of two categorical variables with any number of levels each, that is to contingency tables with any number of rows and columns. Thus this test can be used to:</p>
+<ul>
+<li>compare the distribution of a dichotomous variable in <span class="math inline">\(g \ge\)</span> 2 groups,</li>
+<li>compare the distribution of a categorical variable with <span class="math inline">\(k \ge\)</span> 2 levels in 2 groups, or</li>
+<li>compare the distribution of a categorical variable with <span class="math inline">\(k \ge\)</span> 2 levels in <span class="math inline">\(g \ge\)</span> 2 groups</li>
+</ul>
+<p>For instance, let`s consider the relationship of low birth weight and race. Figure <a href="analysis-of-categorical-data.html#fig:7-bw-race-barchart">7.1</a> suggests that low weight is less common among white mothers than among black mothers or other races.</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="analysis-of-categorical-data.html#cb254-1" aria-hidden="true" tabindex="-1"></a>ggformula<span class="sc">::</span><span class="fu">gf_props</span>(<span class="sc">~</span> race, <span class="at">fill =</span> <span class="sc">~</span> bw, <span class="at">data =</span> d, <span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
+<span id="cb254-2"><a href="analysis-of-categorical-data.html#cb254-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:7-bw-race-barchart"></span>
+<img src="_main_files/figure-html/7-bw-race-barchart-1.png" alt="Birth weight by race" width="672" />
+<p class="caption">
+Figure 7.1: Birth weight by race
+</p>
+</div>
+<p>The contingency table of birth weight and race is shown below, extended with the <em>marginal</em> distributions:</p>
+<pre><code>        race
+bw       white black other Total
+  low       23    11    25    59
+  normal    73    15    42   130
+  Total     96    26    67   189</code></pre>
+<!-- HASTA AQUI -->
+<p>Now, let’s see what are the counts expected according to the null hypothesis of independence of birth weight and race. These can be computed form the marginal distributions shown in table <a href="analysis-of-categorical-data.html#tab:7-bw-race-margins">7.4</a>:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:7-bw-race-margins">Table 7.4: </span>Marginal distributions
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+white
+</th>
+<th style="text-align:right;">
+black
+</th>
+<th style="text-align:right;">
+other
+</th>
+<th style="text-align:right;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+130
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+189
+</td>
+</tr>
+</tbody>
+</table>
+<p>From the margins in table <a href="analysis-of-categorical-data.html#tab:7-bw-race-margins">7.4</a>, the overall proportion of low weight births is 59/189 = 0.312. Since an independence pattern should have this same overall proportion in all three race groups, we can apply it to the number of cases in each race group to compute the counts expected by the null hypothesis of independence:</p>
+<ul>
+<li>white: 96 <span class="math inline">\(\times\)</span> 59/189 = 29.97<br />
+</li>
+<li>black: 26 <span class="math inline">\(\times\)</span> 59/189 = 8.12<br />
+</li>
+<li>other: 67 <span class="math inline">\(\times\)</span> 59/189 = 20.91<br />
+</li>
+</ul>
+<p>And similarly for normal weight births, whose overall proportion is 130/189 = 0.688:</p>
+<ul>
+<li>white: 96 <span class="math inline">\(\times\)</span> 130/189 = 66.03<br />
+</li>
+<li>black: 26 <span class="math inline">\(\times\)</span> 130/189 = 17.88<br />
+</li>
+<li>other: 67 <span class="math inline">\(\times\)</span> 130/189 = 46.08<br />
+</li>
+</ul>
+<p>Now let’s compare the observed counts to those expected in case of independence:</p>
+<table class="kable_wrapper">
+<caption>
+<span id="tab:7-bw-race-oe">Table 7.5: </span>Observed (left) and expected (right) counts
+</caption>
+<tbody>
+<tr>
+<td>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+white
+</th>
+<th style="text-align:right;">
+black
+</th>
+<th style="text-align:right;">
+other
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+white
+</th>
+<th style="text-align:right;">
+black
+</th>
+<th style="text-align:right;">
+other
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:right;">
+29.97
+</td>
+<td style="text-align:right;">
+8.12
+</td>
+<td style="text-align:right;">
+20.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:right;">
+66.03
+</td>
+<td style="text-align:right;">
+17.88
+</td>
+<td style="text-align:right;">
+46.08
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <em>Pearson’s chi-square statistic</em> measures how distant are the observed counts from those expected in case of independence. Here is the general formula, for a contingency table of <span class="math inline">\(r\)</span> rows and <span class="math inline">\(c\)</span> columns:<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>:</p>
+<p><span class="math display">\[\chi^2=\sum\limits_{i=1}^{r \times c} \frac{(O_i - E_i)^2}{E_i}\]</span></p>
+<p>where <span class="math inline">\(O_i\)</span> and <span class="math inline">\(E_i\)</span> are the observed and expected counts in the <span class="math inline">\(i\)</span>-th table cell, respectively, and the summation is taken over all table cells (<span class="math inline">\(i = 1, 2, ..., r \times c\)</span>, in a table with <span class="math inline">\(r\)</span> rows and <span class="math inline">\(c\)</span> columns).</p>
+<p>From its formula, its is clear that the lowest possible value of the Pearson’s statistic is 0 (when the observed and expected counts are exactly equal), and it grows as observed counts move away from those expected.</p>
+<p>For the contingency tableof <code>bw</code> and <code>race</code>, the value of the Pearson’s chi-square statistic is:</p>
+<p><span class="math display">\[\chi^2=\frac{(23 - 29.97)^2}{29.97} + \frac{(73 - 66.03)^2}{66.03} + \frac{(11 - 8.12)^2}{8.12} + \qquad \qquad\\  \frac{(15 - 17.88)^2}{17.88} + \frac{(25 - 20.92)^2}{20.92} + \frac{(42 - 46.08)^2}{46.08} = 5.00\]</span></p>
+<p>To judge this value as low or high, we need to take into account the dimension of the table, since a table with very many cells will tend to produce higher values than a table with few cells, just because there are more terms in the sum. However, it is not the number of cells what is used as reference, but the <em>degrees of freedom</em> (<span class="math inline">\(df\)</span>), which is the number of rows minus 1, times the number of columns minus one, that is:</p>
+<p><span class="math display">\[df = (r-1) \times (c-1)\]</span></p>
+<p>In this case, the table has two rows and three columns, so that <span class="math inline">\(df = (2-1) \times (3-1) = 2\)</span>. Roughly, a <span class="math inline">\(\chi^2\)</span> value above twice its degrees of freedom can be considered <em>too high</em>. In this case <span class="math inline">\(\chi^2 = 5.00\)</span> , which is a bit high for two degrees of freedom, but not that much.</p>
+<p>All these computations can be made with the same function we used for the chi-square GOF test in section <a href="analysis-of-categorical-data.html#chi-square-goodness-of-fit-gof-test">7.1.1</a>, with the only difference that now we pass a contingency table as argument instead of a frequency table:</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="analysis-of-categorical-data.html#cb256-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">xchisq.test</span>(bw_race)</span></code></pre></div>
+<pre><code>
+    Pearson&#39;s Chi-squared test
+
+data:  x
+X-squared = 5.0048, df = 2, p-value = 0.08189
+
+   23       11       25   
+(29.97)  ( 8.12)  (20.92) 
+ [1.62]   [1.02]   [0.80] 
+&lt;-1.27&gt;  &lt; 1.01&gt;  &lt; 0.89&gt; 
+     
+   73       15       42   
+(66.03)  (17.88)  (46.08) 
+ [0.74]   [0.46]   [0.36] 
+&lt; 0.86&gt;  &lt;-0.68&gt;  &lt;-0.60&gt; 
+     
+key:
+    observed
+    (expected)
+    [contribution to X-squared]
+    &lt;Pearson residual&gt;</code></pre>
+<p>The p-value is low, but not low enough to provide definitive evidence that the frequency of low weight births differs across races.</p>
+<p>As in the case of the chi-square GOF test, the chi-square test of independence may not be valid if there are low expected counts (below five, say). Expected counts are shown in the output above (within brackets, inmediately below the observed), and are all greater than five, so that in this case we can be confident on the validity of the test. But let’s see what happens when using this function to investigate the relationship of <code>bw</code> and <code>ht</code>. We first have a look to the contingency table:</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="analysis-of-categorical-data.html#cb258-1" aria-hidden="true" tabindex="-1"></a>bw_ht <span class="ot">&lt;-</span> mosaic<span class="sc">::</span><span class="fu">tally</span>(bw <span class="sc">~</span> ht, <span class="at">data =</span> d)    </span>
+<span id="cb258-2"><a href="analysis-of-categorical-data.html#cb258-2" aria-hidden="true" tabindex="-1"></a>bw_ht</span></code></pre></div>
+<pre><code>        ht
+bw       AHT no-AHT
+  low      7     52
+  normal   5    125</code></pre>
+<p>The limited number of patients with AHT (7+5 = 12) makes us anticipate low expected frequencies for this table cells, but let’s try a chi-square test:</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="analysis-of-categorical-data.html#cb260-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">xchisq.test</span>(bw_ht)</span></code></pre></div>
+<pre><code>Warning in chisq.test(x = x, y = y, correct = correct, p = p, rescale.p =
+rescale.p, : Chi-squared approximation may be incorrect</code></pre>
+<pre><code>
+    Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+
+data:  x
+X-squared = 3.1431, df = 1, p-value = 0.07625
+
+    7       52   
+(  3.75) ( 55.25)
+[2.025]  [0.137] 
+&lt; 1.68&gt;  &lt;-0.44&gt; 
+   
+    5      125   
+(  8.25) (121.75)
+[0.919]  [0.062] 
+&lt;-1.13&gt;  &lt; 0.29&gt; 
+   
+key:
+    observed
+    (expected)
+    [contribution to X-squared]
+    &lt;Pearson residual&gt;</code></pre>
+<p>As suspected, we are warned that the test may be incorrect due to a low expected count (3.75) for the top-left table cell. In such a case, a better alternative is the Fisher’s exact test we introduce in the next section.</p>
+</div>
+<div id="fishers-exact-test" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Fisher’s exact test<a href="analysis-of-categorical-data.html#fishers-exact-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This test works well when expected counts are low. It is implemented by function <code>fisher.test()</code>, which also needs the contingency table as argument:</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="analysis-of-categorical-data.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(bw_ht)</span></code></pre></div>
+<pre><code>
+    Fisher&#39;s Exact Test for Count Data
+
+data:  bw_ht
+p-value = 0.05161
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+  0.8679484 13.9894703
+sample estimates:
+odds ratio 
+  3.340866 </code></pre>
+<p>The output includes the p-value for the null hypothesis of independence, which for 2x2 tables is equivalent to the hypothesis that the odds ratio equals one. This p-value is computed from the probabilities of all possible tables with the same marginal distributions, and no statistic is involved in this computation. Also, the conditional Maximum Likelihood Estimate of the OR is provided, with corresponding 95% CI.</p>
+</div>
+</div>
+<div id="paired-samples" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Paired samples<a href="analysis-of-categorical-data.html#paired-samples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Paired samples (or paired distributions, or paired data) arise when a characteristic is assessed twice in <em>the same</em> set of subjects, maybe at different times (e.g., before and after an intervention), by different methods or observers, or in symmetrical body structures (e.g., eyes, limbs).</p>
+<p>As an example, consider the following data from the <a href="https://link.springer.com/article/10.2165%2F00115677-200513010-00007">Optimcare study</a>, that compared the physician’s opinion on the need of lipid lowering drug treatment (LLD) in 500 hypercholesterolemic patients to the recommendation made by a clinical decision support system (CDSS). Here are the first six rows of the data:</p>
+<pre><code>  Case CDSS Physician
+1    1   No       Yes
+2    2  Yes       Yes
+3    3   No       Yes
+4    4  Yes       Yes
+5    5  Yes       Yes
+6    6   No        No</code></pre>
+<a onclick="fetch(&#39;data:text/plain;base64,Q2FzZQlDRFNTCVBoeXNpY2lhbg0KMQlObwlZZXMNCjIJWWVzCVllcw0KMwlObwlZZXMNCjQJWWVzCVllcw0KNQlZZXMJWWVzDQo2CU5vCU5vDQo3CU5vCU5vDQo4CU5vCU5vDQo5CVllcwlZZXMNCjEwCU5vCU5vDQoxMQlObwlObw0KMTIJWWVzCVllcw0KMTMJWWVzCVllcw0KMTQJTm8JTm8NCjE1CU5vCU5vDQoxNglZZXMJWWVzDQoxNwlObwlObw0KMTgJTm8JTm8NCjE5CU5vCU5vDQoyMAlObwlObw0KMjEJTm8JTm8NCjIyCVllcwlZZXMNCjIzCU5vCU5vDQoyNAlZZXMJWWVzDQoyNQlZZXMJWWVzDQoyNglObwlObw0KMjcJWWVzCVllcw0KMjgJWWVzCVllcw0KMjkJTm8JTm8NCjMwCU5vCU5vDQozMQlZZXMJWWVzDQozMglZZXMJWWVzDQozMwlObwlZZXMNCjM0CU5vCU5vDQozNQlObwlObw0KMzYJTm8JTm8NCjM3CU5vCU5vDQozOAlObwlZZXMNCjM5CVllcwlZZXMNCjQwCVllcwlZZXMNCjQxCU5vCVllcw0KNDIJWWVzCVllcw0KNDMJWWVzCVllcw0KNDQJTm8JTm8NCjQ1CVllcwlZZXMNCjQ2CU5vCVllcw0KNDcJWWVzCVllcw0KNDgJTm8JTm8NCjQ5CVllcwlZZXMNCjUwCU5vCU5vDQo1MQlObwlObw0KNTIJWWVzCVllcw0KNTMJTm8JTm8NCjU0CU5vCVllcw0KNTUJTm8JTm8NCjU2CU5vCVllcw0KNTcJTm8JTm8NCjU4CU5vCU5vDQo1OQlZZXMJWWVzDQo2MAlObwlObw0KNjEJWWVzCVllcw0KNjIJWWVzCVllcw0KNjMJWWVzCVllcw0KNjQJWWVzCVllcw0KNjUJTm8JTm8NCjY2CVllcwlZZXMNCjY3CU5vCU5vDQo2OAlZZXMJWWVzDQo2OQlObwlObw0KNzAJWWVzCVllcw0KNzEJTm8JTm8NCjcyCVllcwlZZXMNCjczCVllcwlZZXMNCjc0CVllcwlZZXMNCjc1CVllcwlZZXMNCjc2CVllcwlZZXMNCjc3CU5vCVllcw0KNzgJTm8JTm8NCjc5CU5vCU5vDQo4MAlObwlObw0KODEJTm8JWWVzDQo4MglObwlObw0KODMJTm8JTm8NCjg0CU5vCU5vDQo4NQlObwlObw0KODYJTm8JTm8NCjg3CVllcwlZZXMNCjg4CU5vCU5vDQo4OQlObwlObw0KOTAJTm8JTm8NCjkxCVllcwlZZXMNCjkyCVllcwlZZXMNCjkzCU5vCU5vDQo5NAlZZXMJWWVzDQo5NQlObwlZZXMNCjk2CVllcwlZZXMNCjk3CVllcwlZZXMNCjk4CVllcwlZZXMNCjk5CU5vCU5vDQoxMDAJTm8JTm8NCjEwMQlZZXMJWWVzDQoxMDIJTm8JTm8NCjEwMwlObwlZZXMNCjEwNAlZZXMJWWVzDQoxMDUJWWVzCVllcw0KMTA2CU5vCU5vDQoxMDcJWWVzCVllcw0KMTA4CU5vCU5vDQoxMDkJWWVzCVllcw0KMTEwCVllcwlZZXMNCjExMQlObwlObw0KMTEyCU5vCU5vDQoxMTMJTm8JWWVzDQoxMTQJWWVzCVllcw0KMTE1CU5vCU5vDQoxMTYJWWVzCVllcw0KMTE3CU5vCU5vDQoxMTgJTm8JTm8NCjExOQlZZXMJWWVzDQoxMjAJWWVzCVllcw0KMTIxCU5vCU5vDQoxMjIJTm8JTm8NCjEyMwlZZXMJWWVzDQoxMjQJTm8JWWVzDQoxMjUJTm8JTm8NCjEyNglZZXMJWWVzDQoxMjcJWWVzCVllcw0KMTI4CVllcwlZZXMNCjEyOQlObwlObw0KMTMwCVllcwlZZXMNCjEzMQlObwlZZXMNCjEzMglObwlObw0KMTMzCU5vCU5vDQoxMzQJTm8JTm8NCjEzNQlObwlObw0KMTM2CVllcwlZZXMNCjEzNwlZZXMJWWVzDQoxMzgJTm8JTm8NCjEzOQlObwlObw0KMTQwCU5vCU5vDQoxNDEJTm8JTm8NCjE0MglObwlObw0KMTQzCU5vCU5vDQoxNDQJWWVzCVllcw0KMTQ1CU5vCVllcw0KMTQ2CVllcwlZZXMNCjE0NwlZZXMJWWVzDQoxNDgJTm8JTm8NCjE0OQlZZXMJWWVzDQoxNTAJWWVzCVllcw0KMTUxCVllcwlZZXMNCjE1MglZZXMJWWVzDQoxNTMJTm8JTm8NCjE1NAlObwlZZXMNCjE1NQlObwlZZXMNCjE1NglZZXMJWWVzDQoxNTcJWWVzCVllcw0KMTU4CVllcwlZZXMNCjE1OQlObwlObw0KMTYwCU5vCU5vDQoxNjEJTm8JTm8NCjE2MglObwlObw0KMTYzCU5vCU5vDQoxNjQJTm8JTm8NCjE2NQlZZXMJWWVzDQoxNjYJTm8JTm8NCjE2NwlObwlZZXMNCjE2OAlObwlObw0KMTY5CVllcwlZZXMNCjE3MAlObwlObw0KMTcxCVllcwlZZXMNCjE3MglZZXMJWWVzDQoxNzMJTm8JTm8NCjE3NAlZZXMJWWVzDQoxNzUJWWVzCVllcw0KMTc2CVllcwlZZXMNCjE3NwlZZXMJWWVzDQoxNzgJWWVzCVllcw0KMTc5CVllcwlZZXMNCjE4MAlObwlObw0KMTgxCU5vCU5vDQoxODIJWWVzCVllcw0KMTgzCU5vCVllcw0KMTg0CVllcwlZZXMNCjE4NQlObwlObw0KMTg2CU5vCU5vDQoxODcJWWVzCVllcw0KMTg4CVllcwlZZXMNCjE4OQlZZXMJWWVzDQoxOTAJWWVzCVllcw0KMTkxCVllcwlZZXMNCjE5MglObwlZZXMNCjE5MwlObwlObw0KMTk0CVllcwlZZXMNCjE5NQlZZXMJWWVzDQoxOTYJTm8JTm8NCjE5NwlObwlObw0KMTk4CU5vCVllcw0KMTk5CU5vCU5vDQoyMDAJTm8JTm8NCjIwMQlObwlObw0KMjAyCVllcwlZZXMNCjIwMwlObwlZZXMNCjIwNAlObwlZZXMNCjIwNQlObwlObw0KMjA2CVllcwlZZXMNCjIwNwlZZXMJWWVzDQoyMDgJTm8JTm8NCjIwOQlZZXMJWWVzDQoyMTAJWWVzCVllcw0KMjExCVllcwlZZXMNCjIxMglObwlZZXMNCjIxMwlZZXMJWWVzDQoyMTQJTm8JTm8NCjIxNQlZZXMJWWVzDQoyMTYJWWVzCVllcw0KMjE3CVllcwlZZXMNCjIxOAlZZXMJWWVzDQoyMTkJTm8JWWVzDQoyMjAJWWVzCVllcw0KMjIxCVllcwlZZXMNCjIyMglZZXMJWWVzDQoyMjMJTm8JWWVzDQoyMjQJWWVzCVllcw0KMjI1CVllcwlZZXMNCjIyNglZZXMJWWVzDQoyMjcJWWVzCVllcw0KMjI4CVllcwlZZXMNCjIyOQlZZXMJWWVzDQoyMzAJWWVzCVllcw0KMjMxCVllcwlZZXMNCjIzMglZZXMJWWVzDQoyMzMJTm8JTm8NCjIzNAlZZXMJWWVzDQoyMzUJTm8JTm8NCjIzNglObwlObw0KMjM3CU5vCU5vDQoyMzgJWWVzCVllcw0KMjM5CVllcwlZZXMNCjI0MAlZZXMJTm8NCjI0MQlObwlObw0KMjQyCU5vCU5vDQoyNDMJTm8JTm8NCjI0NAlObwlObw0KMjQ1CU5vCU5vDQoyNDYJWWVzCVllcw0KMjQ3CU5vCVllcw0KMjQ4CVllcwlObw0KMjQ5CU5vCU5vDQoyNTAJWWVzCVllcw0KMjUxCVllcwlZZXMNCjI1MglObwlZZXMNCjI1MwlObwlObw0KMjU0CU5vCU5vDQoyNTUJTm8JTm8NCjI1NglZZXMJWWVzDQoyNTcJTm8JTm8NCjI1OAlZZXMJWWVzDQoyNTkJTm8JTm8NCjI2MAlObwlObw0KMjYxCVllcwlZZXMNCjI2MglObwlZZXMNCjI2MwlObwlObw0KMjY0CU5vCU5vDQoyNjUJTm8JWWVzDQoyNjYJWWVzCVllcw0KMjY3CU5vCU5vDQoyNjgJTm8JTm8NCjI2OQlObwlObw0KMjcwCU5vCU5vDQoyNzEJWWVzCVllcw0KMjcyCVllcwlZZXMNCjI3MwlZZXMJWWVzDQoyNzQJWWVzCVllcw0KMjc1CVllcwlZZXMNCjI3NglZZXMJWWVzDQoyNzcJTm8JTm8NCjI3OAlObwlObw0KMjc5CU5vCU5vDQoyODAJTm8JTm8NCjI4MQlObwlZZXMNCjI4MglObwlObw0KMjgzCU5vCU5vDQoyODQJTm8JTm8NCjI4NQlObwlObw0KMjg2CU5vCU5vDQoyODcJWWVzCVllcw0KMjg4CU5vCU5vDQoyODkJWWVzCVllcw0KMjkwCVllcwlZZXMNCjI5MQlZZXMJWWVzDQoyOTIJWWVzCVllcw0KMjkzCVllcwlZZXMNCjI5NAlZZXMJWWVzDQoyOTUJWWVzCVllcw0KMjk2CU5vCVllcw0KMjk3CU5vCU5vDQoyOTgJTm8JTm8NCjI5OQlZZXMJWWVzDQozMDAJWWVzCVllcw0KMzAxCU5vCU5vDQozMDIJWWVzCVllcw0KMzAzCU5vCU5vDQozMDQJTm8JTm8NCjMwNQlZZXMJWWVzDQozMDYJTm8JTm8NCjMwNwlObwlObw0KMzA4CVllcwlObw0KMzA5CU5vCU5vDQozMTAJWWVzCVllcw0KMzExCU5vCVllcw0KMzEyCU5vCU5vDQozMTMJTm8JTm8NCjMxNAlObwlObw0KMzE1CVllcwlZZXMNCjMxNglObwlZZXMNCjMxNwlObwlObw0KMzE4CU5vCU5vDQozMTkJTm8JWWVzDQozMjAJWWVzCVllcw0KMzIxCU5vCU5vDQozMjIJWWVzCVllcw0KMzIzCU5vCU5vDQozMjQJWWVzCVllcw0KMzI1CU5vCU5vDQozMjYJTm8JTm8NCjMyNwlObwlZZXMNCjMyOAlObwlObw0KMzI5CU5vCU5vDQozMzAJTm8JTm8NCjMzMQlZZXMJWWVzDQozMzIJTm8JTm8NCjMzMwlZZXMJWWVzDQozMzQJTm8JTm8NCjMzNQlObwlObw0KMzM2CU5vCU5vDQozMzcJTm8JTm8NCjMzOAlObwlZZXMNCjMzOQlZZXMJWWVzDQozNDAJTm8JWWVzDQozNDEJTm8JTm8NCjM0MglObwlObw0KMzQzCVllcwlZZXMNCjM0NAlZZXMJWWVzDQozNDUJWWVzCVllcw0KMzQ2CVllcwlZZXMNCjM0NwlZZXMJWWVzDQozNDgJWWVzCVllcw0KMzQ5CVllcwlZZXMNCjM1MAlZZXMJWWVzDQozNTEJWWVzCVllcw0KMzUyCVllcwlZZXMNCjM1MwlObwlObw0KMzU0CVllcwlZZXMNCjM1NQlObwlObw0KMzU2CU5vCU5vDQozNTcJWWVzCVllcw0KMzU4CU5vCU5vDQozNTkJWWVzCVllcw0KMzYwCU5vCVllcw0KMzYxCVllcwlZZXMNCjM2MglZZXMJWWVzDQozNjMJTm8JTm8NCjM2NAlObwlObw0KMzY1CU5vCU5vDQozNjYJWWVzCVllcw0KMzY3CVllcwlZZXMNCjM2OAlObwlZZXMNCjM2OQlZZXMJWWVzDQozNzAJTm8JWWVzDQozNzEJTm8JTm8NCjM3MglObwlZZXMNCjM3MwlZZXMJWWVzDQozNzQJTm8JWWVzDQozNzUJTm8JWWVzDQozNzYJWWVzCVllcw0KMzc3CU5vCU5vDQozNzgJWWVzCVllcw0KMzc5CU5vCU5vDQozODAJWWVzCU5vDQozODEJWWVzCVllcw0KMzgyCVllcwlZZXMNCjM4MwlZZXMJWWVzDQozODQJTm8JTm8NCjM4NQlObwlObw0KMzg2CU5vCU5vDQozODcJTm8JTm8NCjM4OAlZZXMJWWVzDQozODkJWWVzCVllcw0KMzkwCVllcwlZZXMNCjM5MQlZZXMJWWVzDQozOTIJTm8JTm8NCjM5MwlObwlZZXMNCjM5NAlZZXMJWWVzDQozOTUJTm8JWWVzDQozOTYJTm8JTm8NCjM5NwlZZXMJWWVzDQozOTgJTm8JTm8NCjM5OQlZZXMJWWVzDQo0MDAJWWVzCVllcw0KNDAxCVllcwlZZXMNCjQwMglObwlObw0KNDAzCU5vCU5vDQo0MDQJWWVzCVllcw0KNDA1CVllcwlZZXMNCjQwNglZZXMJWWVzDQo0MDcJWWVzCVllcw0KNDA4CU5vCU5vDQo0MDkJTm8JWWVzDQo0MTAJWWVzCVllcw0KNDExCVllcwlZZXMNCjQxMglZZXMJWWVzDQo0MTMJTm8JTm8NCjQxNAlZZXMJWWVzDQo0MTUJTm8JTm8NCjQxNglZZXMJWWVzDQo0MTcJTm8JTm8NCjQxOAlObwlObw0KNDE5CU5vCU5vDQo0MjAJWWVzCVllcw0KNDIxCU5vCU5vDQo0MjIJTm8JTm8NCjQyMwlObwlObw0KNDI0CVllcwlZZXMNCjQyNQlObwlObw0KNDI2CVllcwlZZXMNCjQyNwlObwlObw0KNDI4CU5vCU5vDQo0MjkJTm8JTm8NCjQzMAlZZXMJWWVzDQo0MzEJWWVzCVllcw0KNDMyCVllcwlZZXMNCjQzMwlObwlObw0KNDM0CU5vCU5vDQo0MzUJWWVzCVllcw0KNDM2CU5vCVllcw0KNDM3CU5vCU5vDQo0MzgJWWVzCVllcw0KNDM5CVllcwlZZXMNCjQ0MAlZZXMJWWVzDQo0NDEJWWVzCVllcw0KNDQyCU5vCU5vDQo0NDMJWWVzCVllcw0KNDQ0CVllcwlZZXMNCjQ0NQlObwlZZXMNCjQ0NglZZXMJWWVzDQo0NDcJWWVzCVllcw0KNDQ4CU5vCU5vDQo0NDkJWWVzCVllcw0KNDUwCVllcwlZZXMNCjQ1MQlObwlObw0KNDUyCVllcwlZZXMNCjQ1MwlObwlObw0KNDU0CVllcwlZZXMNCjQ1NQlObwlObw0KNDU2CVllcwlZZXMNCjQ1NwlObwlObw0KNDU4CU5vCU5vDQo0NTkJWWVzCVllcw0KNDYwCVllcwlZZXMNCjQ2MQlZZXMJWWVzDQo0NjIJTm8JTm8NCjQ2MwlObwlObw0KNDY0CVllcwlZZXMNCjQ2NQlZZXMJWWVzDQo0NjYJWWVzCVllcw0KNDY3CVllcwlZZXMNCjQ2OAlObwlZZXMNCjQ2OQlObwlObw0KNDcwCU5vCU5vDQo0NzEJTm8JTm8NCjQ3MglZZXMJWWVzDQo0NzMJWWVzCVllcw0KNDc0CVllcwlZZXMNCjQ3NQlZZXMJWWVzDQo0NzYJTm8JTm8NCjQ3NwlZZXMJWWVzDQo0NzgJWWVzCVllcw0KNDc5CU5vCU5vDQo0ODAJWWVzCVllcw0KNDgxCU5vCU5vDQo0ODIJTm8JWWVzDQo0ODMJWWVzCVllcw0KNDg0CU5vCU5vDQo0ODUJTm8JWWVzDQo0ODYJWWVzCVllcw0KNDg3CU5vCU5vDQo0ODgJWWVzCVllcw0KNDg5CU5vCVllcw0KNDkwCU5vCU5vDQo0OTEJTm8JTm8NCjQ5MglObwlZZXMNCjQ5MwlObwlZZXMNCjQ5NAlZZXMJWWVzDQo0OTUJTm8JTm8NCjQ5NglObwlZZXMNCjQ5NwlObwlObw0KNDk4CVllcwlZZXMNCjQ5OQlZZXMJWWVzDQo1MDAJWWVzCVllcw0K&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;Optimcare.txt&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
+<button class="btn btn-primary"><i class="fa fa-save"></i> Download Optimcare data</button>
+</a>
+<p><br />
+</p>
+<p>This type of data allows to investigate two different research questions of potential interest:</p>
+<ol style="list-style-type: decimal">
+<li><p>Do the physician and the CDSS have the same tendency to prescribe LLD?</p></li>
+<li><p>To what extent they both agree on the need of LLD treatment?</p></li>
+</ol>
+<p>The first of these questions is addressed by the <em>McNemar’s test</em>, and the second by a measure of agreement known as <em>Cohen’s kappa</em>.</p>
+<div id="mcnemars-test" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> McNemar’s test<a href="analysis-of-categorical-data.html#mcnemars-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we are interested in testing the null hypothesis of equal probability of prescribing LLD drugs (denoted by <span class="math inline">\(\pi\)</span>) by the doctor and the CDSS:</p>
+<p><span class="math display">\[H_0: \qquad \pi_{physician} \quad = \quad \pi_{CDSS}\]</span></p>
+<p>First, let’s look at the contingency table generated by the two variables in the dataset, <code>Physician</code> and <code>CDSS</code>, extended with the table margins:</p>
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:7-table-with-margins">Table 7.6: </span>Contingency table with margins
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+CDSS
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="text-align:right;">
+Physician
+</th>
+<th style="text-align:center;">
+No
+</th>
+<th style="text-align:center;">
+Yes
+</th>
+<th style="text-align:right;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;font-weight: bold;">
+No
+</td>
+<td style="text-align:center;">
+209
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:right;">
+213
+</td>
+</tr>
+<tr>
+<td style="text-align:right;font-weight: bold;">
+Yes
+</td>
+<td style="text-align:center;">
+57
+</td>
+<td style="text-align:center;">
+230
+</td>
+<td style="text-align:right;">
+287
+</td>
+</tr>
+<tr>
+<td style="text-align:right;font-weight: bold;">
+Total
+</td>
+<td style="text-align:center;">
+266
+</td>
+<td style="text-align:center;">
+234
+</td>
+<td style="text-align:right;">
+500
+</td>
+</tr>
+</tbody>
+</table>
+<p>The table margins show the frequency of each oppinion (yes or no) by the physician (row totals) and by the CDSS (column totals). The proportion of cases needing LLD can be computed from them, and they are 287/500 and 234/500 for the Physician and the CDSS, respectively. These proportions will be different as long as the margins are different, because the two proportions have the same denominator (500). Moreover, each margin is the sum of counts in two table cells:</p>
+<p><span class="math display">\[\begin{aligned}
+\text{Physician:}  \qquad &amp; \frac{57+230}{500} \quad = \quad  \frac{287}{500} \quad = \quad 0.574\\\\
+\text{CDSS:} \qquad &amp; \frac{4+230}{500} \quad = \quad  \frac{234}{500} \quad = \quad 0.468
+\end{aligned}\]</span></p>
+<p><br />
+Because the numerator of the two proportions involve 230 cases where both the physician and the CDSS considered that LLD were needed, the resulting proportions will be different only when the <em>discrepant</em> cells (<code>Yes-No</code> and <code>No-Yes</code>) have a different count. Therefore, the null hypothesis above could be tested by verifying if the two types of discrepancy are equally likely:</p>
+<p><span class="math display">\[H_O: \qquad \pi_{yes-no} \quad = \quad \pi_{no-yes}\]</span></p>
+<p><br />
+</p>
+<p>So, the problem can be reformulated by focusing on discrepancies and ignoring the cases where both the physician and he CDSS gave the same answer, which are not informative on a possible difference between them. The following script creates a new variable <code>phy_cdss</code> with the two opinions when these are discrepant, and then subsets the data retaining discrepant cases only:</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="analysis-of-categorical-data.html#cb266-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> </span>
+<span id="cb266-2"><a href="analysis-of-categorical-data.html#cb266-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phy_cdss =</span> <span class="fu">ifelse</span>(Physician <span class="sc">==</span> CDSS, </span>
+<span id="cb266-3"><a href="analysis-of-categorical-data.html#cb266-3" aria-hidden="true" tabindex="-1"></a>                           <span class="cn">NA</span>,</span>
+<span id="cb266-4"><a href="analysis-of-categorical-data.html#cb266-4" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">paste</span>(Physician, CDSS, <span class="at">sep=</span><span class="st">&quot;-&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb266-5"><a href="analysis-of-categorical-data.html#cb266-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="ot">-&gt;</span> discrepancies</span>
+<span id="cb266-6"><a href="analysis-of-categorical-data.html#cb266-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb266-7"><a href="analysis-of-categorical-data.html#cb266-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(discrepancies)</span></code></pre></div>
+<pre><code># A tibble: 6 × 4
+   Case CDSS  Physician phy_cdss
+  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;   
+1     1 No    Yes       Yes-No  
+2     3 No    Yes       Yes-No  
+3    33 No    Yes       Yes-No  
+4    38 No    Yes       Yes-No  
+5    41 No    Yes       Yes-No  
+6    46 No    Yes       Yes-No  </code></pre>
+<p>Let’s look now at the frequency table of the new variable <code>phy_cdss</code>, which is the type of discrepancy:</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="analysis-of-categorical-data.html#cb268-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">tally</span>(<span class="sc">~</span> phy_cdss, <span class="at">data =</span> discrepancies)</span></code></pre></div>
+<pre><code>phy_cdss
+No-Yes Yes-No 
+     4     57 </code></pre>
+<p>If the previous (reformulated) null hypothesis was true, we would expect both types of discrepancies to be equally likely. Note that this is a one sample problem that can be solved with a GOF chi-square test with theoretical probabilities equal to 0.5:</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="analysis-of-categorical-data.html#cb270-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">tally</span>(<span class="sc">~</span> phy_cdss, <span class="at">data =</span> discrepancies) <span class="sc">%&gt;%</span> </span>
+<span id="cb270-2"><a href="analysis-of-categorical-data.html#cb270-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">chisq.test</span>(<span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span></code></pre></div>
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  .
+X-squared = 46.049, df = 1, p-value = 1.153e-11</code></pre>
+<p>So, we have reformulated a paired-samples problem involving variables <code>Phsician</code> and <code>CDSS</code>, into a one-sample problem involving variable <code>phy-cdss</code>. This is actually what the McNemar’s test does: a GOF test on the subset of discrepant results.</p>
+<p>For convenience, the <code>mcnemar.test()</code> function conducts this test on the contingency table of the two original variables (so that we need neither to compute the new variable with the type of discrepancy, nor to subset the discrepant cases). If the test is done without continuity correction (using option <code>correct = FALSE</code>) the result is identical to the previous GOF test:</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="analysis-of-categorical-data.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcnemar.test</span>(cdss_phys, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>
+    McNemar&#39;s Chi-squared test
+
+data:  cdss_phys
+McNemar&#39;s chi-squared = 46.049, df = 1, p-value = 1.153e-11</code></pre>
+<p>In the output, the McNemar’s chi-square value is the usual Pearson’s chi-square statistic computed with expected counts equal to half the overall number of discrepancies. In this case, 46.049 is a very high value for a single degree of freedom, and the p-value is extremely low, providing strong evidence of marginal <em>heterogeneity</em> in the contingency table, that is, different probability of prescribing LLD by the Physician and the CDSS. The test does not tell us who prescribes LLD more often, but this is quite obvious looking at the most common type of discrepancy (Physician <code>Yes</code> and CDSS <code>No</code>: 57 cases), or at the margins of the contingency table.</p>
+<p>In summary, the McNemar’s test compares the marginal distributions of a contingency table (this is why it is sometimes called <em>marginal homogeneity test</em>), and is equivalent to a chi-square GOF test, conducted with discrepant cases only, to test that the two types of discrepancy are equally likely.</p>
+<p>As is the case with other chi-square based tests, the McNemar’s test is valid provided the expected counts are not too low (below 5, say). Because the expected counts in a McNemar test are always half the overall number of discrepancies, the test will be valid when this overal number is at least 10.</p>
+</div>
+<div id="cohens-kappa" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Cohen’s kappa<a href="analysis-of-categorical-data.html#cohens-kappa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When a variable is evaluated by different methods or observers, we may want to quantify the extent to which they agree. This was the case in the Optimcare study.</p>
+<p>The simplest and more natural measure of agreement is the <em>observed agreement</em>, which is nothing but the proportion of cases for whom both methods agree. From table <a href="analysis-of-categorical-data.html#tab:7-table-with-margins">7.6</a>, the observed agreement is computed as:</p>
+<p><span class="math display">\[P_o \quad = \quad \frac{209+230}{500} \quad = \quad 0.878\]</span></p>
+<p>So, the physician and the CDSS agreed in 87.7% of the cases. However, a certain amount of agreement can be expected just by chance, and this can be quantified using the counts expected in case of independence:</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="analysis-of-categorical-data.html#cb274-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(cdss_phys)</span>
+<span id="cb274-2"><a href="analysis-of-categorical-data.html#cb274-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>expected <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>         CDSS
+Physician    No   Yes
+      No  113.3  99.7
+      Yes 152.7 134.3</code></pre>
+<p>From these, the <em>expected agreement</em> (the agreement expected just by chance) is computed as:</p>
+<p><span class="math display">\[P_e \quad = \quad \frac{113.3+134.3}{500} \quad = \quad 0.495\]</span></p>
+<p>Then, the <em>kappa</em> statistic is computed as the difference between the observed and the expected agreement, over one minus the expected agreement:</p>
+<p><span class="math display">\[\kappa \quad = \quad \frac{P_o - P_e}{1-P_e}\]</span></p>
+<p>Figure <a href="analysis-of-categorical-data.html#fig:7-kappa-figure">7.2</a> represents the observed amount of agreement as a vertical bar in a scale ranging from 0 to 1 (the theoretical range for the observed agreement), the agreement beyond chance (<span class="math inline">\(P_o-P_e\)</span>) and the maximum possible agreement beyond chance (<span class="math inline">\(1-P_e\)</span>). The last two are the numerator and denominator of <span class="math inline">\(\kappa\)</span>. Therefore, the <em>kappa</em> value measures the agreement beyond change as a fraction of the maximum possible agreement beyond chance. Thus, <span class="math inline">\(\kappa = 0\)</span> if the observed agreement is equal to the expected agreement (i.e., when there is no agreement beyond chance), and <span class="math inline">\(\kappa = 1\)</span> when there is perfect agreement (<span class="math inline">\(P_o = 1\)</span>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:7-kappa-figure"></span>
+<img src="_main_files/figure-html/7-kappa-figure-1.png" alt="Graphical expression of observed and expected agreement" width="672" />
+<p class="caption">
+Figure 7.2: Graphical expression of observed and expected agreement
+</p>
+</div>
+<p><br />
+</p>
+<p>In the Optimcare study, the value of the <em>kappa</em> statistic is:</p>
+<p><span class="math display">\[\kappa \quad = \quad \frac{0.878 - 0.495}{1-0.495} \quad = \quad 0.758\]</span></p>
+<p>Which is a moderate agreement.</p>
+<p>The <em>kappa</em> statistic may be computed using function <code>epi.kappa()</code> from package <code>epiR</code>, which takes the contingency table as argument. The result is a list including these elements, among others: <code>prop.agree</code>, containing the observed and expected agreement; and <code>kappa</code>, containing the kappa statistic and 95% CI.</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="analysis-of-categorical-data.html#cb276-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> epiR<span class="sc">::</span><span class="fu">epi.kappa</span>(cdss_phys)</span>
+<span id="cb276-2"><a href="analysis-of-categorical-data.html#cb276-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>prop.agree</span></code></pre></div>
+<pre><code>    obs      exp
+1 0.878 0.495264</code></pre>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="analysis-of-categorical-data.html#cb278-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>kappa</span></code></pre></div>
+<pre><code>        est         se    lower    upper
+1 0.7582895 0.04372403 0.672592 0.843987</code></pre>
+</div>
+</div>
+<div id="resources-6" class="section level2 unnumbered hasAnchor">
+<h2>Resources<a href="analysis-of-categorical-data.html#resources-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="https://cran.r-project.org/doc/contrib/Horton+Pruim+Kaplan_MOSAIC-StudentGuide.pdf">A Student’s guide to R</a> is a book on introductory and intermediate statistics with R. Chapters 4 and 6 are devoted to the analysis of categorical variables.</p></li>
+<li><p>If your categorical variables are ordinal, you may want to know about <a href="https://www.r-bloggers.com/2021/02/how-does-polychoric-correlation-work-aka-ordinal-to-ordinal-correlation/">polychoric correlation</a>.</p></li>
+<li><p>Another correction of the Pearson’s chi-square statistic when expected counts are too low is discussed <a href="https://www.r-bloggers.com/2019/09/chi-square-and-the-egon-pearson-correction/">here</a></p></li>
+<li><p>Compute many different statistics from a 2-by-2 contingency table with this <a href="http://statpages.org/ctab2x2.html">online calculator</a>.</p></li>
+<li><p>Birth weight info:</p>
+<ul>
+<li>The primary source of the <code>birthwt</code> data is the book by Hosmer, D and S. Lemeshow (2000), Applied Logistic Regression, Wiley.</li>
+<li>Births, by birth weight in the United States (table 22). In: <a href="https://www.cdc.gov/nchs/data/nvsr/nvsr70/nvsr70-02-508.pdf">National Vital Statistics Reports, Vol. 70, No. 2, March 23, 2021</a>.</li>
+</ul></li>
+<li><p>A very nice example of the Chi-square GOF test in <a href="https://www.r-bloggers.com/2021/05/fame-is-becoming-a-star-written-in-the-stars/">this short post</a>.</p></li>
+</ul>
+</div>
+<div id="exercises-6" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="analysis-of-categorical-data.html#exercises-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Use the <code>birthwt</code> data to investigate a possible association between uterine irritability (UI) and low birth weight. To this end, do the following analyses:</li>
+</ol>
+<ul>
+<li>Pearson’s Chi-squared test with Yates’ continuity correction.
+<ul>
+<li>What is the value of the chi-square statistic?</li>
+<li>Is it high compared to the degrees of freedom?</li>
+<li>What is the p-value?</li>
+<li>What can be concluded from it?</li>
+<li>What is the lowest expected count?</li>
+<li>Is the test reliable?</li>
+</ul></li>
+<li>Compute the RD of low weight (smokers vs non-smokers), and their 95% CI’s.
+<ul>
+<li>Based on the 95% CI’s, can we rule equal probability of low birth weight is the same in UI and non-UI?</li>
+</ul></li>
+<li>According to the National Vital Statistics Report 2019, 1.38% of all births in the US are very low weight births (&lt;2500 gr). Is this the case in the study population of the <code>birthwt</code> data?</li>
+</ul>
+<p><br />
+</p>
+<ol start="2" style="list-style-type: decimal">
+<li>The following table shows the number of deliveries assisted in a Spanish General Hospital during one year, according to the lunar phase.</li>
+</ol>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+births
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Ful moon
+</td>
+<td style="text-align:right;">
+590
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+First quarter
+</td>
+<td style="text-align:right;">
+572
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+New moon
+</td>
+<td style="text-align:right;">
+542
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Second quarter
+</td>
+<td style="text-align:right;">
+565
+</td>
+</tr>
+</tbody>
+</table>
+<p>Does this data support the hypothesis that the moon phase has an influence on births?</p>
+<ul>
+<li><p>What is the appropriate test?</p></li>
+<li><p>What is the null hypothesis of the test?</p></li>
+<li><p>What is the value of the test statistic?</p></li>
+<li><p>Is this value too high?</p></li>
+<li><p>What is the p-value and what can be concluded from it?</p></li>
+<li><p>Is the test reliable?</p></li>
+</ul>
+<p><br />
+</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Select the appropriate analysis for the following research objectives (assuming that any condition for the validity of the method is met).</li>
+</ol>
+<ul>
+<li><p>Is a complication of a disease equally frequent in male and female patients?</p></li>
+<li><p>Is the exposure to a risk factor more frequent in diseased than in healthy subjects?</p></li>
+<li><p>Are two radiologists equally prone to diagnose a disease from an imaging test?</p></li>
+<li><p>Do two radiologists agree on the diagnosis of a disease from an imaging test?</p></li>
+<li><p>Are births equally likely in all seasons of the year?</p></li>
+</ul>
+<p><br />
+</p>
+<ol start="4" style="list-style-type: decimal">
+<li>The file <a href="./data/clozapine.txt">clozapine.txt</a> contains data on the genotype (single nucleotide polymorphism, SNP) and the response to clozapine (yes or no) observed in 270 schizophrenic patients.</li>
+</ol>
+<p>Answer the following questions using these data:</p>
+<ul>
+<li><p>What is the percentage of responders in each genotype?</p></li>
+<li><p>Is the response related to the genotype?</p></li>
+<li><p>What is the RR of response in AA vs GG?</p></li>
+<li><p>What is the RR of response in GA vs GG?</p></li>
+<li><p>What is the RR of response in AA+GA vs GG?</p></li>
+</ul>
+<p>Hint: the <code>riskratio()</code> and function in package <code>epitools</code> is very useful to compute several RR when the grouping variable has more than two levels (like genotype); look at its help, and use it to solve the last three questions.</p>
+<p><br />
+</p>
+<ol start="5" style="list-style-type: decimal">
+<li>The odds of an event is defined as the event probability (<span class="math inline">\(\pi\)</span>) over its complementary:</li>
+</ol>
+<p><span class="math display">\[ O \quad = \quad \frac{\pi}{1-\pi} \]</span></p>
+<p>Solve the previous equation for <span class="math inline">\(\pi\)</span> and use your result to compute:</p>
+<ul>
+<li><p>The probability of an event whose odds is 3</p></li>
+<li><p>The probability of an event whose odds is 1/3</p></li>
+</ul>
+<p><br />
+</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Two clinicians assessed independently 200 patients suspected of having a disease. Each patient was assessed by both clinicians (that were blinded from each other) as having (D), or not having (noD), the disease. The results were as follows:</li>
+</ol>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="analysis-of-categorical-data.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the contingency table from a vector of four counts</span></span>
+<span id="cb280-2"><a href="analysis-of-categorical-data.html#cb280-2" aria-hidden="true" tabindex="-1"></a>xt <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">52</span>, <span class="dv">43</span>, <span class="dv">71</span>, <span class="dv">34</span>), </span>
+<span id="cb280-3"><a href="analysis-of-categorical-data.html#cb280-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">nrow =</span> <span class="dv">2</span>, </span>
+<span id="cb280-4"><a href="analysis-of-categorical-data.html#cb280-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">clinician_1 =</span> <span class="fu">c</span>(<span class="st">&quot;D&quot;</span>, <span class="st">&quot;noD&quot;</span>),</span>
+<span id="cb280-5"><a href="analysis-of-categorical-data.html#cb280-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">clinician_2 =</span> <span class="fu">c</span>(<span class="st">&quot;D&quot;</span>, <span class="st">&quot;noD&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb280-6"><a href="analysis-of-categorical-data.html#cb280-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.table</span>() </span>
+<span id="cb280-7"><a href="analysis-of-categorical-data.html#cb280-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb280-8"><a href="analysis-of-categorical-data.html#cb280-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print the table</span></span>
+<span id="cb280-9"><a href="analysis-of-categorical-data.html#cb280-9" aria-hidden="true" tabindex="-1"></a>xt      </span></code></pre></div>
+<pre><code>           clinician_2
+clinician_1  D noD
+        D   52  71
+        noD 43  34</code></pre>
+<ul>
+<li><p>How much they both agree in the diagnostic of the disease?</p></li>
+<li><p>Are both equally prone to establish the diagnostic of the disease?</p></li>
+</ul>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="7">
+<li id="fn7"><p>The continuity correction is a small penalty used in the computation of the test statistic (affecting also the p-value), and is used by default; some authors recommend to use the correction only in some circumstances (when expected counts are low), but others recommend to use it always, which is safer.<a href="analysis-of-categorical-data.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>Although the classical 2-sample test for the equality of proportions is based on a <span class="math inline">\(z\)</span> statistic (computed as the difference of proportions divided by its standard error), the output of <code>prop.test()</code> shows the square of the <span class="math inline">\(z\)</span> statistic, denoted as <code>X-squared</code>.<a href="analysis-of-categorical-data.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>This formula computes the statistic without Yates’ continuity correction; the formula for the statistic with Yates’ continuity correction is similar, but the absolute values of the differences are reduced by 0.5 before squaring.<a href="analysis-of-categorical-data.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="statistical-inference.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
