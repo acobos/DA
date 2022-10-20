@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Analysis of quantitative data | Data Analysis for Clinical Researchers</title>
+  <meta name="description" content="8 Analysis of quantitative data | Data Analysis for Clinical Researchers" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Analysis of quantitative data | Data Analysis for Clinical Researchers" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Analysis of quantitative data | Data Analysis for Clinical Researchers" />
+  
+  
+  
+
+<meta name="author" content="Albert Cobos" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analysis-of-categorical-data.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/font-awesome-5.13.0/js/script.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="structure-of-this-book.html"><a href="structure-of-this-book.html"><i class="fa fa-check"></i>Structure of this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#first-r-session"><i class="fa fa-check"></i><b>1.2</b> First R session</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-objects"><i class="fa fa-check"></i><b>1.3</b> R objects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-functions"><i class="fa fa-check"></i><b>1.4</b> R functions</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>1.5</b> Installing R packages</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#loading-packages"><i class="fa fa-check"></i><b>1.6</b> Loading packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-data-structures.html"><a href="r-data-structures.html"><i class="fa fa-check"></i><b>2</b> R data structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-data-structures.html"><a href="r-data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="r-data-structures.html"><a href="r-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3" data-path="r-data-structures.html"><a href="r-data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="r-data-structures.html"><a href="r-data-structures.html#factors"><i class="fa fa-check"></i><b>2.4</b> Factors</a></li>
+<li class="chapter" data-level="2.5" data-path="r-data-structures.html"><a href="r-data-structures.html#dates"><i class="fa fa-check"></i><b>2.5</b> Dates</a></li>
+<li class="chapter" data-level="2.6" data-path="r-data-structures.html"><a href="r-data-structures.html#other-data-structures"><i class="fa fa-check"></i><b>2.6</b> Other data structures</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-acquisition.html"><a href="data-acquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-ms-excel-data"><i class="fa fa-check"></i><b>3.1</b> Reading MS Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-text-data"><i class="fa fa-check"></i><b>3.2</b> Reading text data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-spss-sas-or-stata-data"><i class="fa fa-check"></i><b>3.3</b> Reading SPSS, SAS or Stata data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-databases"><i class="fa fa-check"></i><b>3.4</b> Reading databases</a></li>
+<li class="chapter" data-level="3.5" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-other-formats"><i class="fa fa-check"></i><b>3.5</b> Reading other formats</a></li>
+<li class="chapter" data-level="3.6" data-path="data-acquisition.html"><a href="data-acquisition.html#getting-data-from-r-packages"><i class="fa fa-check"></i><b>3.6</b> Getting data from R packages</a></li>
+<li class="chapter" data-level="3.7" data-path="data-acquisition.html"><a href="data-acquisition.html#problems-when-importing-data-from-external-files"><i class="fa fa-check"></i><b>3.7</b> Problems when importing data from external files</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="data-acquisition.html"><a href="data-acquisition.html#package-dplyr"><i class="fa fa-check"></i><b>3.7.1</b> Package <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.7.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-the-sara-data"><i class="fa fa-check"></i><b>3.7.2</b> Reading the SARA data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>4</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-preparation.html"><a href="data-preparation.html#steps-in-data-preparation"><i class="fa fa-check"></i><b>4.1</b> Steps in data preparation</a></li>
+<li class="chapter" data-level="4.2" data-path="data-preparation.html"><a href="data-preparation.html#reading-raw-data"><i class="fa fa-check"></i><b>4.2</b> Reading raw data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#reviewing-data"><i class="fa fa-check"></i><b>4.3</b> Reviewing data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-preparation.html"><a href="data-preparation.html#missings"><i class="fa fa-check"></i><b>4.3.1</b> Missings</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-preparation.html"><a href="data-preparation.html#data-errors"><i class="fa fa-check"></i><b>4.3.2</b> Data errors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#modifying-data"><i class="fa fa-check"></i><b>4.4</b> Modifying data</a></li>
+<li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#computing-new-variables"><i class="fa fa-check"></i><b>4.5</b> Computing new variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="data-preparation.html"><a href="data-preparation.html#defining-factors"><i class="fa fa-check"></i><b>4.5.1</b> Defining factors</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data-preparation.html"><a href="data-preparation.html#formulas"><i class="fa fa-check"></i><b>4.5.2</b> Formulas</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data-preparation.html"><a href="data-preparation.html#conditional-assignments"><i class="fa fa-check"></i><b>4.5.3</b> Conditional assignments</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data-preparation.html"><a href="data-preparation.html#categorization-of-quantitative-variables"><i class="fa fa-check"></i><b>4.5.4</b> Categorization of quantitative variables</a></li>
+<li class="chapter" data-level="4.5.5" data-path="data-preparation.html"><a href="data-preparation.html#grouping-factor-levels"><i class="fa fa-check"></i><b>4.5.5</b> Grouping factor levels</a></li>
+<li class="chapter" data-level="4.5.6" data-path="data-preparation.html"><a href="data-preparation.html#character-strings"><i class="fa fa-check"></i><b>4.5.6</b> Character strings</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#selecting-valid-cases"><i class="fa fa-check"></i><b>4.6</b> Selecting valid cases</a></li>
+<li class="chapter" data-level="4.7" data-path="data-preparation.html"><a href="data-preparation.html#saving-the-r-script"><i class="fa fa-check"></i><b>4.7</b> Saving the R script</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#number-and-type-of-variables"><i class="fa fa-check"></i><b>5.1</b> Number and type of variables</a></li>
+<li class="chapter" data-level="5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#univariate-description"><i class="fa fa-check"></i><b>5.2</b> Univariate description</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#categorical-variable"><i class="fa fa-check"></i><b>5.2.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="5.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-variable"><i class="fa fa-check"></i><b>5.2.2</b> Quantitative variable</a></li>
+<li class="chapter" data-level="5.2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#important-remarks"><i class="fa fa-check"></i><b>5.2.3</b> Important remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#bivariate-description"><i class="fa fa-check"></i><b>5.3</b> Bivariate description</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.3.1</b> Two categorical variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-and-categorical-variable"><i class="fa fa-check"></i><b>5.3.2</b> Quantitative and categorical variable</a></li>
+<li class="chapter" data-level="5.3.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#eda-2-quantis"><i class="fa fa-check"></i><b>5.3.3</b> Two quantitative variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#adding-infromation-from-additional-variables"><i class="fa fa-check"></i><b>5.4</b> Adding infromation from additional variables</a></li>
+<li class="chapter" data-level="5.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#graphic-refinement"><i class="fa fa-check"></i><b>5.5</b> Graphic refinement</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i><b>6</b> Statistical inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistical-inference.html"><a href="statistical-inference.html#population-and-sample"><i class="fa fa-check"></i><b>6.1</b> Population and sample</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-inference.html"><a href="statistical-inference.html#inference-problems"><i class="fa fa-check"></i><b>6.2</b> Inference problems</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-inference.html"><a href="statistical-inference.html#probability-distributions"><i class="fa fa-check"></i><b>6.3</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="statistical-inference.html"><a href="statistical-inference.html#the-normal-distribution"><i class="fa fa-check"></i><b>6.3.1</b> The normal distribution</a></li>
+<li class="chapter" data-level="6.3.2" data-path="statistical-inference.html"><a href="statistical-inference.html#the-chi-squared-distribution"><i class="fa fa-check"></i><b>6.3.2</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.3.3" data-path="statistical-inference.html"><a href="statistical-inference.html#the-students-t-distribution"><i class="fa fa-check"></i><b>6.3.3</b> The Student’s <em>t</em> distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="statistical-inference.html"><a href="statistical-inference.html#random-samples"><i class="fa fa-check"></i><b>6.4</b> Random samples</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-inference.html"><a href="statistical-inference.html#example-data"><i class="fa fa-check"></i><b>6.5</b> Example data</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-inference.html"><a href="statistical-inference.html#estimation"><i class="fa fa-check"></i><b>6.6</b> Estimation</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-cis"><i class="fa fa-check"></i><b>6.7</b> Sample size and CI’s</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-inference.html"><a href="statistical-inference.html#significance-tests"><i class="fa fa-check"></i><b>6.8</b> Significance tests</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-p-values"><i class="fa fa-check"></i><b>6.9</b> Sample size and <em>p</em> values</a></li>
+<li class="chapter" data-level="6.10" data-path="statistical-inference.html"><a href="statistical-inference.html#types-of-tests"><i class="fa fa-check"></i><b>6.10</b> Types of tests</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html"><i class="fa fa-check"></i><b>7</b> Analysis of categorical data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#one-sample-tests"><i class="fa fa-check"></i><b>7.1</b> One-sample tests</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#chi-square-goodness-of-fit-gof-test"><i class="fa fa-check"></i><b>7.1.1</b> Chi-square goodness-of-fit (GOF) test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#categ-is"><i class="fa fa-check"></i><b>7.2</b> Independent samples</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#association-measures"><i class="fa fa-check"></i><b>7.2.1</b> Association measures</a></li>
+<li class="chapter" data-level="7.2.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#two-sample-test-for-proportions"><i class="fa fa-check"></i><b>7.2.2</b> Two-sample test for proportions</a></li>
+<li class="chapter" data-level="7.2.3" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#chi-square-independence-test"><i class="fa fa-check"></i><b>7.2.3</b> Chi-square independence test</a></li>
+<li class="chapter" data-level="7.2.4" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#fishers-exact-test"><i class="fa fa-check"></i><b>7.2.4</b> Fisher’s exact test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#paired-samples"><i class="fa fa-check"></i><b>7.3</b> Paired samples</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#mcnemars-test"><i class="fa fa-check"></i><b>7.3.1</b> McNemar’s test</a></li>
+<li class="chapter" data-level="7.3.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#cohens-kappa"><i class="fa fa-check"></i><b>7.3.2</b> Cohen’s kappa</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html"><i class="fa fa-check"></i><b>8</b> Analysis of quantitative data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#one-sample-tests-1"><i class="fa fa-check"></i><b>8.1</b> One sample tests</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#one-sample-t-test"><i class="fa fa-check"></i><b>8.1.1</b> One-sample t-test</a></li>
+<li class="chapter" data-level="8.1.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#bootstrap1s"><i class="fa fa-check"></i><b>8.1.2</b> Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#quanti-is"><i class="fa fa-check"></i><b>8.2</b> Independent samples</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#t-test"><i class="fa fa-check"></i><b>8.2.1</b> Unpaired (or two-sample) t-test</a></li>
+<li class="chapter" data-level="8.2.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#welch-test"><i class="fa fa-check"></i><b>8.2.2</b> Welch test</a></li>
+<li class="chapter" data-level="8.2.3" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#wicoxons-rank-sum-test-mann-whiteys-test"><i class="fa fa-check"></i><b>8.2.3</b> Wicoxon’s rank sum test/ Mann-Whitey’s test</a></li>
+<li class="chapter" data-level="8.2.4" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#bootstrap"><i class="fa fa-check"></i><b>8.2.4</b> Bootstrap</a></li>
+<li class="chapter" data-level="8.2.5" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#assessment-of-normality"><i class="fa fa-check"></i><b>8.2.5</b> Assessment of normality</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#paired-samples-1"><i class="fa fa-check"></i><b>8.3</b> Paired samples</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#paired-or-one-sample-t-test"><i class="fa fa-check"></i><b>8.3.1</b> Paired (or one-sample) t-test</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#wilcoxons-signed-ranks-test"><i class="fa fa-check"></i><b>8.3.2</b> Wilcoxon’s signed ranks test</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#bootstrap-1"><i class="fa fa-check"></i><b>8.3.3</b> Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#one-sided-alternatives"><i class="fa fa-check"></i><b>8.4</b> One-sided alternatives</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis for Clinical Researchers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analysis-of-quantitative-data" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Analysis of quantitative data<a href="analysis-of-quantitative-data.html#analysis-of-quantitative-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter we present methods for the analysis of quantitative variables. As we did in the previous chapter for categorical variables, we classify these methods as one-sample, and two-sample with independent or paired data. Table <a href="analysis-of-quantitative-data.html#tab:8-indep-vs-paired">8.1</a> illustrates the data involved in each case for a hypothetical study in which two groups of patients (A and B) had their diastolic blood pressure measured at two successive visits (DBP_1 and DBP_2). The estimation of the mean DBP at visit 1 is a one-sample problem (left); the comparison of DBP_2 values in groups A and B is a two-sample problem with independent samples (middle); and the comparison of DBP values in visits 1 and 2 is a two-sample problem with paired samples (right).</p>
+<table class="kable_wrapper">
+<caption>
+<span id="tab:8-indep-vs-paired">Table 8.1: </span>One-sample (left), two independent samples (middle), and two paired samples (right)
+</caption>
+<tbody>
+<tr>
+<td>
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+group
+</th>
+<th style="text-align:center;">
+DBP_1
+</th>
+<th style="text-align:center;">
+DBP_2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+72
+</td>
+<td style="text-align:center;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+89
+</td>
+<td style="text-align:center;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+68
+</td>
+<td style="text-align:center;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+117
+</td>
+<td style="text-align:center;">
+114
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+92
+</td>
+<td style="text-align:center;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+69
+</td>
+<td style="text-align:center;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+95
+</td>
+<td style="text-align:center;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+100
+</td>
+<td style="text-align:center;">
+85
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+97
+</td>
+<td style="text-align:center;">
+95
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+79
+</td>
+<td style="text-align:center;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+115
+</td>
+<td style="text-align:center;">
+108
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+93
+</td>
+<td style="text-align:center;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+73
+</td>
+<td style="text-align:center;">
+67
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+41
+</td>
+<td style="text-align:center;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+107
+</td>
+<td style="text-align:center;">
+108
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: RosyBrown !important;">
+84
+</td>
+<td style="text-align:center;">
+79
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+group
+</th>
+<th style="text-align:center;">
+DBP_1
+</th>
+<th style="text-align:center;">
+DBP_2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+72
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+89
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+68
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+117
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+114
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+92
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+69
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+95
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+100
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+85
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+97
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+95
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+79
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+115
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+108
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+93
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+73
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+67
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+41
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+107
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+108
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+84
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+79
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+group
+</th>
+<th style="text-align:center;">
+DBP_1
+</th>
+<th style="text-align:center;">
+DBP_2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+72
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+89
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+68
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+117
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+114
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+92
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+69
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+95
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+100
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+85
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+97
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+95
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+79
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+115
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+108
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+93
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+73
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+67
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+41
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+107
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+108
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;color: white !important;background-color: MediumAquamarine !important;">
+84
+</td>
+<td style="text-align:center;color: white !important;background-color: Coral !important;">
+79
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<div id="one-sample-tests-1" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> One sample tests<a href="analysis-of-quantitative-data.html#one-sample-tests-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is said that the average weight at birth in western countries is 3500 grams. A one-sample test can be used to test this hypothesis. Since there is no expectation of a deviation from the null value in a particular direction, a two-sided alternative is appropriate, so that we set the following statistical hypotheses refered to the population mean <span class="math inline">\(\mu\)</span>:</p>
+<center>
+<p><span class="math inline">\(H_0: \quad \mu = 3500\)</span></p>
+<p><span class="math inline">\(H_1: \quad \mu \ne 3500\)</span></p>
+</center>
+<div id="one-sample-t-test" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> One-sample t-test<a href="analysis-of-quantitative-data.html#one-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The t-test takes its name from the statistic computed and used to judge on the hypotheses stated above:</p>
+<p><span class="math display">\[t = \frac{\bar{X} - \mu_0}{\frac{s}{\sqrt{n}}}\]</span></p>
+<p>where <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(s\)</span> are the sample mean and the standard deviation of the variable analyzed (birthweights) respectively, and <span class="math inline">\(\mu_0\)</span> is the value proposed by <span class="math inline">\(H_0\)</span> (3500). This statistic is a measure of how different the sample mean <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\mu_0\)</span> are (top), scaled in a particularly convenient way (bottom). The resulting quantity is dimensionless, and it sign will depend on the direction in which <span class="math inline">\(\bar{X}\)</span> deviates from <span class="math inline">\(\mu_0\)</span>. If <span class="math inline">\(H_0\)</span> is true, we expect a relatively small absolute value of this statistic, e.g. below 2.</p>
+<p>It can be shown that, when <span class="math inline">\(H_0\)</span> is true, the sampling distribution of the <span class="math inline">\(t\)</span> statistic follows a probability distribution model known as <em>Student’s</em> t distribution, and this is used to compute the p-value. The t-distribution depends on a single parameter known as <em>degrees of freedom</em> (df), which in this case is the sample size minus one (<span class="math inline">\(n-1\)</span>). To compute the p-value, a t-distribution with <span class="math inline">\(n-1\)</span> degrees of freedom is used.</p>
+<p>This test can be done with function <code>t.test()</code> from either base R or <code>mosaic</code>. If we load <code>mosaic</code> (as done below), its <code>t.test()</code> function will take preference over the one in base R. The <code>mu</code> argument specifies the value for <span class="math inline">\(\mu\)</span> proposed by the <span class="math inline">\(H_0\)</span> (<span class="math inline">\(\mu_0 =\)</span> 3500):</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="analysis-of-quantitative-data.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb282-2"><a href="analysis-of-quantitative-data.html#cb282-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="sc">~</span> bwt, <span class="at">mu =</span> <span class="dv">3500</span>, <span class="at">data =</span> d)</span></code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  bwt
+t = -10.471, df = 188, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 3500
+95 percent confidence interval:
+ 2839.952 3049.222
+sample estimates:
+mean of x 
+ 2944.587 </code></pre>
+<p>The absolute value of the <span class="math inline">\(t\)</span> statistic is very high (10.471), and the p-value is extremely low (2.2e-16), which provides strong evidence against <span class="math inline">\(H_0\)</span>. The sample mean reported at the end of the output is 2995 grams (rounding to unit), a much lower value than the one proposed by <span class="math inline">\(H_0\)</span>, and its 95%CI is provided inmediately above. These results could be summarized by saying that the population mean of birthweights is well below 3500 (p-value &lt; 0.001), and is estimated as 2995 (95%CI: 2840, 3049) grams.</p>
+<p>The one sample t-test relies on the assumption that the variable analyzed follows a normal distribution in the population, and in figure <a href="statistical-inference.html#fig:6-bwt-boxplot">6.8</a> we saw that this assumption is reasonable.</p>
+</div>
+<div id="bootstrap1s" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Bootstrap<a href="analysis-of-quantitative-data.html#bootstrap1s" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the normality assumption seems inappropriate, a good option is to use the <a href="https://www.bmj.com/content/350/bmj.h2622">bootstrap</a>, a technique based on <em>resampling</em> (i.e., taking many random sub-samples of the sample) that makes no distributional assumptions at all, and therefore can be applied always. In addition, it is very flexible, because it can be applied to any statistic we can compute from sample data, no matter how complex. Although the normality assumption for birtweights is reasonable and the t-test conducted in the previous section is perfectly valid, we use this variable to illustrate the bootstrap method.</p>
+<p>The easiest way to use this technique is provided by function <code>boot.t.test()</code> in the <code>MKinfer</code> package. The syntax is similar to that of <code>t.test()</code>, but we can indicate the number of resamples we want to evaluate in the optional argument <code>R</code>. Since resamples are random, it is important to set the <em>seed</em> for the random number generator first, for reproduicibility:</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="analysis-of-quantitative-data.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb284-2"><a href="analysis-of-quantitative-data.html#cb284-2" aria-hidden="true" tabindex="-1"></a>MKinfer<span class="sc">::</span><span class="fu">boot.t.test</span>(d<span class="sc">$</span>bwt, <span class="at">mu =</span> <span class="dv">3500</span>, <span class="at">data =</span> d, <span class="at">R =</span> <span class="dv">5000</span>)    <span class="co"># 5000 resamples</span></span></code></pre></div>
+<pre><code>
+    Bootstrapped One Sample t-test
+
+data:  d$bwt
+bootstrapped p-value &lt; 2.2e-16 
+95 percent bootstrap percentile confidence interval:
+ 2839.655 3048.498
+
+Results without bootstrap:
+t = -10.471, df = 188, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 3500
+95 percent confidence interval:
+ 2839.952 3049.222
+sample estimates:
+mean of x 
+ 2944.587 </code></pre>
+<p>The output shows a very low p-value (2.2e-16) of the boostrapped t-test, providing strong evidence against <span class="math inline">\(H_0\)</span>, and a 95% CI for the mean ranging from 2840 to 3048. The result of the standard one-sample t-test is also provided under <code>Results without bootstrap</code>, for comparison. Here, because the normality assumption is reasonable, the two methods provide almost identical results, but this might not be the case if the normality assumption of the t-test is clearly violated, or when there are influential outliers, particularly in small samples.</p>
+</div>
+</div>
+<div id="quanti-is" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Independent samples<a href="analysis-of-quantitative-data.html#quanti-is" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the previous chapter we used the <code>birthwt</code> dataset to compare the proportion of low weight births in smoking and non-smoking mothers, by means of a chi-square test computed from the contingency table of categorical variables <code>bw</code> and <code>smoke</code>. Now we want to compare the birth weights recorded in variable <code>bwt</code> in smoking and non-smoking mothers. As a first step we inspect boxplots with overlaid means:</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="analysis-of-quantitative-data.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bwt <span class="sc">~</span> smoke, <span class="at">data =</span> d) <span class="sc">%&gt;%</span> </span>
+<span id="cb286-2"><a href="analysis-of-quantitative-data.html#cb286-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb286-3"><a href="analysis-of-quantitative-data.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">coord_flip</span>())</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:8-bwt-smoke-boxplot"></span>
+<img src="_main_files/figure-html/8-bwt-smoke-boxplot-1.png" alt="Boxplot of birth weight with means overlaid (red dot)" width="672" />
+<p class="caption">
+Figure 8.1: Boxplot of birth weight with means overlaid (red dot)
+</p>
+</div>
+<p>Figure <a href="analysis-of-quantitative-data.html#fig:8-bwt-smoke-boxplot">8.1</a> shows pretty symmetric distributions. In smokers, a single, not too far outlier doesn’t affect the mean (since it coincides with the median). The distribution of <code>bwt</code> in the group of smoking mothers seems to be shifted towards lower values compared to that of non-smoking mothers, and seems to have lower variability.</p>
+<div id="t-test" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Unpaired (or two-sample) t-test<a href="analysis-of-quantitative-data.html#t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An unpaired or two-samples t-test compares the means of a quantitative variable in two populations. This is the case if we want to compare the mean birth weights in smoking and non-smoking mothers. For a two-sided test, the formal statistical hypotheses would be:</p>
+<center>
+<p><span class="math inline">\(H_0: \quad \mu_1 = \mu_2 \quad \text{or} \quad \mu_1 - \mu_2 = 0\)</span></p>
+<span class="math inline">\(H_1: \quad \mu_1 \ne \mu_2 \quad \text{or} \quad \mu_1 - \mu_2 \ne 0\)</span>
+</center>
+<p><br />
+</p>
+<p>where <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are the means in populations 1 and 2 (such as smokers and non-smokers).</p>
+<p> </p>
+<p>Then, the following <span class="math inline">\(t\)</span> statistic is computed:</p>
+<p><span class="math display">\[t = \frac{(\bar{X_1} - \bar{X_2}) - (\mu_1 - \mu_2)}{\sqrt{\frac{s^2}{n_1} + \frac{s^2}{n_2}}} = \frac{(\bar{X_1} - \bar{X_2})}{\sqrt{\frac{s^2}{n_1} + \frac{s^2}{n_2}}}\]</span></p>
+<p><br />
+</p>
+<p>where <span class="math inline">\(\bar{X_1}\)</span> and <span class="math inline">\(\bar{X_2}\)</span> are the sample means in groups 1 and 2, <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are the respective sample sizes, <span class="math inline">\(s\)</span> is an pooled estimate of the standard deviation assumed to be the same in both populations, and <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_1\)</span> are as proposed by <span class="math inline">\(H_0\)</span> (and therefore their difference equals zero). This statistic measures how different the mean difference in the sample is from that expected if <span class="math inline">\(H_0\)</span> was true (zero difference), scaled in a convenient way. It can be shown that when <span class="math inline">\(H_0\)</span> holds, this statistic follows a t-distribution with <span class="math inline">\(n_1 + n_2 - 2\)</span> degrees of freedom, and this is used to compute the p-value.</p>
+<p>This test can be produced with function <code>t.test()</code> from either base R or <code>mosaic</code>. Option <code>var.equal = TRUE</code> is needed to compute a standard t-test, which assumes equality of variances in both populations (smokers and nonsmokers). We do not need to use the <code>mu</code> argument in this case because it is set to zero by default, since this is the value of the mean <em>difference</em> (<span class="math inline">\(\mu_1 - \mu_2\)</span>) specified by the <span class="math inline">\(H_0\)</span> .</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="analysis-of-quantitative-data.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bwt <span class="sc">~</span> smoke, <span class="at">data =</span> d, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>
+    Two Sample t-test
+
+data:  bwt by smoke
+t = -2.6529, df = 187, p-value = 0.008667
+alternative hypothesis: true difference in means between group smoker and group non-smoker is not equal to 0
+95 percent confidence interval:
+ -494.79735  -72.75612
+sample estimates:
+    mean in group smoker mean in group non-smoker 
+                2771.919                 3055.696 </code></pre>
+<p>The test gives a p-value of 0.009 (rounded to the third decimal), reflecting that the data are very inconsistent with <span class="math inline">\(H_0\)</span>, so that we can reject it and conclude that the mean birth weight is not the same for smoker and non-smoker mothers. The sample means in each group are reported at the end of the output under <code>sample estimates</code>. The 95% CI provided immediately above is a CI for the <em>difference of means</em> (2771.919 - 3055.696 = -283.777). We could synthesize these results by saying that the mean birth weigh of newborns is lower in smoking mothers than in non-smoking mothers (p = 0.009), with a mean difference of 284 grams (95% CI: 73, 495).</p>
+<p>To judge the magnitude of the difference, the Cohen’s d measure of <em>effect size</em> is sometimes used. This is nothing but the standardized mean difference, that is, the mean difference divided by the standard deviation. The main advantage of this measure is that it is dimensionless, and facilitates to judge the magnitude of a mean difference.</p>
+<p>The Cohen’s d measure of effect size can be computed with function <code>cohens_d()</code> of package <code>rstatix</code>:</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="analysis-of-quantitative-data.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb289-2"><a href="analysis-of-quantitative-data.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohens_d</span>(bwt <span class="sc">~</span> smoke, <span class="at">data =</span> d, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code># A tibble: 1 × 7
+  .y.   group1 group2     effsize    n1    n2 magnitude
+* &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+1 bwt   smoker non-smoker  -0.395    74   115 small    </code></pre>
+<p>The output provides the Cohen’s d measure of effect size (<code>-0.395</code>) and a statement of its magnitude (<code>small</code>), according to a guide for interpretation proposed by Cohen (0.2 is a small effect, 0.5 is a moderate effect, and and 0.8 is a large effect).</p>
+<p>The t-test assumes that birthweights follow a normal distribution in the two populations compared (inthe example, smoking and non-smoking mothers). In practice, the test works well if both distributions are about symmetrical and there are no influential outliers, as is the case in figure <a href="analysis-of-quantitative-data.html#fig:8-bwt-smoke-boxplot">8.1</a>.</p>
+<p>A further assumption of the standard t-test is <em>homscedasticity</em>, that is, equality of variances in both populations. This assumption could be inadequate here because variability seems to be lower in smoker mothers (see figure <a href="analysis-of-quantitative-data.html#fig:8-bwt-smoke-boxplot">8.1</a>). When this is the case, a modified version of the t-test called <em>Welch</em> test is more appropriate.</p>
+</div>
+<div id="welch-test" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Welch test<a href="analysis-of-quantitative-data.html#welch-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A Welch two-sample t-test is just a t-test with some penalization in the computation of the p-value to compensate for possible <em>heteroscedasticity</em> (inequality of variances). The null and alternative hypotheses are exactly the same as in the t-test.</p>
+<p>We can produce this test with the same function <code>t.test()</code>, with argument <code>var.equal</code> set to <code>FALSE</code>, but because this is the default value for this argument (see <code>?t.test</code>), we do not need to specify it.</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="analysis-of-quantitative-data.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bwt <span class="sc">~</span> smoke, <span class="at">data =</span> d)</span></code></pre></div>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  bwt by smoke
+t = -2.7299, df = 170.1, p-value = 0.007003
+alternative hypothesis: true difference in means between group smoker and group non-smoker is not equal to 0
+95 percent confidence interval:
+ -488.97860  -78.57486
+sample estimates:
+    mean in group smoker mean in group non-smoker 
+                2771.919                 3055.696 </code></pre>
+<p>Note that the title of the output is now <code>Welch Two Sample t-test</code>. The p-value is 0.007 and the 95% CI for the mean difference ranges from -489 to -79. The sample means and their difference are just the same as in the standard t-test.</p>
+<p>Just as the standard t-test, the Welch test assumes a normal distribution of the variable in the two populations compared.</p>
+</div>
+<div id="wicoxons-rank-sum-test-mann-whiteys-test" class="section level3 hasAnchor" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Wicoxon’s rank sum test/ Mann-Whitey’s test<a href="analysis-of-quantitative-data.html#wicoxons-rank-sum-test-mann-whiteys-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose we want to compare the weight of smoking and non-smoking mothers. The weight of mothers at last menstrual period is recorded in variable <code>lwt</code>, expressed in pounds. We first convert <code>lwt</code> to kilograms into a new variable <code>lwt_kg</code> (just because this unit is more familiar to us) and produce boxplots for this variable according to smoking status, with means overlaid:</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="analysis-of-quantitative-data.html#cb293-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb293-2"><a href="analysis-of-quantitative-data.html#cb293-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lwt_kg =</span> <span class="fu">round</span>(lwt <span class="sc">*</span> <span class="fl">0.453592</span>))</span>
+<span id="cb293-3"><a href="analysis-of-quantitative-data.html#cb293-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb293-4"><a href="analysis-of-quantitative-data.html#cb293-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
+<span id="cb293-5"><a href="analysis-of-quantitative-data.html#cb293-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(lwt_kg <span class="sc">~</span> smoke, <span class="at">data =</span> d) <span class="sc">%&gt;%</span> </span>
+<span id="cb293-6"><a href="analysis-of-quantitative-data.html#cb293-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb293-7"><a href="analysis-of-quantitative-data.html#cb293-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">coord_flip</span>())</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:8-lwt-boxplot"></span>
+<img src="_main_files/figure-html/8-lwt-boxplot-1.png" alt="Weight of mothers with means overlaid (red dot)" width="672" />
+<p class="caption">
+Figure 8.2: Weight of mothers with means overlaid (red dot)
+</p>
+</div>
+<p><br />
+</p>
+<p>Figure <a href="analysis-of-quantitative-data.html#fig:8-lwt-boxplot">8.2</a> shows a typical pattern of asymmetric distributions, with several outliers in the long (right) tail. However, there is a shift towards lower values in the smokers group.</p>
+<p>Because in this case it is not reasonable to assume that the weight of mothers follows a normal distribution, the t-test or the Welch t-test would not be appropriate, and a distribution-free test is safer.</p>
+<p>The Wilcoxon-rank-sum test (WRST) and the Mann-Whitney test (MWT) are classic distribution-free tests that look for a shift in location when comparing two distributions of a quantitative variable in independent samples. Although they use different methods for its computation, they produce <em>exactly the same p-value</em>, and are therefore equivalent.</p>
+<p>In the WRST, the formal statistical hypotheses refer to a parameter <span class="math inline">\(\delta\)</span>, that represents a shift in location assuming that the distributions are otherwise identical in form (though not necessarily normal, or even symmetric):</p>
+<center>
+<p><span class="math inline">\(H_0: \quad \delta = 0\)</span></p>
+<span class="math inline">\(H_1: \quad \delta \ne 0\)</span>
+</center>
+<p><br />
+</p>
+<p>Therefore, <span class="math inline">\(H_0\)</span> means there is no shift in location (the shift is null), while <span class="math inline">\(H_1\)</span> means there is a (non-null) shift.</p>
+<p>A WRST can be produced with function <code>Wilcox.test()</code>, that has a syntax similar to <code>t-test()</code>, but its <code>mu</code> argument now represents the location shift proposed by <span class="math inline">\(H_0\)</span>, and we do not need to specify it since it is zero by default (see <code>?wilcox.test</code>):</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="analysis-of-quantitative-data.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(lwt_kg <span class="sc">~</span> smoke, <span class="at">data =</span> d)</span></code></pre></div>
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  lwt_kg by smoke
+W = 3814.5, p-value = 0.23
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>The <code>W</code> statistic is computed from the <em>ranks</em> of <code>lwt_kg</code>, and has no easy interpretation. The p-value is 0.23, reflecting that the data are not very inconsistent with <span class="math inline">\(H_0\)</span>, and therefore do not provide evidence of a shift in location.</p>
+<p>The assumption that the form of the distribution of weights is the same in smoker and non-smoker mothers seems reasonable in this case (see figure <a href="analysis-of-quantitative-data.html#fig:8-lwt-boxplot">8.2</a>). Otherwise, it would be difficult to attach a precise meaning to the shift in location parameter (<span class="math inline">\(\delta\)</span>). In such a case, the hypotheses of the MWT can be used:</p>
+<p><span class="math inline">\(H_0: \quad P(X &gt; Y) = P(X &lt; Y)\)</span></p>
+<p><span class="math inline">\(H_1: \quad P(X &gt; Y) \ne P(X &lt; Y)\)</span></p>
+<p>where P stands for probability, and <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> represent the weights of a (randomly selected) smoker and non-smoker mother, respectively. This <span class="math inline">\(H_0\)</span> means that if we take a random pair of cases, one from each population, the weight of the smoker is just as likely to be greater than that of the non-smoker as the opposite.</p>
+<p>The same p-value obtained above can be used to evaluate the MWT hypotheses. However, the assumptions are not the same as in the WRST, and this affects how we can interpret the result. Under the assumption of equal distribution forms made in the WRST, a low p-value can be interpreted in terms of a shift in medians (or any other quantile, actually). However, if we are not ready to make this assumption these interpretation is not correct, and we can only say that it is more likely to have a lower (or higher) value of the variable in one group than in the other.</p>
+</div>
+<div id="bootstrap" class="section level3 hasAnchor" number="8.2.4">
+<h3><span class="header-section-number">8.2.4</span> Bootstrap<a href="analysis-of-quantitative-data.html#bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://www.bmj.com/content/350/bmj.h2622">Bootstrap</a> resampling can be used to assess the difference in the means of smoker and non-smoker mothers. The same function <code>boot.t.test()</code> in the <code>MKinfer</code> package that was used in section <a href="analysis-of-quantitative-data.html#bootstrap1s">8.1.2</a> can be used here. The syntax is similar to that of <code>t.test()</code>, but we can indicate a specific number of resamples in the optional argument <code>R</code>. Since resamples are random, it is important to set the seed first, for reproducibility:</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="analysis-of-quantitative-data.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb296-2"><a href="analysis-of-quantitative-data.html#cb296-2" aria-hidden="true" tabindex="-1"></a>MKinfer<span class="sc">::</span><span class="fu">boot.t.test</span>(lwt_kg <span class="sc">~</span> smoke, <span class="at">data =</span> d, <span class="at">R =</span> <span class="dv">5000</span>)</span></code></pre></div>
+<pre><code>
+    Bootstrapped Welch Two Sample t-test
+
+data:  lwt_kg by smoke
+bootstrapped p-value = 0.582 
+95 percent bootstrap percentile confidence interval:
+ -5.345035  2.919850
+
+Results without bootstrap:
+t = -0.59251, df = 136.7, p-value = 0.5545
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -5.528051  2.979050
+sample estimates:
+    mean in group smoker mean in group non-smoker 
+                58.10811                 59.38261 </code></pre>
+<p>The result shows a bootstrapped p-value of 0.582 which indicates that the data are not very inconsistent with the null hypothesis (which is the same as for the standard t-test). A 95% bootstrap percentile CI is also provided, ranging from -5.3 to 2.9 Kg, for the mean difference. Below these results, the result of the standard t-test is also provided under <code>Results without bootstrap</code>.</p>
+</div>
+<div id="assessment-of-normality" class="section level3 hasAnchor" number="8.2.5">
+<h3><span class="header-section-number">8.2.5</span> Assessment of normality<a href="analysis-of-quantitative-data.html#assessment-of-normality" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this section we have presented several one- and two-samples tests for the analysis of a quantitative variable. Some of them rely on the assumption of normal distributions (standard and Welch t-tests) and some others do not (WRST/MWT and bootstrapped t-test). To choose among them, we only inspected the boxplots for asymmetry or influential outliers, because it is a simple and sufficient procedure. However, this is not the best way to assess normality. The optimal way to assess normality by graphical methods is the so called <em>quantile-quantile</em> plot or <em>QQ plot</em>. The following script produces QQ plots for the weight of smoking and non_smoking mothers using function <code>gf_qq()</code> in <code>ggformula</code>, and overlays a diagonal reference line.</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="analysis-of-quantitative-data.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span> lwt_kg <span class="sc">|</span> smoke, <span class="at">data =</span> d) <span class="sc">%&gt;%</span> </span>
+<span id="cb298-2"><a href="analysis-of-quantitative-data.html#cb298-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_qqline</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:8-qq-lwt-kg"></span>
+<img src="_main_files/figure-html/8-qq-lwt-kg-1.png" alt="QQ plot of the weight of mothers" width="672" />
+<p class="caption">
+Figure 8.3: QQ plot of the weight of mothers
+</p>
+</div>
+<p>In a good approximation to the normal distribution, the points would lie randomly scattered along the diagonal reference line. This is not the case here, where we see a curvilinear pattern clearly parting from the reference line, and therefore assuming normality would be inappropriate. In the case of the weight of births, the QQ plot shows a much better approximation: although there is some deviation from the reference at the ends, this is quite acceptable to conduct a t (or Welch) test, provided sample sizes are not too small (e.g., n &gt; 30).</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="analysis-of-quantitative-data.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span> bwt <span class="sc">|</span> smoke, <span class="at">data =</span> d) <span class="sc">%&gt;%</span> </span>
+<span id="cb299-2"><a href="analysis-of-quantitative-data.html#cb299-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_qqline</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:8-bwt-kg"></span>
+<img src="_main_files/figure-html/8-bwt-kg-1.png" alt="QQ plot of birthweights" width="672" />
+<p class="caption">
+Figure 8.4: QQ plot of birthweights
+</p>
+</div>
+<p>In some books and courses on statistics, a more formal assessment is recommended, using significance tests for normality, such as the Shapiro-Wilk test, or the Kolmogorov test. We do not share this view, and the main reason is that in these (and any other) normality tests, normality is represented by the null hypothesis, and can never be shown (remember: a high p-value only indicates that the data are <em>not inconsistent</em> with the null, but this by no means is a proof of its truth). So, a high p-value does not allow to conclude the distribution is normal, particularly if the samples are small. In addition, a low p-value can be obtained if the samples are very large, even if the deviation from normality is mild.</p>
+<p>Despite we do not recommend it as a way to assess the normality assumption, we show how to conduct the Shapiro-Wilk test on the birthweights in both smoking and non-smoking mothers. Note the function needs to be passed a vector of values as argument and does not support formula syntax. For this reason, we first extract the vectors of birthweight values for smoking and non-smoking mothers (with <code>pull()</code>), and chain the <code>shapiro.test()</code> thereafter:</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="analysis-of-quantitative-data.html#cb300-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> <span class="fu">filter</span>(smoke <span class="sc">==</span> <span class="st">&quot;smoker&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(bwt) <span class="sc">%&gt;%</span> <span class="fu">shapiro.test</span>()</span></code></pre></div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  .
+W = 0.98296, p-value = 0.4195</code></pre>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="analysis-of-quantitative-data.html#cb302-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> <span class="fu">filter</span>(smoke <span class="sc">==</span> <span class="st">&quot;non-smoker&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(bwt) <span class="sc">%&gt;%</span> <span class="fu">shapiro.test</span>()</span></code></pre></div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  .
+W = 0.98694, p-value = 0.3337</code></pre>
+<p>Since the p-values are not very low, the null hypothesis of normality is not rejected, that is, the test fails to find evidence of non-normality.</p>
+</div>
+</div>
+<div id="paired-samples-1" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Paired samples<a href="analysis-of-quantitative-data.html#paired-samples-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To illustrate the methods for the analysis of paired samples, we will use data on the body weight of 25 individuals that gave up smoking. The dataset only has two variables, showing body weights before (<code>pre</code>) and after (<code>pos</code>) smoking cessation, expressed in kilograms.</p>
+<a onclick="fetch(&#39;data:text/plain;base64,cHJlCXBvcw0KNjEuNgk2Mi4xDQo1OS43CTY1LjYNCjYzLjgJNzAuMw0KNjYuMwk3MC4xDQo1Mi4zCTU2LjENCjU2LjcJNjAuMQ0KNTcuMQk2Mi44DQo2Ny4xCTcxLjQNCjU3LjYJNjQuMg0KNTUuOAk2MC4zDQo2MS41CTY2LjgNCjU3LjcJNjAuOA0KNjUuNwk2Ny43DQo1My45CTU1LjgNCjU4LjIJNjEuMQ0KNjMuOAk2OC4yDQo2NC44CTY3LjcNCjU4LjYJNjEuNw0KNTYuNwk2My4wDQo1OC41CTYyLjINCjU3LjIJNjAuMw0KNTUuMwk1Ny4xDQo2My4yCTY3LjUNCjYxLjQJNjYuMA0KNTcuNAk2MC45DQo=&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;smoking cessation.txt&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
+<button class="btn btn-primary"><i class="fa fa-save"></i> Download smoking cessation data</button>
+</a>
+<p><br />
+</p>
+<p>As a first step to investigate the evolution of weight, after reading the data we compute its increment (the difference defined as Pos - Pre), and produce a boxplot with the mean overlaid:</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="analysis-of-quantitative-data.html#cb304-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/smoking cessation.txt&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb304-2"><a href="analysis-of-quantitative-data.html#cb304-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">increment =</span> pos <span class="sc">-</span> pre)</span>
+<span id="cb304-3"><a href="analysis-of-quantitative-data.html#cb304-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-4"><a href="analysis-of-quantitative-data.html#cb304-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(increment <span class="sc">~</span> <span class="st">&quot;&quot;</span>, <span class="at">data=</span>d) <span class="sc">%&gt;%</span> </span>
+<span id="cb304-5"><a href="analysis-of-quantitative-data.html#cb304-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_summary</span>(<span class="at">fun =</span> mean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb304-6"><a href="analysis-of-quantitative-data.html#cb304-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">coord_flip</span>())</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:8-wi-boxplot"></span>
+<img src="_main_files/figure-html/8-wi-boxplot-1.png" alt="Boxplot of increments in body weight afer smoking cessation (Kg) with mean overlaid (red dot)" width="672" />
+<p class="caption">
+Figure 8.5: Boxplot of increments in body weight afer smoking cessation (Kg) with mean overlaid (red dot)
+</p>
+</div>
+<p><br />
+</p>
+<p>In the boxplot of figure <a href="analysis-of-quantitative-data.html#fig:8-wi-boxplot">8.5</a> we see that all increments are positive, reflecting a gain in weight, and range from less than one to more than six kilograms. The distribution of increments looks quite symmetric, with an single outlier that does not greatly affect the mean.</p>
+<p>If we compute the means of all three variables, we will realize that the difference of the means of variables <code>pre</code> and <code>pos</code> is exactly equal to the mean of the increments:</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="analysis-of-quantitative-data.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d<span class="sc">$</span>pre)</span></code></pre></div>
+<pre><code>[1] 59.676</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="analysis-of-quantitative-data.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d<span class="sc">$</span>pos)</span></code></pre></div>
+<pre><code>[1] 63.592</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="analysis-of-quantitative-data.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d<span class="sc">$</span>pos)<span class="sc">-</span><span class="fu">mean</span>(d<span class="sc">$</span>pre)</span></code></pre></div>
+<pre><code>[1] 3.916</code></pre>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="analysis-of-quantitative-data.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d<span class="sc">$</span>increment)</span></code></pre></div>
+<pre><code>[1] 3.916</code></pre>
+<p>It can be shown that this in necessarily so, and will happen whatever the values of the two variables. Given any two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the difference in their means equals the mean of the differences:</p>
+<p><span class="math display">\[\mu_X - \mu_Y = \mu_d\]</span></p>
+<p>where <span class="math inline">\(d = X - Y\)</span>.</p>
+<div id="paired-or-one-sample-t-test" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Paired (or one-sample) t-test<a href="analysis-of-quantitative-data.html#paired-or-one-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To test for a difference in the mean of weights before and after smoking cessation, we could set the following formal hypotheses:</p>
+<center>
+<p><span class="math inline">\(H_0: \quad \mu_{pos} = \mu_{pre} \qquad \text{or} \qquad \mu_{pos} - \mu_{pre} = 0\)</span></p>
+<p><span class="math inline">\(H_0: \quad \mu_{pos} \ne \mu_{pre} \qquad \text{or} \qquad \mu_{pos} - \mu_{pre} \ne 0\)</span></p>
+</center>
+<p>Because the difference in means equals the mean of the differences, the previous set of hypotheses can be replaced by:</p>
+<center>
+<p><span class="math inline">\(H_0: \quad \mu_d = 0\)</span></p>
+<p><span class="math inline">\(H_0: \quad \mu_d \ne 0\)</span></p>
+</center>
+<p>where <span class="math inline">\(d\)</span> are the increments of weight (weight <em>pos</em> - weight <em>pre</em>).</p>
+<p>Note that this is the form of a one sample test involving a single variable (the increments <span class="math inline">\(d\)</span>). Therefore, we could use a one-sample t-test, on the assumption that the weight increments are normally distributed (no need to specify the <code>mu</code> argument, since it is zero by default):</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="analysis-of-quantitative-data.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(d<span class="sc">$</span>increment, <span class="at">data=</span>d)</span></code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  d$increment
+t = 12.553, df = 24, p-value = 4.893e-12
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 3.272134 4.559866
+sample estimates:
+mean of x 
+    3.916 </code></pre>
+<p>The value of the t statistic is quite high, and the p-value very low, providing evidence against <span class="math inline">\(H_0\)</span>. So, there is evidence of a mean reduction in the body weight after smoking cessation, of 3.9 kg (95%CI: 3.3, 4.6; p &lt; 0.001).</p>
+<p>For convenience, <code>t.test()</code> can be used with the initial variables <code>pre</code> and <code>pos</code>, so that there is no need to compute them previously, but then the <code>paired = TRUE</code> argument has to be specified. In addition, the order in which the two variables are specified will determine how their difference is computed: it will be always computed as first variable - second variable. Therefore, if we want the difference to be defined as we did for <code>increment</code>, the <code>pos</code>variable should be specified first:</p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="analysis-of-quantitative-data.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(d<span class="sc">$</span>pos, d<span class="sc">$</span>pre, <span class="at">data=</span>d, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>
+    Paired t-test
+
+data:  d$pos and d$pre
+t = 12.553, df = 24, p-value = 4.893e-12
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 3.272134 4.559866
+sample estimates:
+mean difference 
+          3.916 </code></pre>
+<p>Note that the only difference between this output and the previous one is the title, now reading <code>Paired t-test</code>, and the way the alternative hypothesis is expressed, now referring to the <code>difference in means</code> of the two paired variables. Therefore, a paired t-test is nothing but a one-sample t-test applied to the differences of the two paired variables.</p>
+</div>
+<div id="wilcoxons-signed-ranks-test" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> Wilcoxon’s signed ranks test<a href="analysis-of-quantitative-data.html#wilcoxons-signed-ranks-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Wilcoxon`s signed ranks test (WSRT) is a classic distribution-free test that can be used when the assumption of normality is not tenable. Despite this assumption is quite reasonable in the case of the weight increments after smoking cessation, we will use this variable to illustrate the WSRT.</p>
+<p>The WSRT test can be performed with function <code>wilcox.test()</code>, specifying <code>paired = TRUE</code>:</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="analysis-of-quantitative-data.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(d<span class="sc">$</span>pre, d<span class="sc">$</span>pos, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>
+    Wilcoxon signed rank test with continuity correction
+
+data:  d$pre and d$pos
+V = 0, p-value = 1.306e-05
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>The small p-value implies that the distribution of the weight increments is not symmetric and centered at zero, which is what we would expect in case of no shift in one of the distributions with respect to the other.</p>
+</div>
+<div id="bootstrap-1" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> Bootstrap<a href="analysis-of-quantitative-data.html#bootstrap-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Just as for the two independent samples case, the <a href="https://www.bmj.com/content/350/bmj.h2622">bootstrap</a> can be used with a one sample t-test on the weight increments. The one sample t-test can be bootstrapped using the <code>boot.t.test()</code> function from package <code>MKinfer</code>:</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="analysis-of-quantitative-data.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb319-2"><a href="analysis-of-quantitative-data.html#cb319-2" aria-hidden="true" tabindex="-1"></a>MKinfer<span class="sc">::</span><span class="fu">boot.t.test</span>(d<span class="sc">$</span>increment, <span class="at">R =</span> <span class="dv">5000</span>)</span></code></pre></div>
+<pre><code>
+    Bootstrapped One Sample t-test
+
+data:  d$increment
+bootstrapped p-value &lt; 2.2e-16 
+95 percent bootstrap percentile confidence interval:
+ 3.340 4.528
+
+Results without bootstrap:
+t = 12.553, df = 24, p-value = 4.893e-12
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 3.272134 4.559866
+sample estimates:
+mean of x 
+    3.916 </code></pre>
+<p>With 5000 bootstrap replicates, the result shows a very small bootstrapped p-value, and a 95% bootstrap percentile CI very similar to the one provided with the standard <code>t.test()</code> function.</p>
+</div>
+</div>
+<div id="one-sided-alternatives" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> One-sided alternatives<a href="analysis-of-quantitative-data.html#one-sided-alternatives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>All examples of tests presented in this chapter were two sided tests. However, tests with one-sided alternatives are possible as well. To conduct a one-sided test, we use the same functions as for the two-sided test, but we specify the <code>alternative</code> argument as either <code>greater</code> or <code>less</code>. For instance, the following function call performs a one-sample t-test on the smoking cessation data, with the following one sided alternative <span class="math inline">\(H_1: \quad \mu_{increment} &gt; 0\)</span>.</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="analysis-of-quantitative-data.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(d<span class="sc">$</span>pos, d<span class="sc">$</span>pre, <span class="at">data=</span>d, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<pre><code>
+    Paired t-test
+
+data:  d$pos and d$pre
+t = 12.553, df = 24, p-value = 2.447e-12
+alternative hypothesis: true mean difference is greater than 0
+95 percent confidence interval:
+ 3.382263      Inf
+sample estimates:
+mean difference 
+          3.916 </code></pre>
+<p>Note that the p-value is different (though very small as well), and the 95% CI is a one-sided CI, indicating a lower bound only (the upper bound is <code>Inf</code> for infinity). This means we are 95% confident that, after smoking cessation, the mean increment in weight is <em>at least</em> 3.4 kg (3.4 kg or higher).</p>
+</div>
+<div id="resources-7" class="section level2 unnumbered hasAnchor">
+<h2>Resources<a href="analysis-of-quantitative-data.html#resources-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Wikipedia has a very complete explanation of the <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">Student`s t-distribution</a>, though rather technical. A lighter explanation can be found <a href="https://www.investopedia.com/terms/t/tdistribution.asp">here</a>.</p></li>
+<li><p>If you want to know the details on how p-values are computed in a significance test, look at <a href="https://statsandr.com/blog/hypothesis-test-by-hand/#method-b-comparing-the-p-value-with-the-significance-level-alpha">this example of a one-sample t-test</a>.</p></li>
+<li><p>Do not use histograms to assess normality: <a href="https://statisticsbyjim.com/basics/assessing-normality-histograms-probability-plots/">find out why</a>.</p></li>
+<li><p>If you want to know the details on how the Welch t-test is computed, see <a href="https://en.wikipedia.org/wiki/Welch%27s_t-test">this wikipaedia entry</a>.</p></li>
+<li><p>An intuitive introduction to the bootstrap can be found <a href="https://statisticsbyjim.com/hypothesis-testing/bootstrapping/">here</a>.</p></li>
+<li><p>Not just a book, but <a href="https://www.amazon.es/Introduction-Bootstrap-Monographs-Statistics-Probability/dp/0412042312"><em>the book</em> on the bootstrap</a>, by its creator Bradley Efron. Warning: it is a technical book, not an easy read for non-statisticians!</p></li>
+</ul>
+</div>
+<div id="exercises-7" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="analysis-of-quantitative-data.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>The <code>Gestation</code> dataset that comes with <code>mosaic</code> contains data on birth weights of 1028 newborns. (see <code>?Gestation</code> for a description of variables). With this dataset:</p>
+<ul>
+<li><p>Filter cases of never-smoking mothers, and current-smoking mothers (levels “never” and “now” of <code>smoke</code>, respectively), and use this subset of cases to conduct the following analyses. What is the size of this subset, and how is the split of current- and never-smokers?</p></li>
+<li><p>Compute a new variable <code>bwt</code> expressing the birth weight in kilograms, by dividing <code>wt</code> by 35.274, and rounding to the third decimal.</p></li>
+<li><p>Inspect a boxplot of <code>bwt</code> according to smoking, with overlai means. Is there a shift in location? Are there outliers? and if yes, are they influential? Which test would you choose, based on the boxplots, to compare birthweighs in the smoking and non-smoking groups?</p></li>
+<li><p>Inspect a QQ plot. Do you think there is a deviation from normality in either smoker and non-smoker mothers?</p></li>
+<li><p>Conduct a normality test for each group.</p></li>
+<li><p>Use the bootstrap to compare birthweighs in smoking and non-smoking mothers, and to estimate the difference in means. Interpret the results. Are they very different from what you get in a standard t-test?</p></li>
+</ul></li>
+<li><p>The dataset <code>ais</code> in package <code>DAAG</code> contains data on various characteristics of the blood of 202 athletes (see <code>?DAAG::ais</code> for a description of variables). Conduct appropriate analyses to answer the following questions:</p>
+<ul>
+<li><p>How many ales and female athletes are there in this dataset?</p></li>
+<li><p>Is the hematocrite different in males and females? By how much, on average?</p></li>
+<li><p>Is the white blood cell count different in males and females? By how much, on average?</p></li>
+</ul></li>
+<li><p>The following dataset contains health-related quality of life (QoL) data collected in the <a href="https://pubmed.ncbi.nlm.nih.gov/24135832/">SARA trial</a>, as measured by the <a href="https://pubmed.ncbi.nlm.nih.gov/20056594/">AF-QoL questionnaire</a>. QoL was measured at baseline, 6 and 12 months after randomization. Higher values indicate better QoL. The <code>group</code> variable is the randomized treatment coded as 1 = catheter ablation (CA), or 2 = antiarrhythmic drug treatment (ADT).</p>
+<ul>
+<li>Read the data, retain the complete cases only (i.e., cases with no missing values), and conduct all analyses with these complete cases.</li>
+<li>How many patients are there in each treatment group?</li>
+<li>Is there an improvement in QoL from baseline to 12 months?</li>
+<li>Is there an improveent in QoL from baseline to 12 months, in both CA and AD treatment groups?</li>
+<li>Compute the increments from baseline to 12 months. Are these increments similar in both treatment groups?</li>
+</ul></li>
+</ol>
+<a onclick="fetch(&#39;data:text/csv;base64,InBhdGllbnQiLCJncm91cCIsInFvbF9iYXNlbGluZSIsInFvbF82bSIsInFvbF8xMm0iDQoiMy0wMDIiLDIsTkEsTkEsNTkuNw0KIjMtMDAzIiwxLE5BLE5BLE5BDQoiMy0wMDQiLDEsNjMuOSxOQSxOQQ0KIjMtMDA0IiwxLDYzLjksTkEsTkENCiI0LTAwMSIsMSwyMC44LDE2LjcsMjcuOA0KIjQtMDAxIiwxLDIwLjgsMTYuNywyNy44DQoiNC0wMDIiLDEsMzMuMyw5LjcsNy4xDQoiNC0wMDIiLDEsMzMuMyw5LjcsNy4xDQoiNC0wMDMiLDIsNjkuNCw3Ny44LDc2LjQNCiI0LTAwMyIsMiw2OS40LDc3LjgsNzYuNA0KIjQtMDA0IiwxLDEzLjksNzUsNjkuNA0KIjQtMDA0IiwxLDEzLjksNzUsNjkuNA0KIjQtMDA1IiwyLDQ1LjgsNjMuOSwzOC45DQoiNC0wMDUiLDIsNDUuOCw2My45LDM4LjkNCiI1LTAwMSIsMSw3NSw3Mi4yLDc2LjQNCiI1LTAwMSIsMSw3NSw3Mi4yLDc2LjQNCiI1LTAwMyIsMiw0MS43LDQxLjcsNTIuOA0KIjUtMDAzIiwyLDQxLjcsNDEuNyw1Mi44DQoiNS0wMDQiLDEsMzAuNiwzNC43LDM0LjcNCiI1LTAwNCIsMSwzMC42LDM0LjcsMzQuNw0KIjUtMDA1IiwyLDYyLjUsMjMuNiwxNi43DQoiNS0wMDUiLDIsNjIuNSwyMy42LDE2LjcNCiI1LTAwNiIsMSw0OC42LDU4LjMsNjUuMw0KIjUtMDA2IiwxLDQ4LjYsNTguMyw2NS4zDQoiNS0wMDciLDEsMi44LDExLjEsNC43DQoiNS0wMDciLDEsMi44LDExLjEsNC43DQoiNi0wMDEiLDIsTkEsNDguNiw0NS44DQoiNi0wMDEiLDIsTkEsNDguNiw0NS44DQoiNi0wMDIiLDEsTkEsODQuNyw3Mi4yDQoiNi0wMDIiLDEsTkEsODQuNyw3Mi4yDQoiNi0wMDMiLDEsNTYuOSw3My42LE5BDQoiNi0wMDMiLDEsNTYuOSw3My42LE5BDQoiNi0wMDQiLDEsMzcuNSwzNi4xLDc2LjQNCiI2LTAwNCIsMSwzNy41LDM2LjEsNzYuNA0KIjYtMDA1IiwxLDQ3LjIsNTQuMiw1MS40DQoiNi0wMDUiLDEsNDcuMiw1NC4yLDUxLjQNCiI2LTAwNiIsMiw1OS43LDUyLjgsNTIuOA0KIjYtMDA2IiwyLDU5LjcsNTIuOCw1Mi44DQoiNi0wMDciLDEsMjkuMiw2LjksMA0KIjEtMDAxIiwxLDkwLjMsNzcuOCw4Ny41DQoiMS0wMDEiLDEsOTAuMyw3Ny44LDg3LjUNCiIxLTAwMiIsMiw2OC4xLE5BLDYzLjkNCiIxLTAwMiIsMiw2OC4xLE5BLDYzLjkNCiIxLTAwMyIsMSwzMC42LDIzLjYsMzAuNg0KIjEtMDAzIiwxLDMwLjYsMjMuNiwzMC42DQoiMS0wMDQiLDEsMzcuNSxOQSw0Ny4yDQoiMS0wMDQiLDEsMzcuNSxOQSw0Ny4yDQoiMS0wMDUiLDIsMzQuNywzMC42LDMwLjYNCiIxLTAwNSIsMiwzNC43LDMwLjYsMzAuNg0KIjEtMDA2IiwxLDU5LjcsNTQuMiw0Ny4yDQoiMS0wMDYiLDEsNTkuNyw1NC4yLDQ3LjINCiIxLTAwNyIsMSw3Ny44LDYzLjksODguOQ0KIjEtMDA3IiwxLDc3LjgsNjMuOSw4OC45DQoiMS0wMDgiLDEsNjIuNSw2NS4zLDcyLjINCiIxLTAwOSIsMiwyMy42LDIzLjYsTkENCiIxLTAwOSIsMiwyMy42LDIzLjYsTkENCiIxLTAxMCIsMiwxNi43LDM4LjksNDMuMQ0KIjEtMDEwIiwyLDE2LjcsMzguOSw0My4xDQoiMS0wMTEiLDEsNDQuNCw1NS42LDU2LjkNCiIxLTAxMSIsMSw0NC40LDU1LjYsNTYuOQ0KIjEtMDEyIiwxLDM4LjksNjIuNSw0OC4yDQoiMS0wMTIiLDEsMzguOSw2Mi41LDQ4LjINCiIxLTAxNCIsMSwyMy42LDIzLjIsMTkuNg0KIjEtMDE0IiwxLDIzLjYsMjMuMiwxOS42DQoiMS0wMTUiLDEsMzMuMyw0MC4zLDM2LjENCiIxLTAxNSIsMSwzMy4zLDQwLjMsMzYuMQ0KIjEtMDE2IiwxLDM2LjEsOC45LDIzLjYNCiIxLTAxNiIsMSwzNi4xLDguOSwyMy42DQoiMS0wMTciLDIsMjUsODguOSw2OS40DQoiMS0wMTciLDIsMjUsODguOSw2OS40DQoiMS0wMTgiLDEsMi44LDEwLjMsMi44DQoiMS0wMTgiLDEsMi44LDEwLjMsMi44DQoiMS0wMTkiLDIsMjIuMiwyOS4yLDE4LjENCiIxLTAxOSIsMiwyMi4yLDI5LjIsMTguMQ0KIjEtMDIwIiwxLDc5LjIsNzkuMiw5MS43DQoiMS0wMjAiLDEsNzkuMiw3OS4yLDkxLjcNCiIxLTAyMSIsMSwzMS43LDgwLjYsNjkuNA0KIjEtMDIxIiwxLDMxLjcsODAuNiw2OS40DQoiMS0wMjIiLDEsNDguNiw3Mi4yLDY1LjMNCiIxLTAyMiIsMSw0OC42LDcyLjIsNjUuMw0KIjEtMDIzIiwyLDIzLjIsNDMuMSw5NC40DQoiMS0wMjMiLDIsMjMuMiw0My4xLDk0LjQNCiIxLTAyNCIsMSwxNi43LE5BLE5BDQoiMS0wMjQiLDEsMTYuNyxOQSxOQQ0KIjEtMDI1IiwyLDYzLjksMTAwLDg3LjUNCiIxLTAyNSIsMiw2My45LDEwMCw4Ny41DQoiMS0wMjYiLDEsOC4zLDkwLjMsMTAwDQoiMS0wMjYiLDEsOC4zLDkwLjMsMTAwDQoiMS0wMjciLDEsNDMuMSwzNC43LDMzLjMNCiIxLTAyNyIsMSw0My4xLDM0LjcsMzMuMw0KIjEtMDI4IiwxLDIwLjgsNTkuNyw5MC4zDQoiMS0wMjgiLDEsMjAuOCw1OS43LDkwLjMNCiIxLTAyOSIsMiwzOC45LDQ4LjYsNTcuMQ0KIjEtMDI5IiwyLDM4LjksNDguNiw1Ny4xDQoiMS0wMzAiLDEsNDguNiw3OS4yLDc3LjgNCiIxLTAzMCIsMSw0OC42LDc5LjIsNzcuOA0KIjEtMDMxIiwxLDU1LjYsNzYuNCw0OC42DQoiMS0wMzEiLDEsNTUuNiw3Ni40LDQ4LjYNCiIxLTAzMiIsMSw0NS44LDkxLjcsODEuOQ0KIjEtMDMyIiwxLDQ1LjgsOTEuNyw4MS45DQoiMS0wMzMiLDIsNzcuOCw0OC42LDM4LjkNCiIxLTAzMyIsMiw3Ny44LDQ4LjYsMzguOQ0KIjEtMDM0IiwxLDM2LjEsMzEuOSwzNy41DQoiMS0wMzQiLDEsMzYuMSwzMS45LDM3LjUNCiIxLTAzNSIsMSwzMC45LDUxLjQsMjUNCiIxLTAzNSIsMSwzMC45LDUxLjQsMjUNCiIxLTAzNiIsMiw0Ny4yLDQwLjMsNDEuNw0KIjEtMDM2IiwyLDQ3LjIsNDAuMyw0MS43DQoiMS0wMzciLDIsMjAuOCwzMy4zLDQzLjENCiIxLTAzNyIsMiwyMC44LDMzLjMsNDMuMQ0KIjEtMDM5IiwxLDYyLjUsNzUsOTMuMQ0KIjEtMDM5IiwxLDYyLjUsNzUsOTMuMQ0KIjEtMDQwIiwxLDEzLjksMjAuOCwzMS45DQoiMS0wNDAiLDEsMTMuOSwyMC44LDMxLjkNCiIxLTA0MSIsMiw3OS4yLDQ1LjgsNDcuMg0KIjEtMDQxIiwyLDc5LjIsNDUuOCw0Ny4yDQoiMS0wNDIiLDEsNDEuNyw3Ni40LDQ0LjYNCiIxLTA0MiIsMSw0MS43LDc2LjQsNDQuNg0KIjEtMDQzIiwxLDE1LjMsMzguOSw2OC4xDQoiMS0wNDMiLDEsMTUuMywzOC45LDY4LjENCiIxLTA0NCIsMiw1MCw1MCw1MA0KIjEtMDQ0IiwyLDUwLDUwLDUwDQoiMS0wNDUiLDEsNDAuMyw3MC44LDYxLjENCiIxLTA0NSIsMSw0MC4zLDcwLjgsNjEuMQ0KIjEtMDQ2IiwyLDUwLDU4LjMsNzIuMg0KIjEtMDQ2IiwyLDUwLDU4LjMsNzIuMg0KIjEtMDQ3IiwxLDQ1LjgsMzcuNSw2NS4zDQoiMS0wNDciLDEsNDUuOCwzNy41LDY1LjMNCiIxLTA0OCIsMSwxOS40LDUyLjgsNjEuMQ0KIjEtMDQ4IiwxLDE5LjQsNTIuOCw2MS4xDQoiMS0wNDkiLDEsMi44LDEzLjksMjIuMg0KIjEtMDQ5IiwxLDIuOCwxMy45LDIyLjINCiIxLTA1MCIsMiwxMS4xLDI3LjgsNTYuOQ0KIjEtMDUwIiwyLDExLjEsMjcuOCw1Ni45DQoiMS0wNTEiLDEsMjcuOCw1Ni45LDk2LjQNCiIxLTA1MSIsMSwyNy44LDU2LjksOTYuNA0KIjEtMDUyIiwyLDczLjYsOTEuNyw5Ny4yDQoiMS0wNTIiLDIsNzMuNiw5MS43LDk3LjINCiIxLTA1MyIsMSwzOC45LDI5LjIsODQuNw0KIjEtMDUzIiwxLDM4LjksMjkuMiw4NC43DQoiMi0wMDEiLDIsTkEsNjEuMSw1Ni45DQoiMi0wMDEiLDIsTkEsNjEuMSw1Ni45DQoiMi0wMDIiLDEsTkEsNTQuMiw1MA0KIjItMDAyIiwxLE5BLDU0LjIsNTANCiIyLTAwMyIsMSw4Ni4xLDg0LjcsNzUNCiIyLTAwMyIsMSw4Ni4xLDg0LjcsNzUNCiIyLTAwNCIsMSw0My4xLDcyLjIsNjguMQ0KIjItMDA0IiwxLDQzLjEsNzIuMiw2OC4xDQoiMi0wMDUiLDEsMzYuMSwyNy44LDMwLjYNCiIyLTAwNSIsMSwzNi4xLDI3LjgsMzAuNg0KIjItMDA2IiwyLDQ1LjgsNDQuNCw1MS40DQoiMi0wMDYiLDIsNDUuOCw0NC40LDUxLjQNCiIyLTAwNyIsMiwyNy44LDQxLjcsNzUNCiIyLTAwNyIsMiwyNy44LDQxLjcsNzUNCiIyLTAwOCIsMSwzMC42LDY2LjcsNzAuOA0KIjItMDA4IiwxLDMwLjYsNjYuNyw3MC44DQoiMi0wMDkiLDEsNjUuMyw5My4xLDk3LjINCiIyLTAwOSIsMSw2NS4zLDkzLjEsOTcuMg0KIjItMDEwIiwyLE5BLDQ1LjgsNjIuNQ0KIjItMDEwIiwyLE5BLDQ1LjgsNjIuNQ0KIjItMDExIiwxLE5BLDgxLjksMTAwDQoiMi0wMTEiLDEsTkEsODEuOSwxMDANCiIyLTAxMyIsMSw5MC4zLDc1LDgwLjYNCiIyLTAxMyIsMSw5MC4zLDc1LDgwLjYNCiIyLTAxNCIsMSw1NC4yLDE5LjQsMzguOQ0KIjItMDE0IiwxLDU0LjIsMTkuNCwzOC45DQoiMi0wMTUiLDIsNTguMyw2Ni43LDU5LjcNCiIyLTAxNSIsMiw1OC4zLDY2LjcsNTkuNw0KIjItMDE2IiwxLDM3LjUsNDUsODEuNw0KIjItMDE2IiwxLDM3LjUsNDUsODEuNw0KIjItMDE3IiwyLDcyLjIsOTEuNyw5Ny4yDQoiMi0wMTciLDIsNzIuMiw5MS43LDk3LjINCiIyLTAxOCIsMSxOQSwzNy41LDEwMA0KIjItMDE4IiwxLE5BLDM3LjUsMTAwDQoiMi0wMTkiLDEsMTAwLDkwLjMsMTAwDQoiMi0wMTkiLDEsMTAwLDkwLjMsMTAwDQoiMi0wMjAiLDEsNTQuMiw2OS40LDczLjYNCiIyLTAyMCIsMSw1NC4yLDY5LjQsNzMuNg0KIjItMDIxIiwyLDUwLDM2LjEsNTIuOA0KIjItMDIxIiwyLDUwLDM2LjEsNTIuOA0KIjItMDIyIiwyLDQ4LjYsMzguOSw1Ni45DQoiMi0wMjIiLDIsNDguNiwzOC45LDU2LjkNCiIyLTAyMyIsMSwxNS4zLDExLjEsMTMuOQ0KIjItMDIzIiwxLDE1LjMsMTEuMSwxMy45DQoiMi0wMjQiLDEsMzQuNywzMS45LDI5LjINCiIyLTAyNCIsMSwzNC43LDMxLjksMjkuMg0KIjItMDI1IiwxLDQ4LjYsNjMuOSw0OC42DQoiMi0wMjUiLDEsNDguNiw2My45LDQ4LjYNCiIyLTAyNiIsMiwyNi40LDI1LDI2LjQNCiIyLTAyNiIsMiwyNi40LDI1LDI2LjQNCiIyLTAyNyIsMSwzMC42LDQxLjcsOC4zDQoiMi0wMjciLDEsMzAuNiw0MS43LDguMw0KIjMtMDAxIiwxLE5BLE5BLDc2LjQNCiIzLTAwMSIsMSxOQSxOQSw3Ni40DQoiMy0wMDIiLDIsTkEsTkEsNTkuNw0KIjYtMDA3IiwxLDI5LjIsNi45LDANCiI2LTAwOCIsMiw0MC4zLDExLjEsMTguMQ0KIjYtMDA4IiwyLDQwLjMsMTEuMSwxOC4xDQoiNi0wMDkiLDEsNjYuNyw0Ny4yLDMxLjkNCiI2LTAwOSIsMSw2Ni43LDQ3LjIsMzEuOQ0KIjYtMDEwIiwxLDYxLjEsNjMuOSw3Ni40DQoiNi0wMTAiLDEsNjEuMSw2My45LDc2LjQNCiI2LTAxMSIsMiwyMi4yLDAsTkENCiI2LTAxMSIsMiwyMi4yLDAsTkENCiI2LTAxMiIsMSwzMC45LDM4LjksMjUNCiI2LTAxMiIsMSwzMC45LDM4LjksMjUNCiI2LTAxMyIsMSwxNS4zLDIwLjgsNDQuNA0KIjYtMDEzIiwxLDE1LjMsMjAuOCw0NC40DQoiNi0wMTQiLDIsODYuMSw0NC40LDU1LjYNCiI2LTAxNCIsMiw4Ni4xLDQ0LjQsNTUuNg0KIjYtMDE1IiwxLDE5LjQsMjIuMiw0MS43DQoiNi0wMTUiLDEsMTkuNCwyMi4yLDQxLjcNCiI2LTAxNiIsMSw5MC4zLDk4LjYsMTAwDQoiNi0wMTYiLDEsOTAuMyw5OC42LDEwMA0KIjYtMDE3IiwyLDk1LjgsOTcuMiwxMDANCiI2LTAxNyIsMiw5NS44LDk3LjIsMTAwDQoiNi0wMTgiLDEsMzcuNSw0My4xLDU2LjkNCiI2LTAxOCIsMSwzNy41LDQzLjEsNTYuOQ0KIjYtMDE5IiwxLDU2LjksNTYuOSw4MC42DQoiNi0wMTkiLDEsNTYuOSw1Ni45LDgwLjYNCiI2LTAyMCIsMSwyNi40LDMxLjksMzYuMQ0KIjYtMDIyIiwxLDU5LjcsNjMuOSxOQQ0KIjYtMDIyIiwxLDU5LjcsNjMuOSxOQQ0KIjYtMDIzIiwyLDUwLE5BLE5BDQoiNi0wMjMiLDIsNTAsTkEsTkENCiI2LTAyNCIsMSw1NC4yLDI3LjgsMTUuMw0KIjYtMDI0IiwxLDU0LjIsMjcuOCwxNS4zDQoiNi0wMjUiLDEsNTAsODMuMyw5NC40DQoiNi0wMjUiLDEsNTAsODMuMyw5NC40DQoiNi0wMjYiLDEsMjcuOCw2MS4xLDcwLjgNCiI2LTAyNiIsMSwyNy44LDYxLjEsNzAuOA0KIjYtMDI3IiwyLE5BLDU2LjksTkENCiI2LTAyNyIsMixOQSw1Ni45LE5BDQoiNi0wMjgiLDEsMjMuNixOQSxOQQ0KIjYtMDI4IiwxLDIzLjYsTkEsTkENCiI2LTAyOSIsMiw4MC42LE5BLE5BDQoiNi0wMjkiLDIsODAuNixOQSxOQQ0KIjYtMDMwIiwxLE5BLE5BLE5BDQoiNi0wMzEiLDEsNTguMyxOQSxOQQ0KIjYtMDMxIiwxLDU4LjMsTkEsTkENCiI2LTAzMiIsMiw0NS44LDcyLjIsNTYuOQ0KIjYtMDMyIiwyLDQ1LjgsNzIuMiw1Ni45DQoiNi0wMzMiLDEsMTkuNCw1NC4yLDY1LjMNCiI3LTAwMSIsMSw2My45LDk4LjYsMTAwDQoiNy0wMDEiLDEsNjMuOSw5OC42LDEwMA0KIjctMDAyIiwxLDQ3LjIsMTAwLDEwMA0KIjctMDAyIiwxLDQ3LjIsMTAwLDEwMA0KIjctMDAzIiwyLDM4LjksTkEsNTUuNg0KIjctMDAzIiwyLDM4LjksTkEsNTUuNg0KIjctMDA0IiwyLDc2LjQsNzcuOCw4My4zDQoiNy0wMDQiLDIsNzYuNCw3Ny44LDgzLjMNCiI3LTAwNSIsMSw1MCw1NS42LDUyLjgNCiI3LTAwNSIsMSw1MCw1NS42LDUyLjgNCiI3LTAwNiIsMSwxOS40LDM2LjEsNDQuNA0KIjctMDA2IiwxLDE5LjQsMzYuMSw0NC40DQoiNy0wMDciLDEsNjUuMyw2OC4xLE5BDQoiNy0wMDciLDEsNjUuMyw2OC4xLE5BDQoiNy0wMDgiLDIsNDcuMiw0MS4xLDUxLjQNCiI3LTAwOCIsMiw0Ny4yLDQxLjEsNTEuNA0KIjctMDA5IiwxLDQxLjcsTkEsNzYuNA0KIjctMDA5IiwxLDQxLjcsTkEsNzYuNA0KIjctMDEwIiwyLDY2LjcsNzIuMiw3OS4yDQoiNy0wMTAiLDIsNjYuNyw3Mi4yLDc5LjINCiI3LTAxMSIsMSwyNSxOQSwzNi4xDQoiNy0wMTEiLDEsMjUsTkEsMzYuMQ0KIjctMDEyIiwxLDE1LjMsNDQuNCwzOS43DQoiNy0wMTIiLDEsMTUuMyw0NC40LDM5LjcNCiI3LTAxMyIsMiw0MC4zLDY2LjcsNzIuMg0KIjctMDEzIiwyLDQwLjMsNjYuNyw3Mi4yDQoiNy0wMTQiLDEsMTkuNCwxOS40LDExLjENCiI3LTAxNCIsMSwxOS40LDE5LjQsMTEuMQ0KIjctMDE1IiwxLDU5LjcsNzUsNzIuMg0KIjctMDE1IiwxLDU5LjcsNzUsNzIuMg0KIjctMDE2IiwxLDM3LjUsMzcuNSwxMS4xDQoiNy0wMTYiLDEsMzcuNSwzNy41LDExLjENCiI4LTAwMSIsMiw2OS40LE5BLDU5LjcNCiI4LTAwMSIsMiw2OS40LE5BLDU5LjcNCiI4LTAwMiIsMSwyNi40LDMxLjksNDANCiI4LTAwMiIsMSwyNi40LDMxLjksNDANCiI4LTAwMyIsMSw4MC42LDc2LjQsNzYuNA0KIjgtMDAzIiwxLDgwLjYsNzYuNCw3Ni40DQoiOC0wMDQiLDIsMjcuOCxOQSwzLjENCiI4LTAwNCIsMiwyNy44LE5BLDMuMQ0KIjgtMDA1IiwxLDQ1LjgsTkEsMzYuMQ0KIjgtMDA1IiwxLDQ1LjgsTkEsMzYuMQ0KIjgtMDA2IiwxLDMwLjYsTkEsTkENCg==&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;sara_qol.csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
+<button class="btn btn-primary"><i class="fa fa-save"></i> Download SARA QoL data</button>
+</a>
+<p><br />
+</p>
+<ol start="4" style="list-style-type: decimal">
+<li>The following dataset has total cholesterol levels in the blood of patients with arterial hypertension. Are cholesterol levels different for males and females?</li>
+</ol>
+<a onclick="fetch(&#39;data:text/plain;base64,U2V4CUNvbGVzdGVyb2wNCjEJMjExDQoyCTIxMw0KMgkxNzgNCjEJMjU5DQoxCTMyNQ0KMQkxNjINCjIJMjEwDQoyCTIxMA0KMgkxNDENCjIJMjAzDQoyCTE2Ng0KMQkxNzANCjIJMjM2DQoxCTIxOQ0KMgkxNzMNCjIJMjY5DQoyCTIxNg0KMQkxNzUNCjIJMjgwDQoxCTE5Mg0KMgkxNDUNCjIJMjgwDQoyCTIwMw0KMgkxOTQNCjIJMjAzDQoxCTE5Mw0KMQkyMTINCjEJMjAyDQoyCTM0MA0KMgkyMzANCjEJMTk0DQoyCTE5Mw0KMQkyNjQNCjEJMjEyDQoyCTE3Mw0KMQkyMDUNCjEJMTgxDQoyCTE1NQ0KMQkxNzENCjIJMjExDQoyCTE4Ng0KMQkyMTYNCjIJMjM4DQoyCTIzOQ0KMgkyNjENCjEJMjEyDQoyCTIwMg0KMgkxOTgNCjIJMjI1DQoyCTIyMQ0KMgkyMjMNCjEJMTk4DQoyCTI2Mw0KMgkyMjkNCjEJMjI5DQoxCTI5NQ0KMgkyMzUNCjIJMjAwDQoyCTI1Mw0KMgkyNzcNCjIJMTkwDQoxCTI0Mw0KMQkyMjcNCjIJMjAxDQoyCTIzMg0KMgkzMTYNCjEJMjUwDQoxCTEyMQ0KMgkyNjMNCjEJMjQ5DQoyCTE5Mw0KMQkyMTkNCjIJMTYzDQoxCTIxNg0KMQkyMDcNCjIJMjQ4DQoxCTE3OA0KMQkyMDINCjIJMTgwDQoxCTE3NA0KMgkyNTAuMQ0KMgkyMjANCjIJMjM0DQoxCTIyNw0KMgkyNTUNCjIJMjAzDQoyCTI3Mw0KMgkyNTANCjIJMjU0DQoyCTIzMw0KMgkyNTYNCjEJMTY1DQoyCTIyMg0KMgkyNjcNCjEJMTk5DQoxCTIyOA0KMQkyMTgNCjEJMjE0DQoyCTIyMg0KCTE5OQ0KMgkxOTYNCjIJMjIzDQoyCTIxNA0KMgkxNTANCjIJMjIwDQoyCTIzMg0KMQkxODkNCjEJMTc4DQoxCTIwMw0KMQkyNTENCjIJMjM1DQoJMTgwDQoyCTE5OQ0KMQkyMDMNCjEJMTE5DQoyCTE1NQ0KMgkyNTANCjIJMTc1DQoyCTQuOA0KMgkyNjUNCjIJMjQ5DQoyCTIxMg0KMgkxNTcNCjIJMjQ3DQoyCTE2Nw0KMgkyMzINCjEJMjUzDQoxCTIwMw0KMgkxMTYNCjIJMjIzDQoxCTE4NA0KMQkxOTQNCjEJMTkwDQoxCTE3NA0KMgkyMDgNCjEJMTcxDQoyCTE0OQ0KMQkxNjINCjEJMjMxDQoxCTIwOA0KMgkxNzINCjIJMjQxDQoxCTIzNQ0KMgkxOTINCjEJMjA3DQoyCTI3Mg0KMgkyMzANCjEJMjAwDQoyCTIzNQ0KMQkxODENCjEJMTQ2DQoxCTE4MA0KMgkyNjYNCjIJMjc3DQoxCTI2MA0KMQkyMDUNCjIJMjA4DQoxCTIxMA0KMgkyMTcNCjIJMjMzLjUNCjEJMTI3LjUNCjEJMTY3DQoxCTE5Nw0KMgkxNzENCjEJMjIzDQoxCTIyMw0KMQkyNDUNCjIJMjQ3DQoyCTIyNw0KMgkyMDgNCjIJMjAwDQoyCTIwOA0KMgkyMTANCjIJMjM4DQoxCTI0OQ0KMgkyNDINCjEJMTY2DQoyCTI1NA0KMQkyMzYNCjIJMTg4DQoyCTIxOA0KMQkyMTQNCjIJMTc2DQo=&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;Colesterol and sex.txt&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
+<button class="btn btn-primary"><i class="fa fa-save"></i> Colesterol and sex data</button>
+</a>
+<p><br />
+</p>
+<ol start="5" style="list-style-type: decimal">
+<li>A pharmaceutical company produces tablets containing 500 mg of an active principle. The manufacturing process is imperfect, and actual table weights are not <em>exactly</em> 500 mg, but small random variations are allowed provided average weight of the tables produced is 500 mg. The quality assurance staff controls the weight of every batch of tablets by weighting a random sample of 10 tablets, and declares the manufacturing process out of control if its average weight is not 500 mg.</li>
+</ol>
+<p>For a particular batch, these are the weights of the sampled tablets:</p>
+<center>
+<p>497.2, 498.8, 507.8, 500.4, 500.6, 508.6, 502.3, 493.7, 496.6, 497.8</p>
+</center>
+<p>Was the manufacturing process out of control for this batch?</p>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analysis-of-categorical-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
