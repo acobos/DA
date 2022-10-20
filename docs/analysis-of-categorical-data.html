@@ -1777,70 +1777,54 @@ Figure 7.2: Graphical expression of observed and expected agreement
 <div id="exercises-6" class="section level2 unnumbered hasAnchor">
 <h2>Exercises<a href="analysis-of-categorical-data.html#exercises-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Use the <code>birthwt</code> data to investigate a possible association between uterine irritability (UI) and low birth weight. To this end, do the following analyses:</li>
-</ol>
+<li><p>The odds of an event is defined as the proportion of cases presenting the event (p) over its complementary: O = p / (1-p). Solve this equation for p and use your result to compute:</p>
 <ul>
-<li>Pearson’s Chi-squared test with Yates’ continuity correction.
-<ul>
-<li>What is the value of the chi-square statistic?</li>
-<li>Is it high compared to the degrees of freedom?</li>
-<li>What is the p-value?</li>
-<li>What can be concluded from it?</li>
-<li>What is the lowest expected count?</li>
-<li>Is the test reliable?</li>
+<li><p>The proportion of cases with an event whose odds is 3</p></li>
+<li><p>The proportion of cases with an event whose odds is 1/3</p></li>
 </ul></li>
-<li>Compute the RD of low weight (smokers vs non-smokers), and their 95% CI’s.
-<ul>
-<li>Based on the 95% CI’s, can we rule equal probability of low birth weight is the same in UI and non-UI?</li>
-</ul></li>
-<li>According to the National Vital Statistics Report 2019, 1.38% of all births in the US are very low weight births (&lt;2500 gr). Is this the case in the study population of the <code>birthwt</code> data?</li>
-</ul>
-<p><br />
-</p>
-<ol start="2" style="list-style-type: decimal">
-<li>The following table shows the number of deliveries assisted in a Spanish General Hospital during one year, according to the lunar phase.</li>
-</ol>
+<li><p>According to the National Vital Statistics Report 2019, 1.38% of all births in the US are very low weight births (&lt;2500 gr). Is this the case in the study population of the <code>MASS::birthwt</code> data?</p></li>
+<li><p>The following table shows the number of deliveries assisted in a Spanish General Hospital during one year, according to the lunar phase.</p>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:right;">
-births
+<p>births</p>
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-Ful moon
+<p>Ful moon</p>
 </td>
 <td style="text-align:right;">
-590
+<p>590</p>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-First quarter
+<p>First quarter</p>
 </td>
 <td style="text-align:right;">
-572
+<p>572</p>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-New moon
+<p>New moon</p>
 </td>
 <td style="text-align:right;">
-542
+<p>542</p>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Second quarter
+<p>Second quarter</p>
 </td>
 <td style="text-align:right;">
-565
+<p>565</p>
 </td>
 </tr>
 </tbody>
@@ -1853,54 +1837,23 @@ Second quarter
 <li><p>Is this value too high?</p></li>
 <li><p>What is the p-value and what can be concluded from it?</p></li>
 <li><p>Is the test reliable?</p></li>
-</ul>
-<p><br />
-</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Select the appropriate analysis for the following research objectives (assuming that any condition for the validity of the method is met).</li>
-</ol>
+</ul></li>
+<li><p><a href="https://raw.githubusercontent.com/acobos/Datasets/master/Genotype_and%20Clozapine.txt">This file</a> contains data on the genotype (single nucleotide polymorphism, SNP) and the response to clozapine (yes or no) observed in 270 schizophrenic patients. Answer the following questions using these data:</p>
 <ul>
-<li><p>Is a complication of a disease equally frequent in male and female patients?</p></li>
-<li><p>Is the exposure to a risk factor more frequent in diseased than in healthy subjects?</p></li>
-<li><p>Are two radiologists equally prone to diagnose a disease from an imaging test?</p></li>
-<li><p>Do two radiologists agree on the diagnosis of a disease from an imaging test?</p></li>
-<li><p>Are births equally likely in all seasons of the year?</p></li>
+<li>What is the percentage of responders in each genotype?<br />
+</li>
+<li>Is the response related to the genotype?</li>
+<li>What is the RR of response in AA vs GG?</li>
+<li>What is the RR of response in GA vs GG?</li>
+<li>What is the RR of response in AA+GA vs GG?</li>
 </ul>
-<p><br />
-</p>
-<ol start="4" style="list-style-type: decimal">
-<li>The file <a href="./data/clozapine.txt">clozapine.txt</a> contains data on the genotype (single nucleotide polymorphism, SNP) and the response to clozapine (yes or no) observed in 270 schizophrenic patients.</li>
-</ol>
-<p>Answer the following questions using these data:</p>
-<ul>
-<li><p>What is the percentage of responders in each genotype?</p></li>
-<li><p>Is the response related to the genotype?</p></li>
-<li><p>What is the RR of response in AA vs GG?</p></li>
-<li><p>What is the RR of response in GA vs GG?</p></li>
-<li><p>What is the RR of response in AA+GA vs GG?</p></li>
-</ul>
-<p>Hint: the <code>riskratio()</code> and function in package <code>epitools</code> is very useful to compute several RR when the grouping variable has more than two levels (like genotype); look at its help, and use it to solve the last three questions.</p>
-<p><br />
-</p>
-<ol start="5" style="list-style-type: decimal">
-<li>The odds of an event is defined as the event probability (<span class="math inline">\(\pi\)</span>) over its complementary:</li>
-</ol>
-<p><span class="math display">\[ O \quad = \quad \frac{\pi}{1-\pi} \]</span></p>
-<p>Solve the previous equation for <span class="math inline">\(\pi\)</span> and use your result to compute:</p>
-<ul>
-<li><p>The probability of an event whose odds is 3</p></li>
-<li><p>The probability of an event whose odds is 1/3</p></li>
-</ul>
-<p><br />
-</p>
-<ol start="6" style="list-style-type: decimal">
-<li>Two clinicians assessed independently 200 patients suspected of having a disease. Each patient was assessed by both clinicians (that were blinded from each other) as having (D), or not having (noD), the disease. The results were as follows:</li>
-</ol>
+<p>Hint: the <code>riskratio()</code> and function in package <code>epitools</code> is very useful to compute several RR when the grouping variable has more than two levels (like genotype); look at its help, and use it to solve the last three questions.</p></li>
+<li><p>Two clinicians assessed independently 200 patients suspected of having a disease. Each patient was assessed by both clinicians (that were blinded from each other) as having (D), or not having (noD) the disease. The results were as follows:</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="analysis-of-categorical-data.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the contingency table from a vector of four counts</span></span>
 <span id="cb280-2"><a href="analysis-of-categorical-data.html#cb280-2" aria-hidden="true" tabindex="-1"></a>xt <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">52</span>, <span class="dv">43</span>, <span class="dv">71</span>, <span class="dv">34</span>), </span>
 <span id="cb280-3"><a href="analysis-of-categorical-data.html#cb280-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">nrow =</span> <span class="dv">2</span>, </span>
 <span id="cb280-4"><a href="analysis-of-categorical-data.html#cb280-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">clinician_1 =</span> <span class="fu">c</span>(<span class="st">&quot;D&quot;</span>, <span class="st">&quot;noD&quot;</span>),</span>
-<span id="cb280-5"><a href="analysis-of-categorical-data.html#cb280-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">clinician_2 =</span> <span class="fu">c</span>(<span class="st">&quot;D&quot;</span>, <span class="st">&quot;noD&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb280-5"><a href="analysis-of-categorical-data.html#cb280-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">clinician_2 =</span> <span class="fu">c</span>(<span class="st">&quot;D&quot;</span>, <span class="st">&quot;noD&quot;</span>))) <span class="sc">%&gt;%</span> </span>
 <span id="cb280-6"><a href="analysis-of-categorical-data.html#cb280-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.table</span>() </span>
 <span id="cb280-7"><a href="analysis-of-categorical-data.html#cb280-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb280-8"><a href="analysis-of-categorical-data.html#cb280-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print the table</span></span>
@@ -1911,8 +1864,19 @@ clinician_1  D noD
         noD 43  34</code></pre>
 <ul>
 <li><p>How much they both agree in the diagnostic of the disease?</p></li>
-<li><p>Are both equally prone to establish the diagnostic of the disease?</p></li>
-</ul>
+<li><p>Are both physicians equally prone to establish the diagnostic of the disease? If not, which one is more prone to diagnose D?</p></li>
+</ul></li>
+<li><p>Select the appropriate analysis for the following research objectives (assuming that any condition for the validity of the method is met).</p>
+<ul>
+<li><p>Is a complication of a disease equally frequent in male and female patients?</p></li>
+<li><p>Is the exposure to a risk factor more frequent in diseased than in healthy subjects?</p></li>
+<li><p>Are two radiologists equally prone to diagnose a disease from an imaging test?</p></li>
+<li><p>Do two radiologists agree on the diagnosis of a disease from an imaging test?</p></li>
+<li><p>Are births equally likely in all seasons of the year?</p></li>
+</ul></li>
+</ol>
+<p><br />
+</p>
 
 </div>
 </div>
