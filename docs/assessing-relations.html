@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 Assessing relations | Data Analysis for Clinical Researchers</title>
+  <meta name="description" content="9 Assessing relations | Data Analysis for Clinical Researchers" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 Assessing relations | Data Analysis for Clinical Researchers" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Assessing relations | Data Analysis for Clinical Researchers" />
+  
+  
+  
+
+<meta name="author" content="Albert Cobos" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analysis-of-quantitative-data.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/font-awesome-5.13.0/js/script.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="structure-of-this-book.html"><a href="structure-of-this-book.html"><i class="fa fa-check"></i>Structure of this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#first-r-session"><i class="fa fa-check"></i><b>1.2</b> First R session</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-objects"><i class="fa fa-check"></i><b>1.3</b> R objects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-functions"><i class="fa fa-check"></i><b>1.4</b> R functions</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>1.5</b> Installing R packages</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#loading-packages"><i class="fa fa-check"></i><b>1.6</b> Loading packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-data-structures.html"><a href="r-data-structures.html"><i class="fa fa-check"></i><b>2</b> R data structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-data-structures.html"><a href="r-data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="r-data-structures.html"><a href="r-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3" data-path="r-data-structures.html"><a href="r-data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="r-data-structures.html"><a href="r-data-structures.html#factors"><i class="fa fa-check"></i><b>2.4</b> Factors</a></li>
+<li class="chapter" data-level="2.5" data-path="r-data-structures.html"><a href="r-data-structures.html#dates"><i class="fa fa-check"></i><b>2.5</b> Dates</a></li>
+<li class="chapter" data-level="2.6" data-path="r-data-structures.html"><a href="r-data-structures.html#other-data-structures"><i class="fa fa-check"></i><b>2.6</b> Other data structures</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-acquisition.html"><a href="data-acquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-ms-excel-data"><i class="fa fa-check"></i><b>3.1</b> Reading MS Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-text-data"><i class="fa fa-check"></i><b>3.2</b> Reading text data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-spss-sas-or-stata-data"><i class="fa fa-check"></i><b>3.3</b> Reading SPSS, SAS or Stata data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-databases"><i class="fa fa-check"></i><b>3.4</b> Reading databases</a></li>
+<li class="chapter" data-level="3.5" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-other-formats"><i class="fa fa-check"></i><b>3.5</b> Reading other formats</a></li>
+<li class="chapter" data-level="3.6" data-path="data-acquisition.html"><a href="data-acquisition.html#getting-data-from-r-packages"><i class="fa fa-check"></i><b>3.6</b> Getting data from R packages</a></li>
+<li class="chapter" data-level="3.7" data-path="data-acquisition.html"><a href="data-acquisition.html#problems-when-importing-data-from-external-files"><i class="fa fa-check"></i><b>3.7</b> Problems when importing data from external files</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="data-acquisition.html"><a href="data-acquisition.html#package-dplyr"><i class="fa fa-check"></i><b>3.7.1</b> Package <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.7.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-the-sara-data"><i class="fa fa-check"></i><b>3.7.2</b> Reading the SARA data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>4</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-preparation.html"><a href="data-preparation.html#steps-in-data-preparation"><i class="fa fa-check"></i><b>4.1</b> Steps in data preparation</a></li>
+<li class="chapter" data-level="4.2" data-path="data-preparation.html"><a href="data-preparation.html#reading-raw-data"><i class="fa fa-check"></i><b>4.2</b> Reading raw data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#reviewing-data"><i class="fa fa-check"></i><b>4.3</b> Reviewing data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-preparation.html"><a href="data-preparation.html#missings"><i class="fa fa-check"></i><b>4.3.1</b> Missings</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-preparation.html"><a href="data-preparation.html#data-errors"><i class="fa fa-check"></i><b>4.3.2</b> Data errors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#modifying-data"><i class="fa fa-check"></i><b>4.4</b> Modifying data</a></li>
+<li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#computing-new-variables"><i class="fa fa-check"></i><b>4.5</b> Computing new variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="data-preparation.html"><a href="data-preparation.html#defining-factors"><i class="fa fa-check"></i><b>4.5.1</b> Defining factors</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data-preparation.html"><a href="data-preparation.html#formulas"><i class="fa fa-check"></i><b>4.5.2</b> Formulas</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data-preparation.html"><a href="data-preparation.html#conditional-assignments"><i class="fa fa-check"></i><b>4.5.3</b> Conditional assignments</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data-preparation.html"><a href="data-preparation.html#categorization-of-quantitative-variables"><i class="fa fa-check"></i><b>4.5.4</b> Categorization of quantitative variables</a></li>
+<li class="chapter" data-level="4.5.5" data-path="data-preparation.html"><a href="data-preparation.html#grouping-factor-levels"><i class="fa fa-check"></i><b>4.5.5</b> Grouping factor levels</a></li>
+<li class="chapter" data-level="4.5.6" data-path="data-preparation.html"><a href="data-preparation.html#character-strings"><i class="fa fa-check"></i><b>4.5.6</b> Character strings</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#selecting-valid-cases"><i class="fa fa-check"></i><b>4.6</b> Selecting valid cases</a></li>
+<li class="chapter" data-level="4.7" data-path="data-preparation.html"><a href="data-preparation.html#saving-the-r-script"><i class="fa fa-check"></i><b>4.7</b> Saving the R script</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#number-and-type-of-variables"><i class="fa fa-check"></i><b>5.1</b> Number and type of variables</a></li>
+<li class="chapter" data-level="5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#univariate-description"><i class="fa fa-check"></i><b>5.2</b> Univariate description</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#categorical-variable"><i class="fa fa-check"></i><b>5.2.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="5.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-variable"><i class="fa fa-check"></i><b>5.2.2</b> Quantitative variable</a></li>
+<li class="chapter" data-level="5.2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#important-remarks"><i class="fa fa-check"></i><b>5.2.3</b> Important remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#bivariate-description"><i class="fa fa-check"></i><b>5.3</b> Bivariate description</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.3.1</b> Two categorical variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-and-categorical-variable"><i class="fa fa-check"></i><b>5.3.2</b> Quantitative and categorical variable</a></li>
+<li class="chapter" data-level="5.3.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#eda-2-quantis"><i class="fa fa-check"></i><b>5.3.3</b> Two quantitative variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#adding-infromation-from-additional-variables"><i class="fa fa-check"></i><b>5.4</b> Adding infromation from additional variables</a></li>
+<li class="chapter" data-level="5.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#graphic-refinement"><i class="fa fa-check"></i><b>5.5</b> Graphic refinement</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i><b>6</b> Statistical inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistical-inference.html"><a href="statistical-inference.html#population-and-sample"><i class="fa fa-check"></i><b>6.1</b> Population and sample</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-inference.html"><a href="statistical-inference.html#inference-problems"><i class="fa fa-check"></i><b>6.2</b> Inference problems</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-inference.html"><a href="statistical-inference.html#probability-distributions"><i class="fa fa-check"></i><b>6.3</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="statistical-inference.html"><a href="statistical-inference.html#the-normal-distribution"><i class="fa fa-check"></i><b>6.3.1</b> The normal distribution</a></li>
+<li class="chapter" data-level="6.3.2" data-path="statistical-inference.html"><a href="statistical-inference.html#the-chi-squared-distribution"><i class="fa fa-check"></i><b>6.3.2</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.3.3" data-path="statistical-inference.html"><a href="statistical-inference.html#the-students-t-distribution"><i class="fa fa-check"></i><b>6.3.3</b> The Student’s <em>t</em> distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="statistical-inference.html"><a href="statistical-inference.html#random-samples"><i class="fa fa-check"></i><b>6.4</b> Random samples</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-inference.html"><a href="statistical-inference.html#example-data"><i class="fa fa-check"></i><b>6.5</b> Example data</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-inference.html"><a href="statistical-inference.html#estimation"><i class="fa fa-check"></i><b>6.6</b> Estimation</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-cis"><i class="fa fa-check"></i><b>6.7</b> Sample size and CI’s</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-inference.html"><a href="statistical-inference.html#significance-tests"><i class="fa fa-check"></i><b>6.8</b> Significance tests</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-p-values"><i class="fa fa-check"></i><b>6.9</b> Sample size and <em>p</em> values</a></li>
+<li class="chapter" data-level="6.10" data-path="statistical-inference.html"><a href="statistical-inference.html#types-of-tests"><i class="fa fa-check"></i><b>6.10</b> Types of tests</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html"><i class="fa fa-check"></i><b>7</b> Analysis of categorical data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#one-sample-tests"><i class="fa fa-check"></i><b>7.1</b> One-sample tests</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#chi-square-goodness-of-fit-gof-test"><i class="fa fa-check"></i><b>7.1.1</b> Chi-square goodness-of-fit (GOF) test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#categ-is"><i class="fa fa-check"></i><b>7.2</b> Independent samples</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#association-measures"><i class="fa fa-check"></i><b>7.2.1</b> Association measures</a></li>
+<li class="chapter" data-level="7.2.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#two-sample-test-for-proportions"><i class="fa fa-check"></i><b>7.2.2</b> Two-sample test for proportions</a></li>
+<li class="chapter" data-level="7.2.3" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#chi-square-independence-test"><i class="fa fa-check"></i><b>7.2.3</b> Chi-square independence test</a></li>
+<li class="chapter" data-level="7.2.4" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#fishers-exact-test"><i class="fa fa-check"></i><b>7.2.4</b> Fisher’s exact test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#paired-samples"><i class="fa fa-check"></i><b>7.3</b> Paired samples</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#mcnemars-test"><i class="fa fa-check"></i><b>7.3.1</b> McNemar’s test</a></li>
+<li class="chapter" data-level="7.3.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#cohens-kappa"><i class="fa fa-check"></i><b>7.3.2</b> Cohen’s kappa</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html"><i class="fa fa-check"></i><b>8</b> Analysis of quantitative data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#one-sample-tests-1"><i class="fa fa-check"></i><b>8.1</b> One sample tests</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#one-sample-t-test"><i class="fa fa-check"></i><b>8.1.1</b> One-sample t-test</a></li>
+<li class="chapter" data-level="8.1.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#bootstrap1s"><i class="fa fa-check"></i><b>8.1.2</b> Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#quanti-is"><i class="fa fa-check"></i><b>8.2</b> Independent samples</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#t-test"><i class="fa fa-check"></i><b>8.2.1</b> Unpaired (or two-sample) t-test</a></li>
+<li class="chapter" data-level="8.2.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#welch-test"><i class="fa fa-check"></i><b>8.2.2</b> Welch test</a></li>
+<li class="chapter" data-level="8.2.3" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#wicoxons-rank-sum-test-mann-whiteys-test"><i class="fa fa-check"></i><b>8.2.3</b> Wicoxon’s rank sum test/ Mann-Whitey’s test</a></li>
+<li class="chapter" data-level="8.2.4" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#bootstrap"><i class="fa fa-check"></i><b>8.2.4</b> Bootstrap</a></li>
+<li class="chapter" data-level="8.2.5" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#assessment-of-normality"><i class="fa fa-check"></i><b>8.2.5</b> Assessment of normality</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#paired-samples-1"><i class="fa fa-check"></i><b>8.3</b> Paired samples</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#paired-or-one-sample-t-test"><i class="fa fa-check"></i><b>8.3.1</b> Paired (or one-sample) t-test</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#wilcoxons-signed-ranks-test"><i class="fa fa-check"></i><b>8.3.2</b> Wilcoxon’s signed ranks test</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#bootstrap-1"><i class="fa fa-check"></i><b>8.3.3</b> Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#one-sided-alternatives"><i class="fa fa-check"></i><b>8.4</b> One-sided alternatives</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="assessing-relations.html"><a href="assessing-relations.html"><i class="fa fa-check"></i><b>9</b> Assessing relations</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="assessing-relations.html"><a href="assessing-relations.html#independence-vs-relationship"><i class="fa fa-check"></i><b>9.1</b> Independence vs relationship</a></li>
+<li class="chapter" data-level="9.2" data-path="assessing-relations.html"><a href="assessing-relations.html#relation-between-two-quantitative-variables"><i class="fa fa-check"></i><b>9.2</b> Relation between two quantitative variables</a></li>
+<li class="chapter" data-level="9.3" data-path="assessing-relations.html"><a href="assessing-relations.html#measures-of-linear-relation"><i class="fa fa-check"></i><b>9.3</b> Measures of linear relation</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="assessing-relations.html"><a href="assessing-relations.html#covariance"><i class="fa fa-check"></i><b>9.3.1</b> Covariance</a></li>
+<li class="chapter" data-level="9.3.2" data-path="assessing-relations.html"><a href="assessing-relations.html#pearsons-correlation"><i class="fa fa-check"></i><b>9.3.2</b> Pearson’s correlation</a></li>
+<li class="chapter" data-level="9.3.3" data-path="assessing-relations.html"><a href="assessing-relations.html#spearmans-correlation"><i class="fa fa-check"></i><b>9.3.3</b> Spearman’s correlation</a></li>
+<li class="chapter" data-level="9.3.4" data-path="assessing-relations.html"><a href="assessing-relations.html#pearsons-vs-spearmans-correlation"><i class="fa fa-check"></i><b>9.3.4</b> Pearson’s vs Spearman’s correlation</a></li>
+<li class="chapter" data-level="9.3.5" data-path="assessing-relations.html"><a href="assessing-relations.html#cor-test"><i class="fa fa-check"></i><b>9.3.5</b> Tests on correlation coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="assessing-relations.html"><a href="assessing-relations.html#linear-regression"><i class="fa fa-check"></i><b>9.4</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="assessing-relations.html"><a href="assessing-relations.html#straight-lines"><i class="fa fa-check"></i><b>9.4.1</b> Straight lines</a></li>
+<li class="chapter" data-level="9.4.2" data-path="assessing-relations.html"><a href="assessing-relations.html#regression-line"><i class="fa fa-check"></i><b>9.4.2</b> Regression line</a></li>
+<li class="chapter" data-level="9.4.3" data-path="assessing-relations.html"><a href="assessing-relations.html#predicted-values-and-residuals"><i class="fa fa-check"></i><b>9.4.3</b> Predicted values and residuals</a></li>
+<li class="chapter" data-level="9.4.4" data-path="assessing-relations.html"><a href="assessing-relations.html#inference-on-regression-line-parameters"><i class="fa fa-check"></i><b>9.4.4</b> Inference on regression line parameters</a></li>
+<li class="chapter" data-level="9.4.5" data-path="assessing-relations.html"><a href="assessing-relations.html#assumptions-and-regression-diagnostics"><i class="fa fa-check"></i><b>9.4.5</b> Assumptions and regression diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assessing-relations.html"><a href="assessing-relations.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="assessing-relations.html"><a href="assessing-relations.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis for Clinical Researchers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="assessing-relations" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> Assessing relations<a href="assessing-relations.html#assessing-relations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Assessing relations between variables is commonplace in every area of research. It is important to start clarifying that the word <em>relation</em> may refer to different <em>types</em> of relation. For instance, in mathematics, it is often used to refer to <em>functional</em> relations, as in <span class="math inline">\(y = f(x)\)</span>, meaning that <span class="math inline">\(y\)</span> is <em>a function</em> of <span class="math inline">\(x\)</span>, so that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are functionally related. In statistics however, when we say that two variables are related, or associated, we mean that there is a <em>probabilistic</em> relation between them, as opposed to <em>independence</em>.</p>
+<div id="independence-vs-relationship" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Independence vs relationship<a href="assessing-relations.html#independence-vs-relationship" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Two variables <em>X</em> and <em>Y</em> are said to be <em>independent</em> when the probability of one of them (say, <em>Y</em>) taking certain values is the same for all values of the other (<em>X</em>). More formally,</p>
+<p><span class="math display">\[Pr(Y|X) = Pr(Y) \qquad \text{for all values of} \: Y \text{and} \: X\]</span></p>
+<p>The previous expression states that, the <em>conditional probability</em> of variable <em>Y</em> <em>given variable X</em> (that is, when <em>X</em> takes some particular value), equals the <em>unconditional probability</em> of <em>Y</em>. This implies that the conditional probability <span class="math inline">\(Pr(Y|X)\)</span> is the same for all possible values of <em>X</em>.</p>
+<p>Conversely, two variables are said to be <em>probabilistically related</em> or <em>associated</em>, when the previous expression does not hold, that is, when <span class="math display">\[Pr(Y|X) \ne Pr(Y) \qquad \text{for some values of} \: Y \text{and} \: X\]</span></p>
+<p>Let’s clarify this with graphical examples. In figure <a href="assessing-relations.html#fig:9-independence">9.1</a> we show three graphics displaying the distribution of variable <em>Y</em> (vertical axis) according to the value of variable <em>X</em> (horizontal axis). The difference between the three graphics is the type of the variables involved:</p>
+<ul>
+<li><p>In graphic A, both variables are categorical</p></li>
+<li><p>In graphic B, <em>Y</em> is quantitative and <em>X</em> is categorical</p></li>
+<li><p>In graphic C, both variables are quantitative</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-independence"></span>
+<img src="_main_files/figure-html/9-independence-1.png" alt="Independence patterns" width="672" />
+<p class="caption">
+Figure 9.1: Independence patterns
+</p>
+</div>
+<p><br />
+</p>
+<p>In all three graphics, we see that the distribution of <em>Y</em> is the same for all possible <em>X</em> values. In this case, we say that <em>X</em> and <em>Y</em> are independent, because the distribution of <em>Y</em> does not change depending on <em>X</em>. Note that if we had plotted the <em>unconditional</em> distribution of <em>Y</em> (that is, the overall distribution of <em>Y</em> in all cases, no matter what the value of <em>X</em>), the shape of the distribution would have been the same we see for each and all <em>X</em> values.</p>
+<p>Conversely, in figure <a href="assessing-relations.html#fig:9-association">9.2</a> the distribution of <em>Y</em> <em>is not the same</em> for all values of <em>X</em>. In these case, we say that variables <em>X</em> and <em>Y</em> are (probabilistically) related, because the probability of <span class="math inline">\(Y\)</span> taking certain values, depends on the value of <span class="math inline">\(X\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-association"></span>
+<img src="_main_files/figure-html/9-association-1.png" alt="Non-independence or association patterns" width="672" />
+<p class="caption">
+Figure 9.2: Non-independence or association patterns
+</p>
+</div>
+<p><br />
+</p>
+<p>It is important to understand that independence is a very specific situation (when <em>nothing</em> in the distribution of <em>Y</em> changes with <em>X</em>), while association is just <em>anything</em> different from independence, and there are many different possibilities. First, there are different possible <em>forms</em> of relationship. For instance, the boxplots in figure <a href="assessing-relations.html#fig:9-association">9.2</a> show an increase from A to B, and then a decrease from B to C, but other forms are possible, such as a progressive increase from A to B, and from B to C. In addition, relations can have different <em>strength</em>, (being strong, moderate or weak), depending on <em>how different</em> the distributions of <em>Y</em> are for different <em>X</em> values (e.g., the relative shifts in location of A, B and C could have been greater than they are in figure <a href="assessing-relations.html#fig:9-association">9.2</a>).</p>
+<p>The methods used to assess relations depend on the type of variables involved, and the three possible scenarios represented in figures <a href="assessing-relations.html#fig:9-independence">9.1</a> and <a href="assessing-relations.html#fig:9-association">9.2</a> need to be considered. In previous chapters we have covered methods for the first two scenarios:</p>
+<ul>
+<li><p>Assessing the relation between two categorical variables is no different from comparing the distribution of a categorical variable across the levels of another categorical variable. This is what we did in section <a href="analysis-of-categorical-data.html#categ-is">7.2</a> when we studied the relation between birthweight (categorized as <code>low</code>or <code>normal</code>) and smoking during pregnancy, using both tests (chi-square and Fisher’s tests) and association measures (RD, RR, and OR).</p></li>
+<li><p>Assessing the relationship between a quantitative and a categorical variable is no different from comparing the distribution of the quantitative variable among groups defined by the categorical variable, and this was addressed in section <a href="analysis-of-quantitative-data.html#quanti-is">8.2</a>, when we studied the relation between birthweights (in grams) and smoking during pregnancy, using tests (standard and Welch t-tests, and bootstrap t-test) and association or effect measures (mean difference and Cohen’s d effect size).</p></li>
+</ul>
+<p>We are left with the third scenario we address in this chapter. To illustrate the relevant methods, we will use <a href="data/anthropometric_measures.txt">this dataset</a> containing anthropometric measures in 248 adult men. The script below reads the data file and prints the first six lines:</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="assessing-relations.html#cb323-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/anthropometric_measures.txt&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb323-2"><a href="assessing-relations.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code>  Age Weight Height Thorax Waist Wrist Biceps Thigh Knee Ankle
+1  23   70.0    172   93.1  85.2  17.1   32.0  59.0 37.3  21.9
+2  22   78.6    184   93.6  83.0  18.2   30.5  58.7 37.3  23.4
+3  22   69.9    168   95.8  87.9  16.6   28.8  59.6 38.9  24.0
+4  26   83.8    184  101.8  86.4  18.2   32.4  60.1 37.3  22.8
+5  24   83.6    181   97.3 100.0  17.7   32.2  63.2 42.2  24.0
+6  24   95.4    190  104.5  94.4  18.8   35.7  66.0 42.0  25.6</code></pre>
+</div>
+<div id="relation-between-two-quantitative-variables" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Relation between two quantitative variables<a href="assessing-relations.html#relation-between-two-quantitative-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The inspection of a scatterplot should be the first step to investigate the relation between two quantitative variables. A scatterplot can depict a wide variety of patterns characterizing different <em>types</em> of relation. Figure <a href="assessing-relations.html#fig:9-scatter-patterns">9.3</a> illustrates some characteristic patterns/types of relation you should be able to recognize.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-scatter-patterns"></span>
+<img src="images/9-scatter-patterns.PNG" alt="Important patterns in scatterplots" width="60%" />
+<p class="caption">
+Figure 9.3: Important patterns in scatterplots
+</p>
+</div>
+<p><br />
+</p>
+<p>Independence may look like a ball, a horizontal band, or a horizontal ellipse. Everything else is a relation pattern. The simplest and most common type of relation is the linear relation. Linear relations appear as bands or ellipses with their main axis having a non-null slope. Ellipses don`t need to be very slim for a relation to be linear. What characterizes a linear relation is that the slope (the rate of change in Y as X increases) is constant, and this may happen as well when bands or ellipses are pretty thick. When the slope is not constant the relation is non-linear, and can be either <em>monotonic</em> or <em>non-monotonic</em>. A monotonic relation is either non-decreasing (increasing or flat) or non-increasing (decreasing or flat). Last, non-monotonic relations have <em>turning points</em>: an increasing phase is followed by a decreasing (after reaching a <em>maximum</em>), or viceversa (after reaching a <em>minimum</em>).</p>
+<p>Aside from the <em>type</em> of relation, its <em>strength</em> is important as well. For instance, consider the scatterplots of the thorax and waist, and the biceps and wrist circumferences shown in figure <a href="assessing-relations.html#fig:9-strength">9.4</a>. In both cases, a direct linear relation is apparent, but they differ in strength. Graphically, the strength of a linear relation has to do with both the thickness of the band or ellipse, and the slope of its main axis.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-strength"></span>
+<img src="_main_files/figure-html/9-strength-1.png" alt="Two direct, linear relations differing in strength" width="672" />
+<p class="caption">
+Figure 9.4: Two direct, linear relations differing in strength
+</p>
+</div>
+<p><br />
+</p>
+<p>In cases such as those in figure <a href="assessing-relations.html#fig:9-strength">9.4</a> it is easy to decide which of the two relations is stronger, but in other cases it may be more difficult, and measures of linear relation may help.</p>
+</div>
+<div id="measures-of-linear-relation" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Measures of linear relation<a href="assessing-relations.html#measures-of-linear-relation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="covariance" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Covariance<a href="assessing-relations.html#covariance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <em>Covariance</em> of two quantitative variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a measure of their linear relation. The sample covariance is computed as:</p>
+<p><span class="math display">\[Cov(X,Y) = \frac{1}{(n-1)} \sum{(X - \bar{X}) (Y - \bar{Y})}\]</span></p>
+<p>where the sum is taken over all <span class="math inline">\(n\)</span> observations.</p>
+<p>Despite we divide by <span class="math inline">\(n-1\)</span> (instead of <span class="math inline">\(n\)</span>), covariance is conceptualized as the average of the products of the differences <span class="math inline">\((X - \bar{X})\)</span> and <span class="math inline">\((Y - \bar{Y})\)</span>, computed for all observations. To understand why this is a measure of linear relation, consider the scatterplot of thorax (<span class="math inline">\(Y\)</span>) and waist (<span class="math inline">\(X\)</span>) circumferences shown in figure <a href="assessing-relations.html#fig:9-cov-compute">9.5</a> (left), where the means of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are indicated by a vertical and a horizontal line respectively. These lines define four quadrants. An observation is highlighted in the upper-right quadrant, and the differences, <span class="math inline">\((X-\bar{X})\)</span> and <span class="math inline">\((Y-\bar{Y})\)</span> are represented by dashed line segments. Because both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> values for this observation are <em>above</em> the corresponding means, the differences <span class="math inline">\((X-\bar{X})\)</span> and <span class="math inline">\((Y-\bar{Y})\)</span> are both positive, so that their product will be positive as well. In fact, this will be the case for <em>any observation in the upper-right quadrant</em>, since all have <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> values above their means. For observations in the lower-left quadrant, the differences <span class="math inline">\((X-\bar{X})\)</span> and <span class="math inline">\((Y-\bar{Y})\)</span> will be both negative, since they all have <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> values <em>below</em> their means, so that their product will be positive as well (the product of two negatives is positive). However, for observations in the remaining two quadrants, this will happen:</p>
+<ul>
+<li><p>Lower-right: <span class="math inline">\(X &gt; \bar{X}\)</span> and <span class="math inline">\(Y &lt; \bar{Y}\)</span>, so that <span class="math inline">\((X-\bar{X})\)</span> will be positive and <span class="math inline">\((Y-\bar{Y})\)</span> will be negative, or</p></li>
+<li><p>Upper-left: <span class="math inline">\(X &lt; \bar{X}\)</span> and <span class="math inline">\(Y &gt; \bar{Y}\)</span>, so that <span class="math inline">\((X-\bar{X})\)</span> will be negative and <span class="math inline">\((Y-\bar{Y})\)</span> will be positive.</p></li>
+</ul>
+<p>Therefore, for observations in these two quadrants the product <span class="math inline">\((X - \bar{X}) (Y - \bar{Y})\)</span> will be negative.</p>
+<p>In summary, the product of <span class="math inline">\((X - \bar{X}) (Y - \bar{Y})\)</span> will be positive for all observations in the upper-right and lower-left quadrants, and negative for all those in the upper-left and lower-right quadrants, as shown in figure <a href="assessing-relations.html#fig:9-cov-compute">9.5</a> (right), using colors.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-cov-compute"></span>
+<img src="_main_files/figure-html/9-cov-compute-1.png" alt="X and Y diferences with respect to their means (left) and sign of their product (right)" width="960" />
+<p class="caption">
+Figure 9.5: X and Y diferences with respect to their means (left) and sign of their product (right)
+</p>
+</div>
+<p><br />
+</p>
+<p>Once the products <span class="math inline">\((X - \bar{X}) (Y - \bar{Y})\)</span> have been computed for all observations, they are summed up, and the sum is divided by <span class="math inline">\((n-1)\)</span>. The result of the sum (and hence the covariance) will be either (see figure <a href="assessing-relations.html#fig:cov-cases">9.6</a>):</p>
+<ul>
+<li><p>zero (or close to zero), when the number of observations in positive and negative quadrants is balanced, since the positive and negative terms in the sum will cancel: this will happen in case of independence (figure <a href="assessing-relations.html#fig:cov-cases">9.6</a> C and F).</p></li>
+<li><p>positive, when observations predominate in positive quadrants, which will happen in case of direct relations (figure <a href="assessing-relations.html#fig:cov-cases">9.6</a> A and B).</p></li>
+<li><p>negative, when observations predominate in negative quadrants, which will be the case in inverse relations (figure <a href="assessing-relations.html#fig:cov-cases">9.6</a> D and E).</p></li>
+</ul>
+<p>In addition, the absolute value of the sum (and of the covariance) will be higher for stronger relations (figure <a href="assessing-relations.html#fig:cov-cases">9.6</a> A and D), than for mild relations (figure <a href="assessing-relations.html#fig:cov-cases">9.6</a> B and E), because in the former case the predominance of positive or negative quadrants will be overwhelming while in the later will be modest. In summary, the sign of the covariance will reflect the direction of the relation (positive for direct relations and negative for inverse relations), and its absolute value will increase as a relation is stronger.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cov-cases"></span>
+<img src="_main_files/figure-html/cov-cases-1.png" alt="Predominance of quadrants and covariance" width="672" />
+<p class="caption">
+Figure 9.6: Predominance of quadrants and covariance
+</p>
+</div>
+<p>The covariance can be computed with function <code>cov()</code> from the <code>mosaic</code> package (there is also a <code>cov()</code> function in base R, but it does not allow a formula as argument). For instance, the covariance of thorax and waist is:</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="assessing-relations.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb325-2"><a href="assessing-relations.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(Thorax <span class="sc">~</span> Waist, <span class="at">data=</span>d) <span class="sc">%&gt;%</span>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>[1] 83.04</code></pre>
+<p>and that of biceps and wrist, is:</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="assessing-relations.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(Biceps <span class="sc">~</span> Wrist, <span class="at">data=</span>d) <span class="sc">%&gt;%</span>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>[1] 1.81</code></pre>
+<p>The covariance has a limitation as a measure of linear relation, because it is affected by the units of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. For instance, the covariance of thorax and waist is 83.04 cm<sup>2</sup>, because both variables are expressed in centimeters. If we express them in meters instead, then the covariance is 0.01 m<sup>2</sup>. This makes the interpretation of the covariance difficult, because its absolute value not only depends on the strength of the relation, but on the units of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> as well.
+The so called <em>Pearson’s correlation coefficient</em> overcomes this problem.</p>
+</div>
+<div id="pearsons-correlation" class="section level3 hasAnchor" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> Pearson’s correlation<a href="assessing-relations.html#pearsons-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Pearson’s or <em>product-moment</em> correlation coefficient, is a <em>standardized</em> version of the covariance. The covariance is divided by the standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> (<span class="math inline">\(S_X\)</span> and <span class="math inline">\(S_Y\)</span>), so that the resulting quantity is dimensionless, and therefore does not depend on their measurement units:</p>
+<p><span class="math display">\[r_{(X,Y)} \quad = \quad \frac{Cov(X, Y)}{S_X \ S_Y}\]</span>.</p>
+<p>This measure can only take values in the -1 to +1 range. Because <span class="math inline">\(S_X\)</span> and <span class="math inline">\(S_Y\)</span> are always positive, the sign of <span class="math inline">\(r_{(X,Y)}\)</span> will be that of <span class="math inline">\(Cov(X, Y)\)</span>, and reflects the direction of the relation (direct when positive, and inverse when negative); and its absolute value reflects the strength of the linear relation: the higher the absolute value of <span class="math inline">\(r_{(X,Y)}\)</span>, the stronger the relation. Perfect linear relations are characterized by <span class="math inline">\(r = 1\)</span> or <span class="math inline">\(r = -1\)</span>.</p>
+<p>The Pearson’s correlation coefficient can be computed with function <code>cor()</code> from the <code>mosaic</code> package (there is also a <code>cor()</code> function in base R, but it does not allow formulas). For instance, the Pearson’s correlation of thorax and waist is:</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="assessing-relations.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb329-2"><a href="assessing-relations.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Thorax <span class="sc">~</span> Waist, <span class="at">data=</span>d) <span class="sc">%&gt;%</span>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>[1] 0.92</code></pre>
+<p>Quite a high value, reflecting a strong, positive relation. The correlation of biceps and wrist circumferences should be much lower, according to the scatterplot of figure <a href="assessing-relations.html#fig:9-strength">9.4</a> (right), and in fact it is:</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="assessing-relations.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Biceps <span class="sc">~</span> Wrist, <span class="at">data=</span>d)  <span class="sc">%&gt;%</span>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>[1] 0.64</code></pre>
+<p>Now lets look at the relation of age with weight and height. Figure <a href="assessing-relations.html#fig:9-awh">9.7</a> shows the scatterplots and the Pearson’s correlation coefficients:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-awh"></span>
+<img src="_main_files/figure-html/9-awh-1.png" alt="Pearson's correlations of age, with height (left) and with height (right)" width="672" />
+<p class="caption">
+Figure 9.7: Pearson’s correlations of age, with height (left) and with height (right)
+</p>
+</div>
+<p>In figure <a href="assessing-relations.html#fig:9-awh">9.7</a> (left) age and weight show an independence pattern in the form of a horizontal band (and an outlier with weight &gt; 150 kg), and the Pearson’s r is very close to zero. In the case of age and height (right), a weak inverse relation is suggested, with a negative (and small) value of Pearson’s r.</p>
+</div>
+<div id="spearmans-correlation" class="section level3 hasAnchor" number="9.3.3">
+<h3><span class="header-section-number">9.3.3</span> Spearman’s correlation<a href="assessing-relations.html#spearmans-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Pearson’s correlation coefficient is not just a measure of relation, but a measure of <em>linear</em> relation, and therefore should not be used when non-linearity is apparent in a scatterplot. In addition, it can be affected by influential outliers.</p>
+<p>In case of outliers, or non-linear but monotonic relations, the Spearman’s correlation coefficient is more appropriate. This is just the Pearson’s correlation coefficient computed with the <a href="https://en.wikipedia.org/wiki/Ranking#Ranking_in_statistics">ranks</a> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p>The Spearman’s correlation coefficient can be computed with the same <code>cor()</code> function, specifying the <code>method = "spearman"</code>argument. For illustration purposes, let’s compute it for height and age:</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="assessing-relations.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Height <span class="sc">~</span> Age, <span class="at">data=</span>d, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>[1] -0.23</code></pre>
+<p>In this case, the value of the Spearman’s and the Pearson’s correlations coefficients are very similar. But let’s see what happens in case of influential outliers, such as those appearing in the scatterplot of figure <a href="assessing-relations.html#fig:9-outliers">9.8</a>. The two outliers with an ankle circumference higher than 30 cm impair the Pearson’s correlation coefficient, but do not affect the Spearman’s correlation coefficient (since it is based on ranks).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-outliers"></span>
+<img src="_main_files/figure-html/9-outliers-1.png" alt="Knee and ankle circumferences" width="384" />
+<p class="caption">
+Figure 9.8: Knee and ankle circumferences
+</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="pearsons-vs-spearmans-correlation" class="section level3 hasAnchor" number="9.3.4">
+<h3><span class="header-section-number">9.3.4</span> Pearson’s vs Spearman’s correlation<a href="assessing-relations.html#pearsons-vs-spearmans-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="assessing-relations.html#fig:9-perfect">9.9</a> shows the Pearson’s and Spearman’s correlations coefficients in four scenarios of perfect relations:</p>
+<ul>
+<li><p>In a perfect linear relation (figure <a href="assessing-relations.html#fig:9-perfect">9.9</a> A), both coefficients are 1 (if the relation is direct) or -1 (if inverse).</p></li>
+<li><p>In a non-linear, but still monotonic relation (figure <a href="assessing-relations.html#fig:9-perfect">9.9</a> B), the Pearsons’s r is no longer 1 (or -1), so that it does not reflect the fact that the relation is perfect; however, the Spearman’s correlation remains 1 (or -1).</p></li>
+<li><p>In a perfect but non-monotonic relation (figure <a href="assessing-relations.html#fig:9-perfect">9.9</a> C), none of the correlation coefficients reflects a perfect relation. In fact, they do not reflect a relation at all, since they are both equal to zero.</p></li>
+<li><p>Outliers can greatly distort Pearson’s correlations. In figure <a href="assessing-relations.html#fig:9-perfect">9.9</a> D, the relation is perfectly linear (but for the outlier) and the Pearson’s correlation is zero, but the opposite might happen as well (i.e, an outlier could produce a non-zero value of the Pearson’s correlation coefficient in case of independence).</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-perfect"></span>
+<img src="_main_files/figure-html/9-perfect-1.png" alt="Pearson's vs Spearman's correlation coefficients" width="672" />
+<p class="caption">
+Figure 9.9: Pearson’s vs Spearman’s correlation coefficients
+</p>
+</div>
+<p>From the previous, you can take away the following algorithm to decide which correlation measure to compute in any particular case.</p>
+<ol style="list-style-type: decimal">
+<li><p><em>Always</em> inspect a scatterplot before computing any correlation coefficient. Then:</p></li>
+<li><p>If the relation is linear and there are no influential outliers, compute the Pearson’s correlation.</p></li>
+<li><p>If the relation is non-linear but still monotonic, or there are influential outliers, compute the Spearman’s correlation.</p></li>
+<li><p>If the relation is non-monotonic, compute neither of them: it makes little sense to compute a measure of linear relation when the relation is not even monotonic.</p></li>
+</ol>
+</div>
+<div id="cor-test" class="section level3 hasAnchor" number="9.3.5">
+<h3><span class="header-section-number">9.3.5</span> Tests on correlation coefficients<a href="assessing-relations.html#cor-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In some cases, we may be interested in testing whether or not two variables are linearly independent. For instance, consider the case of height and age in figure <a href="assessing-relations.html#fig:9-awh">9.7</a> (right). The low <span class="math inline">\(r\)</span> value suggests a mild correlation, but could this be a chance finding due to random sampling variation?</p>
+<p>A test on the population correlation coefficient, denoted by the Greek letter rho (<span class="math inline">\(\rho\)</span>) can be conducted with the following hypotheses:</p>
+<center>
+<p><span class="math inline">\(H_0: \qquad \rho = 0\)</span></p>
+<span class="math inline">\(H_1: \qquad \rho \ne 0\)</span>
+</center>
+<p><br />
+</p>
+<p>The null hypothesis represents linear independence in the population, while the alternative hypothesis implies some degree of linear relation. If the two variables follow a bivariate normal distribution (see comment at the end of this section), it can be shown that, when <span class="math inline">\(H_0\)</span> is true, the statistic</p>
+<p><span class="math display">\[ t = \frac{r \ \sqrt{n-2}}{\sqrt{1-r^2}}\]</span></p>
+<p>follows a t-distribution with <span class="math inline">\(n-2\)</span> degrees of freedom, and this is used to compute the p-value for the test.</p>
+<p>The scatterplot of height and age of figure <a href="assessing-relations.html#fig:9-awh">9.7</a> (right) makes it difficult to judge whether or not these two variables are related, and this test may be useful in case of doubt. The test can be produced with function <code>cor.test()</code>:</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="assessing-relations.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(Height <span class="sc">~</span> Age, <span class="at">data=</span>d) </span></code></pre></div>
+<pre><code>
+    Pearson&#39;s product-moment correlation
+
+data:  Height and Age
+t = -4.052, df = 246, p-value = 6.813e-05
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.3633794 -0.1296058
+sample estimates:
+       cor 
+-0.2501346 </code></pre>
+<p>The output shows the value of the t statistic, which is quite different from 0 (<code>t = -4.052</code>), and the associated p-value, which is very small (<code>p &lt; 0.001</code>). This implies there is evidence against the null hypothesis of linear independence. The value of the Pearson’s correlation is provided at the end (<code>cor = -0.25</code>) and its 95% CI immediately above (<code>-0.36 to -0.13</code>). From this results we can conclude that there is a mild inverse relation between height and age.</p>
+<p>Strictly, this test is only valid when the two variables follow a bivariate normal distribution. However, this condition is not easy to verify, and the test is robust against violations of this assumption if the sample size is not too small. In practice, non-linearity and outliers are the most frequent threat, and these are clearly seen in a scatterplot.</p>
+<p>In case of outliers or non-linear but still monotonic relations, a similar test can be conducted on the Spearman’s correlation coefficient, using function <code>cor.test()</code> with argument <code>method = "spearman"</code>. For instance, for the knee and ankle relation in figure <a href="assessing-relations.html#fig:9-outliers">9.8</a>, this will produce the linear test on the population Spearman’s correlation:</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="assessing-relations.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(Knee <span class="sc">~</span> Ankle, <span class="at">data=</span>d, <span class="at">method=</span><span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
+<pre><code>
+    Spearman&#39;s rank correlation rho
+
+data:  Knee and Ankle
+S = 697554, p-value &lt; 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.7256017 </code></pre>
+<p>The small p-value provides evidence of that knee and ankle circumferences are not linearly independent, and an estimate of the Spearman’s correlation coefficient and corresponding 95% CI is provided.</p>
+</div>
+</div>
+<div id="linear-regression" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Linear regression<a href="assessing-relations.html#linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When two variables are linearly related, we may want to know what is the line that best represents the relation, which is called <em>regression line</em>. This may be useful for predictions, or just to characterize and describe the relation in a simple way. Because the regression line is a stright line, we will start by reviewing some basic concepts concerning straight lines.</p>
+<div id="straight-lines" class="section level3 hasAnchor" number="9.4.1">
+<h3><span class="header-section-number">9.4.1</span> Straight lines<a href="assessing-relations.html#straight-lines" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The general equation of a straight line is of the form</p>
+<p><span class="math display">\[Y = \alpha + \beta X\]</span></p>
+<p>where <span class="math inline">\(Y\)</span> is the <em>dependent</em> or <em>predicted</em> variable, <span class="math inline">\(X\)</span> is the <em>independent</em> or predictor variable, and <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are the the <em>intercept</em> and <em>the slope</em> respectively. The intercept and the slope are collectively known as the <em>parameters</em> of the straight line.</p>
+<p>There is an infinite number of straight lines, but the parameters of a straight line define <em>a particular</em> line. For instance, <span class="math inline">\(Y = 1 + 2X\)</span> and <span class="math inline">\(Y = - 3X\)</span> are different lines, just because they have different parameter values: <span class="math inline">\(\alpha = 1\)</span> and <span class="math inline">\(\beta = 2\)</span> in the former, and <span class="math inline">\(\alpha = 0\)</span> and <span class="math inline">\(\beta = -3\)</span> in the later.</p>
+<p>The parameters of a line reflect two important characteristics:</p>
+<ul>
+<li><p>The intercept (<span class="math inline">\(\alpha\)</span>) is the <span class="math inline">\(Y\)</span> value you get when <span class="math inline">\(X=0\)</span>, since <span class="math inline">\(Y = \alpha + \beta \ 0 = \alpha\)</span>; graphically, it is where the line intersects the vertical axis (and hence its name).</p></li>
+<li><p>The slope (<span class="math inline">\(\beta = 2\)</span>) is the <em>rate of change</em> in <span class="math inline">\(Y\)</span> <em>per unit change</em> in <span class="math inline">\(X\)</span>; if positive, <span class="math inline">\(Y\)</span> grows with <span class="math inline">\(X\)</span>; and if negative, <span class="math inline">\(Y\)</span> decreases as <span class="math inline">\(X\)</span> increases.</p></li>
+</ul>
+<p>If you want to review more basic concepts of straight lines, look <a href="https://www.mathsisfun.com/equation_of_line.html">here</a> (and beware they denote the slope <strong>m</strong>, and the intercept <strong>b</strong>).</p>
+</div>
+<div id="regression-line" class="section level3 hasAnchor" number="9.4.2">
+<h3><span class="header-section-number">9.4.2</span> Regression line<a href="assessing-relations.html#regression-line" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A common belief is that men grow their bellies as they age. Figure <a href="assessing-relations.html#fig:9-age-waist">9.10</a> shows a scatterplot of the waist circumference and age. A mild, linear relation is suggested: the waist values seem to increase slightly with age.</p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="assessing-relations.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(Waist <span class="sc">~</span> Age, <span class="at">data =</span> d, <span class="at">col =</span> <span class="st">&quot;DarkGray&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb339-2"><a href="assessing-relations.html#cb339-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">theme_bw</span>())</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-age-waist"></span>
+<img src="_main_files/figure-html/9-age-waist-1.png" alt="Age and waist circumferece" width="576" />
+<p class="caption">
+Figure 9.10: Age and waist circumferece
+</p>
+</div>
+<p><br />
+</p>
+<p>Suppose we want to know what is the best line to represent this relation. To find it, we should clarify what we mean by <em>best</em>. A common criterion is to minimize the overall prediction errors, that is, the differences between observed <span class="math inline">\(Y\)</span> values and those predicted by the line. The line that minimizes the overall prediction error is called <em>minimum-squares</em> regression line (or simply, regression line), and it can be shown that this is the line having the following intercept and slope, estimated from sample data:</p>
+<p><span class="math display">\[\text{Slope:} \qquad b \quad = \quad \frac{Cov(X,Y)}{S^2_X} \qquad \qquad \qquad \qquad \qquad \text{Intercept:} \qquad a \quad = \quad \bar{Y} - b \bar{X}\]</span></p>
+<p>where <span class="math inline">\(Cov(X,Y)\)</span> is the sample covariance of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(S^2_X\)</span> is the sample variance of <span class="math inline">\(X\)</span>, and <span class="math inline">\(\bar{Y}\)</span> and <span class="math inline">\(\bar{X}\)</span> are the sample means of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p>The regression line for the scatterplot above can be obtained with function <code>lm()</code> (standing for <em>linear model</em>):</p>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="assessing-relations.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Waist <span class="sc">~</span> Age, <span class="at">data =</span> d)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = Waist ~ Age, data = d)
+
+Coefficients:
+(Intercept)          Age  
+    83.6010       0.2003  </code></pre>
+<p>The output shows the sample estimates of the regression line parameters under <code>Coefficients</code>: the intercept is 83.6, and the slope is 0.2 (both rounded to the first decimal). This means that the equation of the regression line is <span class="math inline">\(Y = 83.6 + 0.2 \ X\)</span>.</p>
+<p>To overlay the estimated regression line on the scatterplot, we use function <code>gf_smooth()</code> with argument <code>stat = "lm"</code>, as shown below:</p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="assessing-relations.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(Waist <span class="sc">~</span> Age, <span class="at">data =</span> d, <span class="at">col =</span> <span class="st">&quot;DarkGray&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb342-2"><a href="assessing-relations.html#cb342-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_smooth</span>(<span class="at">stat =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb342-3"><a href="assessing-relations.html#cb342-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">theme_bw</span>())</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-scatter-with-line"></span>
+<img src="_main_files/figure-html/9-scatter-with-line-1.png" alt="Regression of waist on age" width="576" />
+<p class="caption">
+Figure 9.11: Regression of waist on age
+</p>
+</div>
+<p>It is important to remember that the regression line we just computed from sample data <em>is an estimate</em> of the population line. You can think of the population line as the line we would get if we had data for the whole population. As always, it is common to use Greek letters to denote population parameters and latin letters to denote their corresponding sample estimates:</p>
+<p><span class="math display">\[\text{Population line:} \qquad \alpha + \beta \ X\]</span>
+<span class="math display">\[\text{Estimated line:} \qquad a + b \ X\]</span></p>
+</div>
+<div id="predicted-values-and-residuals" class="section level3 hasAnchor" number="9.4.3">
+<h3><span class="header-section-number">9.4.3</span> Predicted values and residuals<a href="assessing-relations.html#predicted-values-and-residuals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Regression equations can be used for predictions of <span class="math inline">\(Y\)</span> <em>given an</em> <span class="math inline">\(X\)</span> <em>value</em>. For instance, for 65 years men, the line <em>predicts</em> a waist circumference value of 83.6 + 0.2 x 65 = 96.6 cm. The predictions provided by a regression equation, sometimes called <em>fitted values</em>, are interpreted as an estimate of the <em>mean</em> of <span class="math inline">\(Y\)</span> <em>given</em> <span class="math inline">\(X\)</span>. This is often expressed as:</p>
+<p><span class="math display">\[\widehat{Y} = a + b \ X\]</span></p>
+<p>where <span class="math inline">\(\widehat{Y}\)</span> denotes the value predicted from <span class="math inline">\(X\)</span>.</p>
+<p>Hence, 96.6 cm is interpreted as the estimated mean of the waist circumference values for men being 65 year old. However, the values of waist circumference actually observed scatter around this predicted value. For any individual, the difference between his actual value of waist circumference and the value predicted by the regression line is called <em>residual</em>, and is usually denoted by <span class="math inline">\(e\)</span>:</p>
+<p><span class="math display">\[e = Y - \widehat{Y}\]</span></p>
+<p>Therefore the observed value can be expressed as the sum of the value predicted by the regression line and the residual value:</p>
+<p><span class="math display">\[Y \quad = \quad \widehat{Y} + e \quad = \quad a + b \ X + e\]</span></p>
+<p>Figure <a href="assessing-relations.html#fig:9-obs-pred-res-plot">9.12</a> illustrates the concepts of observed, predicted and residual values. A selected case having age = 65 has been highlighted (black dot). His observed value of waist (pointed by the black arrow) is 118 cm. However, the value predicted by the regression line (pointed by blue arrow) is lower than 100. The <em>vertical distance</em> from the observed point to the regression line (red dashed line) is the absolute value of the residual. The sign of the residual will be positive, since <span class="math inline">\(Y &gt; \widehat{Y}\)</span>, and this will be the case for any point above the regression line. Conversely, all points below the line will have a negative residual, since <span class="math inline">\(Y &lt; \widehat{Y}\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-obs-pred-res-plot"></span>
+<img src="_main_files/figure-html/9-obs-pred-res-plot-1.png" alt="Observed (black arrow), predicted (blue arrow), and residual (red dashed line) values" width="576" />
+<p class="caption">
+Figure 9.12: Observed (black arrow), predicted (blue arrow), and residual (red dashed line) values
+</p>
+</div>
+<p><br />
+</p>
+<p>Predicted and residual values can be easily obtained for all observations in the sample with functions of the same name. These functions need to be passed the result of <code>lm()</code> as argument. The following script prints predicted and residuals values for the first six cases in <code>d</code>:</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="assessing-relations.html#cb343-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Waist <span class="sc">~</span> Age, <span class="at">data =</span> d)</span>
+<span id="cb343-2"><a href="assessing-relations.html#cb343-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit) <span class="sc">%&gt;%</span> <span class="fu">head</span>()       <span class="co"># predicted values</span></span></code></pre></div>
+<pre><code>       1        2        3        4        5        6 
+88.20813 88.00782 88.00782 88.80907 88.40845 88.40845 </code></pre>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="assessing-relations.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">resid</span>(fit) <span class="sc">%&gt;%</span> <span class="fu">head</span>()         <span class="co"># residuals </span></span></code></pre></div>
+<pre><code>         1          2          3          4          5          6 
+-3.0081340 -5.0078229 -0.1078229 -2.4090671 11.5915550  5.9915550 </code></pre>
+</div>
+<div id="inference-on-regression-line-parameters" class="section level3 hasAnchor" number="9.4.4">
+<h3><span class="header-section-number">9.4.4</span> Inference on regression line parameters<a href="assessing-relations.html#inference-on-regression-line-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Because the regression line obtained from sample data is an <em>estimate</em> of the regression line in the population, it is subject to sampling variation. Consequently, we may be interested in either computing a 95% CI for the parameters, or performing tests on them.</p>
+<p>The 95% CI for the parameters can be obtained with function <code>confint()</code> applied to the result of <code>lm()</code> (saved as <code>fit</code> in a previous script). Similarly, the point estimates can be obtained with function <code>coef()</code>:</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="assessing-relations.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fit) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">1</span>)         <span class="co"># point estimates</span></span></code></pre></div>
+<pre><code>(Intercept)         Age 
+       83.6         0.2 </code></pre>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="assessing-relations.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">1</span>)      <span class="co"># 95% CI</span></span></code></pre></div>
+<pre><code>            2.5 % 97.5 %
+(Intercept)  78.8   88.4
+Age           0.1    0.3</code></pre>
+<p> </p>
+<p>By combining the uncertainty in the estimation of the the intercept and the slope, a <em>confidence band</em> can be plotted around the regression line, using argument <code>se = TRUE</code> in <code>geom_smooth()</code>.</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="assessing-relations.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(Waist <span class="sc">~</span> Age, <span class="at">data =</span> d, <span class="at">col =</span> <span class="st">&quot;DarkGray&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb351-2"><a href="assessing-relations.html#cb351-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_smooth</span>(<span class="at">stat=</span><span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb351-3"><a href="assessing-relations.html#cb351-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">theme_bw</span>())</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-ci-band-plot"></span>
+<img src="_main_files/figure-html/9-ci-band-plot-1.png" alt="Regression line and 95% Confidence bands (gray area)" width="576" />
+<p class="caption">
+Figure 9.13: Regression line and 95% Confidence bands (gray area)
+</p>
+</div>
+<p><br />
+</p>
+<p>The gray shaded area is the confidence band, which is interpreted as the CI for each predicted value <span class="math inline">\(\widehat{Y}\)</span>. If predicted values are interpreted as estimates of the mean values of <span class="math inline">\(Y\)</span> given an <span class="math inline">\(X\)</span> value, the band shows the 95%CI for this mean, and it does it for all possible <span class="math inline">\(X\)</span> values.</p>
+<p>Tests on the regression parameters can be done with function <code>summary()</code> on the <code>fit</code> object returned by <code>lm()</code>:</p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="assessing-relations.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = Waist ~ Age, data = d)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-22.616  -6.916  -0.813   6.040  55.285 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 83.60098    2.46018  33.982  &lt; 2e-16 ***
+Age          0.20031    0.05284   3.791 0.000189 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 10.5 on 246 degrees of freedom
+Multiple R-squared:  0.05519,   Adjusted R-squared:  0.05135 
+F-statistic: 14.37 on 1 and 246 DF,  p-value: 0.000189</code></pre>
+<p><br />
+</p>
+<p>The output shows several results: the formula of the fit object summarized (<code>Call:</code>), a descriptive of the residuals (<code>Residuals</code>), estimates and tests for the parameters (<code>Coefficients</code>), and overall fit measures at the end of the output.</p>
+<p>The tests on the parameters, sometimes called <em>Wald tests</em>, correspond to the null hypotheses that they are zero, against a two-sided alternative, that is:</p>
+<ul>
+<li><p><span class="math inline">\(H_0: \quad \alpha = 0 \qquad and \qquad H_1: \quad \alpha \ne 0 \qquad\)</span> for the intercept, and</p></li>
+<li><p><span class="math inline">\(H_0: \quad \beta = 0 \qquad and \qquad H_1: \quad \beta \ne 0 \qquad\)</span> for the slope.</p></li>
+</ul>
+<p><br />
+</p>
+<p>In most applications, the test on the intercept is not particularly interesting. Conversely, the test on the slope is always important, since a slope of zero implies that <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are linearly independent. In fact, this test gives the same p-value as the linear independence test based the Pearson’s correlation coefficient of section <a href="assessing-relations.html#cor-test">9.3.5</a>. In this case, the p-value is very small in both tests, providing evidence that the regression parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are are non-null.</p>
+<p>Concerning the final part of the output:</p>
+<ul>
+<li><p>the <code>Residual standard error</code> of 10.5 is the standard deviation of the residuals. This provides a measure of how large are the residuals, on average. The lower this value, the better is the fit.</p></li>
+<li><p><code>Multiple R-squared</code>, usually denoted <code>R^2</code>, is the square of the Pearson’s correlation coefficient, and is a measure of the goodness of the fit: the higher the <code>R^2</code>value, the better the fit. In general, <code>R2</code> can take values from 0 (in case of independence) to 1 (in case of perfect linear relation). In this case, <code>R^2 = 0.06</code> (rounded to the second decimal) denotes a very bad fit. A useful interpretation of <code>R^2</code> is that it reflects the <em>proportion of the variance (variability) of</em> <span class="math inline">\(Y\)</span> <em>explained by</em> <span class="math inline">\(X\)</span>. In this case, only the 6% of the variance of the waist circumferences can be explained by age.</p></li>
+<li><p>The <code>Adjusted R-squared</code> value is a penalized version of <code>R^2</code> which is relevant for more complex models (models with more than one <span class="math inline">\(X\)</span> variable).</p></li>
+<li><p>The <code>F-statistic</code> and <code>p-value</code> in the last line of the output is a test on the overall model, which, in the case of a single <span class="math inline">\(X\)</span>-variable we are considering, gives the same result as the test for the slope of <span class="math inline">\(X\)</span>.</p></li>
+</ul>
+<p>In summary, there is evidence that the waist circumference increases with age (p &lt; 0.001), at an average rate of 0.2 cm per year (95% CI: 0.1 to 0.3). However, the relation is very weak since only 6% of the variability of the waist circumference values can be explained by age.</p>
+</div>
+<div id="assumptions-and-regression-diagnostics" class="section level3 hasAnchor" number="9.4.5">
+<h3><span class="header-section-number">9.4.5</span> Assumptions and regression diagnostics<a href="assessing-relations.html#assumptions-and-regression-diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The inferential methods in the previous section are based on the following assumptions:</p>
+<ol style="list-style-type: decimal">
+<li><p>The relation of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is linear.</p></li>
+<li><p>Observations are independent from each other.</p></li>
+<li><p>The prediction errors follow a normal distribution.</p></li>
+<li><p>For any given <span class="math inline">\(X\)</span> value, the prediction errors have the same variance; this is called <em>homoscedasticity</em> (when the variance of the errors changes as <span class="math inline">\(X\)</span> changes, it is called <em>heteroscedasticity</em>).</p></li>
+</ol>
+<p>The last two assumptions are often stated as <em>the residuals are normally distributed, with constant variance</em>, or <em>the residuals are normally distributed and homoscedastic</em>.</p>
+<p>These assumptions should be checked before relying on any inferential result in a regression analysis. The most basic, and often sufficient way to verify the assumptions, is by inspection of appropriate graphics, sometimes called <em>regression diagnostic</em> graphics.</p>
+<p>The linearity assumption can be easily checked in the scatterplot of <span class="math inline">\(Y\)</span> by <span class="math inline">\(X\)</span>. The independence of observations is generally met if each point in the scatterplot belongs to a different subject. However, if two (or more) points come from the same individual (i.e., if there are individuals contributing more than one point), this assumption is violated.</p>
+<p>To check the assumption of normal and homoscedastic errors, two graphics are useful:</p>
+<ul>
+<li><p>A QQ-plot of the residuals, to check normality, and</p></li>
+<li><p>A scatterplot of the residuals vs predicted values, to check homoscedasticity.</p></li>
+</ul>
+<p>These plots can be produced with the base R function <code>plot()</code> on a fit object resulting from <code>lm()</code>. This function can produce several plots, and the <code>which=</code> argument is used to specify which of those we want to inspect: <code>which=1</code> for the residual vs predicted plot, and <code>which=2</code> for the normal QQ-plot. Here we produce the two plots for the regression of waist on age we saved previously as <code>fit</code>. The results are shown in figures <a href="assessing-relations.html#fig:9-resid-fitted-plot">9.14</a> and <a href="assessing-relations.html#fig:9-qq-plot">9.15</a>.</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="assessing-relations.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">which =</span> <span class="dv">1</span>)          <span class="co"># which = 1 for the residual vs predicted plot</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-resid-fitted-plot"></span>
+<img src="_main_files/figure-html/9-resid-fitted-plot-1.png" alt="Residual vs predicted plot" width="672" />
+<p class="caption">
+Figure 9.14: Residual vs predicted plot
+</p>
+</div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="assessing-relations.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit, <span class="at">which =</span> <span class="dv">2</span>)          <span class="co"># which = 2 for the QQ-plot</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:9-qq-plot"></span>
+<img src="_main_files/figure-html/9-qq-plot-1.png" alt="Normal QQ-plot" width="480" />
+<p class="caption">
+Figure 9.15: Normal QQ-plot
+</p>
+</div>
+<p>The QQ-plot of figure <a href="assessing-relations.html#fig:9-qq-plot">9.15</a> shows a good approximation to the normal distribution for most of its range, with some deviation in the lower and upper tails of the distribution, and an outlier in the upper tail.</p>
+<p>Figure <a href="assessing-relations.html#fig:9-resid-fitted-plot">9.14</a> shows a horizontal band, the residuals scattering around zero, with constant variability (vertical spread of the residuals). An outlier with a high positive residual (about 55 cm) is apparent, for a predicted value of 93 cm.</p>
+<p>As it is generally the case with all inferential methods assuming a normal distribution, small deviations from normality are not much of a problem. In practice, the most frequent and dangerous threat are <em>influential</em> outliers. In this case, some outliers appear marked in the diagnostic plots of figures <a href="assessing-relations.html#fig:9-qq-plot">9.15</a> and <a href="assessing-relations.html#fig:9-resid-fitted-plot">9.14</a>. These are <em>potentially influential</em> observations, and are identified with the row number in the dataframe. A simple way to verify how much of an influence they have, is to refit the regression after elimination of these cases (note the use of the <code>dplyr</code> function <code>row_number()</code>):</p>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="assessing-relations.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># date excluding outliers (deo)</span></span>
+<span id="cb356-2"><a href="assessing-relations.html#cb356-2" aria-hidden="true" tabindex="-1"></a>deo <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> </span>
+<span id="cb356-3"><a href="assessing-relations.html#cb356-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">39</span>, <span class="dv">41</span>, <span class="dv">212</span>))</span>
+<span id="cb356-4"><a href="assessing-relations.html#cb356-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb356-5"><a href="assessing-relations.html#cb356-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fit again and summarize fit</span></span>
+<span id="cb356-6"><a href="assessing-relations.html#cb356-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Waist <span class="sc">~</span> Age, <span class="at">data =</span> deo) <span class="sc">%&gt;%</span> </span>
+<span id="cb356-7"><a href="assessing-relations.html#cb356-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = Waist ~ Age, data = deo)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-22.1234  -6.4234  -0.6027   6.3379  25.7042 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   83.407      2.234  37.333  &lt; 2e-16 ***
+Age            0.194      0.048   4.041 7.14e-05 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 9.534 on 243 degrees of freedom
+Multiple R-squared:  0.06297,   Adjusted R-squared:  0.05912 
+F-statistic: 16.33 on 1 and 243 DF,  p-value: 7.139e-05</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="assessing-relations.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot both regression lines in the scatterplot</span></span></code></pre></div>
+<p>After exclusion of the outliers, the residual standard error is slightly lower, and the R^2 value slightly higher, indicating a better fit. The parameter estimates are slightly different, but the difference is too small to have any practical relevance. This is apparent if we plot the two fitted lines on the scatterplot (note the second <code>gf_smooth()</code> call, with <code>data = deo</code>.</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="assessing-relations.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(Waist <span class="sc">~</span> Age, <span class="at">data =</span> d, <span class="at">col =</span> <span class="st">&quot;DarkGray&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb359-2"><a href="assessing-relations.html#cb359-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_smooth</span>(<span class="at">stat=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb359-3"><a href="assessing-relations.html#cb359-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_smooth</span>(<span class="at">data =</span> deo, <span class="at">stat=</span><span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb359-4"><a href="assessing-relations.html#cb359-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">theme_bw</span>())</span></code></pre></div>
+<p><img src="_main_files/figure-html/9-the-two-lines-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The two regression lines are almost identical, and therefore will produce very similar predicted values. Therefore, the three potentially influential observations did not actually influence the fit in a relevant way, and there is no reason to exclude them.</p>
+</div>
+</div>
+<div id="resources-8" class="section level2 unnumbered hasAnchor">
+<h2>Resources<a href="assessing-relations.html#resources-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="https://www.r-graph-gallery.com/correlogram.html">Correlograms</a> are plots to visualize the results of correlation analyses.</p></li>
+<li><p><a href="https://www.r-bloggers.com/2018/08/exploring-correlations-in-r-with-corrr/">Corr</a> is a package to explore correlations.</p></li>
+<li><p>If your variables are ordinal, then you may want to know about <a href="https://www.r-bloggers.com/2021/02/how-does-polychoric-correlation-work-aka-ordinal-to-ordinal-correlation/">polychoric correlation</a>.</p></li>
+<li><p>Learn about <a href="https://www.r-bloggers.com/2018/06/prediction-interval-the-wider-sister-of-confidence-interval/">prediction intervals</a> in regression analysis.</p></li>
+<li><p>You can learn more on regression diagnostic plots in <a href="https://www.r-bloggers.com/2019/11/the-hidden-diagnostic-plots-for-the-lm-object/">this post</a>.</p></li>
+<li><p>What if the residuals of a regression analysis are heterocedastic? <a href="https://www.r-bloggers.com/2018/07/dealing-with-heteroskedasticity-regression-with-robust-standard-errors-using-r/">Here</a> is the answer.</p></li>
+<li><p>What if you have influentianl outliers in a regression analysis? <a href="https://www.r-bloggers.com/2019/02/robust-regressions-dealing-with-outliers-in-r/">Here</a> is the answer.</p></li>
+</ul>
+</div>
+<div id="exercises-8" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="assessing-relations.html#exercises-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>It is reasonable to expect that the physical constitution of newborns will be similar to that of their mothers, so that high-weight mothers will tend to have heavier children than a low-weight mothers.
+<ul>
+<li>If this was true, would you expect a direct or an inverse relation of birthweights and mother’s weights? Use the <code>birthwt</code> dataset in package <code>MASS</code> to answer the following questions.</li>
+<li>Compute a new variable expressing the weight of mothers in kilograms (<code>lwt_kg</code>).</li>
+<li>Produce a scatterplot to investigate if birthweights are related to the mother’s weights. Are there any outliers?</li>
+<li>Compute the Pearson’s and the Spearman’s correlation coefficients. Which one would you choose and why?</li>
+<li>With the one you have chosen, test the null hypothesis that the correlation is zero in the population. Since a direct relation is expected, what would be the appropriate alternative hypothesis for a one-sided test?</li>
+<li>Conduct a one-sided test (see the help of the function to learn how to specify the appropriate alternative hypothesis). What is the p-value? Does it provide evidence of a direct relation of birthweight and the mother’s weight?</li>
+</ul></li>
+</ol>
+<p> </p>
+<ol start="2" style="list-style-type: decimal">
+<li>The <code>anscombe</code> dataset included in base R has variables X1 to X4, and Y1 to Y4 (run <code>head(anscombe)</code> to see he first six rows). With this dataset:
+<ul>
+<li>Compute the Pearson’s correlations of each Y variable with corresponding X variable (e.g., Y1 with X1, Y2 with X2, and so on). What are the correlation values?</li>
+<li>For each corresponding X and Y pair, produce a scatterplot with regression line overlaid. In which of the four regressions you think that regression assumptions hold?</li>
+<li>See the <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Anscombe’s quartet</a> in Wikipedia for a very short explanation of this dataset.</li>
+</ul></li>
+</ol>
+<p><br />
+</p>
+<ol start="3" style="list-style-type: decimal">
+<li>With the <a href="data/anthropometric_measures.txt">anhropometric measures</a> data:
+<ul>
+<li>Compute the body mass index (BMI), which is defined as a person’s weight in kilograms divided by the square of the person’s height in meters.</li>
+<li>Compute the thorax and waist mean (TWM), as the sum of the waist and thorax circumferences, divided by two.</li>
+<li>Subset the dataframe variables, selecting only these: BMI, Weight, Waist, Thorax, TWM.</li>
+<li>Produce scatterplots for all pairs of the selected variables to see if there is any non-linear relation. You may want to try function <code>pairs(d)</code> (assuming <code>d</code> is the dataframe with the selected variables only).</li>
+<li>Which variable is most strongly correlated with the BMI, according to the Pearson’s correlation coefficient? You may want to try <code>cor(d)</code>.</li>
+<li>Plot the regression line of the BMI on the TWM, and write the equation of this line.</li>
+<li>What is the rate of change (and its 95% CI) of the BMI per unit increase in the TWM?</li>
+<li>What is the percentage of the variance of BMI values that can be explained by the TWM?</li>
+<li>Produce diagnostic plots to assess the assumptions of the regression analysis. Do you think that assumptions are reasonable? Are there outliers?</li>
+<li>Refit the regression after elimination of cases with a waist circumference higher than 120 cm. What is now the regression equation?</li>
+<li>Do you think that predictions will be very different depending on the regression line used (the one fitted with all data, or the one obtained after exclusion of outliers)?</li>
+</ul></li>
+</ol>
+<p><br />
+</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Use the Australian athletes dataset (<code>ais</code>) in package <code>MASS</code> (see <code>?MASS:ais</code> for details) to explore the relation between hematocrit and blood hemoglobin concentration, and answer the following questions:
+<ul>
+<li>Is the relation linear? Are there any outliers?</li>
+<li>Is the relation weak or strong? What is the Pearson’s correlation? If we fit a regression line, what will be the proportion of the variance of the hematocrit values explained by the hemoglobin concentration?</li>
+<li>Plot the regression of hematocrit (<span class="math inline">\(Y\)</span>) on blood hemoglobin (<span class="math inline">\(X\)</span>), and write the equation of the minimum-squares regression line.</li>
+<li>What is the rate of change of the hematocrit for a unit change in the hemoglobin concentration? and, what the 95% CI for the rate of chage?</li>
+<li>Produce diagnostic plots to assess assumptions. Are there influential observations identified in these plots?</li>
+<li>Refit the regression after exclusion of these observations. Is the result very different from what you got with all observations?</li>
+<li>Plot the two lines in the same scatterplot.</li>
+</ul></li>
+</ol>
+<p><br />
+</p>
+<ol start="5" style="list-style-type: decimal">
+<li>If <span class="math inline">\(r_{(X,Y)}\)</span> is the Pearson’s correlation of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>,
+<ul>
+<li>Is <span class="math inline">\(r_{(X,Y)} = r_{(Y,X)}\)</span> ?</li>
+<li>Is the regression line of <span class="math inline">\(Y\)</span> over <span class="math inline">\(X\)</span>, the same as the regression line of <span class="math inline">\(X\)</span> over <span class="math inline">\(Y\)</span>?</li>
+<li>Given the formulas for the Pearson’s correlation coefficient and the slope of the minimum-square regression line, prove that <span class="math inline">\(b = r_{(X;Y)} \frac{S_X}{S_Y}\)</span>, and verify this result with in the regression of hematocrit on hemoglobin you conducted in the previous exercise.</li>
+</ul></li>
+</ol>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analysis-of-quantitative-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
