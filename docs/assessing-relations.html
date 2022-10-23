@@ -802,9 +802,8 @@ F-statistic: 16.33 on 1 and 243 DF,  p-value: 7.139e-05</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>With the <a href="data/anthropometric_measures.txt">anhropometric measures</a> data:
 <ul>
-<li>Compute the body mass index (BMI), which is defined as a person’s weight in kilograms divided by the square of the person’s height in meters.</li>
-<li>Compute the thorax and waist mean (TWM), as the sum of the waist and thorax circumferences, divided by two.</li>
-<li>Subset the dataframe variables, selecting only these: BMI, Weight, Waist, Thorax, TWM.</li>
+<li>For each patient, compute the body mass index (as <code>BMI</code>), and the mean of his/her thorax and waist circumferences (as <code>MTW</code>).</li>
+<li>Subset the dataframe variables, selecting only these: <code>BMI</code>, <code>Weight</code>, <code>Waist</code>, <code>Thorax</code>, and <code>MTW</code>.</li>
 <li>Produce scatterplots for all pairs of the selected variables to see if there is any non-linear relation. You may want to try function <code>pairs(d)</code> (assuming <code>d</code> is the dataframe with the selected variables only).</li>
 <li>Which variable is most strongly correlated with the BMI, according to the Pearson’s correlation coefficient? You may want to try <code>cor(d)</code>.</li>
 <li>Plot the regression line of the BMI on the TWM, and write the equation of this line.</li>
