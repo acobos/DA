@@ -727,10 +727,10 @@ Figure 9.15: Normal QQ-plot
 </div>
 <p>The QQ-plot of figure <a href="assessing-relations.html#fig:9-qq-plot">9.15</a> shows a good approximation to the normal distribution for most of its range, with some deviation in the lower and upper tails of the distribution, and an outlier in the upper tail.</p>
 <p>Figure <a href="assessing-relations.html#fig:9-resid-fitted-plot">9.14</a> shows a horizontal band, the residuals scattering around zero, with constant variability (vertical spread of the residuals). An outlier with a high positive residual (about 55 cm) is apparent, for a predicted value of 93 cm.</p>
-<p>As it is generally the case with all inferential methods assuming a normal distribution, small deviations from normality are not much of a problem. In practice, the most frequent and dangerous threat are <em>influential</em> outliers. In this case, some outliers appear marked in the diagnostic plots of figures <a href="assessing-relations.html#fig:9-qq-plot">9.15</a> and <a href="assessing-relations.html#fig:9-resid-fitted-plot">9.14</a>. These are <em>potentially influential</em> observations, and are identified with the row number in the dataframe. A simple way to verify how much of an influence they have, is to refit the regression after elimination of these cases (note the use of the <code>dplyr</code> function <code>row_number()</code>):</p>
+<p>As it is generally the case with all inferential methods assuming a normal distribution, small deviations from normality are not much of a problem. In practice, the most frequent and dangerous threat are <em>influential</em> outliers. In this case, some outliers appear marked in the diagnostic plots of figures <a href="assessing-relations.html#fig:9-qq-plot">9.15</a> and <a href="assessing-relations.html#fig:9-resid-fitted-plot">9.14</a>. These are <em>potentially influential</em> observations, and are identified with the row number in the dataframe. A simple way to verify how much of an influence they have, is to refit the regression after elimination of these cases (note the use of the <code>dplyr</code> function <code>slice()</code> to exclude cases based on the row number):</p>
 <div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="assessing-relations.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># date excluding outliers (deo)</span></span>
 <span id="cb356-2"><a href="assessing-relations.html#cb356-2" aria-hidden="true" tabindex="-1"></a>deo <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> </span>
-<span id="cb356-3"><a href="assessing-relations.html#cb356-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">39</span>, <span class="dv">41</span>, <span class="dv">212</span>))</span>
+<span id="cb356-3"><a href="assessing-relations.html#cb356-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span> (<span class="sc">-</span><span class="fu">c</span>(<span class="dv">39</span>, <span class="dv">41</span>, <span class="dv">212</span>))</span>
 <span id="cb356-4"><a href="assessing-relations.html#cb356-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb356-5"><a href="assessing-relations.html#cb356-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fit again and summarize fit</span></span>
 <span id="cb356-6"><a href="assessing-relations.html#cb356-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Waist <span class="sc">~</span> Age, <span class="at">data =</span> deo) <span class="sc">%&gt;%</span> </span>
@@ -810,7 +810,7 @@ F-statistic: 16.33 on 1 and 243 DF,  p-value: 7.139e-05</code></pre>
 <li>What is the rate of change (and its 95% CI) of the BMI per unit increase in the TWM?</li>
 <li>What is the percentage of the variance of BMI values that can be explained by the TWM?</li>
 <li>Produce diagnostic plots to assess the assumptions of the regression analysis. Do you think that assumptions are reasonable? Are there outliers?</li>
-<li>Refit the regression after elimination of cases with a waist circumference higher than 120 cm. What is now the regression equation?</li>
+<li>Refit the regression exclusing the far outlier and look at diagnostics of the new model. What is now the regression equation? And what the r-squared value?</li>
 <li>Do you think that predictions will be very different depending on the regression line used (the one fitted with all data, or the one obtained after exclusion of outliers)?</li>
 </ul></li>
 </ol>
@@ -824,8 +824,7 @@ F-statistic: 16.33 on 1 and 243 DF,  p-value: 7.139e-05</code></pre>
 <li>Plot the regression of hematocrit (<span class="math inline">\(Y\)</span>) on blood hemoglobin (<span class="math inline">\(X\)</span>), and write the equation of the minimum-squares regression line.</li>
 <li>What is the rate of change of the hematocrit for a unit change in the hemoglobin concentration? and, what the 95% CI for the rate of chage?</li>
 <li>Produce diagnostic plots to assess assumptions. Are there influential observations identified in these plots?</li>
-<li>Refit the regression after exclusion of these observations. Is the result very different from what you got with all observations?</li>
-<li>Plot the two lines in the same scatterplot.</li>
+<li>Refit the regression after exclusion of the far outlier. Is the result very different from what you got with all observations? Plot the two lines overlaid on the scatterplot to compare them.</li>
 </ul></li>
 </ol>
 <p><br />
