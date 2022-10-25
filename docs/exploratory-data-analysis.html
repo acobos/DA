@@ -307,6 +307,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="assessing-relations.html"><a href="assessing-relations.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="assessing-relations.html"><a href="assessing-relations.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>10</b> Reproducible research</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="reproducible-research.html"><a href="reproducible-research.html#rmarkdown-documents"><i class="fa fa-check"></i><b>10.1</b> Rmarkdown documents</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="reproducible-research.html"><a href="reproducible-research.html#text"><i class="fa fa-check"></i><b>10.1.1</b> Text</a></li>
+<li class="chapter" data-level="10.1.2" data-path="reproducible-research.html"><a href="reproducible-research.html#code-chunks"><i class="fa fa-check"></i><b>10.1.2</b> Code chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="reproducible-research.html"><a href="reproducible-research.html#writing-a-pdf-report-on-birth-weights"><i class="fa fa-check"></i><b>10.2</b> Writing a pdf report on birth weights</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="reproducible-research.html"><a href="reproducible-research.html#setup-chunk"><i class="fa fa-check"></i><b>10.2.1</b> Setup chunk</a></li>
+<li class="chapter" data-level="10.2.2" data-path="reproducible-research.html"><a href="reproducible-research.html#structure-of-report-introduction-and-method-sections"><i class="fa fa-check"></i><b>10.2.2</b> Structure of report, introduction and method sections</a></li>
+<li class="chapter" data-level="10.2.3" data-path="reproducible-research.html"><a href="reproducible-research.html#results-section"><i class="fa fa-check"></i><b>10.2.3</b> Results section</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="reproducible-research.html"><a href="reproducible-research.html#r-markdown-presentations"><i class="fa fa-check"></i><b>10.3</b> R markdown presentations</a></li>
+<li class="chapter" data-level="10.4" data-path="reproducible-research.html"><a href="reproducible-research.html#writing-an-ioslides-presentation-on-birth-weights"><i class="fa fa-check"></i><b>10.4</b> Writing an IOslides presentation on birth weights</a></li>
+<li class="chapter" data-level="10.5" data-path="reproducible-research.html"><a href="reproducible-research.html#yaml-header"><i class="fa fa-check"></i><b>10.5</b> YAML header</a></li>
+<li class="chapter" data-level="10.6" data-path="reproducible-research.html"><a href="reproducible-research.html#external-images"><i class="fa fa-check"></i><b>10.6</b> External images</a></li>
+<li class="chapter" data-level="10.7" data-path="reproducible-research.html"><a href="reproducible-research.html#other-outputs"><i class="fa fa-check"></i><b>10.7</b> Other outputs</a></li>
+<li class="chapter" data-level="" data-path="reproducible-research.html"><a href="reproducible-research.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="reproducible-research.html"><a href="reproducible-research.html#exercises-9"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -978,12 +999,10 @@ Figure 5.20: Jittered points overlaid on a boxplot
 </div>
 <p><br />
 </p>
-<p>Overlaying can be used to add information on summary statistics computed by function <code>df_stats</code>, which is very similar to the <code>favstats()</code> function presented in section <a href="exploratory-data-analysis.html#stats">5.2.2.1</a>. In the following script, we compute the summary statistics for <code>bmi</code>, save them in dataframe <code>bmi_stats</code>, and use this dataframe to overlay mean values to a boxplot. This is very useful to assess the influence of outliers, by comparing the mean and the median.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="exploratory-data-analysis.html#cb189-1" aria-hidden="true" tabindex="-1"></a>bmi_stats <span class="ot">&lt;-</span> <span class="fu">df_stats</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d)                       <span class="co"># compute stats</span></span>
-<span id="cb189-2"><a href="exploratory-data-analysis.html#cb189-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-3"><a href="exploratory-data-analysis.html#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d) <span class="sc">%&gt;%</span></span>
-<span id="cb189-4"><a href="exploratory-data-analysis.html#cb189-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(mean <span class="sc">~</span> group, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">data =</span> bmi_stats) <span class="sc">%&gt;%</span>      <span class="co"># use them here</span></span>
-<span id="cb189-5"><a href="exploratory-data-analysis.html#cb189-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">coord_flip</span>())                         <span class="co"># flips axes (to get horizontal boxplots)</span></span></code></pre></div>
+<p>Overlaying can be used to add information on summary statistics as well. In the following script, we overlay the group means to a boxplot. This is very useful to assess the influence of outliers, by comparing the mean and the median.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="exploratory-data-analysis.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d) <span class="sc">%&gt;%</span></span>
+<span id="cb189-2"><a href="exploratory-data-analysis.html#cb189-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_summary</span>(<span class="at">fun =</span> mean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span>      <span class="co"># use them here</span></span>
+<span id="cb189-3"><a href="exploratory-data-analysis.html#cb189-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">coord_flip</span>())                         <span class="co"># flips axes (to get horizontal boxplots)</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-overlay-stats"></span>
 <img src="_main_files/figure-html/5-overlay-stats-1.png" alt="Boxplot with means overlaid (red dot)" width="672" />
 <p class="caption">
@@ -993,14 +1012,16 @@ Figure 5.21: Boxplot with means overlaid (red dot)
 <p><br />
 </p>
 <p>In figure <a href="exploratory-data-analysis.html#fig:5-overlay-stats">5.21</a> the means and the medians of each group are practically identical, reflecting no or little influence of outliers on the mean, despite being quite far away (some values above 50!).</p>
-<p>Last, functions <code>gf_text()</code> and <code>gf_label()</code> are very handy to overlay annotations on a graphic. For instance, the lack of influence of outliers on the mean of <code>bmi</code> commented above is likely due to dilution because the number of observations, but this number is not reflected in the boxplot. Thus, it is a good idea to print this number for each group. This has been done in figure <a href="exploratory-data-analysis.html#fig:5-overlay-text">5.22</a>, using variable <code>n</code> from <code>bmi_stats</code> in function <code>gf_label()</code>. Note the use of <code>paste()</code> to prefix <code>n</code> with the text <code>N =</code>.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exploratory-data-analysis.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d) <span class="sc">%&gt;%</span></span>
-<span id="cb190-2"><a href="exploratory-data-analysis.html#cb190-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(mean <span class="sc">~</span> group, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">data =</span> bmi_stats) <span class="sc">%&gt;%</span></span>
-<span id="cb190-3"><a href="exploratory-data-analysis.html#cb190-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_label</span>(<span class="dv">15</span> <span class="sc">~</span> group, </span>
-<span id="cb190-4"><a href="exploratory-data-analysis.html#cb190-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="sc">~</span> <span class="fu">paste</span>(<span class="st">&quot;N =&quot;</span>, n),               </span>
-<span id="cb190-5"><a href="exploratory-data-analysis.html#cb190-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> bmi_stats) <span class="sc">%&gt;%</span> </span>
-<span id="cb190-6"><a href="exploratory-data-analysis.html#cb190-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lims</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">54</span>)) <span class="sc">%&gt;%</span>               <span class="co"># to get space for labels</span></span>
-<span id="cb190-7"><a href="exploratory-data-analysis.html#cb190-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">coord_flip</span>())</span></code></pre></div>
+<p>Last, functions <code>gf_text()</code> and <code>gf_label()</code> are very handy to overlay annotations on a graphic. For instance, the lack of influence of outliers on the mean of <code>bmi</code> commented above is likely due to dilution because the number of observations, but this number is not reflected in the boxplot. Thus, it is a good idea to print this number for each group. This has been done in figure <a href="exploratory-data-analysis.html#fig:5-overlay-text">5.22</a>, using variable <code>n</code> from <code>group_sizes</code> in function <code>gf_label()</code>. Note the use of <code>paste()</code> to prefix <code>n</code> with the text <code>N =</code>.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exploratory-data-analysis.html#cb190-1" aria-hidden="true" tabindex="-1"></a>group_sizes <span class="ot">&lt;-</span> <span class="fu">count</span>(d, group)      </span>
+<span id="cb190-2"><a href="exploratory-data-analysis.html#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="exploratory-data-analysis.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(bmi <span class="sc">~</span> group, <span class="at">data =</span> d) <span class="sc">%&gt;%</span></span>
+<span id="cb190-4"><a href="exploratory-data-analysis.html#cb190-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_summary</span>(<span class="at">fun =</span> mean, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb190-5"><a href="exploratory-data-analysis.html#cb190-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_label</span>(<span class="dv">15</span> <span class="sc">~</span> group, </span>
+<span id="cb190-6"><a href="exploratory-data-analysis.html#cb190-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="sc">~</span> <span class="fu">paste</span>(<span class="st">&quot;N =&quot;</span>, n),               </span>
+<span id="cb190-7"><a href="exploratory-data-analysis.html#cb190-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> group_sizes) <span class="sc">%&gt;%</span> </span>
+<span id="cb190-8"><a href="exploratory-data-analysis.html#cb190-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lims</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">54</span>)) <span class="sc">%&gt;%</span>               <span class="co"># to get space for labels</span></span>
+<span id="cb190-9"><a href="exploratory-data-analysis.html#cb190-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">coord_flip</span>())</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:5-overlay-text"></span>
 <img src="_main_files/figure-html/5-overlay-text-1.png" alt="Boxplot with means and annotation of N" width="672" />
 <p class="caption">

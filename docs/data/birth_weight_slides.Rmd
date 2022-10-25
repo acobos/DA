@@ -1,0 +1,108 @@
+---
+title: "Birth weights"
+author: "Albert Cobos"
+date: "06/08/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.align = 'center')
+                      
+library(dplyr)
+
+d <- MASS::birthwt %>%
+  mutate(low = factor(low, 
+                     levels = 1:0, 
+                     labels = c("low", "normal")),
+         race = factor(race, 
+                       levels = 1:3,
+                       labels = c("white", "black", "other")),
+         smoke = factor(smoke, 
+                        levels = 1:0, 
+                        labels = c("smoker", "non-smoker")),
+         ui = factor(ui, 
+                      levels = 1:0, 
+                      labels = c("UI", "no-UI")),
+         ht = factor(ht, 
+                     levels = 1:0, 
+                     labels = c("AHT", "no-AHT"))) %>% 
+  rename(bw = low)
+                     
+```
+
+## Introduction
+
+- We analyse the birth weight of `r nrow(d)` newborns recorded in the Baystate Medical Center, Springfield, Mass during 1986.
+
+- And assessed its association with demographic variables (smoking during pregnancy, race, arterial hypertension, and uterine irritability)
+
+
+## Birth weight description
+
+Mean (SD): 2944.6 (729.2) grams.
+
+```{r btw_description}
+library(ggformula)
+
+gf_dens(~ bwt, data = d, 
+        color = "blue", size = 1,
+        xlab = "Birth weight (grams)") %>% 
+  gf_histogram(binwidth=500, color = "black", fill = "white") %>% 
+  gf_theme(theme_light())
+```
+
+
+## Boxplots
+
+```{r boxplots}
+plot1 <- gf_boxplot(bwt ~ smoke, data = d,
+                    title = "Smoking",
+                    ylab = "Birth weight (grams)",    
+                    xlab = "",
+                    ) %>%    
+  gf_refine(coord_flip()) %>%
+  gf_theme(theme_light())    
+
+plot2 <- gf_boxplot(bwt ~ race, data = d,
+                    title = "Race",
+                    ylab = "Birth weight (grams)",    
+                    xlab = "") %>%  
+  gf_refine(coord_flip()) %>%
+  gf_theme(theme_light())
+
+plot3 <- gf_boxplot(bwt ~ ht, data = d,
+                    title = "Arterial hpertension",
+                    ylab = "Birth weight (grams)",    
+                    xlab = "",
+                    ) %>%         
+  gf_refine(coord_flip()) %>%
+  gf_theme(theme_light())    
+
+plot4 <- gf_boxplot(bwt ~ ui, data = d,
+                    title = "Uterine irritability",
+                    ylab = "Birth weight (grams)",    
+                    xlab = "") %>%
+  gf_refine(coord_flip()) %>%
+  gf_theme(theme_light())
+
+library(patchwork)
+plot1 + plot2 + plot3 + plot4 + plot_layout(nrow = 2)
+```
+
+
+## Smokers vs non-smokers {.smaller}
+
+```{r comparisons}
+library(compareGroups)
+
+Hmisc::label(d$bwt) <- "Birth weight (grams)"
+Hmisc::label(d$bw) <- "Birth weight, categorized"
+Hmisc::label(d$race) <- "Race"
+Hmisc::label(d$ht) <- "Arterial hypertension"
+Hmisc::label(d$ui) <- "Uterine irritability"
+
+descrTable(smoke ~ bwt + bw + race + ht + ui, data = d,
+           hide.no = c("no-AHT", "no-UI"))  %>%   
+  export2md(caption = "")
+```

@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Reproducible research | Data Analysis for Clinical Researchers</title>
+  <meta name="description" content="10 Reproducible research | Data Analysis for Clinical Researchers" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Reproducible research | Data Analysis for Clinical Researchers" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Reproducible research | Data Analysis for Clinical Researchers" />
+  
+  
+  
+
+<meta name="author" content="Albert Cobos" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="assessing-relations.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/font-awesome-5.13.0/js/script.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="structure-of-this-book.html"><a href="structure-of-this-book.html"><i class="fa fa-check"></i>Structure of this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#first-r-session"><i class="fa fa-check"></i><b>1.2</b> First R session</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-objects"><i class="fa fa-check"></i><b>1.3</b> R objects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-functions"><i class="fa fa-check"></i><b>1.4</b> R functions</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-r-packages"><i class="fa fa-check"></i><b>1.5</b> Installing R packages</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#loading-packages"><i class="fa fa-check"></i><b>1.6</b> Loading packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-data-structures.html"><a href="r-data-structures.html"><i class="fa fa-check"></i><b>2</b> R data structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-data-structures.html"><a href="r-data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="r-data-structures.html"><a href="r-data-structures.html#lists"><i class="fa fa-check"></i><b>2.2</b> Lists</a></li>
+<li class="chapter" data-level="2.3" data-path="r-data-structures.html"><a href="r-data-structures.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="r-data-structures.html"><a href="r-data-structures.html#factors"><i class="fa fa-check"></i><b>2.4</b> Factors</a></li>
+<li class="chapter" data-level="2.5" data-path="r-data-structures.html"><a href="r-data-structures.html#dates"><i class="fa fa-check"></i><b>2.5</b> Dates</a></li>
+<li class="chapter" data-level="2.6" data-path="r-data-structures.html"><a href="r-data-structures.html#other-data-structures"><i class="fa fa-check"></i><b>2.6</b> Other data structures</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="r-data-structures.html"><a href="r-data-structures.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-acquisition.html"><a href="data-acquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-ms-excel-data"><i class="fa fa-check"></i><b>3.1</b> Reading MS Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-text-data"><i class="fa fa-check"></i><b>3.2</b> Reading text data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-spss-sas-or-stata-data"><i class="fa fa-check"></i><b>3.3</b> Reading SPSS, SAS or Stata data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-databases"><i class="fa fa-check"></i><b>3.4</b> Reading databases</a></li>
+<li class="chapter" data-level="3.5" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-other-formats"><i class="fa fa-check"></i><b>3.5</b> Reading other formats</a></li>
+<li class="chapter" data-level="3.6" data-path="data-acquisition.html"><a href="data-acquisition.html#getting-data-from-r-packages"><i class="fa fa-check"></i><b>3.6</b> Getting data from R packages</a></li>
+<li class="chapter" data-level="3.7" data-path="data-acquisition.html"><a href="data-acquisition.html#problems-when-importing-data-from-external-files"><i class="fa fa-check"></i><b>3.7</b> Problems when importing data from external files</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="data-acquisition.html"><a href="data-acquisition.html#package-dplyr"><i class="fa fa-check"></i><b>3.7.1</b> Package <code>dplyr</code></a></li>
+<li class="chapter" data-level="3.7.2" data-path="data-acquisition.html"><a href="data-acquisition.html#reading-the-sara-data"><i class="fa fa-check"></i><b>3.7.2</b> Reading the SARA data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-acquisition.html"><a href="data-acquisition.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>4</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-preparation.html"><a href="data-preparation.html#steps-in-data-preparation"><i class="fa fa-check"></i><b>4.1</b> Steps in data preparation</a></li>
+<li class="chapter" data-level="4.2" data-path="data-preparation.html"><a href="data-preparation.html#reading-raw-data"><i class="fa fa-check"></i><b>4.2</b> Reading raw data</a></li>
+<li class="chapter" data-level="4.3" data-path="data-preparation.html"><a href="data-preparation.html#reviewing-data"><i class="fa fa-check"></i><b>4.3</b> Reviewing data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-preparation.html"><a href="data-preparation.html#missings"><i class="fa fa-check"></i><b>4.3.1</b> Missings</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-preparation.html"><a href="data-preparation.html#data-errors"><i class="fa fa-check"></i><b>4.3.2</b> Data errors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-preparation.html"><a href="data-preparation.html#modifying-data"><i class="fa fa-check"></i><b>4.4</b> Modifying data</a></li>
+<li class="chapter" data-level="4.5" data-path="data-preparation.html"><a href="data-preparation.html#computing-new-variables"><i class="fa fa-check"></i><b>4.5</b> Computing new variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="data-preparation.html"><a href="data-preparation.html#defining-factors"><i class="fa fa-check"></i><b>4.5.1</b> Defining factors</a></li>
+<li class="chapter" data-level="4.5.2" data-path="data-preparation.html"><a href="data-preparation.html#formulas"><i class="fa fa-check"></i><b>4.5.2</b> Formulas</a></li>
+<li class="chapter" data-level="4.5.3" data-path="data-preparation.html"><a href="data-preparation.html#conditional-assignments"><i class="fa fa-check"></i><b>4.5.3</b> Conditional assignments</a></li>
+<li class="chapter" data-level="4.5.4" data-path="data-preparation.html"><a href="data-preparation.html#categorization-of-quantitative-variables"><i class="fa fa-check"></i><b>4.5.4</b> Categorization of quantitative variables</a></li>
+<li class="chapter" data-level="4.5.5" data-path="data-preparation.html"><a href="data-preparation.html#grouping-factor-levels"><i class="fa fa-check"></i><b>4.5.5</b> Grouping factor levels</a></li>
+<li class="chapter" data-level="4.5.6" data-path="data-preparation.html"><a href="data-preparation.html#character-strings"><i class="fa fa-check"></i><b>4.5.6</b> Character strings</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="data-preparation.html"><a href="data-preparation.html#selecting-valid-cases"><i class="fa fa-check"></i><b>4.6</b> Selecting valid cases</a></li>
+<li class="chapter" data-level="4.7" data-path="data-preparation.html"><a href="data-preparation.html#saving-the-r-script"><i class="fa fa-check"></i><b>4.7</b> Saving the R script</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#number-and-type-of-variables"><i class="fa fa-check"></i><b>5.1</b> Number and type of variables</a></li>
+<li class="chapter" data-level="5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#univariate-description"><i class="fa fa-check"></i><b>5.2</b> Univariate description</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#categorical-variable"><i class="fa fa-check"></i><b>5.2.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="5.2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-variable"><i class="fa fa-check"></i><b>5.2.2</b> Quantitative variable</a></li>
+<li class="chapter" data-level="5.2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#important-remarks"><i class="fa fa-check"></i><b>5.2.3</b> Important remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#bivariate-description"><i class="fa fa-check"></i><b>5.3</b> Bivariate description</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.3.1</b> Two categorical variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#quantitative-and-categorical-variable"><i class="fa fa-check"></i><b>5.3.2</b> Quantitative and categorical variable</a></li>
+<li class="chapter" data-level="5.3.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#eda-2-quantis"><i class="fa fa-check"></i><b>5.3.3</b> Two quantitative variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#adding-infromation-from-additional-variables"><i class="fa fa-check"></i><b>5.4</b> Adding infromation from additional variables</a></li>
+<li class="chapter" data-level="5.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#graphic-refinement"><i class="fa fa-check"></i><b>5.5</b> Graphic refinement</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistical-inference.html"><a href="statistical-inference.html"><i class="fa fa-check"></i><b>6</b> Statistical inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistical-inference.html"><a href="statistical-inference.html#population-and-sample"><i class="fa fa-check"></i><b>6.1</b> Population and sample</a></li>
+<li class="chapter" data-level="6.2" data-path="statistical-inference.html"><a href="statistical-inference.html#inference-problems"><i class="fa fa-check"></i><b>6.2</b> Inference problems</a></li>
+<li class="chapter" data-level="6.3" data-path="statistical-inference.html"><a href="statistical-inference.html#probability-distributions"><i class="fa fa-check"></i><b>6.3</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="statistical-inference.html"><a href="statistical-inference.html#the-normal-distribution"><i class="fa fa-check"></i><b>6.3.1</b> The normal distribution</a></li>
+<li class="chapter" data-level="6.3.2" data-path="statistical-inference.html"><a href="statistical-inference.html#the-chi-squared-distribution"><i class="fa fa-check"></i><b>6.3.2</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.3.3" data-path="statistical-inference.html"><a href="statistical-inference.html#the-students-t-distribution"><i class="fa fa-check"></i><b>6.3.3</b> The Student’s <em>t</em> distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="statistical-inference.html"><a href="statistical-inference.html#random-samples"><i class="fa fa-check"></i><b>6.4</b> Random samples</a></li>
+<li class="chapter" data-level="6.5" data-path="statistical-inference.html"><a href="statistical-inference.html#example-data"><i class="fa fa-check"></i><b>6.5</b> Example data</a></li>
+<li class="chapter" data-level="6.6" data-path="statistical-inference.html"><a href="statistical-inference.html#estimation"><i class="fa fa-check"></i><b>6.6</b> Estimation</a></li>
+<li class="chapter" data-level="6.7" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-cis"><i class="fa fa-check"></i><b>6.7</b> Sample size and CI’s</a></li>
+<li class="chapter" data-level="6.8" data-path="statistical-inference.html"><a href="statistical-inference.html#significance-tests"><i class="fa fa-check"></i><b>6.8</b> Significance tests</a></li>
+<li class="chapter" data-level="6.9" data-path="statistical-inference.html"><a href="statistical-inference.html#sample-size-and-p-values"><i class="fa fa-check"></i><b>6.9</b> Sample size and <em>p</em> values</a></li>
+<li class="chapter" data-level="6.10" data-path="statistical-inference.html"><a href="statistical-inference.html#types-of-tests"><i class="fa fa-check"></i><b>6.10</b> Types of tests</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="statistical-inference.html"><a href="statistical-inference.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html"><i class="fa fa-check"></i><b>7</b> Analysis of categorical data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#one-sample-tests"><i class="fa fa-check"></i><b>7.1</b> One-sample tests</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#chi-square-goodness-of-fit-gof-test"><i class="fa fa-check"></i><b>7.1.1</b> Chi-square goodness-of-fit (GOF) test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#categ-is"><i class="fa fa-check"></i><b>7.2</b> Independent samples</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#association-measures"><i class="fa fa-check"></i><b>7.2.1</b> Association measures</a></li>
+<li class="chapter" data-level="7.2.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#two-sample-test-for-proportions"><i class="fa fa-check"></i><b>7.2.2</b> Two-sample test for proportions</a></li>
+<li class="chapter" data-level="7.2.3" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#chi-square-independence-test"><i class="fa fa-check"></i><b>7.2.3</b> Chi-square independence test</a></li>
+<li class="chapter" data-level="7.2.4" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#fishers-exact-test"><i class="fa fa-check"></i><b>7.2.4</b> Fisher’s exact test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#paired-samples"><i class="fa fa-check"></i><b>7.3</b> Paired samples</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#mcnemars-test"><i class="fa fa-check"></i><b>7.3.1</b> McNemar’s test</a></li>
+<li class="chapter" data-level="7.3.2" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#cohens-kappa"><i class="fa fa-check"></i><b>7.3.2</b> Cohen’s kappa</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-categorical-data.html"><a href="analysis-of-categorical-data.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html"><i class="fa fa-check"></i><b>8</b> Analysis of quantitative data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#one-sample-tests-1"><i class="fa fa-check"></i><b>8.1</b> One sample tests</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#one-sample-t-test"><i class="fa fa-check"></i><b>8.1.1</b> One-sample t-test</a></li>
+<li class="chapter" data-level="8.1.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#bootstrap1s"><i class="fa fa-check"></i><b>8.1.2</b> Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#quanti-is"><i class="fa fa-check"></i><b>8.2</b> Independent samples</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#t-test"><i class="fa fa-check"></i><b>8.2.1</b> Unpaired (or two-sample) t-test</a></li>
+<li class="chapter" data-level="8.2.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#welch-test"><i class="fa fa-check"></i><b>8.2.2</b> Welch test</a></li>
+<li class="chapter" data-level="8.2.3" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#wicoxons-rank-sum-test-mann-whiteys-test"><i class="fa fa-check"></i><b>8.2.3</b> Wicoxon’s rank sum test/ Mann-Whitey’s test</a></li>
+<li class="chapter" data-level="8.2.4" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#bootstrap"><i class="fa fa-check"></i><b>8.2.4</b> Bootstrap</a></li>
+<li class="chapter" data-level="8.2.5" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#assessment-of-normality"><i class="fa fa-check"></i><b>8.2.5</b> Assessment of normality</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#paired-samples-1"><i class="fa fa-check"></i><b>8.3</b> Paired samples</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#paired-or-one-sample-t-test"><i class="fa fa-check"></i><b>8.3.1</b> Paired (or one-sample) t-test</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#wilcoxons-signed-ranks-test"><i class="fa fa-check"></i><b>8.3.2</b> Wilcoxon’s signed ranks test</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#bootstrap-1"><i class="fa fa-check"></i><b>8.3.3</b> Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#one-sided-alternatives"><i class="fa fa-check"></i><b>8.4</b> One-sided alternatives</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="analysis-of-quantitative-data.html"><a href="analysis-of-quantitative-data.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="assessing-relations.html"><a href="assessing-relations.html"><i class="fa fa-check"></i><b>9</b> Assessing relations</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="assessing-relations.html"><a href="assessing-relations.html#independence-vs-relationship"><i class="fa fa-check"></i><b>9.1</b> Independence vs relationship</a></li>
+<li class="chapter" data-level="9.2" data-path="assessing-relations.html"><a href="assessing-relations.html#relation-between-two-quantitative-variables"><i class="fa fa-check"></i><b>9.2</b> Relation between two quantitative variables</a></li>
+<li class="chapter" data-level="9.3" data-path="assessing-relations.html"><a href="assessing-relations.html#measures-of-linear-relation"><i class="fa fa-check"></i><b>9.3</b> Measures of linear relation</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="assessing-relations.html"><a href="assessing-relations.html#covariance"><i class="fa fa-check"></i><b>9.3.1</b> Covariance</a></li>
+<li class="chapter" data-level="9.3.2" data-path="assessing-relations.html"><a href="assessing-relations.html#pearsons-correlation"><i class="fa fa-check"></i><b>9.3.2</b> Pearson’s correlation</a></li>
+<li class="chapter" data-level="9.3.3" data-path="assessing-relations.html"><a href="assessing-relations.html#spearmans-correlation"><i class="fa fa-check"></i><b>9.3.3</b> Spearman’s correlation</a></li>
+<li class="chapter" data-level="9.3.4" data-path="assessing-relations.html"><a href="assessing-relations.html#pearsons-vs-spearmans-correlation"><i class="fa fa-check"></i><b>9.3.4</b> Pearson’s vs Spearman’s correlation</a></li>
+<li class="chapter" data-level="9.3.5" data-path="assessing-relations.html"><a href="assessing-relations.html#cor-test"><i class="fa fa-check"></i><b>9.3.5</b> Tests on correlation coefficients</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="assessing-relations.html"><a href="assessing-relations.html#linear-regression"><i class="fa fa-check"></i><b>9.4</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="assessing-relations.html"><a href="assessing-relations.html#straight-lines"><i class="fa fa-check"></i><b>9.4.1</b> Straight lines</a></li>
+<li class="chapter" data-level="9.4.2" data-path="assessing-relations.html"><a href="assessing-relations.html#regression-line"><i class="fa fa-check"></i><b>9.4.2</b> Regression line</a></li>
+<li class="chapter" data-level="9.4.3" data-path="assessing-relations.html"><a href="assessing-relations.html#predicted-values-and-residuals"><i class="fa fa-check"></i><b>9.4.3</b> Predicted values and residuals</a></li>
+<li class="chapter" data-level="9.4.4" data-path="assessing-relations.html"><a href="assessing-relations.html#inference-on-regression-line-parameters"><i class="fa fa-check"></i><b>9.4.4</b> Inference on regression line parameters</a></li>
+<li class="chapter" data-level="9.4.5" data-path="assessing-relations.html"><a href="assessing-relations.html#assumptions-and-regression-diagnostics"><i class="fa fa-check"></i><b>9.4.5</b> Assumptions and regression diagnostics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="assessing-relations.html"><a href="assessing-relations.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="assessing-relations.html"><a href="assessing-relations.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>10</b> Reproducible research</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="reproducible-research.html"><a href="reproducible-research.html#rmarkdown-documents"><i class="fa fa-check"></i><b>10.1</b> Rmarkdown documents</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="reproducible-research.html"><a href="reproducible-research.html#text"><i class="fa fa-check"></i><b>10.1.1</b> Text</a></li>
+<li class="chapter" data-level="10.1.2" data-path="reproducible-research.html"><a href="reproducible-research.html#code-chunks"><i class="fa fa-check"></i><b>10.1.2</b> Code chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="reproducible-research.html"><a href="reproducible-research.html#writing-a-pdf-report-on-birth-weights"><i class="fa fa-check"></i><b>10.2</b> Writing a pdf report on birth weights</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="reproducible-research.html"><a href="reproducible-research.html#setup-chunk"><i class="fa fa-check"></i><b>10.2.1</b> Setup chunk</a></li>
+<li class="chapter" data-level="10.2.2" data-path="reproducible-research.html"><a href="reproducible-research.html#structure-of-report-introduction-and-method-sections"><i class="fa fa-check"></i><b>10.2.2</b> Structure of report, introduction and method sections</a></li>
+<li class="chapter" data-level="10.2.3" data-path="reproducible-research.html"><a href="reproducible-research.html#results-section"><i class="fa fa-check"></i><b>10.2.3</b> Results section</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="reproducible-research.html"><a href="reproducible-research.html#r-markdown-presentations"><i class="fa fa-check"></i><b>10.3</b> R markdown presentations</a></li>
+<li class="chapter" data-level="10.4" data-path="reproducible-research.html"><a href="reproducible-research.html#writing-an-ioslides-presentation-on-birth-weights"><i class="fa fa-check"></i><b>10.4</b> Writing an IOslides presentation on birth weights</a></li>
+<li class="chapter" data-level="10.5" data-path="reproducible-research.html"><a href="reproducible-research.html#yaml-header"><i class="fa fa-check"></i><b>10.5</b> YAML header</a></li>
+<li class="chapter" data-level="10.6" data-path="reproducible-research.html"><a href="reproducible-research.html#external-images"><i class="fa fa-check"></i><b>10.6</b> External images</a></li>
+<li class="chapter" data-level="10.7" data-path="reproducible-research.html"><a href="reproducible-research.html#other-outputs"><i class="fa fa-check"></i><b>10.7</b> Other outputs</a></li>
+<li class="chapter" data-level="" data-path="reproducible-research.html"><a href="reproducible-research.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="reproducible-research.html"><a href="reproducible-research.html#exercises-9"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis for Clinical Researchers</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reproducible-research" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">10</span> Reproducible research<a href="reproducible-research.html#reproducible-research" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In recent years, concerns have been raised about the lack of reproducibility of scientific research (<a href="https://www.nature.com/articles/533452a">Baker, Nature 2016</a>). While many researchers consider selective reporting to be an important factor leading to problems in reproducibility (Baker, Nature 2016), these have been noted even when repeating reported analyses upon shared data, which has been called <em>Analytic, or computational reproducibility</em>. Suboptimal data curation, unclear analysis specification and reporting errors have been identified as causes of irreproducible results (<a href="https://www.nature.com/articles/ng.295">Ioannidis, Nature Genetics 2009</a>; <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6124055/">Hardwike et al., RSOS 2018</a>).</p>
+<p><em>Literate programming</em> is considered as a best-practice and a solution to lack of analytic reproducibility (<a href="https://biodatamining.biomedcentral.com/articles/10.1186/s13040-017-0151-7">Denaxas, BioData Mining, 2017</a>). Literate programming is the technique of combining written human language with computer code to access, manipulate and analyze data, and finally report the results. In R, there are several packages supporting literate programming, such as <code>rmarkdown</code>, <code>knitr</code>, and others. These packages are used by RStudio to offer a very convenient solution for literate programming in the form of <em>R markdown</em> documents.</p>
+<p>In an <em>R markdown</em> document, standard text and R code are intertwined in a single document file. This file can then be rendered to generate an output file containing both the standard text and the results of the execution of R code. The output file can be produced in a variety of formats, such as pdf, html or Word. In this chapter we will introduce the basics of R markdown.</p>
+<div id="rmarkdown-documents" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Rmarkdown documents<a href="reproducible-research.html#rmarkdown-documents" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To get started with Rmarkdown documents, let’s create a sample report following this steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>Create a new folder in your computer, and name it <code>Reproducible reports</code> .</p></li>
+<li><p>Start RStudio and define this folder as the working directory with the RStudio menu option <code>Session &gt; Set Working Directory &gt; Choose Direcory...</code>.</p></li>
+<li><p>In the menu of RStudio, select <code>File &gt; New File &gt; R Markdown...</code> , and you will be presented the dialog window shown in figure <a href="reproducible-research.html#fig:10-new-rmarkdown-dialog">10.1</a>.</p></li>
+</ol>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:10-new-rmarkdown-dialog"></span>
+<img src="./images/10_new_Rmd_dialog.PNG" alt="New R Markdown dialog" width="336" />
+<p class="caption">
+Figure 10.1: New R Markdown dialog
+</p>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li><p>In this dialog, change the default <strong>Title</strong> (<code>Untitled</code>) to <code>Sample Report</code>, as in figure <a href="reproducible-research.html#fig:10-new-rmarkdown-dialog">10.1</a>, and click <code>OK</code>. A new <code>Untitled</code> tab will appear in the top-left panel of RStudio, with some self-explanatory contents we recommend you read carefully.</p></li>
+<li><p>Click the <code>Knit</code> button at the top of this tab. You will be asked to provide a file name, to save the contents of the new tab to a file. Here, it is important to provide a file name <em>without blanks</em>, but you can use underscores, so we suggest the name <code>sample_report</code>. Then click the <code>Save</code>button.</p></li>
+</ol>
+<p>On clicking the <code>Save</code> button, several several things will happen:</p>
+<ul>
+<li><p>The new <code>Untitled</code> tab is renamed to <code>sample_report.Rmd</code>, and its contents is saved to the working directory with this file name. The file extension <code>.Rmd</code> is given automatically, and stands for <em>R markdown document</em>.</p></li>
+<li><p>A new file <code>sample_report.html</code> appears in the working directory. This is a standard html file, that can be viewed with any web browser (like Chrome or Firefox).</p></li>
+<li><p>Last, the contents of <code>sample_report.html</code> is shown in a new window opened by RStudio.</p></li>
+</ul>
+<p><br />
+</p>
+<p>Figure <a href="reproducible-research.html#fig:10-sample-report-1">10.2</a> shows the first part of <code>sample_report.Rmd</code> (left) and the corresponding result in the output document <code>sample_report.html</code>, as shown by RStudio (right).</p>
+<p><br />
+</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:10-sample-report-1"></span>
+<img src="./images/10_sample_report_1.PNG" alt="Sample report, first part" width="952" />
+<p class="caption">
+Figure 10.2: Sample report, first part
+</p>
+</div>
+<p><br />
+</p>
+<p>Some thinks to note in this figure are:</p>
+<ul>
+<li><p>The first lines of <code>sample_report.Rmd</code> define the title, author, date and output type. The first three appear in the resulting <code>sample_report.html</code> file, and the output type determines the format of the resulting file (html). This first section of <code>sample_report.Rmd</code> in known as the <em>YAML header</em>. YAML is a language (acronym of <em>Yet Another Markup Language</em>) used to specify certain things, such as the title, author and date, but many other useful things can be specified here, as we will see later. The YAML header is delimited with three successive dashes.</p></li>
+<li><p>A grayed area appearing below the YAML header is a <em>code chunk</em> named <code>setup</code>. Code chunks are areas were we write R code.</p></li>
+<li><p>The two hashes (<code>##</code>) preceding the text <strong>R Markdown</strong> make it a section header in the resulting html document.</p></li>
+<li><p>The following paragraphs contain standard text, and are shown as such in the resulting html document, with two exceptions:</p>
+<ul>
+<li><p>the text surrounded by angle brackets (<code>&lt;http://rmarkdown.rstudio.com&gt;</code>) becomes a functional link in the resulting html document.</p></li>
+<li><p>the text surrounded by two asterisks (<code>**Knit**</code>) is shown in boldface.</p></li>
+</ul></li>
+</ul>
+<p><br />
+</p>
+<p>Figure <a href="reproducible-research.html#fig:10-sample-report-2">10.3</a> shows the middle part of <code>sample_report.Rmd</code> (left) and of the output document <code>sample_report.html</code> (right).</p>
+<p><br />
+</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:10-sample-report-2"></span>
+<img src="./images/10_sample_report_2.PNG" alt="Sample report, middle part" width="954" />
+<p class="caption">
+Figure 10.3: Sample report, middle part
+</p>
+</div>
+<p><br />
+</p>
+<p>To note in figure <a href="reproducible-research.html#fig:10-sample-report-2">10.3</a>:</p>
+<ul>
+<li>A second code chunk named <code>cars</code>, with a single line of code (<code>summary(cars)</code>) produces two elements in the output document: a gray area showing the code, followed by a white area sowing the result of its execution (<code>cars</code> is an dataframe coming with R).</li>
+</ul>
+<p><br />
+</p>
+<p>Figure <a href="reproducible-research.html#fig:10-sample-report-3">10.4</a> shows the last part of <code>sample_report.Rmd</code> and <code>sample_report.html</code>. To note in this figure:</p>
+<ul>
+<li><p>The two hashes (<code>##</code>) preceding the text <strong>Including plots</strong> make this text to becomes a section header in the resulting html document.</p></li>
+<li><p>After a single line of standard text, a new code chunk of name <code>pressure</code>. Following the chunk name and a comma, the option <code>echo = FALSE</code> prevents the R code from appearing in the output (no gray area with the R code).</p></li>
+<li><p>The plot produced by the single line of code <code>plot(pressure)</code> still appears in the output (<code>pressure</code> is another example dataframe coming with R).</p></li>
+</ul>
+<p><br />
+</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:10-sample-report-3"></span>
+<img src="./images/10_sample_report_3.PNG" alt="Sample report, last part" width="954" />
+<p class="caption">
+Figure 10.4: Sample report, last part
+</p>
+</div>
+<p><br />
+</p>
+<p>We have created a sample report in html format. Now let’s create the same report in pdf and Word formats. Before proceeding, make sure you have the <code>tinytext</code> package installed, because it is needed to create pdf documents. You only need to have this package installed (do not load it with <code>library()</code>).</p>
+<p>Now, unfold the <code>Knit</code> button at the top of the tab <code>sample_report.Rmd</code>, and pick the option <code>Knit to pdf</code>. As a result, the new file <code>sample_report.Rmd</code> will appear in the working directory, and its contents will be shown in a new window.</p>
+<p>Last, unfold the <code>Knit</code> button again, and choose <code>Knit to Word</code>. The new file <code>sample_report.docx</code> will appear in the working directory, and its contents will be shown in a new window.</p>
+<div id="text" class="section level3 hasAnchor" number="10.1.1">
+<h3><span class="header-section-number">10.1.1</span> Text<a href="reproducible-research.html#text" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R markdown documents can have as many text paragraphs as needed. It is likely that we want to organize the text in different sections (such as Introduction, Methods, and Results) and sub-sections. To create a new section, simply start a new line with two (or more) hashes followed by a space and the header for the section. The number of hashes will determine the <em>level of the header</em>: two hashes (<code>##</code>) will define the main sections, and three (or more) hashes will define sub-sections (do not use a single hash, which is reserved for the title of the document already defined in the YAML header).</p>
+<p>Table <a href="reproducible-research.html#tab:10-syntax">10.1</a> shows the markdown syntax for some text formatting options frequently used in R markdown documents (for a complete list, see the <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown Reference Guide</a>).</p>
+<table>
+<caption><span id="tab:10-syntax">Table 10.1: </span> Some markdown text formatting options</caption>
+<thead>
+<tr class="header">
+<th align="left">This syntax</th>
+<th align="left">Becomes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>_Italics_</code> or <code>*Italics*</code></td>
+<td align="left"><em>Italics</em></td>
+</tr>
+<tr class="even">
+<td align="left"><code>__Boldface__</code> or <code>**Boldface**</code></td>
+<td align="left"><strong>Boldface</strong></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>5^2^ = 25</code></td>
+<td align="left">5<sup>2</sup> = 25</td>
+</tr>
+<tr class="even">
+<td align="left"><code>H~2~O</code></td>
+<td align="left">H<sub>2</sub>O</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&lt;http://rmarkdown.rstudio.com&gt;</code></td>
+<td align="left"><a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>[A link](http://rmarkdown.rstudio.com)</code></td>
+<td align="left"><a href="http://rmarkdown.rstudio.com">A link</a></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>Unnumbered lists can be created using asterisks or dashes, and two blank spaces at the end of each line (or an entire blank line between items), so that:</p>
+<p><code>- item 1</code></p>
+<p><code>- item 2</code></p>
+<p><code>- and so on</code></p>
+<p>will become:</p>
+<ul>
+<li>item 1<br />
+</li>
+<li>item 2<br />
+</li>
+<li>and so on</li>
+</ul>
+<p><br />
+</p>
+<p>For numbered lists, use numbers followed by dot. The numbering is automatic, so that you don’t need to provide a correct number sequence (which is handy when you insert new items):</p>
+<p><code>1. item one</code></p>
+<p><code>1. item two</code></p>
+<p><code>7. item three</code></p>
+<p><code>2. item four</code></p>
+<p>will become</p>
+<ol style="list-style-type: decimal">
+<li><p>item one</p></li>
+<li><p>item two</p></li>
+<li><p>item three</p></li>
+<li><p>item four</p></li>
+</ol>
+</div>
+<div id="code-chunks" class="section level3 hasAnchor" number="10.1.2">
+<h3><span class="header-section-number">10.1.2</span> Code chunks<a href="reproducible-research.html#code-chunks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Code chunks is where we write R code to produce some output, either textual or graphic. In general, it is advisable to have a new code chunk for every output we want to produce. R Markdown documents can have as many code chunks as needed. With RStudio, you can easily create a new chunk of code anywhere in the document: place the cursor wherever you want the chunk to be inserted, unfold the arrow beside the green <code>+c</code> button at the top right of the <code>sample_Report.Rmd</code> tab, and choose <code>R</code>.</p>
+<p>Code chunks are delimited by three back-ticks, with an <code>r</code> within braces following the opening back-ticks, like this:</p>
+<pre><code>```{r }
+
+```</code></pre>
+<p><br />
+</p>
+<p>Code chunks can be given a name, immediately after the <code>r</code> and a blank space, like in:</p>
+<pre><code>```{r cars}
+
+```</code></pre>
+<p><br />
+</p>
+<p>Code chunk <em>options</em> can be specified, comma separated, after the chunk name (or after the <code>r</code>, if there is no chunk name). There are many options available for code chunks, and a complete list can be found <a href="https://yihui.org/knitr/options/">here</a>. The following is a list of those we use frequently when writing reports:</p>
+<p><strong>Options affecting text outputs:</strong></p>
+<ul>
+<li><p><code>echo = FALSE</code>: To suppress the R code (default is <code>TRUE</code>, showing the R code).</p></li>
+<li><p><code>message = FALSE</code>: To suppress R messages (default is <code>TRUE</code>, showing messages).</p></li>
+<li><p><code>warning = FALSE</code>: To suppress R warnings (default is <code>TRUE</code>, showing warnings).</p></li>
+<li><p><code>error = FALSE</code>: To suppressed R errors (default is <code>TRUE</code>, showing errors).</p></li>
+<li><p><code>results = 'asis'</code>: To write text results unaltered (default is <code>markup</code>, writing text according to output format).</p></li>
+</ul>
+<p><strong>Options affecting plots:</strong></p>
+<ul>
+<li><p><code>fig.align = 'center'</code>: To center figures (default is <code>'default'</code>, which does not make any alignment adjustment; other possible values are <code>'left'</code> or <code>'right'</code>).</p></li>
+<li><p><code>fig.cap = 'A caption for the figure'</code>: To provide, within quotes, a caption for the figure (default is <code>NULL</code>). Figures with a caption will be automatically numbered, and can be referenced in the text (in pdf output documents).</p></li>
+<li><p><code>fig.height =</code> <em>n</em>, <code>fig.width =</code> <em>n</em>: Set the figure height and width to the number of inches provided (<em>n</em>).</p></li>
+</ul>
+<p><br />
+</p>
+<p>These and other options can be specified in any particular code chunk, and then they will be applied to this chunk only, other chunks remaining unaffected. However, they can be set with function <code>knitr::opts_chunk$set()</code> in the first code chunk, an then they will affect all subsequent code chunks (unless overwritten in a particular code chunk).</p>
+</div>
+</div>
+<div id="writing-a-pdf-report-on-birth-weights" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Writing a pdf report on birth weights<a href="reproducible-research.html#writing-a-pdf-report-on-birth-weights" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Although writing an Rmarkdown document from scratch is perfectly possible, it is convenient to start creating a new Rmarkdown document, as we did in the previous section, and use the sample document provided as a starting point. For instance, suppose we want to write a report on the analysis of the <code>birthwt</code> dataset, so that we create a new R Markdown document (<code>File &gt; New File &gt; R Markdown...</code>), provide <code>Birth weight</code> as title, the author name, and set the default output format to <code>pdf</code>. The resulting <code>Untitled</code> tab will have a YAML header similar to this one:</p>
+<pre><code>---
+title: &quot;Birth weight&quot;
+author: &quot;Albert Cobos&quot;
+date: &quot;04/08/2021&quot;
+output: pdf_document
+---</code></pre>
+<div id="setup-chunk" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Setup chunk<a href="reproducible-research.html#setup-chunk" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Because we do not want the R code, messages and warnings issued by R to appear in the output, it is a good idea to set appropriate global chunk options in the first (<code>setup</code>) chunk. Also, the <code>setup</code> chunk is a natural place to get and prepare the data we want to analyze. In this case, we have inserted the code we used in previous chapters to access and prepare the <code>birthwt</code> dataset. The <code>setup</code>chunk is now:</p>
+<pre><code>```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.align = &#39;center&#39;)
+                      
+library(dplyr)
+
+d &lt;- MASS::birthwt %&gt;%
+  mutate(low = factor(low, 
+                     levels = 1:0, 
+                     labels = c(&quot;low&quot;, &quot;normal&quot;)),
+         race = factor(race, 
+                       levels = 1:3,
+                       labels = c(&quot;white&quot;, &quot;black&quot;, &quot;other&quot;)),
+         smoke = factor(smoke, 
+                        levels = 1:0, 
+                        labels = c(&quot;smoker&quot;, &quot;non-smoker&quot;)),
+         ui = factor(ui, 
+                      levels = 1:0, 
+                      labels = c(&quot;UI&quot;, &quot;no-UI&quot;)),
+         ht = factor(ht, 
+                     levels = 1:0, 
+                     labels = c(&quot;AHT&quot;, &quot;no-AHT&quot;))) %&gt;% 
+  rename(bw = low)
+                     
+```</code></pre>
+<p><br />
+</p>
+</div>
+<div id="structure-of-report-introduction-and-method-sections" class="section level3 hasAnchor" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Structure of report, introduction and method sections<a href="reproducible-research.html#structure-of-report-introduction-and-method-sections" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We now delete all the remaining contents of the sample document and start writing our own. For instance, we can start by defining the main sections of the report:</p>
+<p style="color:SteelBlue">
+<pre><code>## Introduction
+
+## Methods
+
+## Results
+</code></pre>
+</p>
+<p><br />
+</p>
+<p>It’s a good idea to <em>knit</em> to pdf and verify that everything works (on <em>kniting</em> we will be asked to provide a file name of our choice to save the R Markdown document (remember it should not contain blank spaces!), for example <code>birth_weight</code>. The result should be a pdf document with title, author and date, and the three main sections we defined above. Not very exciting yet, but we recommend verifying the result every few changes made in the R markdown document (at least until you have some experience with Rmarkdown). If you make lots of changes and then get an error on <em>kniting</em>, it may be sometimes hard to locate the error (despite the description of the error message).</p>
+<p>From now on, we will show standard text for the markdown document in <span style="color:SteelBlue">steel blue</span>. You should copy and paste it, and <em>knit</em> to see the result.</p>
+<p>In the introduction section, write the following sentence (or just copy-paste it), and <em>knit to pdf</em> to see the result):</p>
+<p style="color:SteelBlue">
+We analysed the birth weight of <code>`r nrow(d)`</code> newborns recorded in the Baystate Medical Center, Springfield, Mass during 1986, and its associations with demographic characteristics of mothers.
+</p>
+<p>In the previous sentence, <code>`r nrow(d)`</code> is called <em>inline code</em>,and is a way to embed R code in a text paragraph, so that its result will be shown in the output document. Because <code>nrow(d)</code> gives the number of rows in dataframe <code>d</code>, this is what the sentence will look in the output document:</p>
+<p>“We analysed the birth weight of 189 newborns recorded in the Baystate Medical Center, Springfield, Mass during 1986, and its associations with demographic characteristics of mothers.”</p>
+<p>You can use any R function in inline expressions (provided they produce text results). This is extremely useful to write sentences containing analysis results, such as means, <em>p</em> values, confidence intervals, etc., that will still produce valid output <em>even if the input data changes!</em></p>
+<p><br />
+</p>
+<p>For the methods section, we could write the following text paragraph (nothing special to comment here):</p>
+<p style="color:SteelBlue">
+Data are summarized as mean (SD) and n (%) as appropriate. For comparisons between groups the t-test and chi-square test with Yate’s continuity correction were used, for quantitative and categorical variables respectively. The analysis was carried out with the R language (version 4.2.1).
+</p>
+</div>
+<div id="results-section" class="section level3 hasAnchor" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Results section<a href="reproducible-research.html#results-section" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following first paragraph for the results section has several inline expressions, and is followed by the code chunk below (you can copy-paste both together, and <em>knit to pdf</em> to see the result):</p>
+<p style="color:SteelBlue">
+Birth weights ranged from <code>`r min(d$bwt)`</code> to <code>`r max(d$bwt)`</code> grams, with mean (SD) of <code>`r round(mean(d$bwt),1)`</code> (<code>`r round(sd(d$bwt),1)`</code>) grams. The histogram of birth weights with overlapped density, shows a bell-shaped and quite symmetrical distribution (figure <code>\ref{fig:btw_density}</code>).
+</p>
+<pre><code>```{r btw_density, fig.cap=&#39;Distribution of birth weights&#39;, fig.width=4, fig.height = 3}
+
+library(ggformula)
+
+gf_dens(~ bwt, data = d, 
+        color = &quot;blue&quot;, size = 1,
+        xlab = &quot;Birth weight (grams)&quot;) %&gt;% 
+  gf_histogram(binwidth=500, color = &quot;black&quot;, fill = &quot;white&quot;) %&gt;% 
+  gf_theme(theme_light())
+```</code></pre>
+<p><br />
+</p>
+<p>In the code chunk, some options are used to define a caption, and a convenient figure size (width and height). The R code in this chunk starts loading package <code>ggformula</code>, and then uses some of its functions to produce a graphic. The <code>gf_theme()</code> function in the last line of code allows to choose a <em>theme</em> (style) for the figure, among many available (see <code>?theme_light</code>).</p>
+<p>If you <em>knit to pdf</em>, you will note that the figure has the specified caption, has been <em>automatically numbered</em> as <code>Figure 1</code>, and this number has replaced the reference of the figure at the end of the text paragraph. Note how the figure was referenced: <code>\ref{fig:btw_density}</code>. In general, figures can be referenced anywhere in the text using <code>\ref{fig:chunk-name}</code>. This is very interesting because you can <em>completely forget about figure numbering</em> and associated pains, such as re-numbering when you want to insert a new figure between some already existing figures. Unfortunately, automatic figure (and table) numbering is only available for pdf outputs (if you <em>knit</em> to html or Word, the caption text is still displayed, though unnumbered), and this is one of the reasons why we recommend to use the pdf output format.</p>
+<p>Here is a second paragraph and code chunk for the results section (did I mention you should copy-paste both to your own R markdown document, and <em>knit to pdf</em> to see the result?):</p>
+<p style="color:SteelBlue">
+The boxplots of birth weights in smoking and non-smoking mothers are displayed in figure <code>\ref{fig:bwt_smoke_boxplot}</code>. A shift to lower values is apparent in smoking mothers.
+</p>
+<pre><code>```{r bwt_smoke_boxplot, fig.cap=&#39;Birth weight by smoking status&#39;, fig.height=1.5, fig.width=4 }
+gf_boxplot(bwt ~ smoke, data = d,              
+           ylab = &quot;Birth weight (grams)&quot;,
+           xlab = &quot;&quot;) %&gt;%                     
+  gf_refine(coord_flip()) %&gt;% 
+  gf_theme(theme_light())
+
+```</code></pre>
+<p><br />
+</p>
+<p>Nothing special to be commented, but note the reference to the figure in text <code>\ref{fig:bwt_smoke_boxplot}</code>, and the automatic numbering as figure 2.</p>
+<p>Tables are very common in reports and published papers. There are many packages with functions to build tables with R. Here, we will use a function from the <code>compareGroups</code> package. After installing this package, and also the <code>Hmisc</code> package, copy-paste to your own report the following text paragraph and code chunk below:</p>
+<p style="color:SteelBlue">
+Table <code>\ref{tab:smoke_comparisons}</code> shows the results of comparing several variables between smoker and non-smoker mothers. As well as descriptive summaries, the p-value of the relevant test (t-test for quantitative variables, and chi-square for categorical variables) is shown as <code>p.overall</code>.
+</p>
+<pre><code>```{r smoke_comparisons}
+
+library(compareGroups)
+
+Hmisc::label(d$bwt) &lt;- &quot;Birth weight (grams)&quot;
+Hmisc::label(d$bw) &lt;- &quot;Birth weight, categorized&quot;
+Hmisc::label(d$race) &lt;- &quot;Race&quot;
+Hmisc::label(d$ht) &lt;- &quot;Arterial hypertension&quot;
+Hmisc::label(d$ui) &lt;- &quot;Uterine irritability&quot;
+
+descrTable(smoke ~ bwt + bw + race + ht + ui, data = d,
+           hide.no = c(&quot;no-AHT&quot;, &quot;no-UI&quot;)) %&gt;%   
+  export2md()                                                                          
+
+```</code></pre>
+<p><br />
+</p>
+<p>In this code chunk we used the <code>label()</code> function of package <code>Hmisc</code> to assigns labels to variables in dataframe <code>d</code>. Then, the <code>descrTable()</code> function from package <code>comparGroups</code> is used to build a table. Note the syntax of the formula written as the first argument: the grouping factor <code>smoke</code> goes before the tilde, and then all variables we want to include in the table go after the tilde, separated by <code>+</code> signs; the further <code>data = d</code> argument identifies the dataframe containing all the variables appearing in the formula; last, the (optional) argument <code>hide.no = c("no-AHT", "no-UI")</code> is to hide the specified (negative) levels of the factors <code>ht</code> and <code>ui</code> (try executing the <code>descrTable()</code> function <em>without</em> this argument and you will understand its effect). There are many other arguments to ’descrTable()` we could use to define and tweak the resulting table (see <a href="https://cran.r-project.org/web/packages/compareGroups/vignettes/compareGroups_vignette.html">here</a> for more).</p>
+<p>The result is a nice-looking table, including descriptive summaries for all variables in the right hand side of the formula, according to groups defined by the left hand side (smoking and noon-smoking mothers), and the p-value of appropriate tests according to the type of variable (t-test for quantitative, and chi-square test for categorical variables). Thinks to note:</p>
+<ul>
+<li><p>The column headers for <code>smoker</code> and <code>non-smoker</code> groups include the number of cases (<code>N</code>).</p></li>
+<li><p>Variable labels defined with <code>Hmisc::label() &lt;-</code> have been automatically detected and used in the table.</p></li>
+<li><p>The table has been automatically numbered as table 1, and the reference in the text paragraph (<code>\ref{tab:smoke_comparisons}</code>) resolved to the same number. In general, references to tables in text are written much like references to graphics, but changing <code>fig:</code> to <code>tab:</code>.</p></li>
+</ul>
+<p>The final <a href="data/birth_weight.Rmd">R Markdown document</a> produces <a href="data/birth_weight.pdf">this pdf output</a>, and illustrates the most common needs when writing reports, such as a Final Masters Thesis, or papers. There are many more packages and functions that are very useful for creating longer descriptive tables and graphs ready for publication, or to help writing certain results in inline code (such as 95% confidence intervals), but for starters, this is more than enough.</p>
+</div>
+</div>
+<div id="r-markdown-presentations" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> R markdown presentations<a href="reproducible-research.html#r-markdown-presentations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R Markdown can be used to produce slide presentations in several output formats:</p>
+<ul>
+<li><p>HTML: IOslides, and Slidy</p></li>
+<li><p>pdf: Beamer</p></li>
+<li><p>PowerPoint</p></li>
+</ul>
+<p><br />
+</p>
+<p>To create a simple HTML presentation, follow these steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>Define a folder of your choice as the working directory, using <code>Session &gt; Set Working Directory &gt; Choose Direcory...</code> in the RStudio menu.</p></li>
+<li><p>Select File &gt; New File &gt; R Markdown… in the menu of RStudio, and you will be presented the dialog shown in figure <a href="reproducible-research.html#fig:10-IOslides-dialog">10.5</a>. Choose <code>Presentation</code> in the left panel, and provide a title, an author name, the <code>HTML (ioslides)</code> default output format, and click <code>OK</code>.</p></li>
+</ol>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:10-IOslides-dialog"></span>
+<img src="./images/10_new_Rmd_IOslides_dialog.PNG" alt="New R Markdown dialog" width="338" />
+<p class="caption">
+Figure 10.5: New R Markdown dialog
+</p>
+</div>
+<p>On completing the previous actions, a new <code>Untitled</code> tab will appear in RStudio, with some sample contents. If you click the <code>knit</code> button at the top of the tab, you will be asked to provide a file name to save its contents to file (remember: no blank spaces in the file name), such as <code>birth_weight_slides</code>. On saving, the following happens:</p>
+<ul>
+<li><p>The new Untitled tab is renamed to <code>birth_weight_slides.Rmd</code>, and its contents is saved to the working directory with this file name. The file extension <code>.Rmd</code> is given automatically, and stands for <em>R markdown document</em>.</p></li>
+<li><p>A new file <code>birth_weight_slides.html</code> appears in the working directory. This is a standard html file, that can be viewed with any web browser (Chrome is recommended).</p></li>
+<li><p>Last, the contents of <code>Bith_weight_slides.html</code> is shown in a new window opened by RStudio.</p></li>
+</ul>
+<p>The sample R Markdown document is very similar to the one we saw in section <a href="reproducible-research.html#rmarkdown-documents">Rmarkdown documents</a>, but some differences are worth noting:</p>
+<ul>
+<li><p>The output format declared in the YAML section is now <code>output: ioslides_presentation</code>.</p></li>
+<li><p>The section headers preceded by two hashes (<code>##</code>) define now a new slide.</p></li>
+</ul>
+<p>For the remaining, Markdown syntax is used for text formatting, and code chunks or inline code work just as for reports.</p>
+</div>
+<div id="writing-an-ioslides-presentation-on-birth-weights" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Writing an IOslides presentation on birth weights<a href="reproducible-research.html#writing-an-ioslides-presentation-on-birth-weights" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If we want to create a presentation on the birth weights data, we proceed as we did for the report. In fact, we can use the same setup chunk to access and prepare the <code>birthwt</code> dataset:</p>
+<pre><code>```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.align = &#39;center&#39;)
+                      
+library(dplyr)
+
+d &lt;- MASS::birthwt %&gt;%
+  mutate(low = factor(low, 
+                     levels = 1:0, 
+                     labels = c(&quot;low&quot;, &quot;normal&quot;)),
+         race = factor(race, 
+                       levels = 1:3,
+                       labels = c(&quot;white&quot;, &quot;black&quot;, &quot;other&quot;)),
+         smoke = factor(smoke, 
+                        levels = 1:0, 
+                        labels = c(&quot;smoker&quot;, &quot;non-smoker&quot;)),
+         ui = factor(ui, 
+                      levels = 1:0, 
+                      labels = c(&quot;UI&quot;, &quot;no-UI&quot;)),
+         ht = factor(ht, 
+                     levels = 1:0, 
+                     labels = c(&quot;AHT&quot;, &quot;no-AHT&quot;))) %&gt;% 
+  rename(bw = low)
+                     
+```</code></pre>
+<p><br />
+</p>
+<p>We then outline the slides of the presentation:</p>
+<pre><code>## Introduction
+
+## Birth weight description
+
+## Boxplots
+
+## Smokers vs non-smokers {.smaller}
+</code></pre>
+<p><br />
+</p>
+<p>The <code>{.smaller}</code> in the last slide is to use a smaller font size in this slide, so that more contents fits in it.</p>
+<p>In the first introductory slide, we can write something like this, using inline code to show the number of cases analyzed:</p>
+<p style="color:SteelBlue">
+<code>-</code> We analyse the birth weight of <code>`r nrow(d)`</code> newborns recorded in the Baystate Medical Center, Springfield, Mass during 1986.
+</p>
+<p style="color:SteelBlue">
+<code>-</code> And assessed its association with demographic variables (smoking during pregnancy, race, arterial hypertension, and uterine irritability)
+</p>
+<p><br />
+</p>
+<p>In the second slide, we show basic statistics of <code>bwt</code> using inline code, and then a code chunk to produce the histogram with overlaid density:</p>
+<p style="color:SteelBlue">
+Mean (SD): <code>`r round(mean(d$bwt),1)`</code> ( <code>`r round(sd(d$bwt),1)`</code>) grams.
+</p>
+<pre><code>```{r btw_description}
+library(ggformula)
+
+gf_dens(~ bwt, data = d, 
+        color = &quot;blue&quot;, size = 1,
+        xlab = &quot;Birth weight (grams)&quot;) %&gt;% 
+  gf_histogram(binwidth=500, color = &quot;black&quot;, fill = &quot;white&quot;) %&gt;% 
+  gf_theme(theme_light())
+```</code></pre>
+<p><br />
+</p>
+<p>In the third slide, a code chunk will produce boxplots of <code>bwt</code> by smoking, race, arterial hypertension and uterine irritability. These are four graphics, and to make them fit in a single slide we use package <code>patchwork</code>. Note we first save the graphics as plot1, plot2, plot3 and plot4, and then use <code>patchwork</code> to arrange them in two rows (last two lines in the code chunk).</p>
+<pre><code>```{r boxplots}
+plot1 &lt;- gf_boxplot(bwt ~ smoke, data = d,
+                    title = &quot;Smoking&quot;,
+                    ylab = &quot;Birth weight (grams)&quot;,    
+                    xlab = &quot;&quot;,
+                    ) %&gt;%    
+  gf_refine(coord_flip()) %&gt;%
+  gf_theme(theme_light())    
+
+plot2 &lt;- gf_boxplot(bwt ~ race, data = d,
+                    title = &quot;Race&quot;,
+                    ylab = &quot;Birth weight (grams)&quot;,    
+                    xlab = &quot;&quot;) %&gt;%  
+  gf_refine(coord_flip()) %&gt;%
+  gf_theme(theme_light())
+
+plot3 &lt;- gf_boxplot(bwt ~ ht, data = d,
+                    title = &quot;Arterial hypertension&quot;,
+                    ylab = &quot;Birth weight (grams)&quot;,    
+                    xlab = &quot;&quot;,
+                    ) %&gt;%         
+  gf_refine(coord_flip()) %&gt;%
+  gf_theme(theme_light())    
+
+plot4 &lt;- gf_boxplot(bwt ~ ui, data = d,
+                    title = &quot;Uterine irritability&quot;,
+                    ylab = &quot;Birth weight (grams)&quot;,    
+                    xlab = &quot;&quot;) %&gt;%
+  gf_refine(coord_flip()) %&gt;%
+  gf_theme(theme_light())
+
+library(patchwork)
+plot1 + plot2 + plot3 + plot4 + plot_layout(nrow = 2)
+```</code></pre>
+<p> </p>
+<p>In the last slide, we show the same table we produced for the report, with descriptive statistics of several variables and the p-values for the comparisons of these variables in smoker and non-smoker mothers.</p>
+<pre><code>```{r comparisons}
+library(compareGroups)
+
+Hmisc::label(d$bwt) &lt;- &quot;Birth weight (grams)&quot;
+Hmisc::label(d$bw) &lt;- &quot;Birth weight, categorized&quot;
+Hmisc::label(d$race) &lt;- &quot;Race&quot;
+Hmisc::label(d$ht) &lt;- &quot;Arterial hypertension&quot;
+Hmisc::label(d$ui) &lt;- &quot;Uterine irritability&quot;
+
+descrTable(smoke ~ bwt + bw + race + ht + ui, data = d,
+           hide.no = c(&quot;no-AHT&quot;, &quot;no-UI&quot;))  %&gt;%   
+  export2md(caption = &quot;&quot;)
+```</code></pre>
+<p><br />
+</p>
+<p>The <a href="data/birth_weight_slides.Rmd">final R Markdown document</a> produces <a href="data/birth_weight_slides.html">this output</a>.</p>
+<p>When viewing an IOslides presentation (<code>.html</code> file) in a browser (e.g., Chrome), the following single key shortcuts can be used:</p>
+<ul>
+<li><p><code>f</code>: to enable full-screen mode</p></li>
+<li><p><code>w</code>: to enable wide view mode</p></li>
+<li><p><code>o</code>: to enable outline mode (and navigate through slides)</p></li>
+</ul>
+<p>We recommend IOslides presentations over other output formats because they are simple to prepare, can be enhanced through <a href="https://www.w3schools.com/html/html_intro.asp">HTML</a>, and the resulting document is not editable (important for reproducibility). For more on IOslides and other type of presentations (Slidy, Beamer, PowerPoint), see <a href="https://bookdown.org/yihui/rmarkdown/presentations.html">here</a>.</p>
+</div>
+<div id="yaml-header" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> YAML header<a href="reproducible-research.html#yaml-header" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are several things you can define in the YAML header of an R Markdown document. For instance, the <code>toc: true</code> option nested in the output type will create a table of contents at the beginning of the document:</p>
+<pre><code>---
+title: &quot;Birth weight&quot;
+author: &quot;Albert Cobos&quot;
+date: &quot;04/08/2021&quot;
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+---</code></pre>
+<p><br />
+</p>
+<p>The <code>toc_depth</code> value indicates the level of the headers that will be included in the table of contents (<code>toc</code>). If you want sections to be numbered, then use <code>number_sections</code>:</p>
+<pre><code>output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true</code></pre>
+<p><br />
+</p>
+<p>If you want the date to be updated automatically every time you <em>knit</em> the document (useful for periodic reports) , then use this:</p>
+<pre><code>date: `` `r Sys.Date()` ``</code></pre>
+<p><br />
+</p>
+<p>For more options in the YAML header, see <a href="https://cran.r-project.org/web/packages/ymlthis/vignettes/yaml-fieldguide.html">here</a>.</p>
+</div>
+<div id="external-images" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> External images<a href="reproducible-research.html#external-images" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can insert images stored in external files using function <code>knitr::include_graphics()</code>. For instance, suppose you have the file image <code>10-eat-sleep-R-repeat.jpg</code> stored in subfolder <code>images</code> of your working directory. The following code chunk will insert the image:</p>
+<pre><code>```{r my_image, echo = FALSE, fig.cap = &quot;R T-shirt&quot;}
+knitr::include_graphics(&quot;./images/10-eat-sleep-R-repeat.jpg&quot;)
+```</code></pre>
+<p>The result is shown in figure <a href="reproducible-research.html#fig:my-image">10.6</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:my-image"></span>
+<img src="./images/10-eat-sleep-R-repeat.jpg" alt="R T-shirt" width="300" />
+<p class="caption">
+Figure 10.6: R T-shirt
+</p>
+</div>
+<p>If you don’t want a numbered caption (or do not want a caption at all), then simply write this in a normal text paragraph: <code>![optional caption](./images/10-eat_sleep_R_repeat.jpg)</code>.</p>
+</div>
+<div id="other-outputs" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Other outputs<a href="reproducible-research.html#other-outputs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We have seen how to produce documents and slide presentations with R Markdown, but other types of outputs can be produced as well, such as:</p>
+<ul>
+<li><p>Dashboards like <a href="https://www.arcgis.com/apps/dashboards/bda7594740fd40299423467b48e9ecf6">this one</a>.</p></li>
+<li><p>Books, like the one you are reading right now.</p></li>
+<li><p>Websites, like <a href="https://robjhyndman.com/">this one</a>.</p></li>
+<li><p>Interactive tutorials, like the ones you see in the <strong>Tutorial</strong> tab of the top-right pane of RStudio.</p></li>
+<li><p>… and more.</p></li>
+</ul>
+<p>We are not covering any of these, but if your are interested in some, look for the appropriate chapter(s) of the <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a>.</p>
+</div>
+<div id="resources-9" class="section level2 unnumbered hasAnchor">
+<h2>Resources<a href="reproducible-research.html#resources-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>A well organised <a href="https://rmarkdown.rstudio.com/lesson-1.html">tutorial on R markdown</a></p></li>
+<li><p>The <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?_ga=2.31117371.589981273.1627977413-1000639518.1610891435">R Markdown reference guide</a> is a very useful 5-pages pdf document.</p></li>
+<li><p>The <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheatsheet</a> is a two-pages pdf document for fast look-up.</p></li>
+<li><p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a> is, as the title suggests, a very comprehensive online book on R Markdown.</p></li>
+<li><p><a href="https://github.com/rstudio/rticles">rticles</a> is a package including R markdown templates to write articles for journals, including PLOS and Elsevier journals.</p></li>
+<li><p>If you want to write very long documents, then have a look at <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a>. And do not miss the collection of <a href="https://bookdown.org/">online books written with bookdown</a>.</p></li>
+<li><p>A good place to explore possibilities of the <a href="https://cran.r-project.org/web/packages/compareGroups/vignettes/compareGroups_vignette.html">compareGroups package</a>.</p></li>
+<li><p>A tutorial on the <a href="https://patchwork.data-imaginist.com/articles/patchwork.html">patchwork package</a> to compose graphics.</p></li>
+<li><p>If you are a MS Office fan, you may want to have a look at the <strong>Microsoft/LibreOffice Formats</strong> in the <a href="https://cran.r-project.org/web/views/ReproducibleResearch.html">CRAN taskview for reproducible reseach</a>. And for windows users only: R-bloggers posts on packages <a href="https://www.r-bloggers.com/2010/05/exporting-r-output-to-ms-word-with-r2wd-an-example-session/">R2wd</a> and <a href="https://www.r-bloggers.com/2017/10/create-powerpoint-presentations-from-r-with-the-officer-package/">R2PPT</a>.</p></li>
+</ul>
+</div>
+<div id="exercises-9" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="reproducible-research.html#exercises-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following exercises are based on <a href="data/SARA_with_outcomes.xlsx">this dataset</a> on the SARA trial, where:</p>
+<ul>
+<li><p>Variables <code>rand_dt</code> and <code>birth_dt</code>are randomization and birthday dates, respectively.</p></li>
+<li><p><code>PEP</code> and <code>SEP</code> are primary and secondary outcomes (or endpoints), respectively.</p></li>
+<li><p><code>QoL_bas</code>, <code>QoL_6m</code> and <code>QoL_12m</code> are AF_QoL scores at baseline, 6 and 12 months, respectively.</p></li>
+<li><p>The coding of the <code>group</code> variable is 1 for CA and 2 for ADT.</p></li>
+</ul>
+<p><br />
+</p>
+<ol style="list-style-type: decimal">
+<li>Write an R markdown document to produce a report in pdf format that looks <em>exactly</em> as <a href="data/sara_report.pdf">this one</a>. All numbers appearing in the text of the results section <em>should be produced with inline code</em>.</li>
+</ol>
+<p><br />
+</p>
+<p>Here are some hints you may want to look at to write inline code:</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="reproducible-research.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming dataframe name is `d` </span></span>
+<span id="cb377-2"><a href="reproducible-research.html#cb377-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-3"><a href="reproducible-research.html#cb377-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If `rand_dt` is a Date (not a character!) variable, </span></span>
+<span id="cb377-4"><a href="reproducible-research.html#cb377-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this gives the minimum value formatted as year and month:</span></span>
+<span id="cb377-5"><a href="reproducible-research.html#cb377-5" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(<span class="fu">min</span>(d<span class="sc">$</span>rand_dt), <span class="st">&quot;%B %Y&quot;</span>)</span>
+<span id="cb377-6"><a href="reproducible-research.html#cb377-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-7"><a href="reproducible-research.html#cb377-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of patients per group, with explicit group for each:</span></span>
+<span id="cb377-8"><a href="reproducible-research.html#cb377-8" aria-hidden="true" tabindex="-1"></a>ng <span class="ot">&lt;-</span> mosaic<span class="sc">::</span><span class="fu">tally</span>(<span class="sc">~</span>group, <span class="at">data =</span> d)</span>
+<span id="cb377-9"><a href="reproducible-research.html#cb377-9" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="fu">names</span>(ng), ng, <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>)</span>
+<span id="cb377-10"><a href="reproducible-research.html#cb377-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-11"><a href="reproducible-research.html#cb377-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract pieces from the results of `t-test()`, which is a list. </span></span>
+<span id="cb377-12"><a href="reproducible-research.html#cb377-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Note we use function displayCI() from package `reporttools`, </span></span>
+<span id="cb377-13"><a href="reproducible-research.html#cb377-13" aria-hidden="true" tabindex="-1"></a><span class="co"># you need to install this package first!</span></span>
+<span id="cb377-14"><a href="reproducible-research.html#cb377-14" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">t.test</span>(age <span class="sc">~</span> group, <span class="at">data =</span> d)</span>
+<span id="cb377-15"><a href="reproducible-research.html#cb377-15" aria-hidden="true" tabindex="-1"></a><span class="fu">is.list</span>(x)</span>
+<span id="cb377-16"><a href="reproducible-research.html#cb377-16" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x)</span>
+<span id="cb377-17"><a href="reproducible-research.html#cb377-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-18"><a href="reproducible-research.html#cb377-18" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> x<span class="sc">$</span>estimate</span>
+<span id="cb377-19"><a href="reproducible-research.html#cb377-19" aria-hidden="true" tabindex="-1"></a>means</span>
+<span id="cb377-20"><a href="reproducible-research.html#cb377-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-21"><a href="reproducible-research.html#cb377-21" aria-hidden="true" tabindex="-1"></a>mean_diff <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="sc">-</span><span class="fu">diff</span>(means), <span class="dv">1</span>)</span>
+<span id="cb377-22"><a href="reproducible-research.html#cb377-22" aria-hidden="true" tabindex="-1"></a>mean_diff</span>
+<span id="cb377-23"><a href="reproducible-research.html#cb377-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-24"><a href="reproducible-research.html#cb377-24" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mean_diff) <span class="ot">&lt;-</span> <span class="st">&quot;difference (ADT-CA)&quot;</span></span>
+<span id="cb377-25"><a href="reproducible-research.html#cb377-25" aria-hidden="true" tabindex="-1"></a>mean_diff</span>
+<span id="cb377-26"><a href="reproducible-research.html#cb377-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-27"><a href="reproducible-research.html#cb377-27" aria-hidden="true" tabindex="-1"></a>mean_diff_ci <span class="ot">&lt;-</span> reporttools<span class="sc">::</span><span class="fu">displayCI</span>(x<span class="sc">$</span>conf.int, <span class="at">digit=</span><span class="dv">1</span>)</span>
+<span id="cb377-28"><a href="reproducible-research.html#cb377-28" aria-hidden="true" tabindex="-1"></a>mean_diff_ci</span></code></pre></div>
+<p><br />
+</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Write an IOslides R markdown presentation, so that the output looks <em>exactly</em> as <a href="data/sara_slides.html">this one</a>. All numbers appearing in the text of the results section <em>should be produced with inline code</em>.</li>
+</ol>
+<p><br />
+</p>
+<ol start="3" style="list-style-type: decimal">
+<li>After producing the previous report and presentation, you are informed that patients 1-038, 1-054, 2-012, 5-002, 1-013, and 6-021, were mistakenly randomized, as they did not meet the selection criteria. These patients should be removed from the dataset before analysis. Use a copy of the documents you wrote in the previous exercises to create a second version of the report and the presentation, based on valid patients only. Your output documents should look exactly as these ones:</li>
+</ol>
+<ul>
+<li><p><a href="data/sara_report_version_2.pdf">data/sara_report_version_2.pdf</a></p></li>
+<li><p><a href="data/sara_slides_version_2.html">data/sara_slides_version_2.html</a></p></li>
+</ul>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="assessing-relations.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
